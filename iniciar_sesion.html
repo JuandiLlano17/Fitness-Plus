@@ -1,12 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesion</title>
-    <p>Hola</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => document.querySelector('header').innerHTML = data);
+
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.querySelector('footer').innerHTML = data);
+    });
+  </script>
 </head>
 <body>
-    
+  <header></header>
+
+  <main>
+    <div class="ini-sesion">
+        <!-- Imagen a la izquierda -->
+        <div class="inicio-img">
+            <img src="img/image.png" alt="Imagen de entrenamiento">
+        </div>
+
+        <!-- Formulario de inicio de sesión a la derecha -->
+        <div class="inscribete">
+            <h1>Iniciar Sesión</h1>
+
+            <div class="incio-de-sesion">
+                <h5>Enter Email</h5>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="incio-de-sesion">
+                <h5>••••••••</h5>
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+
+            <button type="submit">
+                <h3>Enviar</h3>
+            </button>
+        </div>
+  </main>
+
+  <footer></footer>
 </body>
 </html>
