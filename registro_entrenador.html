@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Cargar el header desde header.html
+        $('header').load('header.html');
+        // Cargar el footer desde footer.html
+        $('footer').load('footer.html');
+      });
+    </script>
 </head>
 <body>
-    <div class="Registro">
+    <header></header>
+
+    <div class="formulario">
 
     <h1>Registro</h1>
-    <h2>Porfavor diligencia tus datos</h2>
+    <h2>Registro</h2>
 
     </div>
+
     <div class="formulario">
         
         <div class="columnas-editar">
           <h4>Nombre</h4>
           <input type="text" placeholder="Nombre" />
-        
+  
           <div class="columnas-datos">
             <h4>Edad</h4>
             <input type="number" placeholder="Edad" />
@@ -44,5 +57,6 @@
           </button>
         </div>
       </div>
+    <footer></footer>
 </body>
 </html>
