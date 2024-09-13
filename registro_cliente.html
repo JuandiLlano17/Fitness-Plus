@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registo Cliente</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Cargar el header desde header.html
+        $('header').load('header.html');
+        // Cargar el footer desde footer.html
+        $('footer').load('footer.html');
+      });
+    </script>
 </head>
 <body>
+    <header></header>
     <div class="Registro">
 
         <h1>Registro</h1>
@@ -38,9 +49,17 @@
     
               <div class="columnas-datos"></div>
                 <h4>Dias de entrenamiento</h4>
-                <input type="number" placeholder="Peso" />
+                <select name="dias" id="dias-select" multiple>
+                    <option value="lunes">Lunes</option>
+                    <option value="martes">Martes</option>
+                    <option value="miercoles">Miércoles</option>
+                    <option value="jueves">Jueves</option>
+                    <option value="viernes">Viernes</option>
+                    <option value="sabado">Sábado</option>
+                    <option value="domingo">Domingo</option>
+                </select>
                 <h4>Altura</h4>
-                <input type="number" placeholder="Altura" />
+                <input type="number" placeholder="Altura" min="13"step="1" />
               </div>
       
               <div class="columnas-datos">
@@ -62,5 +81,6 @@
               </button>
             </div>
           </div>
+          <footer></footer>
 </body>
 </html>
