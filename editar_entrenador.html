@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar ejercicios</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // Cargar el header desde header.html
+        $('header').load('header.html');
+        // Cargar el footer desde footer.html
+        $('footer').load('footer.html');
+
+        $('.boton-agregar').click(function() {
+            $('#crearEjercicioModal').show();
+        });
+
+        // Mostrar la ventana modal de Borrar
+        $('.boton-borrar').click(function() {
+            $('#borrarModal').show();
+        });
+
+        // Mostrar la ventana modal de Guardado
+        $('.boton-guardar').click(function() {
+            $('#guardarModal').show();
+        });
+
+        // Mostrar el modal de "Se ha borrado el ejercicio"
+        $('.boton-confirmar').click(function() {
+            $('#ejercicioBorradoModal').show();
+            $('#borrarModal').hide();  // Cerrar el modal de confirmación de borrar
+        });
+
+        // Ocultar modales cuando se haga clic en el botón "Cerrar"
+        $('.cerrar-modal').click(function() {
+            $(this).closest('.modal').hide();
+        });
+
+      });
+    </script>
+</head>
+<body>
+    <header></header>
+
+    <div class="editar-ejercicios"></div>
+        <img class="logos-icon" alt="Logos" src="Logos.svg">
+        <div class="frame-container">
+            <div class="meet-section">
+                <h1>Editar Ejercicios</h1>
+                <h2>Escoge el día, el tipo de músculo y agrega los ejercicios con las repeticiones correspondientes para cada cliente</h2>
+    
+                <div class="dias-container">
+                    <h2 class="dia">Lunes</h2>
+                    <h2 class="dia">Martes</h2>
+                    <h2 class="dia">Miércoles</h2>
+                    <h2 class="dia">Jueves</h2>
+                    <h2 class="dia">Viernes</h2>
+                </div>
+
+                <div class="opciones">
+                    <h3 class="opcion">Tiempo de la Rutina</h3>
+                    <h3><button class="boton">Músculo</button></h3>
+                    <h3><button class="boton-agregar">Agregar Ejercicio</button></h3>
+                </div>
+
+                <h3><button class="boton-guardar">Guardar</button></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crear Ejercicio -->
+    <div id="crearEjercicioModal" class="modal">
+        <div class="modal-content">
+            <h2>Crear Ejercicio</h2>
+            <div class="frame">
+                <b>Sentadilla Libre</b>
+                <b>3-12 reps</b>
+                <h3><button class="boton-borrar">Borrar</button></h3>
+            </div>
+            <h3><button class="cerrar-modal">Cerrar</button></h3>
+        </div>
+    </div>
+
+    <!-- Borrar Ejercicio -->
+    <div id="borrarModal" class="modal">
+        <div class="modal-content">
+            <h2>¿Desea Borrar?</h2>
+            <div class="boton-parent">
+                <h3><button class="boton-confirmar">Si</button></h3>
+                <h3><button class="cerrar-modal">No</button></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Guardado -->
+    <div id="guardarModal" class="modal">
+        <div class="modal-content">
+            <h2>Se ha guardado el ejercicio</h2>
+            <h3><button class="cerrar-modal">Cerrar</button></h3>
+        </div>
+    </div>
+
+    <!-- Se ha borrado el ejercicio -->
+    <div id="ejercicioBorradoModal" class="modal">
+        <div class="modal-content">
+            <h2>Se ha borrado el ejercicio</h2>
+            <h3><button class="cerrar-modal">Cerrar</button></h3>
+        </div>
+    </div>
+    
+    <footer></footer>
+</body>
+</html>
