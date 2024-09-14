@@ -14,7 +14,23 @@
         // Cargar el footer desde footer.html
         $('footer').load('footer.html');
 
+        // Diccionario de ejercicios con repeticiones
+        var ejercicios = {
+            'sentadilla-libre': { nombre: 'Sentadilla Libre', reps: '3-12 reps' },
+            'prensa': { nombre: 'Prensa', reps: '3-10 reps' },
+            'extensiones-cuadricep': { nombre: 'Extensiones de Cuádricep', reps: '3-15 reps' },
+            'sentadilla-hack': { nombre: 'Sentadilla Hack', reps: '3-8 reps' },
+            'sentadilla-smith': { nombre: 'Sentadilla Smith', reps: '3-12 reps' }
+        };
+
+        // Mostrar la ventana modal de Crear Ejercicio y actualizar contenido
         $('.boton-agregar').click(function() {
+            var ejercicioSeleccionado = $('#ejercicio-lista').val();
+            var ejercicioInfo = ejercicios[ejercicioSeleccionado];
+
+            $('#ejercicio-nombre').text(ejercicioInfo.nombre);
+            $('#ejercicio-reps').text(ejercicioInfo.reps);
+
             $('#crearEjercicioModal').show();
         });
 
@@ -38,7 +54,6 @@
         $('.cerrar-modal').click(function() {
             $(this).closest('.modal').hide();
         });
-
       });
     </script>
 </head>
@@ -62,7 +77,23 @@
 
                 <div class="opciones">
                     <h3 class="opcion">Tiempo de la Rutina</h3>
-                    <h3><button class="boton">Músculo</button></h3>
+                    <select id="tiempo-rutina" class="boton">
+                        <option value="30min">30 minutos</option>
+                        <option value="45min">45 minutos</option>
+                        <option value="60min">60 minutos</option>
+                        <option value="90min">90 minutos</option>
+                    </select>
+
+                    <h3 class="opcion">Músculo</h3>
+                    <select id="musculo" class="boton">
+                        <option value="pecho">Pecho</option>
+                        <option value="espalda">Espalda</option>
+                        <option value="piernas">Piernas</option>
+                        <option value="hombros">Hombros</option>
+                        <option value="brazos">Brazos</option>
+                        <option value="abdominales">Abdominales</option>
+                    </select>
+
                     <h3><button class="boton-agregar">Agregar Ejercicio</button></h3>
                 </div>
 
@@ -76,8 +107,8 @@
         <div class="modal-content">
             <h2>Crear Ejercicio</h2>
             <div class="frame">
-                <b>Sentadilla Libre</b>
-                <b>3-12 reps</b>
+                <b id="ejercicio-nombre">Sentadilla Libre</b>
+                <b id="ejercicio-reps">3-12 reps</b>
                 <h3><button class="boton-borrar">Borrar</button></h3>
             </div>
             <h3><button class="cerrar-modal">Cerrar</button></h3>
@@ -110,7 +141,7 @@
             <h3><button class="cerrar-modal">Cerrar</button></h3>
         </div>
     </div>
-    
+
     <footer></footer>
 </body>
 </html>
