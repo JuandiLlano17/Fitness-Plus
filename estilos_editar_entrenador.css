@@ -12,3 +12,10 @@
     align-items: center;
     gap: 87px;
 }
+.meet-section{
+    display: flex;
+    padding-bottom: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
