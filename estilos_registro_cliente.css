@@ -62,13 +62,6 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* Eliminar las flechas solo para el campo de Identificación en Firefox */
-.identificacion {
-  -moz-appearance: textfield;
-}
-
-
 input[type="text"],
 input[type="number"],
 input[type="email"],

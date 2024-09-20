@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <!-- Archivos CSS -->
+    <link rel="stylesheet" href="estilos_generales.css">
+    <link rel="stylesheet" href="estilos_registro_cliente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
@@ -18,45 +23,52 @@
 <body>
     <header></header>
 
-    <div class="formulario">
-
-    <h1>Registro</h1>
-    <h2>Porfavor diligenciar tus datos</h2>
-
+    <div class="Registro">
+        <h1>Registro</h1>
+        <h2>Por favor diligenciar tus datos</h2>
     </div>
 
     <div class="formulario">
-        
         <div class="columnas-editar">
-          <h4>Nombre</h4>
-          <input type="text" placeholder="Nombre" />
-  
-          <div class="columnas-datos">
-            <h4>Edad</h4>
-            <input type="number" placeholder="Edad" />
-            <h4>Identificación</h4>
-            <input type="text" placeholder="Identificación" />
-          </div>
-  
-          <div class="columnas-datos">
-            <h4>Correo</h4>
-            <input type="email" placeholder="Correo" />
-            <h4>Contraseña</h4>
-            <input type="password" placeholder="Contraseña" />
-          </div>
-  
-          <button class="button">
-            <h3>Registro</h3>
-          </button>
+            <div class="columna">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" placeholder="Nombre" />
+            </div>
+            <div class="columnas-datos">
+              <div class="columna">
+                <label for="edad">Edad</label>
+                <input id="edad" type="number" placeholder="Edad" />
+              </div>
+              <div class="columna">
+                <label for="identificacion">Identificación</label>
+                <input id="identificacion" type="text" placeholder="Identificación"class="identificacion" />
+              </div>
+            </div>
+            <div class="columnas-datos">
+              <div class="columna">
+                <label for="correo">Correo</label>
+                <input id="correo" type="email" placeholder="Correo" />
+              </div>
+              <div class="columna">
+                <label for="contrasena">Contraseña</label>
+                <input id="contrasena" type="password" placeholder="Contraseña" />
+              </div>
+            </div>
+
+            <!-- Botón de Registro con Flecha -->
+            <button class="button_flecha button_flecha button-centrado">
+                Registro
+                <img src="img/Arrow Right.svg" alt="Flecha" width="16" height="16">
+            </button>
         </div>
-  
+
         <div class="imagen-perfil">
-          <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-          <button class="button">
-            <h3>Agregar Foto</h3>
-          </button>
+            <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+            <!-- Botón de Agregar Foto -->
+            <button class="button button-sobre-imagen">Agregar Foto</button>
         </div>
-      </div>
+    </div>
+
     <footer></footer>
 </body>
 </html>

@@ -1,0 +1,79 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--Ligth-Blue, #DAE2FF); /* Forzar que este fondo se aplique */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    margin: 0; /* Elimina márgenes por defecto */
+    padding: 0; /* Elimina cualquier padding adicional */
+    box-sizing: border-box; /* Asegura que padding y bordes se comporten bien */
+}
+.Registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+}
+.formulario {
+    display: flex;
+    width: 1267px;
+    padding: 10px 0px 48px 0px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 39px;
+    flex-wrap: wrap;
+}
+.columnas-editar {
+    display: flex;
+    padding: 20px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.columnas-datos {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+}
+.columna {
+    display: flex;
+    width: 246px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+/* LABEL */
+label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: black;
+}
+.button-sobre-imagen {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.imagen-perfil {
+    position: relative;
+    display: inline-block;
+}
+.button-centrado {
+    display: block;
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    width: fit-content; /* Ajusta el tamaño del botón al contenido */
+}
+
+.identificacion::-webkit-outer-spin-button,
+.identificacion::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
