@@ -1,0 +1,14 @@
+.editar-ejercicios{
+    display: flex;
+    padding: 48px 106px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 45px;
+    align-self: stretch;
+}
+.dias-container{
+    display: flex;
+    padding: 22px 0px;
+    align-items: center;
+    gap: 87px;
+}
