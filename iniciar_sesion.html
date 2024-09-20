@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio de Sesión</title>
+  <!-- Archivos CSS -->
+  <link rel="stylesheet" href="estilos_generales.css">
+  <link rel="stylesheet" href="estilos_iniciar_sesion.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -18,8 +22,6 @@
 </head>
 <body>
   <header></header>
-
-  <main>
     <div class="ini-sesion">
         <!-- Imagen a la izquierda -->
         <div class="inicio-img">
@@ -29,21 +31,18 @@
         <!-- Formulario de inicio de sesión a la derecha -->
         <div class="inscribete">
             <h1>Iniciar Sesión</h1>
-
             <div class="inicio-de-sesion">
                 <input type="email" id="email" placeholder="Ingresar email" required>
             </div>
             
             <div class="inicio-de-sesion">
-                <input type="contraseña" id="Contraseña" placeholder="••••••••" required>
-            </div>            
-
-            <button type="button">
-                <h3>Enviar</h3>
-            </button>
+                <input type="password" id="Contraseña" placeholder="••••••••" required>
+            </div>     
+            <button class="button">
+              Enviar
+            </button>       
         </div>
-  </main>
-
+      </div>
   <footer></footer>
 </body>
 </html>
