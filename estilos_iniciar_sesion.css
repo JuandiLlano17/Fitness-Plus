@@ -18,10 +18,21 @@
     width: 100%;
     max-width: 413px;
 }
-.inscribete h1 {
-    text-align: center;
+.inicio-de-sesion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 350px;
+}
+.clear-icon {
+    position: absolute;
+    right: 23px; /* Espacio a la derecha del input */
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
 }
 .inicio-de-sesion input{
+    content: url('img/XIcon.svg'); 
     display: flex;
     width: 350px;
     height: 47px;
@@ -40,6 +51,7 @@
     font-weight: 400;
     line-height: 18px;
     outline: none; /* Elimina el borde azul al hacer clic */
+    
 }
 .inicio-de-sesion input:focus {
     border-color: transparent; /* Mantener el borde transparente al enfocar */
