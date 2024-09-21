@@ -28,16 +28,25 @@
             <img src="img/inicio_img.png" alt="Imagen de entrenamiento">
         </div>
 
-        <!-- Formulario de inicio de sesión a la derecha -->
         <div class="inscribete">
             <h1>Iniciar Sesión</h1>
+
+            <!-- Campo de email con icono de cerrar -->
             <div class="inicio-de-sesion">
-                <input type="email" id="email" placeholder="Ingresar email" required>
+                <div class="input-container">
+                    <input type="email" id="email" placeholder="Ingresar email" required>
+                    <img src="img/Xicon.svg" alt="Cerrar">
+                </div>
             </div>
-            
+
+            <!-- Campo de contraseña con icono de mostrar/ocultar -->
             <div class="inicio-de-sesion">
-                <input type="password" id="Contraseña" placeholder="••••••••" required>
-            </div>     
+                <div class="input-container">
+                    <input type="password" id="Contraseña" placeholder="••••••••" required>
+                    <img src="img/ojo.svg" alt="Mostrar contraseña">
+                </div>
+            </div>  
+
             <button class="button">
               Enviar
             </button>       

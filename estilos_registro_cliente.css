@@ -1,17 +1,4 @@
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--Ligth-Blue, #DAE2FF); /* Forzar que este fondo se aplique */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
-    margin: 0; /* Elimina márgenes por defecto */
-    padding: 0; /* Elimina cualquier padding adicional */
-    box-sizing: border-box; /* Asegura que padding y bordes se comporten bien */
-}
-
 /* REGISTRO */
 .Registro {
     display: flex;
