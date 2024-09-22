@@ -84,6 +84,22 @@ select option:hover {
     color: #000; /* Color del texto */
     background-color: #A9AEC6; /* Fondo de la opción */
 }
+.agrega{
+    display: flex;
+    width: 81px;
+    height: 79px;
+    padding: 18px 24px;
+    gap: 2px;
+    border-radius: 248px;
+    border: 1px solid var(--Black, #000);
+    background: var(--White, #FFF);
+}
+select option[value="mas"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    text-align: center;
+}
 .button-centrado {
     display: block;
     margin: 0 auto; /* Centra el botón horizontalmente */
@@ -100,6 +116,15 @@ select option:hover {
 .frame {
     display: flex;
     background: url('img/img_sentadilla (2).png') lightgray 50% / cover no-repeat;
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 123px;
+    border-radius: 12px;
+}
+.frame2 {
+    display: flex;
+    background: url('img/press.png') lightgray 50% / cover no-repeat;
     padding: 16px 18px;
     flex-direction: column;
     align-items: flex-start;

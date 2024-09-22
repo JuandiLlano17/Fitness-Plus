@@ -77,25 +77,27 @@ input[type="password"]{
     width: 100%; /* Para que ocupe todo el espacio disponible dentro de su contenedor */
 }
 select {
-    display: block; 
-    width: 236px; /* Ancho del select */
-    height: 72px; /* Altura del select */
-    padding: 15px 24px; /* Espaciado interno */
-    border-radius: 50px; /* Bordes redondeados */
-    background-color: #fff; /* Fondo blanco */
-    font-family: 'DM Sans', sans-serif; /* Fuente DM Sans */
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: 700; /* Peso de la fuente */
-    color: #999; /* Color del texto */
-    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
-    cursor: pointer; /* Cursor pointer para mostrar que es interactivo */
+    display: block;
+    width: 236px;
+    height: 72px;
+    padding: 15px 24px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 18px;
+    font-style: normal;
+    color: #000;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none; /* Elimina el estilo nativo del select */
+    background-color: #fff; /* Color de fondo */
+    position: relative;
 }
 
 /* Estilo para las opciones dentro del select */
-select#muñeca-select option[value="medida"],
-select#muñeca-select option[value="menos-17"],
-select#muñeca-select option[value="17-20"],
-select#muñeca-select option[value="mas-20"]  {
+select#muñeca-select option[value="medida"] {
     color: #999;
 }
 select option {
@@ -103,7 +105,7 @@ select option {
     font-style: normal;
     font-size: 16px;
     font-weight: 600;
-    color: black;
+    color: #999;
     padding: 15px;
 }
 
