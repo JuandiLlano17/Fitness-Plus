@@ -38,33 +38,69 @@
                 </div>
             </div>
             <div class="opciones">
-                <select id="tiempo-rutina" class="boton">
-                    <option value="tiempo"selected>Tiempo de la Rutina</option>
-                    <option value="30min">30 minutos</option>
-                    <option value="45min">45 minutos</option>
-                    <option value="60min">60 minutos</option>
-                    <option value="90min">90 minutos</option>
-                </select>
-
-                <select id="musculo" class="boton">
-                    <option value="musculo"selected>Músculo</option>
-                    <option value="pecho">Pecho</option>
-                    <option value="espalda">Espalda</option>
-                    <option value="piernas">Piernas</option>
-                    <option value="hombros">Hombros</option>
-                    <option value="brazos">Brazos</option>
-                    <option value="abdominales">Abdominales</option>
-                </select>
-
-                <select id="agregar" class="agrega">
-                    <option value="mas"selected>+</option>
-                    <option value="sentadilla-libre">Sentadilla Libre</option>
-                    <option value="prensa">Prensa</option>
-                    <option value="extensiones-cuadricep">Extensiones De Cuadricep</option>
-                    <option value="sentadilla-hack">Sentadilla Hack</option>
-                    <option value="sentadilla-smith">Sentadilla Smith</option>
-                </select>
-                
+                <!-- Opciones para el Tiempo de la Rutina -->
+                <div class="radio-options">
+                    <details class="custom-dropdown">
+                        <summary class="dropdown-header d-header">Tiempo de la Rutina</summary>
+                        <input type="radio" id="30min" name="tiempo-rutina" value="30min" />
+                        <label for="30min" class="custom-radio">30 minutos</label><br>
+            
+                        <input type="radio" id="45min" name="tiempo-rutina" value="45min" />
+                        <label for="45min" class="custom-radio">45 minutos</label><br>
+            
+                        <input type="radio" id="60min" name="tiempo-rutina" value="60min" />
+                        <label for="60min" class="custom-radio">60 minutos</label><br>
+            
+                        <input type="radio" id="90min" name="tiempo-rutina" value="90min" />
+                        <label for="90min" class="custom-radio">90 minutos</label>
+                    </details>
+                </div>
+            
+                <!-- Opciones para el Músculo -->
+                <div class="radio-options">
+                    <details class="custom-dropdown">
+                        <summary class="dropdown-header d-header">Músculo</summary>
+                        <input type="radio" id="pecho" name="musculo" value="pecho" />
+                        <label for="pecho" class="custom-radio">Pecho</label><br>
+            
+                        <input type="radio" id="espalda" name="musculo" value="espalda" />
+                        <label for="espalda" class="custom-radio">Espalda</label><br>
+            
+                        <input type="radio" id="piernas" name="musculo" value="piernas" />
+                        <label for="piernas" class="custom-radio">Piernas</label><br>
+            
+                        <input type="radio" id="hombros" name="musculo" value="hombros" />
+                        <label for="hombros" class="custom-radio">Hombros</label><br>
+            
+                        <input type="radio" id="brazos" name="musculo" value="brazos" />
+                        <label for="brazos" class="custom-radio">Brazos</label><br>
+            
+                        <input type="radio" id="abdominales" name="musculo" value="abdominales" />
+                        <label for="abdominales" class="custom-radio">Abdominales</label>
+                    </details>
+                </div>
+            
+                <!-- Opciones para agregar ejercicio -->
+                <div class="radio-options">
+                    <details class="custom-dropdown">
+                        <summary class="dropdown-header d-mas">+</summary>
+                        <input type="radio" id="sentadilla-libre" name="agregar" value="sentadilla-libre" />
+                        <label for="sentadilla-libre" class="custom-radio">Sentadilla Libre</label><br>
+            
+                        <input type="radio" id="prensa" name="agregar" value="prensa" />
+                        <label for="prensa" class="custom-radio">Prensa</label><br>
+            
+                        <input type="radio" id="extensiones-cuadricep" name="agregar" value="extensiones-cuadricep" />
+                        <label for="extensiones-cuadricep" class="custom-radio">Extensiones De Cuadricep</label><br>
+            
+                        <input type="radio" id="sentadilla-hack" name="agregar" value="sentadilla-hack" />
+                        <label for="sentadilla-hack" class="custom-radio">Sentadilla Hack</label><br>
+            
+                        <input type="radio" id="sentadilla-smith" name="agregar" value="sentadilla-smith" />
+                        <label for="sentadilla-smith" class="custom-radio">Sentadilla Smith</label>
+                    </details>
+                </div>
+            
             </div>
             <button class="button button-centrado">
                 Guardar

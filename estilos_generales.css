@@ -152,3 +152,54 @@ body {
   color: #FFF;
   background-color: #000;
 }
+
+/* MENU */
+.radio-options label {
+  display: block;
+  padding: 15px 24px;
+  border-radius: 50px; /* Bordes redondeados para cada opción */
+  background-color: #FFF; /* Fondo blanco para las opciones */
+  border: 1px solid #ccc;
+  color: #999;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px; /* Espacio entre las opciones */
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+/* Encabezado con fondo blanco */
+.dropdown-header {
+  display: flex;
+  width: 236px; /* Ancho igual a los otros */
+  height: 72px; /* Altura igual a los otros */
+  padding: 27px 24px; /* Padding igual a los otros */
+  border-radius: 50px; /* Bordes redondeados iguales */
+  margin-bottom: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  background-color: #FFF; /* Fondo blanco para el encabezado */
+  color: #999;
+  cursor: pointer;
+  box-sizing: border-box;
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: flex-start; /* Alinea el texto a la izquierda */
+  border: 1px solid #ccc; /* Borde igual al de los otros campos */
+}
+input[type="radio"] {
+  display: none; /* Ocultamos los botones de radio originales */
+}
+
+.custom-radio:hover {
+  background-color: #f0f0f0;
+}
+
+input[type="radio"]:checked + .custom-radio {
+  background-color: #E0E0E0; /* Color de fondo al seleccionar */
+  color:#000;
+}

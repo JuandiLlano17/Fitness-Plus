@@ -46,13 +46,21 @@
                   <input type="number" placeholder="Peso" min="20" step="1" />
               </div>
               <div class="columna">
-                  <label>Medida de Muñeca</label>
-                  <select name="muñeca" id="muñeca-select">
-                      <option value="medida" >Medida de muñeca</option>
-                      <option value="menos-17">Menos de 17cm</option>
-                      <option value="17-20">Entre 17-20cm</option>
-                      <option value="mas-20">Más de 20cm</option>
-                  </select>
+                <label>Medida de Muñeca</label>
+                <details class="custom-dropdown">
+                <summary class="dropdown-header">Medida de Muñeca </summary>
+                <div class="radio-options">
+
+                  <input type="radio" id="menos-17" name="muñeca" value="menos-17" />
+                  <label for="menos-17" class="custom-radio">Menos de 17cm</label><br>
+                  
+                  <input type="radio" id="17-20" name="muñeca" value="17-20" />
+                  <label for="17-20" class="custom-radio">Entre 17-20cm</label><br>
+                  
+                  <input type="radio" id="mas-20" name="muñeca" value="mas-20" />
+                  <label for="mas-20" class="custom-radio">Más de 20cm</label>
+                </div>
+                </details>
               </div>
           </div>
   
