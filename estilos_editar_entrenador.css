@@ -1,16 +1,22 @@
-.editar-ejercicios{
+.editar-ejercicios {
     display: flex;
     padding: 48px 106px;
     flex-direction: column;
     align-items: flex-start;
     gap: 45px;
-    align-self: stretch;
 }
-.dias-container{
+.logos-icon {
+    width: 43px; /* Ajusta el tamaño según lo que necesites */
+    height: 50px; /* Mantiene la proporción del icono */
+    object-fit: contain; /* Asegura que el icono no se deforme */
+}
+.frame-container {
     display: flex;
-    padding: 22px 0px;
-    align-items: center;
-    gap: 87px;
+    padding: 0px 8px;
+    flex-direction: column;
+    align-items: center; /* Centrar el contenido */
+    gap: 24px;
+    justify-content: center; /* Centrar verticalmente */
 }
 .meet-section{
     display: flex;
@@ -18,4 +24,166 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.dias-container{
+    display: flex;
+    padding: 22px 0px;
+    align-items: center;
+    gap: 87px;
+}
+.opciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 54px;
+}
+.dia{
+    color: #ADA8A8;
+    text-align: center;
+}
+.dia:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.opciones select {
+    display: block;
+    width: 236px;
+    height: 72px;
+    padding: 15px 24px;
+    border-radius: 50px;
+    font-family: "Montserrat", Helvetica;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0px;
+    line-height: 18px;
+    font-style: normal;
+    color: #000;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: none; /* Elimina el estilo nativo del select */
+    background-color: #fff; /* Color de fondo */
+    position: relative;
+}
+
+/* Flecha  */
+.opciones select:after {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #000; /* Color de la flecha */
+    pointer-events: none;
+}
+select option:hover {
+    color: #000; /* Color del texto */
+    background-color: #A9AEC6; /* Fondo de la opción */
+}
+.button-centrado {
+    display: block;
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    width: fit-content; /* Ajusta el tamaño del botón al contenido */
+}
+
+.crear
+{
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 17px;
+}
+.frame {
+    display: flex;
+    background: url('img/img_sentadilla (2).png') lightgray 50% / cover no-repeat;
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 123px;
+    border-radius: 12px;
+}
+.reps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+b{
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.6px;
+}
+.input-reps {
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding: 0; /* Sin padding interno */
+    outline: none; /* Sin borde azul al hacer clic */
+    width: auto; /* Ancho dinámico */
+    min-width: 3ch; /* Ancho mínimo */
+    max-width: 4ch; /* Ancho máximo limitado */
+    flex-grow: 0; /* Evita que se expanda */
+}
+
+.input-reps::placeholder {
+    color: gray; /* Color del placeholder */
+}
+
+.input-reps:focus {
+    outline: none; /* Elimina el borde al enfocar */
+    border-bottom: 1px solid #000; /* Puedes agregar un borde al hacer foco si lo deseas */
+}
+.boton-parent{
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+.modal{
+    display: flex;
+    width: 372px;
+    height: 146px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: #E9E7E7;
+}
+.modal-content{
+    display: flex;
+    color: #000;
+    display: flex;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+}
+select.agrega{
+    display: flex;
+    width: 81px;
+    height: 79px;
+    padding: 18px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: 248px;
+    border: 1px solid var(--Black, #000);
+    background: var(--White, #FFF);
 }

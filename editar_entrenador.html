@@ -17,47 +17,6 @@
         $('header').load('header.html');
         // Cargar el footer desde footer.html
         $('footer').load('footer.html');
-
-        // Diccionario de ejercicios con repeticiones
-        var ejercicios = {
-            'sentadilla-libre': { nombre: 'Sentadilla Libre', reps: '3-12 reps' },
-            'prensa': { nombre: 'Prensa', reps: '3-10 reps' },
-            'extensiones-cuadricep': { nombre: 'Extensiones de Cuádricep', reps: '3-15 reps' },
-            'sentadilla-hack': { nombre: 'Sentadilla Hack', reps: '3-8 reps' },
-            'sentadilla-smith': { nombre: 'Sentadilla Smith', reps: '3-12 reps' }
-        };
-
-        // Mostrar la ventana modal de Crear Ejercicio y actualizar contenido
-        $('.boton-agregar').click(function() {
-            var ejercicioSeleccionado = $('#ejercicio-lista').val();
-            var ejercicioInfo = ejercicios[ejercicioSeleccionado];
-
-            $('#ejercicio-nombre').text(ejercicioInfo.nombre);
-            $('#ejercicio-reps').text(ejercicioInfo.reps);
-
-            $('#crearEjercicioModal').show();
-        });
-
-        // Mostrar la ventana modal de Borrar
-        $('.boton-borrar').click(function() {
-            $('#borrarModal').show();
-        });
-
-        // Mostrar la ventana modal de Guardado
-        $('.boton-guardar').click(function() {
-            $('#guardarModal').show();
-        });
-
-        // Mostrar el modal de "Se ha borrado el ejercicio"
-        $('.boton-confirmar').click(function() {
-            $('#ejercicioBorradoModal').show();
-            $('#borrarModal').hide();  // Cerrar el modal de confirmación de borrar
-        });
-
-        // Ocultar modales cuando se haga clic en el botón "Cerrar"
-        $('.cerrar-modal').click(function() {
-            $(this).closest('.modal').hide();
-        });
       });
     </script>
 </head>
@@ -67,7 +26,6 @@
     <div class="editar-ejercicios">
 
         <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg">
-        <div class="frame-container">
             <div class="meet-section">
                 <h1>Editar Ejercicios</h1>
                 <h2>Escoge el día, el tipo de músculo y agrega los ejercicios con las repeticiones correspondientes para cada cliente</h2>
@@ -79,77 +37,73 @@
                     <h2 class="dia">Jueves</h2>
                     <h2 class="dia">Viernes</h2>
                 </div>
-
-                <div class="opciones">
-                    <h3 class="opcion">Tiempo de la Rutina</h3>
-                    <select id="tiempo-rutina" class="boton">
-                        <option value="30min">30 minutos</option>
-                        <option value="45min">45 minutos</option>
-                        <option value="60min">60 minutos</option>
-                        <option value="90min">90 minutos</option>
-                    </select>
-
-                    <h3 class="opcion">Músculo</h3>
-                    <select id="musculo" class="boton">
-                        <option value="pecho">Pecho</option>
-                        <option value="espalda">Espalda</option>
-                        <option value="piernas">Piernas</option>
-                        <option value="hombros">Hombros</option>
-                        <option value="brazos">Brazos</option>
-                        <option value="abdominales">Abdominales</option>
-                    </select>
-                    <button class="button button-agregar">
-                        Agregar Ejercicio
-                    </button>
-                </div>
-                <button class="button button-centrado">
-                    Guardar
-                </button>
             </div>
-        </div>
+            <div class="opciones">
+                <select id="tiempo-rutina" class="boton">
+                    <option value="tiempo"selected>Tiempo de la Rutina</option>
+                    <option value="30min">30 minutos</option>
+                    <option value="45min">45 minutos</option>
+                    <option value="60min">60 minutos</option>
+                    <option value="90min">90 minutos</option>
+                </select>
+
+                <select id="musculo" class="boton">
+                    <option value="musculo"selected>Músculo</option>
+                    <option value="pecho">Pecho</option>
+                    <option value="espalda">Espalda</option>
+                    <option value="piernas">Piernas</option>
+                    <option value="hombros">Hombros</option>
+                    <option value="brazos">Brazos</option>
+                    <option value="abdominales">Abdominales</option>
+                </select>
+                
+            </div>
+            <button class="button button-centrado">
+                Guardar
+            </button>
     </div>
 
     <!-- Crear Ejercicio -->
-    <div id="crearEjercicioModal" class="modal">
-        <div class="modal-content">
-            <h2>Crear Ejercicio</h2>
-            <div class="frame">
-                <img src="img/img_sentadilla (2).png" alt="Imagen de fondo Sentadilla">
-                <b id="ejercicio-nombre">Sentadilla Libre</b>
-                <b id="ejercicio-reps">3-12 reps</b>
-                <h3><button class="boton-borrar">Borrar</button></h3>
+    <div id="crearEjercicioModal" class="crear">
+        <div class="frame">
+            <b id="ejercicio-nombre">Sentadilla Libre</b>
+            <div class="reps">
+                <b id="ejercicio-reps">
+                    <input type="text" id="ejercicio-reps-numero" placeholder="3-12" class="input-reps" />
+                    reps
+                </b>
+                <button class="button">Borrar</button>
             </div>
-            <h3><button class="cerrar-modal">Cerrar</button></h3>
         </div>
+        <button class="button">+</button>
     </div>
 
-    <!-- Borrar Ejercicio -->
+    <!-- Modal Borrar Ejercicio -->
     <div id="borrarModal" class="modal">
         <div class="modal-content">
-            <h2>¿Desea Borrar?</h2>
+            ¿Desea Borrar?
             <div class="boton-parent">
-                <h3><button class="boton-confirmar">Si</button></h3>
-                <h3><button class="cerrar-modal">No</button></h3>
+                <button class="button">Si</button>
+                <button class="button">No</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Guardado -->
-    <div id="guardarModal" class="modal">
-        <div class="modal-content">
-            <h2>Se ha guardado el ejercicio</h2>
-            <h3><button class="cerrar-modal">Cerrar</button></h3>
-        </div>
-    </div>
-
-    <!-- Se ha borrado el ejercicio -->
+    <!-- Modal Ejercicio Borrado -->
     <div id="ejercicioBorradoModal" class="modal">
         <div class="modal-content">
-            <h2>Se ha borrado el ejercicio</h2>
-            <h3><button class="cerrar-modal">Cerrar</button></h3>
-        </div>
+            Se ha borrado el ejercicio
+        <button class="button">Cerrar</button>
     </div>
+</div>
 
+<!-- Modal Guardado -->
+<div id="guardarModal" class="modal">
+    <div class="modal-content">
+        Se ha guardado el ejercicio
+        <button class="button">Cerrar</button>
+    </div>
+</div>
     <footer></footer>
 </body>
 </html>
