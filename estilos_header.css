@@ -1,0 +1,173 @@
+.header {
+  width: 1280px; /* Mantén el ancho máximo para el diseño */
+  height: 100px;
+  padding: 21px 80px;
+  background-color: #0D1F60;
+  border-bottom: 4px solid #0D1F60;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto; /* Centra el contenedor si es más pequeño que el viewport */
+}
+
+/* ACHES H1... */
+
+:root {
+  --h-1-font-family: "Montserrat", Helvetica;
+  --h-1-font-weight: 700;
+  --h-1-font-size: 42px;
+  --h-1-letter-spacing: 0px;
+  --h-1-line-height: 66px;
+  --h-1-font-style: normal;
+  
+  --h-2-font-family: "Montserrat", Helvetica;
+  --h-2-font-weight: 400;
+  --h-2-font-size: 18px;
+  --h-2-letter-spacing: 0px;
+  --h-2-line-height: 30px;
+  --h-2-font-style: normal;
+  
+  --h-3-font-family: "Montserrat", Helvetica;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 16px;
+  --h-3-letter-spacing: 0px;
+  --h-3-line-height: 18px;
+  --h-3-font-style: normal;
+  
+  --h-4-font-family: "Montserrat", Helvetica;
+  --h-4-font-weight: 700;
+  --h-4-font-size: 18px;
+  --h-4-letter-spacing: 0px;
+  --h-4-line-height: 18px;
+  --h-4-font-style: normal;
+  
+  --h-5-font-family: "DM Sans", Helvetica;
+  --h-5-font-weight: 400;
+  --h-5-font-size: 18px;
+  --h-5-letter-spacing: 0px;
+  --h-5-line-height: 18px;
+  --h-5-font-style: normal;
+  
+  --h-6-font-family: "Montserrat", Helvetica;
+  --h-6-font-weight: 900;
+  --h-6-font-size: 25px;
+  --h-6-letter-spacing: 1.75px;
+  --h-6-line-height: normal;
+  --h-6-font-style: normal;
+}
+
+h1 {
+  font-family: var(--h-1-font-family);
+  font-weight: var(--h-1-font-weight);
+  font-size: var(--h-1-font-size);
+  letter-spacing: var(--h-1-letter-spacing);
+  line-height: var(--h-1-line-height);
+  font-style: var(--h-1-font-style);
+  color: #FFFF;
+}
+
+h2 {
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: var(--h-2-font-size);
+  letter-spacing: var(--h-2-letter-spacing);
+  line-height: var(--h-2-line-height);
+  font-style: var(--h-2-font-style);
+}
+
+h3 {
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  font-size: var(--h-3-font-size);
+  letter-spacing: var(--h-3-letter-spacing);
+  line-height: var(--h-3-line-height);
+  font-style: var(--h-3-font-style);
+}
+
+h4 {
+  font-family: var(--h-4-font-family);
+  font-weight: var(--h-4-font-weight);
+  font-size: var(--h-4-font-size);
+  letter-spacing: var(--h-4-letter-spacing);
+  line-height: var(--h-4-line-height);
+  font-style: var(--h-4-font-style);
+}
+
+h5 {
+  font-family: var(--h-5-font-family);
+  font-weight: var(--h-5-font-weight);
+  font-size: var(--h-5-font-size);
+  letter-spacing: var(--h-5-letter-spacing);
+  line-height: var(--h-5-line-height);
+  font-style: var(--h-5-font-style);
+}
+
+h6 {
+  font-family: var(--h-6-font-family);
+  font-weight: var(--h-6-font-weight);
+  font-size: var(--h-6-font-size);
+  letter-spacing: var(--h-6-letter-spacing);
+  line-height: var(--h-6-line-height);
+  font-style: var(--h-6-font-style);
+}
+
+.logo-container {
+  width: 80px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.logo-container img {
+  width: 100%; /* Ajusta el tamaño según sea necesario */
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+.nav {
+  display: flex; /* Asegúrate de que los enlaces se alineen horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.nav ul {
+  display: flex; /* Muestra la lista de forma horizontal */
+  gap: 42px; /* Espacio entre los elementos */
+  padding: 0; /* Elimina el padding */
+  margin: 0; /* Elimina el margen */
+  list-style: none; /* Elimina los puntos de la lista */
+}
+
+.nav a {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.auth-buttons button {
+  padding: 18px 24px;
+  border-radius: 30px;
+  border: 1px solid black;
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-style: var(--h-2-font-style);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.white-btn {
+  background-color: white;
+  color: black;
+}
+
+.yellow-btn {
+  background-color: #FCD23B;
+  color: black;
+}

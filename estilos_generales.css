@@ -150,3 +150,16 @@ body {
   color: #FFF;
   background-color: #000;
 }
+
+
+.logo-container {
+  width: 50px; /* Ajusta este valor según sea necesario */
+  height: 50px; /* Ajusta este valor según sea necesario */
+  overflow: hidden; /* Asegura que no se desborde */
+}
+
+.logo-container img {
+  width: 90%;
+  height: 50%;
+  object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+}
