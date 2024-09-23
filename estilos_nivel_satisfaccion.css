@@ -5,8 +5,9 @@
   }
 
 .frame {
+    margin-top: 100px; /* revisar */
     width: 1095px;
-    height: 712px;
+    height: 700px;
     margin: 10px; /* Centra el contenedor en la página */
     padding: 50px;
     background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
@@ -25,10 +26,16 @@
 
 
 .satisfaccion-caras-opciones{
-    margin-bottom: 60px;
+    margin-bottom: 100px;
     font-size: 24px;
     color: #0D0B0B;
     text-align: center; /* Centra el texto del párrafo */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Añade un poco de padding para margen interior */
 }
 
 
@@ -56,3 +63,21 @@
   align-items: center;
   gap: 23px;
 }
+
+.cara button{
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 23px;
+
+  border: none;
+  border-radius: 100%; /* Esto hace que el botón sea redondo */
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px; /* Para centrar el contenido verticalmente */
+  cursor: pointer;
+}
+
+
+
