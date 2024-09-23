@@ -1,0 +1,32 @@
+.meet h1  {
+    font-size: 56px;
+    color: black;
+    margin-bottom: 20px;
+  }
+
+.frame {
+    width: 1095px;
+    height: 712px;
+    margin: 10px; /* Centra el contenedor en la página */
+    padding: 50px;
+    background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
+    border-radius: 135px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.meet {
+    margin: 150px; /* Centra el contenedor en la página */
+    text-align: center; /* Centra el texto dentro de meet */
+    margin-bottom: 30px;
+  }
+
+
+.satisfaccion-caras-opciones{
+    margin-bottom: 60px;
+    font-size: 24px;
+    color: #0D0B0B;
+    text-align: center; /* Centra el texto del párrafo */
+}
