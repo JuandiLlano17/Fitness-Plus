@@ -77,3 +77,11 @@
     cursor: pointer;
   }
   
+  .button-group1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Añade un poco de padding para margen interior */
+  }
