@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 .header {
-  width: 1280px; /* Limita el ancho máximo a 1280px */  height: 100px;
+  position: fixed; /* Mantiene el header fijo en la parte superior */
+  top: 0; /* Coloca el header en la parte superior */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado */
+  width: calc(100% - 160px); /* Ancho total menos márgenes (80px a cada lado) */
+  max-width: 1280px; /* Ancho máximo del header */
+  height: 100px; /* Altura del header */
   padding: 0px 80px;
   background-color: #0D1F60;
   border-bottom: 4px solid #0D1F60;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto; /* Centra el contenedor si es más pequeño que el viewport */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
 }
+
+
 
 /* ACHES H1... */
 
