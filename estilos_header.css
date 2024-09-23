@@ -1,11 +1,10 @@
 .header {
-  width: 1280px; /* Mantén el ancho máximo para el diseño */
-  height: 100px;
-  padding: 21px 80px;
+  width: 1280px; /* Limita el ancho máximo a 1280px */  height: 100px;
+  padding: 0px 80px;
   background-color: #0D1F60;
   border-bottom: 4px solid #0D1F60;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto; /* Centra el contenedor si es más pequeño que el viewport */
 }
@@ -170,4 +169,8 @@ h6 {
 .yellow-btn {
   background-color: #FCD23B;
   color: black;
+}
+
+.nav a:hover {
+  color: #FFCC00; /* Cambia el color al pasar el mouse */
 }

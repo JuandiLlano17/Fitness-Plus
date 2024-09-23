@@ -1,16 +1,75 @@
-.footer {
+/* Reset de márgenes y padding globales */
+body, html {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  max-width: 1280px;
-  padding: 48px 135px 52px;
+}
+:root {
+  --h-1-font-family: "Montserrat", Helvetica;
+  --h-1-font-weight: 700;
+  --h-1-font-size: 36px;
+  --h-1-letter-spacing: 0px;
+  --h-1-line-height: 66px;
+  --h-1-font-style: normal;
+  
+  --h-2-font-family: "Montserrat", Helvetica;
+  --h-2-font-weight: 400;
+  --h-2-font-size: 18px;
+  --h-2-letter-spacing: 0px;
+  --h-2-line-height: 30px;
+  --h-2-font-style: normal;
+  
+  --h-3-font-family: "Montserrat", Helvetica;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 16px;
+  --h-3-letter-spacing: 0px;
+  --h-3-line-height: 18px;
+  --h-3-font-style: normal;
+}
+h1 {
+  font-family: var(--h-1-font-family);
+  font-weight: var(--h-1-font-weight);
+  font-size: var(--h-1-font-size);
+  letter-spacing: var(--h-1-letter-spacing);
+  line-height: var(--h-1-line-height);
+  font-style: var(--h-1-font-style);
+  color: #FFFF;
+}
+
+h2 {
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: var(--h-2-font-size);
+  letter-spacing: var(--h-2-letter-spacing);
+  line-height: var(--h-2-line-height);
+  font-style: var(--h-2-font-style);
+}
+
+h3 {
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  font-size: var(--h-3-font-size);
+  letter-spacing: var(--h-3-letter-spacing);
+  line-height: var(--h-3-line-height);
+  font-style: var(--h-3-font-style);
+}
+
+.footer {
+  
+  width: 1180px; /* Limita el ancho máximo a 1280px */
+  padding: 48px 135px 24px 135px; /* Espaciado interno */
   background: #0D1F60;
   border-top: 5px solid white;
   color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 36px;
-  margin: 0 auto;
+  margin: 0 auto; /* Centra el footer cuando sea menor a 1280px */
 }
+
+
 
 .footer-logo {
   display: flex;
@@ -23,6 +82,11 @@
   height: 50px;
   object-fit: contain;
 }
+
+.logoydesc{
+  width: 330px;
+}
+
 
 .footer-menu, .footer-social {
   display: flex;
