@@ -1,0 +1,53 @@
+.logos-icon {
+    width: 43px; /* Ajusta el tamaño según lo que necesites */
+    height: 50px; /* Mantiene la proporción del icono */
+    object-fit: contain; /* Asegura que el icono no se deforme */
+}
+.Rutinaa-ejercicios{
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    display: flex;
+    padding: 48px 106px;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px; 
+}
+
+.Titulo h1  {
+    font-size: 56px;
+    color: black;
+    margin-bottom: 10px;
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+.Titulo   {
+    margin-bottom: 10px;
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.exercise{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+        justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+        gap: 30px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Añade un poco de padding para margen interior */
+      
+}
+.exercise-actions{
+        display: flex;
+        gap: 20px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Añade un poco de padding para margen interior */
+      
+}
+
+.ejercicios{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    gap: 100px; /* Espacio entre las tarjetas */
+    padding: 10px; /* Añade un poco de padding para margen interior */
+}
