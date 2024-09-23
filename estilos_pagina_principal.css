@@ -3,6 +3,97 @@ body{
     background-color: #DAE2FF;
 }
 
+body {
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    background-color: #DAE2FF;
+}
+
+.hero {
+    height: 100vh; /* Altura completa de la ventana */
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Usar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    position: absolute;
+    width: 1280px;
+    height: 100%;
+    animation: slide 36s infinite; /* Cambia cada 10 segundos */
+    overflow: hidden; /* Asegura que no haya desbordamiento */
+
+}
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Cambia el ancho según necesites */
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 1; /* Asegura que el degradado esté encima de la imagen */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-image:nth-child(1) { animation: fade 40s infinite; }
+.hero-image:nth-child(2) { animation: fade 40s infinite 9s; }
+.hero-image:nth-child(3) { animation: fade 40s infinite 18s; }
+.hero-image:nth-child(4) { animation: fade 40s infinite 27s; }
+
+@keyframes fade {
+    0%, 20% { opacity: 1; }
+    25%, 95% { opacity: 0; }
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.content:nth-child(1) { animation: contentFade 40s infinite; }
+.content:nth-child(2) { animation: contentFade 40s infinite 9s; }
+.content:nth-child(3) { animation: contentFade 40s infinite 18s; }
+.content:nth-child(4) { animation: contentFade 40s infinite 27s; }
+
+@keyframes contentFade {
+    0%, 20% { opacity: 1; }
+    25%, 95% { opacity: 0; }
+}
+
+.hero-content {
+    width: 300px;
+    z-index: 2;
+    text-align: center; /* Centrar el texto */
+    color: white; /* Asegúrate de que el texto sea visible */
+    padding: 20px; /* Espaciado */
+    position: absolute;
+    top: 35%; /* Centra verticalmente */
+    left: 20%; /* Mueve un poco a la izquierda, ajusta según sea necesario */
+    transform: translateY(-50%); /* Ajusta para centrar verticalmente realmente */
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+
 .features {
     display: flex;
     justify-content: center;
