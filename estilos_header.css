@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 .header {
-  width: 1280px; /* Limita el ancho máximo a 1280px */  height: 100px;
+  position: fixed; /* Mantiene el header fijo en la parte superior */
+  top: 0; /* Coloca el header en la parte superior */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado */
+  width: calc(100% - 160px); /* Ancho total menos márgenes (80px a cada lado) */
+  max-width: 1280px; /* Ancho máximo del header */
+  height: 100px; /* Altura del header */
   padding: 0px 80px;
   background-color: #0D1F60;
   border-bottom: 4px solid #0D1F60;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto; /* Centra el contenedor si es más pequeño que el viewport */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
 }
+
+
 
 /* ACHES H1... */
 
@@ -125,6 +133,12 @@ h6 {
   object-fit: contain; /* Mantiene la proporción de la imagen */
 }
 
+.logo-title-container{
+  display: flex;
+  width: auto;
+  gap: 12px;
+}
+
 .nav {
   display: flex; /* Asegúrate de que los enlaces se alineen horizontalmente */
   align-items: center; /* Centra verticalmente */
@@ -146,45 +160,50 @@ h6 {
   text-decoration: none;
 }
 
-.auth-buttons {
+.nav a:hover {
+  color: #FCD23B; /* Cambia el color del texto a amarillo */
+}
+.auth-buttons
+{
   display: flex;
   gap: 12px;
 }
 
-.auth-buttons button {
+/* Estilos para los enlaces */
+.auth-buttons a, .auth-buttons button {
   padding: 18px 24px;
   border-radius: 30px;
   border: 1px solid black;
   font-family: var(--h-2-font-family);
   font-weight: var(--h-2-font-weight);
-  font-style: var(--h-2-font-style);
   font-size: 16px;
   font-weight: 500;
   text-align: center;
-  display: flex; /* Para alinear el ícono con el texto */
+  display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribuye el texto y el ícono */
+  justify-content: space-between;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Efecto de transición */
 }
 
-.auth-buttons button img {
+.auth-buttons button img, .auth-buttons a img {
   width: 16px; /* Tamaño del ícono */
   height: 16px;
   margin-left: 8px; /* Espacio entre el texto y el ícono */
 }
 
-
+/* Hover para el botón blanco */
 .white-btn {
   background-color: white;
   color: black;
-  transition: background-color 0.3s ease; /* Suaviza la transición del fondo */
 }
 
 .white-btn:hover {
-  background-color: #FCD23B; /* Cambia el fondo a amarillo al hacer hover */
-  color: black; /* Mantiene el texto negro */
+  background-color: #FCD23B;
+  color: black;
 }
 
-
+/* Hover para el botón amarillo */
 .yellow-btn {
   background-color: #FCD23B; /* Fondo amarillo */
   color: black; /* Texto negro */
@@ -196,12 +215,9 @@ h6 {
   background-color: black; /* Cambia el fondo a negro al hacer hover */
   color: #FCD23B; /* Cambia el texto a amarillo al hacer hover */
   border: 2px solid #FCD23B; /* Mantiene los bordes amarillos al hacer hover */
-  
 }
 
-.yellow-btn:hover img {
-  fill: #FCD23B; /* Cambia el color del SVG a amarillo */
-}
-.nav a:hover {
-  color: #FFCC00; /* Cambia el color al pasar el mouse */
+/* Cambiar el color del SVG dentro de los botones */
+.yellow-btn:hover img, .white-btn:hover img {
+  fill: #FCD23B;
 }
