@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
 .header {
   width: 1280px; /* Limita el ancho máximo a 1280px */  height: 100px;
   padding: 0px 80px;
@@ -159,18 +161,47 @@ h6 {
   font-size: 16px;
   font-weight: 500;
   text-align: center;
+  display: flex; /* Para alinear el ícono con el texto */
+  align-items: center;
+  justify-content: space-between; /* Distribuye el texto y el ícono */
 }
+
+.auth-buttons button img {
+  width: 16px; /* Tamaño del ícono */
+  height: 16px;
+  margin-left: 8px; /* Espacio entre el texto y el ícono */
+}
+
 
 .white-btn {
   background-color: white;
   color: black;
+  transition: background-color 0.3s ease; /* Suaviza la transición del fondo */
 }
+
+.white-btn:hover {
+  background-color: #FCD23B; /* Cambia el fondo a amarillo al hacer hover */
+  color: black; /* Mantiene el texto negro */
+}
+
 
 .yellow-btn {
-  background-color: #FCD23B;
-  color: black;
+  background-color: #FCD23B; /* Fondo amarillo */
+  color: black; /* Texto negro */
+  border: 2px solid #FCD23B; /* Bordes amarillos */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza la transición */
 }
 
+.yellow-btn:hover {
+  background-color: black; /* Cambia el fondo a negro al hacer hover */
+  color: #FCD23B; /* Cambia el texto a amarillo al hacer hover */
+  border: 2px solid #FCD23B; /* Mantiene los bordes amarillos al hacer hover */
+  
+}
+
+.yellow-btn:hover img {
+  fill: #FCD23B; /* Cambia el color del SVG a amarillo */
+}
 .nav a:hover {
   color: #FFCC00; /* Cambia el color al pasar el mouse */
 }

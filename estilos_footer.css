@@ -1,9 +1,5 @@
-/* Reset de márgenes y padding globales */
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
 :root {
   --h-1-font-family: "Montserrat", Helvetica;
   --h-1-font-weight: 700;
@@ -116,6 +112,7 @@ h3 {
   text-decoration: none;
   transition: color 0.3s;
 }
+
 
 .footer-menu a:hover, .footer-social a:hover {
   color: #FFCC00; /* Cambia el color al pasar el mouse */
