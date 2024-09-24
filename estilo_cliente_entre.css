@@ -58,19 +58,16 @@
   padding: 50px; /* Espacio interno */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center; /* Centra horizontalmente el contenido */
   background: white; /* Fondo blanco */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
-  margin-right: 50em;
+  margin-left: 50em;
   margin: 15px; /* Margen exterior */
   width: 400px; /* Ancho ajustado */
   height: 300px; /* Altura ajustada */
 }
 
 .info-item p {
-  text-align: left; /* Centra el texto horizontalmente */
-  margin: 5px 0; /* Espaciado superior e inferior */
+  margin: 20px 0px; /* Espaciado superior e inferior */
 }
 
 
