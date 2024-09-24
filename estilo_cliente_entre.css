@@ -46,8 +46,6 @@
     max-width: 300px; /* Ajusta según tus necesidades */
     margin: 10px; /* Centra el contenedor en la página */
     padding: 50px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex; /* Habilita flexbox */
     flex-direction: column; /* Organiza los hijos en columna */
     overflow: hidden; /* Si el contenido excede la altura, se oculta */
@@ -55,27 +53,46 @@
 }
 
 
-.cliente-info{
-    flex: 2;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+.cliente-info {
+  padding: 50px; /* Espacio interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centra horizontalmente el contenido */
+  background: white; /* Fondo blanco */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
+  margin-right: 50em;
+  margin: 15px; /* Margen exterior */
+  width: 400px; /* Ancho ajustado */
+  height: 300px; /* Altura ajustada */
+}
+
+.info-item p {
+  text-align: left; /* Centra el texto horizontalmente */
+  margin: 5px 0; /* Espaciado superior e inferior */
 }
 
 
-.cara button {
-    width: 50px;
-    height: 50px;
+.cara {
+  display: flex; /* Asegura que las figuras estén en una fila */
+  gap: 20px; /* Espacio entre las figuras */
+}
 
-    border: none;
-    border-radius: 50%; /* Esto hace que el botón sea redondo */
-    color: white;
-    font-size: 18px;
-    text-align: center;
-    line-height: 50px; /* Para centrar el contenido verticalmente */
-    cursor: pointer;
-  }
+.cara figure{
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  gap: 23px;
+
+  border: none;
+  border-radius: 100%; /* Esto hace que el botón sea redondo */
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px; /* Para centrar el contenido verticalmente */
+  cursor: pointer;
+}
   
   .button-group1 {
     display: flex;
