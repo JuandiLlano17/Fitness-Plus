@@ -53,6 +53,7 @@
 }
 
 .modal{
+    margin-top: 100px;
     display: flex;
     width: 372px;
     height: 146px;
@@ -78,6 +79,7 @@
   }
 
   .cronometro {
+    margin-top: 100px;
     width: 300px;
     height: 200px;
     background-color: white;
