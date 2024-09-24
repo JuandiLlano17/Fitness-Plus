@@ -1,17 +1,15 @@
+.routine-header {
+    display:flex;
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    padding: 48px 106px;
+    flex-direction: column;
+    gap: 45px; 
+}
+
 .logos-icon {
     width: 43px; /* Ajusta el tamaño según lo que necesites */
     height: 50px; /* Mantiene la proporción del icono */
     object-fit: contain; /* Asegura que el icono no se deforme */
-    display: flex;
-    flex-direction: column;
-}
-.Rutinaa-ejercicios{
-    margin-top: 100px; /* Ajusta según la altura de tu header */
-    display: flex;
-    padding: 48px 106px;
-    flex-direction: column;
-    align-items: center;
-    gap: 45px; 
 }
 
 .Titulo h1  {
