@@ -5,14 +5,14 @@
   }
 
 .frame {
-    margin-top: 100px; /* revisar */
+    margin-top: 5000px; /* revisar */
     width: 1095px;
     height: 700px;
-    margin: 10px; /* Centra el contenedor en la página */
+    margin: 90px; /* Centra el contenedor en la página */
     padding: 50px;
     background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
     border-radius: 135px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
     display: flex; /* Habilita flexbox */
     flex-direction: column; /* Organiza los hijos en columna */
     align-items: center; /* Centra los elementos horizontalmente */
