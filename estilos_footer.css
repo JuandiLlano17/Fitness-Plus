@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
+@media (min-width: 425px) and (max-width: 1280px) {
+  body {
+
+      flex-wrap: wrap;  /* los elementos se ajustan a múltiples líneas cuando no hay suficiente espacio en la línea principal.*/
+      font-size: 16px;
+      padding: 20px;
+  }
+}
+
 :root {
   --h-1-font-family: "Montserrat", Helvetica;
   --h-1-font-weight: 700;
