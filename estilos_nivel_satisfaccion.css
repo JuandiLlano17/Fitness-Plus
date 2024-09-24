@@ -22,21 +22,21 @@
     margin: 150px; /* Centra el contenedor en la página */
     text-align: center; /* Centra el texto dentro de meet */
     margin-bottom: 30px;
+
   }
 
 
-.satisfaccion-caras-opciones{
+  .satisfaccion-caras-opciones {
+    display: flex;
     margin-bottom: 100px;
     font-size: 24px;
     color: #0D0B0B;
     text-align: center; /* Centra el texto del párrafo */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan si no caben en una sola fila */
     gap: 20px; /* Espacio entre las tarjetas */
     padding: 20px; /* Añade un poco de padding para margen interior */
 }
+
 
 
 .modal{
@@ -63,10 +63,14 @@
   align-items: center;
   gap: 23px;
 }
+.cara {
+  display: flex; /* Asegura que las figuras estén en una fila */
+  gap: 20px; /* Espacio entre las figuras */
+}
 
-.cara button{
+.cara figure{
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin: 0 auto;
   gap: 23px;
