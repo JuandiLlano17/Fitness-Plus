@@ -47,3 +47,57 @@
 .inicio-de-sesion input:focus {
     border-color: transparent;
 }
+
+/* Media Queries para pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .ini-sesion {
+        flex-direction: row; 
+        gap: 40px; 
+        width: 100%;
+    }
+
+    .inscribete {
+        width: 100%; 
+        max-width: 500px; 
+    }
+
+    .inicio-de-sesion input {
+        max-width: 100%;
+        padding: 0px 40px 0px 20px; 
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .ini-sesion {
+        flex-direction: column; 
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .inscribete {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .inicio-de-sesion input {
+        height: 40px; /* Reduce la altura del input */
+        padding: 0px 30px 0px 15px; /* Ajusta el padding para pantallas móviles */
+        font-size: 16px; /* Reduce el tamaño de fuente */
+    }
+}
+
+
+@media screen and (max-width: 430px) {
+    .ini-sesion {
+        flex-direction: column; 
+        margin-top: 50px; /* Reduce el margen superior */
+        gap: 10px; /* Reduce aún más el espacio entre los elementos */
+    }
+
+    .inicio-de-sesion input {
+        height: 35px;
+        padding: 0px 20px 0px 10px;
+        font-size: 14px; /* Tamaño de fuente reducido */
+    }
+}

@@ -2,24 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 body {
   font-family: 'Montserrat', sans-serif;
-  background: var(--Ligth-Blue, #DAE2FF); /* Forzar que este fondo se aplique */
+  background-color: var(--Ligth-Blue, #DAE2FF); /* Aplica el color de fondo correctamente */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
-  margin: 0; /* Elimina márgenes por defecto */
+  min-height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+  margin: 0; /* Elimina los márgenes por defecto */
   padding: 0; /* Elimina cualquier padding adicional */
-  box-sizing: border-box; /* Asegura que padding y bordes se comporten bien */
-}
-
-@media (min-width: 425px) and (max-width: 1280px) {
-  body {
-
-      flex-wrap: wrap;  /* los elementos se ajustan a múltiples líneas cuando no hay suficiente espacio en la línea principal.*/
-      font-size: 16px;
-      padding: 20px;
-  }
+  box-sizing: border-box; /* Asegura que el padding y bordes se incluyan en el tamaño total del contenedor */
 }
 
 :root {

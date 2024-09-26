@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
-@media (min-width: 425px) and (max-width: 1280px) {
-  .footer {
-
-      flex-wrap: wrap;  /* los elementos se ajustan a múltiples líneas cuando no hay suficiente espacio en la línea principal.*/
-      font-size: 16px;
-      padding: 20px;
-  }
-}
 
 :root {
   --h-1-font-family: "Montserrat", Helvetica;
@@ -61,7 +53,7 @@ h3 {
 
 .footer {
   
-  width: 1180px; /* Limita el ancho máximo a 1280px */
+  width: 1280px; /* Limita el ancho máximo a 1280px */
   padding: 48px 135px 24px 135px; /* Espaciado interno */
   background: #0D1F60;
   border-top: 5px solid white;
@@ -125,4 +117,69 @@ h3 {
 
 .footer-menu a:hover, .footer-social a:hover {
   color: #FFCC00; /* Cambia el color al pasar el mouse */
+}
+
+/* ADAPTATIVO*/
+@media screen and (max-width: 1440px) {
+  .footer {
+    padding: 48px 135px 24px 135px; /* Espaciado interno */
+    gap: 24px; 
+ }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    padding: 40px 20px;
+    gap: 24px; 
+  }
+
+  .footer-logo, .footer-menu, .footer-social {
+    flex: 1 1 45%; /* Las columnas ocuparán 45% del ancho cada una */
+  }
+
+  .logoydesc {
+    max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  }
+}
+
+/* Media Queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo, .footer-menu, .footer-social {
+    flex: 1 1 100%; /* Los elementos ocupan el 100% del ancho */
+    margin-bottom: 20px; /* Añade margen inferior */
+  }
+
+  .footer-menu ul, .footer-social ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .footer-menu li, .footer-social li {
+    font-size: 18px; /* Ajusta el tamaño de fuente */
+  }
+}
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+    gap: 10px;
+  }
+
+  .footer-logo img {
+    width: 40px; /* Reduce el tamaño del logo */
+    height: 40px;
+  }
+
+  .footer-menu li, .footer-social li {
+    font-size: 16px; /* Reduce el tamaño de fuente */
+  }
 }
