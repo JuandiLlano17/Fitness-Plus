@@ -13,6 +13,28 @@ body {
   box-sizing: border-box; /* Asegura que el padding y bordes se incluyan en el tamaño total del contenedor */
 }
 
+@media (max-width: 430px) {
+  body {
+    padding: 10px; 
+    font-size: 12px; 
+  }
+}
+
+
+@media (min-width: 431px) and (max-width: 1024px) {
+  body {
+    padding: 20px; 
+    font-size: 14px; 
+  }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  body {
+    padding: 40px; 
+    font-size: 16px; 
+  }
+}
 :root {
     --h-1-font-family: "Montserrat", Helvetica;
     --h-1-font-weight: 700;

@@ -133,22 +133,25 @@ label{
 
 @media (max-width: 430px) {
   label{
-  font-family: Montserrat;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 18px; /* 180% */
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 18px; /* 180% */
   }
+  
   .header {
     width: 100%; /* Ajusta el header para que ocupe el 100% del ancho de la pantalla */
-    padding: 0 20px; /* Ajusta el padding para que no haya mucho espacio lateral */
+    padding: 0 15px; /* Reducido el padding lateral */
     height: 64px; /* Ajusta la altura para pantallas más pequeñas */
     justify-content: space-between; /* Mantiene los elementos distribuidos de manera uniforme */
+    gap: 5px; /* Reduce el espacio entre los elementos */
   }
+  
   .nav {
     display: grid;
     grid-template-columns: repeat(4, auto); /* Configura 4 columnas para los enlaces del menú */
-    gap: 10px; /* Reduce el gap para que los enlaces no se desborden */
+    gap: 8px; /* Reduce el gap para que los enlaces no se desborden */
     justify-content: center; /* Centra los enlaces horizontalmente */
   }
 
@@ -159,7 +162,7 @@ label{
   .auth-buttons {
     display: grid;
     grid-template-columns: repeat(2, auto); /* Dos columnas: una para cada botón */
-    gap: 12px;
+    gap: 10px; /* Reducido el espacio entre los botones */
   }
 
   .auth-buttons a, .auth-buttons button {
@@ -179,4 +182,3 @@ label{
     height: 20px; 
   }
 }
-

@@ -48,56 +48,42 @@
     border-color: transparent;
 }
 
-/* Media Queries para pantallas medianas */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 431px) {
+    body{
+        display: grid;
+    width: 430px;
+    padding: 0px 17px;
+    grid-template-rows: repeat(auto-fill, auto);
+    justify-items: center;
+    align-items: center;
+    row-gap: 37px;
+
+    }
+    .inicio-img img{
+        width: 392px;
+        height: 507px;
+        object-fit: cover;
+    }
     .ini-sesion {
-        flex-direction: row; 
-        gap: 40px; 
-        width: 100%;
+        display: grid;
+        height: 884px;
+        grid-template-rows: 1fr auto 1fr;
+        justify-items: center;
     }
 
     .inscribete {
-        width: 100%; 
-        max-width: 500px; 
-    }
-
-    .inicio-de-sesion input {
-        max-width: 100%;
-        padding: 0px 40px 0px 20px; 
-    }
-}
-
-
-@media screen and (max-width: 768px) {
-    .ini-sesion {
-        flex-direction: column; 
-        padding: 10px;
-        gap: 20px;
-    }
-
-    .inscribete {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .inicio-de-sesion input {
-        height: 40px; /* Reduce la altura del input */
-        padding: 0px 30px 0px 15px; /* Ajusta el padding para pantallas móviles */
-        font-size: 16px; /* Reduce el tamaño de fuente */
-    }
-}
-
-
-@media screen and (max-width: 430px) {
-    .ini-sesion {
-        flex-direction: column; 
-        margin-top: 50px; /* Reduce el margen superior */
-        gap: 10px; /* Reduce aún más el espacio entre los elementos */
+        display: grid;
+        width: 413px;
+        height: 335px;
+        grid-template-rows: repeat(2, 1fr);
+        justify-items: center;
+        align-items: center;
+        row-gap: 34px;
     }
 
     .inicio-de-sesion input {
         height: 35px;
         padding: 0px 20px 0px 10px;
-        font-size: 14px; /* Tamaño de fuente reducido */
+        font-size: 14px;
     }
 }
