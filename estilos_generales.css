@@ -211,7 +211,7 @@ input[type="radio"] {
 
 input[type="radio"]:checked + .custom-radio {
   background-color: #E0E0E0; /* Color de fondo al seleccionar */
-  color:#000;
+  color:#000; }
 
 .logo-container {
   width: 50px; /* Ajusta este valor según sea necesario */
