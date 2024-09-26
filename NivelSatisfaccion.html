@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nivel de satisfaccion</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivel de satisfacción</title>
+  <!-- Archivos CSS -->
+  <link rel="stylesheet" href="estilos_generales.css">
+  <link rel="stylesheet" href="estilos_nivel_satisfaccion.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
       $(document).ready(function () {
@@ -17,29 +21,48 @@
 </head><!-- Encabezado -->
 
 <body>
-    <header></header>
+  <header></header>
 
     <div class="frame">
-        <div class="meet">
-        <h1> Nivel de Satisfacción</h1>
+      <div class="meet">
+          <h1> Nivel de Satisfacción</h1>
             <div class="paragraph-contenedor">
               <p>Indique su nivel de satisfacción con la rutina</p>
             </div>
-        </div>
-
-        <div class="satisfaccion-caras-opciones">
-          <img class="emoji-satisfaction" src="img\ENOJO.png" alt="Emoji 1" />
-          <img class="emoji-satisfaction" src="img\TRISTEZA.png" alt="Emoji 2" />
-          <img class="emoji-satisfaction" src="img\SERIO.png" alt="Emoji 3" />
-          <img class="emoji-satisfaction" src="img/FELIZ.png" alt="Emoji 4" />
-          <img class="emoji-satisfaction" src="img\CONTENTO.png" alt="Emoji 5" />
-        </div>
-
-          <div class="boton-interno">
-            <button class="btn">Guardar</button>
-          </div>
-    </div>
+      </div>
    
+        <div class="satisfaccion-caras-opciones">
+          <div class="cara"> 
+            <figure>
+              <img class="emoji-satisfaction" src="img\ENOJO.svg" alt="Emoji 1" />
+            </figure>
+            <figure> 
+              <img class="emoji-satisfaction" src="img\TRISTEZA.svg" alt="Emoji 2" />
+            </figure>
+            <figure>
+              <img class="emoji-satisfaction" src="img\SERIO.svg" alt="Emoji 3" />
+            </figure>
+            <figure>
+              <img class="emoji-satisfaction" src="img/FELIZ.svg" alt="Emoji 4" />
+            </figure> 
+            <figure>
+              <img class="emoji-satisfaction" src="img\CONTENTO.svg" alt="Emoji 5" />
+            </figure>
+          </div>
+        </div>
+          <div class="boton-interno">
+            <button class="button">Guardar</button>
+          </div>  
+    </div>  
+
+        <!-- Modal Ejercicio Borrado -->
+        <div id="Satisfaccion" class="modal">
+          <div class="modal-content">
+            Gracias por su respuesta
+            <button class="button">Cerrar</button>
+          </div>
+        </div>
+    
 </body>
 <footer></footer>
 </body>

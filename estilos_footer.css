@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+@media (min-width: 425px) and (max-width: 1280px) {
+  body {
+
+      flex-wrap: wrap;  /* los elementos se ajustan a múltiples líneas cuando no hay suficiente espacio en la línea principal.*/
+      font-size: 16px;
+      padding: 20px;
+  }
+}
+
+:root {
+  --h-1-font-family: "Montserrat", Helvetica;
+  --h-1-font-weight: 700;
+  --h-1-font-size: 36px;
+  --h-1-letter-spacing: 0px;
+  --h-1-line-height: 66px;
+  --h-1-font-style: normal;
+  
+  --h-2-font-family: "Montserrat", Helvetica;
+  --h-2-font-weight: 400;
+  --h-2-font-size: 18px;
+  --h-2-letter-spacing: 0px;
+  --h-2-line-height: 30px;
+  --h-2-font-style: normal;
+  
+  --h-3-font-family: "Montserrat", Helvetica;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 16px;
+  --h-3-letter-spacing: 0px;
+  --h-3-line-height: 18px;
+  --h-3-font-style: normal;
+}
+h1 {
+  font-family: var(--h-1-font-family);
+  font-weight: var(--h-1-font-weight);
+  font-size: var(--h-1-font-size);
+  letter-spacing: var(--h-1-letter-spacing);
+  line-height: var(--h-1-line-height);
+  font-style: var(--h-1-font-style);
+  color: #FFFF;
+}
+
+h2 {
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: var(--h-2-font-size);
+  letter-spacing: var(--h-2-letter-spacing);
+  line-height: var(--h-2-line-height);
+  font-style: var(--h-2-font-style);
+}
+
+h3 {
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  font-size: var(--h-3-font-size);
+  letter-spacing: var(--h-3-letter-spacing);
+  line-height: var(--h-3-line-height);
+  font-style: var(--h-3-font-style);
+}
+
+.footer {
+  
+  width: 1180px; /* Limita el ancho máximo a 1280px */
+  padding: 48px 135px 24px 135px; /* Espaciado interno */
+  background: #0D1F60;
+  border-top: 5px solid white;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 36px;
+  margin: 0 auto; /* Centra el footer cuando sea menor a 1280px */
+}
+
+
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.logoydesc{
+  width: 330px;
+}
+
+
+.footer-menu, .footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-menu h3, .footer-social h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.footer-menu ul, .footer-social ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-menu li, .footer-social li {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footer-menu a, .footer-social a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+
+.footer-menu a:hover, .footer-social a:hover {
+  color: #FFCC00; /* Cambia el color al pasar el mouse */
+}

@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+.header {
+  padding: 2px 48px;
+  position: fixed; /* Mantiene el header fijo en la parte superior */
+  top: 0; /* Coloca el header en la parte superior */
+  left: 50%; /* Centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado */
+  width: calc(100% - 160px); /* Ancho total menos márgenes (80px a cada lado) */
+  max-width: 1280px; /* Ancho máximo del header */
+  height: 100px; /* Altura del header */
+  background-color: #0D1F60;
+  border-bottom: 4px solid #0D1F60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+@media (min-width: 425px) and (max-width: 1280px) {
+  body {
+
+      flex-wrap: wrap;  /* los elementos se ajustan a múltiples líneas cuando no hay suficiente espacio en la línea principal.*/
+      font-size: 16px;
+      padding: 20px;
+  }
+}
+
+/* ACHES H1... */
+
+:root {
+  --h-1-font-family: "Montserrat", Helvetica;
+  --h-1-font-weight: 700;
+  --h-1-font-size: 42px;
+  --h-1-letter-spacing: 0px;
+  --h-1-line-height: 66px;
+  --h-1-font-style: normal;
+  
+  --h-2-font-family: "Montserrat", Helvetica;
+  --h-2-font-weight: 400;
+  --h-2-font-size: 18px;
+  --h-2-letter-spacing: 0px;
+  --h-2-line-height: 30px;
+  --h-2-font-style: normal;
+  
+  --h-3-font-family: "Montserrat", Helvetica;
+  --h-3-font-weight: 500;
+  --h-3-font-size: 16px;
+  --h-3-letter-spacing: 0px;
+  --h-3-line-height: 18px;
+  --h-3-font-style: normal;
+  
+  --h-4-font-family: "Montserrat", Helvetica;
+  --h-4-font-weight: 700;
+  --h-4-font-size: 18px;
+  --h-4-letter-spacing: 0px;
+  --h-4-line-height: 18px;
+  --h-4-font-style: normal;
+  
+  --h-5-font-family: "DM Sans", Helvetica;
+  --h-5-font-weight: 400;
+  --h-5-font-size: 18px;
+  --h-5-letter-spacing: 0px;
+  --h-5-line-height: 18px;
+  --h-5-font-style: normal;
+  
+  --h-6-font-family: "Montserrat", Helvetica;
+  --h-6-font-weight: 900;
+  --h-6-font-size: 25px;
+  --h-6-letter-spacing: 1.75px;
+  --h-6-line-height: normal;
+  --h-6-font-style: normal;
+}
+
+h1 {
+  font-family: var(--h-1-font-family);
+  font-weight: var(--h-1-font-weight);
+  font-size: var(--h-1-font-size);
+  letter-spacing: var(--h-1-letter-spacing);
+  line-height: var(--h-1-line-height);
+  font-style: var(--h-1-font-style);
+  color: #FFFF;
+}
+
+h2 {
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: var(--h-2-font-size);
+  letter-spacing: var(--h-2-letter-spacing);
+  line-height: var(--h-2-line-height);
+  font-style: var(--h-2-font-style);
+}
+
+h3 {
+  font-family: var(--h-3-font-family);
+  font-weight: var(--h-3-font-weight);
+  font-size: var(--h-3-font-size);
+  letter-spacing: var(--h-3-letter-spacing);
+  line-height: var(--h-3-line-height);
+  font-style: var(--h-3-font-style);
+}
+
+h4 {
+  font-family: var(--h-4-font-family);
+  font-weight: var(--h-4-font-weight);
+  font-size: var(--h-4-font-size);
+  letter-spacing: var(--h-4-letter-spacing);
+  line-height: var(--h-4-line-height);
+  font-style: var(--h-4-font-style);
+}
+
+h5 {
+  font-family: var(--h-5-font-family);
+  font-weight: var(--h-5-font-weight);
+  font-size: var(--h-5-font-size);
+  letter-spacing: var(--h-5-letter-spacing);
+  line-height: var(--h-5-line-height);
+  font-style: var(--h-5-font-style);
+}
+
+h6 {
+  font-family: var(--h-6-font-family);
+  font-weight: var(--h-6-font-weight);
+  font-size: var(--h-6-font-size);
+  letter-spacing: var(--h-6-letter-spacing);
+  line-height: var(--h-6-line-height);
+  font-style: var(--h-6-font-style);
+}
+
+.logo-container {
+  width: 80px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.logo-container img {
+  width: 100%; /* Ajusta el tamaño según sea necesario */
+  object-fit: contain; /* Mantiene la proporción de la imagen */
+}
+
+.logo-title-container{
+  display: flex;
+  width: auto;
+  gap: 12px;
+}
+
+.nav {
+  display: flex; /* Asegúrate de que los enlaces se alineen horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.nav ul {
+  display: flex; /* Muestra la lista de forma horizontal */
+  gap: 42px; /* Espacio entre los elementos */
+  padding: 0; /* Elimina el padding */
+  margin: 0; /* Elimina el margen */
+  list-style: none; /* Elimina los puntos de la lista */
+}
+
+.nav a {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #FCD23B; /* Cambia el color del texto a amarillo */
+}
+.auth-buttons
+{
+  display: flex;
+  gap: 12px;
+}
+
+/* Estilos para los enlaces */
+.auth-buttons a, .auth-buttons button {
+  padding: 18px 24px;
+  border-radius: 30px;
+  border: 1px solid black;
+  font-family: var(--h-2-font-family);
+  font-weight: var(--h-2-font-weight);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Efecto de transición */
+}
+
+.auth-buttons button img, .auth-buttons a img {
+  width: 16px; /* Tamaño del ícono */
+  height: 16px;
+  margin-left: 8px; /* Espacio entre el texto y el ícono */
+}
+
+/* Hover para el botón blanco */
+.white-btn {
+  background-color: white;
+  color: black;
+}
+
+.white-btn:hover {
+  background-color: #FCD23B;
+  color: black;
+}
+
+/* Hover para el botón amarillo */
+.yellow-btn {
+  background-color: #FCD23B; /* Fondo amarillo */
+  color: black; /* Texto negro */
+  border: 2px solid #FCD23B; /* Bordes amarillos */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza la transición */
+}
+
+.yellow-btn:hover {
+  background-color: black; /* Cambia el fondo a negro al hacer hover */
+  color: #FCD23B; /* Cambia el texto a amarillo al hacer hover */
+  border: 2px solid #FCD23B; /* Mantiene los bordes amarillos al hacer hover */
+}
+
+/* Cambiar el color del SVG dentro de los botones */
+.yellow-btn:hover img, .white-btn:hover img {
+  fill: #FCD23B;
+}

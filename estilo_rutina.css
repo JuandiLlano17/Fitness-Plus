@@ -1,0 +1,119 @@
+.routine-header {
+    display:flex;
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    padding: 48px 106px;
+    flex-direction: column;
+    gap: 45px; 
+}
+
+.logos-icon {
+    width: 43px; /* Ajusta el tamaño según lo que necesites */
+    height: 50px; /* Mantiene la proporción del icono */
+    object-fit: contain; /* Asegura que el icono no se deforme */
+}
+
+.Titulo h1  {
+    font-size: 56px;
+    color: black;
+    margin-bottom: 10px;
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+.Titulo   {
+    margin-bottom: 10px;
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.exercise{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+        justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+        gap: 30px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Añade un poco de padding para margen interior */
+      
+}
+.exercise-actions{
+        display: flex;
+        gap: 20px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Añade un poco de padding para margen interior */
+      
+}
+
+.ejercicios{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    gap: 100px; /* Espacio entre las tarjetas */
+    padding: 10px; /* Añade un poco de padding para margen interior */
+}
+
+.modal{
+    margin-top: 100px;
+    display: flex;
+    width: 372px;
+    height: 146px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
+  }
+  .modal-content{
+    display: flex;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    text-align: center; /* Añadido para centrar el texto */
+  }
+
+  .cronometro {
+    margin-top: 100px;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.tiempo {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.controles {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.boton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}

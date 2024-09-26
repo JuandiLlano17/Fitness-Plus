@@ -1,0 +1,339 @@
+body{
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    background-color: #DAE2FF;
+}
+
+body {
+    margin-top: 100px; /* Ajusta según la altura de tu header */
+    background-color: #DAE2FF;
+}
+
+.hero {
+    height: 100vh; /* Altura completa de la ventana */
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Usar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    position: absolute;
+    width: 1280px;
+    height: 100%;
+    animation: slide 36s infinite; /* Cambia cada 10 segundos */
+    overflow: hidden; /* Asegura que no haya desbordamiento */
+
+}
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Cambia el ancho según necesites */
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 1; /* Asegura que el degradado esté encima de la imagen */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-image:nth-child(1) { animation: fade 40s infinite; }
+.hero-image:nth-child(2) { animation: fade 40s infinite 9s; }
+.hero-image:nth-child(3) { animation: fade 40s infinite 18s; }
+.hero-image:nth-child(4) { animation: fade 40s infinite 27s; }
+
+@keyframes fade {
+    0%, 20% { opacity: 1; }
+    25%, 95% { opacity: 0; }
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.content:nth-child(1) { animation: contentFade 40s infinite; }
+.content:nth-child(2) { animation: contentFade 40s infinite 9s; }
+.content:nth-child(3) { animation: contentFade 40s infinite 18s; }
+.content:nth-child(4) { animation: contentFade 40s infinite 27s; }
+
+@keyframes contentFade {
+    0%, 20% { opacity: 1; }
+    25%, 95% { opacity: 0; }
+}
+
+.hero-content {
+    width: 300px;
+    z-index: 2;
+    text-align: center; /* Centrar el texto */
+    color: white; /* Asegúrate de que el texto sea visible */
+    padding: 20px; /* Espaciado */
+    position: absolute;
+    top: 35%; /* Centra verticalmente */
+    left: 20%; /* Mueve un poco a la izquierda, ajusta según sea necesario */
+    transform: translateY(-50%); /* Ajusta para centrar verticalmente realmente */
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+
+
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    background-color: #1F1F1F;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 200px; /* Espacio entre los elementos */
+}
+
+.feature-item {
+    color: #FCD23B;
+    text-align: justify;
+}
+
+.feature-item h1 {
+    color: #FCD23B;
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+
+.feature-item p {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+
+.why-us {
+    width: 1280px;
+    margin: 0px auto;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 39px;
+}
+
+.why-content{
+    width: 1280;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap: 48px;
+}
+
+.why-us h2 {
+    text-align: center;
+    color: black;
+    font-size: 56px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 66px;
+    margin: 100px 0 0 0;
+}
+
+.titulo.why-us{
+    width: 562px;
+    text-align: center;
+    color: #0D0B0B;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+    margin-top: 0;
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 36px;
+}
+
+.benefit-item {
+    width: 345px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.benefit-item h3 {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 12px;
+    margin: 0;
+}
+
+.benefit-item p {
+    width: 300px;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+}
+
+/* Imágenes en la sección */
+.why-us img {
+    justify-content: center;
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.trainers {
+    max-width: 1280px; /* O el ancho deseado */
+    margin: 0 auto; /* Centra la sección en la página */
+    padding: 38px 24px; /* Espacio en la parte superior e inferior y 24px a los lados */
+    text-align: center; /* Alinea el texto al centro */
+
+}
+
+.trainers h2 {
+    color: black;
+    font-size: 56px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    line-height: 66px;
+    opacity: 0.90; /* Opacidad */
+    margin-bottom: 0px; /* Espacio debajo del título */
+}
+
+.trainers p {
+    width: 100%; /* Permitir que ocupe todo el ancho disponible */
+    max-width: 562px; /* Ancho máximo para mantener la legibilidad */
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 20;
+    line-height: 30px;
+    margin: 0 auto 30px; /* Centrado horizontal y espacio debajo */
+    text-align: center; /* Centra el texto dentro del párrafo */
+    margin-top: 0;
+}
+
+.titulo.trainers {
+    color: black; /* Cambia el color del texto a negro */
+}
+
+
+.trainer-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.trainer-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.trainer-card img {
+    width: 292px; /* Ajusta según sea necesario */
+    height: 395px; /* Ajusta según sea necesario */
+    transition: filter 0.3s ease;
+}
+
+.trainer-card:hover img {
+    filter: blur(5px);
+}
+
+.trainer-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    gap: 30px;
+}
+
+.trainer-info h3 {
+    font-weight: bold; /* Asegúrate de que sea negrita */
+    font-size: 20px; /* Ajusta el tamaño según lo desees */
+    margin: 0; /* Elimina márgenes si es necesario */
+}
+
+
+.trainer-card:hover .trainer-info {
+    opacity: 1;
+}
+
+
+.join-us {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    padding: 50px; /* Espaciado interno */
+    gap: 40px; /* Espacio entre el texto y la imagen */
+}
+
+.join-content {
+    max-width: 500px; /* Limita el ancho del texto */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.join-us h2 {
+    font-size: 56px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    line-height: 66px;
+    margin: 0 0 20px; /* Espacio debajo del título */
+}
+
+.join-us p {
+    font-size: 24px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+    opacity: 0.8; /* Menos opacidad para un efecto suave */
+    margin: 0; /* Elimina el margen */
+}
+
+.join-us img {
+    height: 352px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+}

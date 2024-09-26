@@ -7,7 +7,7 @@
     <meta name="keywords" content="fitness, gimnasio, entrenadores, salud, bienestar">
     <meta name="author" content="Fitness Plus">
     <title>Fitness Plus</title>
-    <link rel="stylesheet" href="gimnasio/styles.css"> <!-- Estilos externos -->
+    <link rel="stylesheet" href="estilos_pagina_principal.css"> <!-- Estilos externos -->
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -27,27 +27,49 @@
 
     <header> </header>
     <main>
-        <section class="hero">
+        <section class="hero"> 
+            <div class="hero-image-container">
+                <img src="img/Carrusel 1.png" alt="Imagen chica principal" class="hero-image">
+                <img src="img/Carrusel 2.png" alt="Imagen chico principal" class="hero-image">
+                <img src="img/Carrusel 3.png" alt="Imagen de amigos" class="hero-image">
+                <img src="img/Carrusel 4.png" alt="Imagen de gimnasio" class="hero-image">
+            </div>
             <div class="hero-content">
-                <h1 class="hero-title">Fitness Plus</h1>
-                <p class="hero-subtitle">El mejor lugar para transformar tu cuerpo y mente. Equipos de última generación, entrenadores expertos y un ambiente motivador.</p>
-                <img src="img/Carrusel 1.png" alt="Imagen de fondo Sentadilla" width="300" height="200">
-
+                <div class="content">
+                    <h1 class="hero-title">Fitness Plus</h1>
+                    <p class="hero-subtitle">El mejor lugar para transformar tu cuerpo y mente. Equipos de última generación, entrenadores expertos y un ambiente motivador</p>
+                </div>
+                <div class="content">
+                    <h1 class="hero-title">Tecnología Avanzada</h1>
+                    <p class="hero-subtitle">Estamos comprometidos con la innovación. Utilizamos tecnología de punta para optimizar tu rendimiento, asegurandote resultados visibles</p>
+                </div>
+                <div class="content">
+                    <h1 class="hero-title">Comunidad</h1>
+                    <p class="hero-subtitle">Más que un gimnasio, somos una comunidad. Encuentra apoyo, motivación y amistades mientras te desafías y superas tus límites en un ambiente inclusivo</p>
+                </div>
+                <div class="content">
+                    <h1 class="hero-title">Instalaciones Modernas</h1>
+                    <p class="hero-subtitle">Disfruta de nuestras instalaciones de primer nivel. Espacios amplios, áreas especializadas y tecnología avanzada para una experiencia de entrenamiento única</p>
+                </div>
             </div>
         </section>
+        
+        
+        
+        
 
         <section class="features">
             <ul>
                 <li class="feature-item">
-                    <h2>#1</h2>
+                    <h1>#1</h1>
                     <p>En todo el país</p>
                 </li>
                 <li class="feature-item">
-                    <h2>+2,000</h2>
+                    <h1>+2,000</h1>
                     <p>Usuarios Satisfechos</p>
                 </li>
                 <li class="feature-item">
-                    <h2>+150</h2>
+                    <h1>+150</h1>
                     <p>Entrenadores Profesionales</p>
                 </li>
             </ul>
@@ -55,40 +77,66 @@
 
         <section class="why-us">
             <h2>¿Por qué escoger Fitness Plus?</h2>
-            <p>Las ventajas de un gimnasio como Fitness Plus van más allá de simplemente tener un lugar donde hacer ejercicio.</p>
-            <div class="benefits">
-                <div class="benefit-item">
-                    <h3>Entrenamiento Guiado</h3>
-                    <p>Entrenadores certificados y experimentados personalizan rutinas según las metas individuales.</p>
+            <p class="titulo why-us">Las ventajas de un gimnasio como Fitness Plus van más allá de simplemente tener un lugar donde hacer ejercicio.</p>
+            <div class="why-content">
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <h3>Entrenamiento Guiado</h3>
+                        <p>Entrenadores certificados y experimentados personalizan rutinas según las metas individuales.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Flexibilidad</h3>
+                        <p>Horarios amplios y opciones de membresía adaptadas a cualquier estilo de vida.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Equipos de Calidad</h3>
+                        <p>Equipos de última generación que aseguran sesiones seguras y efectivas.</p>
+                    </div>
                 </div>
-                <div class="benefit-item">
-                    <h3>Flexibilidad</h3>
-                    <p>Horarios amplios y opciones de membresía adaptadas a cualquier estilo de vida.</p>
-                </div>
-                <div class="benefit-item">
-                    <h3>Equipos de Calidad</h3>
-                    <p>Equipos de última generación que aseguran sesiones seguras y efectivas.</p>
-                </div>
+                <img src="img/Beneficios.png" alt="Imagen de beneficios gimnasio">
             </div>
+              
         </section>
 
         <section class="trainers">
             <h2>Nuestros Entrenadores</h2>
-            <p>Cuentan con certificaciones avanzadas y amplia experiencia en el sector del fitness, garantizando entrenamientos efectivos y profesionales.</p>
+            <p class="titulo trainers">Cuentan con certificaciones avanzadas y amplia experiencia en el sector del fitness, garantizando entrenamientos efectivos y profesionales.</p>
             <div class="trainer-cards">
-                <img src="img/entrenador1.png" alt="Entrenador 1">
-                <img src="img/entrenador2.png" alt="Entrenador 2">
-                <img src="img/entrenador3.png" alt="Entrenador 3">
+                <div class="trainer-card">
+                    <img src="img/entrenador1.png" alt="Entrenador 1">
+                    <div class="trainer-info">
+                        <h3>Alejandro Rodríguez</h3>
+                        <p>Experto en entrenamiento de fuerza y potencia, con más de 10 años de experiencia en el campo del fitness.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <img src="img/entrenador2.png" alt="Entrenador 2">
+                    <div class="trainer-info">
+                        <h3>Veronica Pacheco</h3>
+                        <p>Especializada en entrenamiento cardiovascular y nutrición deportiva. Con una sólida formación en ciencias del deporte y nutrición.</p>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <img src="img/entrenador3.png" alt="Entrenador 3">
+                    <div class="trainer-info">
+                        <h3>Daniel Gómez</h3>
+                        <p>Certificado en entrenamiento funcional y HIIT, comprometido en el diseño de entrenamientos dinámicos y efectivos</p>
+                    </div>
+                </div>
             </div>
         </section>
+        
 
         <section class="join-us">
+            <img src="img/accion.png" alt="Persona haciendo ejercicio" width="400">
             <div class="join-content">
                 <h2>Únete</h2>
-                <p>No dejes pasar la oportunidad de mejorar tu salud. ¡Regístrate y comienza hoy mismo!</p>
+                <p>No dejes pasar la oportunidad de mejorar tu salud y bienestar. 
+                   <a href="registro_cliente.html" class="register-link">Regístrate aquí</a> 
+                   y empieza a disfrutar de nuestras instalaciones. ¡Anímate a dar el primer paso hacia una vida más activa y saludable!</p>
             </div>
-            <img src="img/accion.png" alt="Persona haciendo ejercicio" width="400">
         </section>
+        
     </main>
 
     <footer></footer>
