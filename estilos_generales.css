@@ -224,3 +224,7 @@ input[type="radio"]:checked + .custom-radio {
   height: 50%;
   object-fit: contain; /* Asegura que la imagen mantenga su proporción */
 }
+a {
+  text-decoration: none;
+  display: inline-block;
+}
