@@ -1,5 +1,6 @@
 
 .Registro {
+    margin-top: 100px; /* Ajusta según la altura de tu header */
     display: flex;
     flex-direction: column;
     align-items: center;

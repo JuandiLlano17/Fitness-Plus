@@ -1,9 +1,9 @@
 
 .ini-sesion {
+    margin-top: 100px; /* Ajusta según la altura de tu header */
     display: flex;
     width: 1280px;
     height: 601px;
-    padding: 0px 179px 0px 176px;
     justify-content: center;
     align-items: center;
     gap: 80px;
