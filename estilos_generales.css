@@ -11,7 +11,28 @@ body {
   margin: 100px 0 0; /* Elimina los márgenes por defecto */
   box-sizing: border-box; /* Asegura que el padding y bordes se incluyan en el tamaño total del contenedor */
 }
+@media (max-width: 1025px) {
+  body {
+    padding: 15px;
+    margin: 80px 0;
+  }
+}
 
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    margin: 50px 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+    margin: 20px 0;
+    flex-direction: column;
+  }
+}
 :root {
     --h-1-font-family: "Montserrat", Helvetica;
     --h-1-font-weight: 700;
