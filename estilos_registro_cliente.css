@@ -105,11 +105,6 @@ select:not(:placeholder-shown) {
     position: relative;
     display: inline-block;
 }
-.button-centrado {
-    display: block;
-    margin: 0 auto; /* Centra el botón horizontalmente */
-    width: fit-content; /* Ajusta el tamaño del botón al contenido */
-}
 
 .dropdown-options label {
     display: block;
@@ -159,3 +154,171 @@ select:not(:placeholder-shown) {
 .dropdown-options input[type="checkbox"] {
     visibility: hidden; /* Oculta el checkbox pero mantiene el espacio que ocupa */
 }
+@media (max-width: 1440px) {
+
+    .imagen-perfil img {
+        width: 390px;
+        height: 390px;
+        object-fit: cover;
+    }
+    .imagen-perfil button {
+        font-size: 18px;
+    }
+    .Registro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .columnas-editar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0 2%;
+        box-sizing: border-box;
+        width: auto; /* Permite que el ancho se adapte a los hijos */
+    }
+    
+
+    .columnas-datos {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+        width: 80%;
+        box-sizing: border-box;
+    }
+    input:focus,
+    input:not(:placeholder-shown),
+    select:focus,
+    select:not(:placeholder-shown) {
+    color: #000; /* Cambiar el texto a negro */
+}
+}
+
+
+@media (max-width: 768px) {
+    .imagen-perfil img {
+        width: 340px;
+        height: 340px;
+        object-fit: cover;
+    }
+    .imagen-perfil button {
+        font-size: 15px;
+    }
+    .Registro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        width: 80%; /* Ocupa el 80% del ancho disponible */
+        box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    }
+
+    .columnas-editar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 90%; /* Ocupa el 90% del ancho disponible */
+        padding: 0 5%;
+        box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    }
+
+    .columnas-datos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 90%;
+        box-sizing: border-box;
+    }
+    input:focus,
+    input:not(:placeholder-shown),
+    select:focus,
+    select:not(:placeholder-shown) {
+    color: #000; /* Cambiar el texto a negro */
+}
+}
+  
+@media (max-width: 480px) { 
+    .imagen-perfil img {
+        width: 290px;
+        height: 290px;
+        object-fit: cover;
+    }
+    .imagen-perfil button{
+        font-size: 13px;
+    }
+    .Registro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .formulario {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        width: 100%; /* Ocupa todo el ancho disponible */
+        box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    }
+
+    .columnas-editar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        gap: 10px;
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 0 10%;
+        box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    }
+
+    .columnas-datos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    button:focus,
+    input:focus {
+    outline: 2px solid #000; /* Cambia el borde de enfoque por uno más sutil */
+    }
+
+}
+
+
