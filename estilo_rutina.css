@@ -1,7 +1,7 @@
 .routine-header {
     display:flex;
-    margin-top: 100px; /* Ajusta según la altura de tu header */
-    padding: 48px 106px;
+    margin-top: 50px; /* Ajusta según la altura de tu header */
+    padding: 0px 100px;
     flex-direction: column;
     gap: 45px; 
 }
@@ -35,6 +35,10 @@
         gap: 30px; /* Espacio entre las tarjetas */
         padding: 10px; /* Añade un poco de padding para margen interior */
       
+}
+
+.exercise-details h2 {
+    font-weight: bold;
 }
 .exercise-actions{
         display: flex;
@@ -77,6 +81,10 @@
     gap: 0px;
     text-align: center; /* Añadido para centrar el texto */
   }
+  .modal-content button{
+    display: flex;
+   margin-top: 10px;
+  }
 
   .cronometro {
     margin-top: 100px;
@@ -100,7 +108,7 @@
 
 .controles {
     display: flex;
-    gap: 10px;
+    gap: 150px;
     margin-top: 20px;
 }
 
