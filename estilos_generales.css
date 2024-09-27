@@ -8,7 +8,7 @@ body {
   align-items: center;
   flex-direction: column;
   min-height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
-  margin: 0; /* Elimina los márgenes por defecto */
+  margin: 100px; /* Elimina los márgenes por defecto */
   padding: 0; /* Elimina cualquier padding adicional */
   box-sizing: border-box; /* Asegura que el padding y bordes se incluyan en el tamaño total del contenedor */
 }

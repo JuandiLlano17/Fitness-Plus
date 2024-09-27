@@ -1,6 +1,5 @@
 
 .ini-sesion {
-    margin-top: 100px; /* Ajusta según la altura de tu header */
     display: flex;
     width: 1280px;
     height: 601px;
@@ -12,35 +11,39 @@
 /* Contenedor de inscripción */
 .inscribete {
     display: flex;
-    width: 413px;
-    height: 335px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 440px; 
+    height: auto; 
     gap: 34px;
-    flex-shrink: 0;
+    padding: 20px;
+    box-sizing: border-box; 
 }
-
 /* Estilo general para los inputs */
 .inicio-de-sesion input {
-    position: relative;
-    display: block;
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    max-width: 413px; /* Ajusta si es necesario */
-    height: 47px;
-    padding: 0px 50px 0px 23px; /* Asegura espacio para el icono (50px a la derecha) */
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
+    width: 100%; /* Asegura que el input ocupe todo el ancho del contenedor */
+    max-width: 100%; /* Asegura que no tenga restricciones de tamaño */
+    height: 47px; 
+    padding: 0 50px 0 23px; /* Asegura espacio para el icono */
     border-radius: 50px;
-    background:  #FFF;
-    font-family: "DM Sans";
-    border: 1px solid transparent; /* Borde transparente */
+    background-color: #FFF;
+    font-family: "DM Sans", sans-serif; 
+    border: 1px solid transparent;
     font-size: 18px;
-    font-style: normal;
     font-weight: 400;
-    outline: none; /* Elimina el borde azul al hacer clic */
-    box-sizing: border-box; /* Asegura que padding y border no desborden el contenedor */
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+.inicio-de-sesion {
+    width: 100%; /* El contenedor ocupa todo el ancho disponible */
+    height: 100%; /* O puedes definir una altura específica si lo prefieres */
+    display: flex;
+    align-items: center; /* Centra el input verticalmente */
+    justify-content: center; /* Opcional: Centra el input horizontalmente */
+    box-sizing: border-box;
 }
 
 /* Mantener el borde transparente cuando el input esté enfocado */

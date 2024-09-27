@@ -1,7 +1,6 @@
 
 /* REGISTRO */
 .Registro {
-    margin-top: 100px; /* Ajusta según la altura de tu header */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +87,7 @@ select:not(:placeholder-shown) {
 
 
 /* LABEL */
-label {
+.columnas-editar label {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-style: normal;
