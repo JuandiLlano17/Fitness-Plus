@@ -130,55 +130,93 @@ label{
 .yellow-btn:hover img, .white-btn:hover img {
   fill: #FCD23B;
 }
+@media (max-width: 431px) {
 
-@media (max-width: 430px) {
-  label{
-    font-family: Montserrat;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: 18px; /* 180% */
-  }
-  
+  /* Header */
   .header {
-    width: 100%; /* Ajusta el header para que ocupe el 100% del ancho de la pantalla */
-    padding: 0 15px; /* Reducido el padding lateral */
-    height: 64px; /* Ajusta la altura para pantallas más pequeñas */
-    justify-content: space-between; /* Mantiene los elementos distribuidos de manera uniforme */
-    gap: 5px; /* Reduce el espacio entre los elementos */
+    width: 100%;
+    padding: 0 10px;
+    height: auto;
+    display: flex;
+    flex-direction: row; /* Mantén los elementos en una fila */
+    justify-content: space-between; /* Distribuye los elementos uniformemente */
+    align-items: center;
+    background-color: #0D1F60;
+    gap: 2px; /* Espacio exacto de 2px entre los elementos */
+    flex-wrap: nowrap; /* Evita que los elementos se envuelvan */
   }
-  
+
+  /* Logo */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* No permite que el logo se reduzca */
+    gap: 0;
+}
+
+
+  .logo-container img {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Label dentro del header */
+  .header label {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    flex-shrink: 1; /* Permite que el texto se reduzca si es necesario */
+  }
+
+  /* Navegación */
   .nav {
-    display: grid;
-    grid-template-columns: repeat(4, auto); /* Configura 4 columnas para los enlaces del menú */
-    gap: 8px; /* Reduce el gap para que los enlaces no se desborden */
-    justify-content: center; /* Centra los enlaces horizontalmente */
+    display: flex;
+    gap: 2px; /* Espacio exacto de 2px entre los enlaces */
+    flex-shrink: 1; /* Permite que la navegación se reduzca si es necesario */
+    justify-content: center; /* Centra los enlaces */
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 2px; /* Espacio exacto de 2px entre los elementos de la lista */
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 
   .nav a {
-    font-size: 11px;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap; /* Evita que los enlaces se dividan en varias líneas */
   }
 
+  /* Botones de autenticación */
   .auth-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, auto); /* Dos columnas: una para cada botón */
-    gap: 10px; /* Reducido el espacio entre los botones */
+    display: flex;
+    gap: 2px; /* Espacio exacto de 2px entre los botones */
+    justify-content: flex-end; /* Alinea los botones al final de la fila */
+    flex-shrink: 0; /* No permite que los botones se reduzcan */
   }
 
   .auth-buttons a, .auth-buttons button {
-    font-size: 10px;
-    padding: 8px 10px; /* Ajusta el padding para que los botones no sean demasiado grandes */
+    font-size: 12px;
+    padding: 5px 10px; /* Ajusta el padding para hacer los botones más pequeños */
     text-align: center;
+    white-space: nowrap; /* Evita que el texto dentro de los botones se divida */
   }
 
-  .logo-container {
-    display: grid;
-    grid-template-columns: auto; /* Solo para la imagen del logo */
-    gap: 5px; /* Ajusta el espacio en caso de que haya otros elementos dentro */
+  /* Ajustes generales */
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evitar el desplazamiento lateral */
   }
 
-  .logo-container img {
-    width: 20px; 
-    height: 20px; 
-  }
 }
+
+
+
+
+
