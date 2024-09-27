@@ -9,7 +9,6 @@
 
 .cliente{
     margin-top: 50px; /* Ajusta según la altura de tu header */
-
     display: flex;
     flex-direction: row;
     justify-content: center; /* Espacio uniforme entre las tarjetas */
@@ -26,16 +25,7 @@
     align-items: center; /* Centra los elementos horizontalmente */
   }
   
-  .parte2 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center; /* Espacio uniforme entre las tarjetas */
-    gap:800px; /* Espacio entre las tarjetas */
-    align-items: center; /* Centra los elementos horizontalmente */
-   
-  }
-
-.tablita {
+ .tablita {
 
     max-width: 300px; /* Ajusta según tus necesidades */
     padding: 10px 50px;
@@ -77,7 +67,6 @@ font-weight: bold;
   align-items: center;
   margin: 0 auto;
   gap: 23px;
-
   border: none;
   border-radius: 100%; /* Esto hace que el botón sea redondo */
   font-size: 18px;
