@@ -1,24 +1,20 @@
 .logos-icon {
-    width: 43px; /* Ajusta el tamaño según lo que necesites */
-    height: 50px; /* Mantiene la proporción del icono */
-    object-fit: contain; /* Asegura que el icono no se deforme */
-}
-
-.cliente h1  {
-    font-size: 56px;
-    color: black;
-    margin-bottom: 10px;
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    align-items: center; /* Centra los elementos horizontalmente */
+  width: 43px; /* Ajusta el tamaño según lo que necesites */
+  height: 50px; /* Mantiene la proporción del icono */
+  object-fit: contain; /* Asegura que el icono no se deforme */
+  position: relative;
+  top:10px;
+  bottom: 45px;
 }
 
 .cliente{
     margin-top: 50px; /* Ajusta según la altura de tu header */
-    padding: 0px 100px;
+
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center; /* Espacio uniforme entre las tarjetas */
+    gap:600px; /* Espacio entre las tarjetas */
+    align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .parte1 {
@@ -27,6 +23,7 @@
     flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
     gap: 50px; /* Espacio entre las tarjetas */
     padding: 0px; /* Añade un poco de padding para margen interior */
+    align-items: center; /* Centra los elementos horizontalmente */
   }
   
   .parte2 {
@@ -34,6 +31,7 @@
     flex-direction: row;
     justify-content: center; /* Espacio uniforme entre las tarjetas */
     gap:800px; /* Espacio entre las tarjetas */
+    align-items: center; /* Centra los elementos horizontalmente */
    
   }
 
