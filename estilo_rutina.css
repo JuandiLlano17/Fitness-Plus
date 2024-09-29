@@ -48,12 +48,16 @@
 .exercise-actions{
         display: flex;
         gap: 20px; /* Espacio entre las tarjetas */
-        padding: 10px; /* Añade un poco de padding para margen interior */
-      
+        padding: 10px; /* Añade un poco de padding para margen interior */    
+}
+
+.button{ 
+    color: black;
 }
 
 .ejercicios{
     display: flex;
+    color: black;
     flex-direction: row;
     flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
     justify-content: space-between; /* Espacio uniforme entre las tarjetas */
