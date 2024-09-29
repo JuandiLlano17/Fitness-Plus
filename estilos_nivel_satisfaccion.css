@@ -37,7 +37,7 @@ meet h1  {
 
 
 .modal{
-display: flex;
+  display:none;
 width: 372px;
 height: 146px;
 flex-direction: column;
@@ -124,8 +124,8 @@ cursor: pointer;
 /* Pantallas de hasta 431px */
 @media (max-width: 431px) {
   .frame {
-    width: 250px;
-    height: 300px;
+    width: 270px;
+    height: 350px;
     border-radius: 100px;
     text-align: center; /* Centra el texto dentro de meet */
   }
