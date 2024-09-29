@@ -7,10 +7,10 @@ meet h1  {
 
 .frame {
   margin-top: 100px; /* revisar */
-  width: 1095px;
+  width: 900px;
   height: 700px;
-  margin: 40px; /* Centra el contenedor en la página */
-  padding: 50px;
+  margin: 50px; /* Centra el contenedor en la página */
+  padding: 0,px 100px;
   background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
   border-radius: 135px;
   display: flex; /* Habilita flexbox */
@@ -19,7 +19,7 @@ meet h1  {
 }
 
 .meet {
-  margin: 150px; /* Centra el contenedor en la página */
+  margin: 120px; /* Centra el contenedor en la página */
   text-align: center; /* Centra el texto dentro de meet */
   margin-bottom: 30px;
 
@@ -85,10 +85,12 @@ cursor: pointer;
 
 /* Pantallas de hasta 1025px */
 @media (max-width: 1025px) {
+
   .frame {
-    width: 395px;
-    height: 400px;
+    width: 595px;
+    height: 495px;
     border-radius: 100px;
+    margin: 50px;
 
   }
 
@@ -121,25 +123,60 @@ cursor: pointer;
   }
 }
 
-/* Pantallas de hasta 431px */
-@media (max-width: 431px) {
+@media (max-width: 768px) {
   .frame {
-    width: 270px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
     border-radius: 100px;
-    text-align: center; /* Centra el texto dentro de meet */
+    margin: 50px 50px;
   }
 
   h1 {
-    font-size: 30px;
-  }
-  p{
-    font-size: 15px;
+    font-size: 40px;
   }
 
   .meet {
-    margin: 0px; /* Centra el contenedor en la página */
+  margin: 20px; /* Centra el contenedor en la página */
+  text-align: center; /* Centra el texto dentro de meet */
+  margin-bottom: 0px;
+  }
+
+  .emoji-satisfaction {
+    width: 60px;
+    height: 60px;
+  }
+  .satisfaccion-caras-opciones {
+    display: flex;
+    margin-bottom: 40px;
+    text-align: center; /* Centra el texto del párrafo */
+    flex-direction: row; /* Organiza los hijos en columna */
+    padding: 5px; /* Añade un poco de padding para margen interior */
+  }
+  
+ 
+  .button {
+    font-size: 16px;
+    padding: 15px 12px;
+  }
+}
+
+
+/* Pantallas de hasta 431px */
+@media (max-width: 480px) {
+  .frame {
+    width: 350px;
+    height: 380px;
+    border-radius: 100px;
     text-align: center; /* Centra el texto dentro de meet */
+    margin: 50px 50px;
+  }
+
+  .meet h1 {
+    font-size: 40px;
+  }
+
+  p{
+    font-size: 10px;
   }
 
   .emoji-satisfaction {
@@ -160,3 +197,41 @@ cursor: pointer;
     padding: 6px 12px;
   }
 }
+
+/* Pantallas de hasta 431px */
+@media (max-width: 431px) {
+  .frame {
+    width: 250px;
+    height: 380px;
+    border-radius: 100px;
+    text-align: center; /* Centra el texto dentro de meet */
+    margin: 50px 50px;
+  }
+
+  .meet h1 {
+    font-size: 30px;
+  }
+
+  p{
+    font-size: 10px;
+  }
+
+  .emoji-satisfaction {
+    width: 25px;
+    height: 25px;
+  }
+
+  .satisfaccion-caras-opciones {
+    display: flex;
+    margin-bottom: 20px;
+    text-align: center; /* Centra el texto del párrafo */
+    flex-direction: row; /* Organiza los hijos en columna */
+    padding: 5px; /* Añade un poco de padding para margen interior */
+  }
+
+  .button {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
+
