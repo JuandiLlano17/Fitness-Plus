@@ -156,12 +156,13 @@
         margin-left: 20px; /* Añade espacio si es necesario */
     }
 
-    
+
     .exercise {
         display: flex;
         flex-direction: column;
         align-items: center; /* Centra el contenido dentro del contenedor */
         justify-content: center;
+        margin-left: 2px; /* Añade espacio si es necesario */
         gap: 20px;
         padding: 5px;
         width: 100%;
