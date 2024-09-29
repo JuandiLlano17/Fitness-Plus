@@ -1,87 +1,162 @@
-.meet h1  {
-    font-size: 56px;
-    color: black;
-    margin-bottom: 20px;
-  }
+/* Estilos generales */
+meet h1  {
+  font-size: 56px;
+  color: black;
+  margin-bottom: 20px;
+}
 
 .frame {
-    margin-top: 5000px; /* revisar */
-    width: 1095px;
-    height: 700px;
-    margin: 90px; /* Centra el contenedor en la página */
-    padding: 50px;
-    background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
-    border-radius: 135px;
-
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    align-items: center; /* Centra los elementos horizontalmente */
+  margin-top: 100px; /* revisar */
+  width: 1095px;
+  height: 700px;
+  margin: 80px; /* Centra el contenedor en la página */
+  padding: 50px;
+  background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
+  border-radius: 135px;
+  display: flex; /* Habilita flexbox */
+  flex-direction: column; /* Organiza los hijos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .meet {
-    margin: 150px; /* Centra el contenedor en la página */
-    text-align: center; /* Centra el texto dentro de meet */
-    margin-bottom: 30px;
+  margin: 150px; /* Centra el contenedor en la página */
+  text-align: center; /* Centra el texto dentro de meet */
+  margin-bottom: 30px;
 
-  }
-
-
-  .satisfaccion-caras-opciones {
-    display: flex;
-    margin-bottom: 100px;
-    font-size: 24px;
-    color: #0D0B0B;
-    text-align: center; /* Centra el texto del párrafo */
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan si no caben en una sola fila */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Añade un poco de padding para margen interior */
 }
 
+.satisfaccion-caras-opciones {
+  display: flex;
+  margin-bottom: 100px;
+  font-size: 24px;
+  color: #0D0B0B;
+  text-align: center; /* Centra el texto del párrafo */
+  flex-direction: row; /* Organiza los hijos en columna */
+  padding: 5px; /* Añade un poco de padding para margen interior */
+}
 
 
 .modal{
-  display: flex;
-  width: 372px;
-  height: 146px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 20px;
-  background: #E9E7E7;
+display: flex;
+width: 372px;
+height: 146px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 20px;
+background: #E9E7E7;
 }
 .modal-content{
-  display: flex;
-  color: #000;
-  display: flex;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 110%;
-  flex-direction: column;
-  align-items: center;
-  gap: 23px;
+display: flex;
+color: #000;
+display: flex;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 110%;
+flex-direction: column;
+align-items: center;
+gap: 23px;
 }
+
 .cara {
-  display: flex; /* Asegura que las figuras estén en una fila */
-  gap: 20px; /* Espacio entre las figuras */
+display: flex; /* Asegura que las figuras estén en una fila */
+gap: 20px; /* Espacio entre las figuras */
 }
 
 .cara figure{
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  margin: 0 auto;
-  gap: 23px;
-
-  border: none;
-  border-radius: 100%; /* Esto hace que el botón sea redondo */
-  font-size: 18px;
-  text-align: center;
-  line-height: 50px; /* Para centrar el contenido verticalmente */
-  cursor: pointer;
+justify-content: space-between;
+flex-direction: row;
+align-items: center;
+margin: 0 auto;
+gap: 23px;
+border: none;
+border-radius: 100%; /* Esto hace que el botón sea redondo */
+font-size: 18px;
+text-align: center;
+line-height: 00px; /* Para centrar el contenido verticalmente */
+cursor: pointer;
 }
 
 
+/* Media queries */
 
+/* Pantallas de hasta 1025px */
+@media (max-width: 1025px) {
+  .frame {
+    width: 395px;
+    height: 400px;
+    border-radius: 100px;
+
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .meet {
+  margin: 20px; /* Centra el contenedor en la página */
+  text-align: center; /* Centra el texto dentro de meet */
+  margin-bottom: 0px;
+  }
+
+  .emoji-satisfaction {
+    width: 60px;
+    height: 60px;
+  }
+  .satisfaccion-caras-opciones {
+    display: flex;
+    margin-bottom: 40px;
+    text-align: center; /* Centra el texto del párrafo */
+    flex-direction: row; /* Organiza los hijos en columna */
+    padding: 5px; /* Añade un poco de padding para margen interior */
+  }
+  
+ 
+  .button {
+    font-size: 16px;
+    padding: 15px 12px;
+  }
+}
+
+/* Pantallas de hasta 431px */
+@media (max-width: 431px) {
+  .frame {
+    width: 250px;
+    height: 300px;
+    border-radius: 100px;
+    text-align: center; /* Centra el texto dentro de meet */
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+  p{
+    font-size: 15px;
+  }
+
+  .meet {
+    margin: 0px; /* Centra el contenedor en la página */
+    text-align: center; /* Centra el texto dentro de meet */
+  }
+
+  .emoji-satisfaction {
+    width: 35px;
+    height: 35px;
+  }
+
+  .satisfaccion-caras-opciones {
+    display: flex;
+    margin-bottom: 20px;
+    text-align: center; /* Centra el texto del párrafo */
+    flex-direction: row; /* Organiza los hijos en columna */
+    padding: 5px; /* Añade un poco de padding para margen interior */
+  }
+
+  .button {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
