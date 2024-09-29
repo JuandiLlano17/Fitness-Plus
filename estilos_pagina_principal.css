@@ -1,15 +1,9 @@
 body{
-    margin-top: 100px; /* Ajusta según la altura de tu header */
-    background-color: #DAE2FF;
+    margin-top: 60px;
 }
-
-body {
-    margin-top: 100px; /* Ajusta según la altura de tu header */
-    background-color: #DAE2FF;
-}
-
 .hero {
-    height: 100vh; /* Altura completa de la ventana */
+    width: 100vw;
+    aspect-ratio: 16/10;
     position: relative;
     overflow: hidden;
     display: flex; /* Usar flexbox para centrar el contenido */
@@ -17,11 +11,11 @@ body {
 }
 
 .hero-image-container {
+    aspect-ratio: 16/10;
     display: flex;
     justify-content: center; /* Centra las imágenes horizontalmente */
     position: absolute;
-    width: 1280px;
-    height: 100%;
+    width: 100%;
     animation: slide 36s infinite; /* Cambia cada 10 segundos */
     overflow: hidden; /* Asegura que no haya desbordamiento */
 
@@ -39,7 +33,7 @@ body {
 
 .hero-image {
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -95,11 +89,13 @@ body {
 
 
 .features {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: 60px 0 60px 0;
     background-color: #1F1F1F;
+    box-sizing: border-box;
 }
 
 .features ul {
@@ -133,20 +129,28 @@ body {
 
 
 .why-us {
-    width: 1280px;
+    width: 100%;
     margin: 0px auto;
-    padding: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 39px;
+    padding: 0 160px; /* Espaciado a los lados */
+    box-sizing: border-box; /* Incluir el padding en el ancho total */
+}
+
+.why-us img {
+    width: 100%; /* Asegura que la imagen ocupe el ancho completo */
+    max-width: 600px; /* Limita el ancho máximo si es necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    
 }
 
 .why-content{
-    width: 1280;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:space-around;
     gap: 48px;
 }
 
@@ -161,7 +165,6 @@ body {
 }
 
 .titulo.why-us{
-    width: 562px;
     text-align: center;
     color: #0D0B0B;
     font-size: 24px;
@@ -217,11 +220,11 @@ body {
 }
 
 .trainers {
-    max-width: 1280px; /* O el ancho deseado */
+    max-width: 100%; /* O el ancho deseado */
     margin: 0 auto; /* Centra la sección en la página */
-    padding: 38px 24px; /* Espacio en la parte superior e inferior y 24px a los lados */
+    padding: 38px; /* Espacio en la parte superior e inferior y 24px a los lados */
     text-align: center; /* Alinea el texto al centro */
-
+    box-sizing: border-box;
 }
 
 .trainers h2 {
@@ -254,8 +257,10 @@ body {
 
 .trainer-cards {
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
     gap: 20px;
+    padding: 0 0px; /* Espaciado a los lados */
+    box-sizing: border-box; /* Incluir el padding en el ancho total */
 }
 
 .trainer-card {
@@ -306,18 +311,23 @@ body {
 .join-us {
     display: flex;
     align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-    padding: 50px; /* Espaciado interno */
+    justify-content:space-around; /* Centra horizontalmente */
     gap: 40px; /* Espacio entre el texto y la imagen */
+    width: 100%; /* Asegura que ocupe el 100% del ancho */
+    margin: 0 auto; /* Centra la sección horizontalmente */
+    padding: 0 160px; /* Espaciado a los lados */
+    box-sizing: border-box; /* Incluir el padding en el ancho total */
 }
 
 .join-content {
     max-width: 500px; /* Limita el ancho del texto */
+    width: 100%; /* Asegura que ocupe todo el ancho permitido */
     text-align: left; /* Alineación del texto a la izquierda */
 }
 
+
 .join-us h2 {
-    font-size: 56px;
+    font-size: 56px; /* Tamaño por defecto */
     font-family: Montserrat, sans-serif;
     font-weight: 700;
     line-height: 66px;
@@ -325,7 +335,7 @@ body {
 }
 
 .join-us p {
-    font-size: 24px;
+    font-size: 24px; /* Tamaño por defecto */
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     line-height: 30px;
@@ -334,6 +344,224 @@ body {
 }
 
 .join-us img {
-    height: 352px; /* Ajusta la altura según tus necesidades */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    max-width: 100%; /* Ajustar la imagen al contenedor */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+}
+
+/* Media Queries para Responsividad */
+
+/* Dispositivos menores a 769 px */
+@media (max-width: 769px) {
+    
+    .hero-content {
+        display: flex;
+        align-items: center;
+        left: 0; /* Centrar horizontalmente */
+        top: 20%; /* Ajustar posición vertical */
+        width: 70%; /* Ampliar el ancho */
+        padding: 10px; /* Reducir el espaciado */
+        font-size: 14px; /* Ajustar tamaño de fuente */
+        margin-left: 30px;
+        
+    }
+
+    .hero-content h1{
+        font-size: 28px; /* Ajustar tamaño de fuente */
+
+    }
+
+    .features ul {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar elementos */
+        gap: 20px; /* Reducir espacio entre elementos */
+    }
+
+    .feature-item {
+        text-align: center; /* Centrar texto */
+    }
+
+    .why-us {
+        padding: 0 30px;
+    }
+    .why-us h2 {
+        font-size: 36px; /* Reducir tamaño de fuente */
+        line-height: 44px; /* Ajustar espaciado */
+        margin: 60px 0 0 0; /* Espacio superior */
+    }
+
+    .titulo.why-us {
+        padding: 0;
+        font-size: 20px; /* Reducir tamaño de fuente */
+    }
+
+    .why-content {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar contenido */
+        gap: 20px; /* Reducir espacio entre elementos */
+        margin: 40px 0 0 0; /* Espacio superior */
+    }
+
+    .benefit-item {
+        max-width: 90%; /* Asegurar que no exceda el ancho en dispositivos pequeños */
+    }
+
+    .benefit-item {
+        width: 100%; /* Ampliar el ancho */
+        text-align: center; /* Centrar texto */
+    }
+
+    .trainers{
+        padding: 0;
+    }
+    .trainers h2{
+        font-size: 36px; /* Reducir tamaño de fuente */
+    }
+    .trainers p{
+        padding: 10px 20px;
+    }
+
+    .trainer-cards {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar tarjetas */
+    }
+
+    .trainer-card {
+        margin-bottom: 20px; /* Espacio entre tarjetas */
+        
+    }
+    .trainer-card img{
+        width: 80%;
+        height: 80%;
+    }
+
+    .join-us {
+        display:flex;
+        flex-direction: column; /* Cambiar a columna */
+        padding: 80px; /* Ajustar espaciado */
+        box-sizing: border-box; /* Incluye padding en el ancho total */
+        align-items: center; /* Centrar horizontalmente */
+        justify-content: center; /* Centrar verticalmente si es necesario */
+    }
+
+    .join-content{
+        max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+        padding: 0; /* Sin espaciado lateral */
+        order: 1;
+    }
+
+    .join-us h2 {
+        display: flex;
+        font-size: 36px; /* Reducir tamaño de fuente */
+        align-items: center; /* Centrar horizontalmente */
+        justify-content: center; /* Centrar verticalmente si es necesario */
+    }
+
+    .join-us p {
+        font-size: 18px; /* Reducir tamaño de fuente */
+        line-height: 24px; /* Ajustar espaciado */
+    }
+
+    .join-us img {
+        width: 100%; /* Ajustar imagen al ancho */
+        order: 2;
+    }
+}
+
+/* Dispositivos entre 769 px y 1024 px */
+@media (min-width: 769px) and (max-width: 1023px) {
+    
+    .hero-content {
+        left: 10%; /* Mover ligeramente a la izquierda */
+        top: 30%; /* Ajustar posición vertical */
+        width: 80%; /* Ajustar ancho */
+        font-size: 18px; /* Ajustar tamaño de fuente */
+    }
+
+    .features {
+        flex-direction: column; /* Cambiar a columna */
+        padding: 20px 0 20px 0; /* Ajusta el padding si es necesario */
+    }
+
+    .features ul {
+        width: 100%; /* Asegura que ocupe el ancho completo */
+        flex-direction: column; /* Cambia a columna para la lista */
+        align-items: center; /* Centra los elementos de la lista */
+        gap: 20px; /* Espacio entre elementos de la lista */
+        list-style: none; /* Opcional: elimina los estilos de lista */
+    }
+
+    .feature-item {
+        text-align: center; /* Centra el texto de los elementos */
+        width: 100%; /* Asegura que ocupen el ancho completo */
+        max-width: 400px; /* Limita el ancho máximo */
+        margin: 0 auto; /* Centra el item */
+    }
+    .why-us {
+        padding: 0 30px;
+    }
+
+    .why-us h2 {
+        font-size: 36px; /* Reducir tamaño de fuente */
+        line-height: 44px; /* Ajustar espaciado */
+        margin: 60px 0 0 0;    }
+    .why-us h3 {
+        line-height:1.2; /* Ajustar espaciado */
+    }
+
+    .titulo.why-us {
+        font-size: 20px; /* Reducir tamaño de fuente */
+    }
+
+    .why-content {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar contenido */
+        gap: 20px; /* Reducir espacio entre elementos */
+    }
+
+    .benefit-item {
+        max-width: 45%; /* Ajustar ancho de beneficios en pantallas medianas */
+    }
+
+    .trainer-cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Espaciado de tarjetas */
+        align-items: center;
+    }
+
+    .trainer-card {
+        width: 45%; /* Ajustar el ancho de las tarjetas */
+        margin-bottom: 20px; /* Espacio entre tarjetas */
+    }
+
+
+    .join-us {
+        flex-direction: column; /* Cambia a columna */
+        width: 100%; /* Asegura que ocupe el 100% del ancho */
+        padding: 50px 0 0 0;
+    }
+    
+    .join-content {
+        position: relative; /* Cambia a relativo para evitar conflictos de posición */
+        max-width: 500px; /* Limita el ancho del texto */
+        text-align: center; /* Centra el texto */
+        z-index: 2; /* Asegura que esté por encima de la imagen */
+    }
+    
+    .join-us img {
+        width: 100%; /* Asegura que la imagen ocupe el ancho completo */
+        max-height: 300px; /* Ajusta la altura máxima si es necesario */
+        max-width: 400px;
+        object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    }
+    
+    .join-us h2 {
+        font-size: 48px; /* Reducir tamaño de fuente */
+    }
+
+    .join-us p {
+        font-size: 20px; /* Reducir tamaño de fuente */
+        line-height: 28px; /* Ajustar espaciado */
+    }
 }
