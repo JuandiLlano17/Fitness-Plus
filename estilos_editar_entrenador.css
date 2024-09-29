@@ -162,6 +162,7 @@ b{
     gap: 23px;
 }
 .d-mas{
+    font-family: "DM Sans", sans-serif;
     display: flex;
     width: 81px;
     height: 79px;
@@ -170,5 +171,179 @@ b{
     align-items: center;
     gap: 2px;
     border-radius: 248px;
+    background-color: #FFF;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: 248px;
     color: #000;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
 }
+@media (min-width: 481px) and (max-width: 768px) {
+    .editar-ejercicios {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 10px; /* Espacio ligeramente mayor para evitar aglomeraciones */
+        padding: 12px 16px; /* Ajuste del padding para maximizar el espacio útil */
+        box-sizing: border-box;
+    }
+
+    .logos-icon {
+        width: 24px;
+        height: 28px; /* Ajuste proporcional para visibilidad adecuada */
+        margin: 8px 0; /* Margen reducido para mantener los elementos compactos */
+    }
+
+    .meet-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 18px; /* Espacio suficiente entre elementos para evitar la sobrecarga visual */
+        padding: 18px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 38px; /* Ajuste del tamaño para mantener legibilidad sin causar desbordes */
+    }
+
+    h1, .meet-section h2 {
+        width: 100%;
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .dias-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 50px; /* Aumentar ligeramente el espacio para evitar solapamientos */
+        padding: 10px 0;
+        overflow-x: auto;
+        scrollbar-width: thin;
+    }
+
+    .crear {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px; /* Ajuste de padding para una mejor presentación */
+    }
+
+    .frame, .frame2 {
+        padding: 14px; /* Padding ajustado para evitar desbordamientos */
+        gap: 14px; /* Reducido para evitar que los elementos se muevan fuera de la pantalla */
+        border-radius: 8px;
+        background-size: cover;
+    }
+
+    .boton-parent {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Ajustar para un espacio óptimo entre los botones */
+    }
+
+    .modal {
+        width: 75%; /* Ajuste del ancho para que encaje mejor en pantallas medianas */
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .modal-content {
+        font-size: 15px; /* Tamaño ajustado para mantener legibilidad sin causar desbordes */
+        gap: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .editar-ejercicios {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Mejor alineación para evitar desplazamientos */
+        align-items: stretch; /* Alinear los elementos al ancho total para más consistencia */
+        gap: 8px; /* Reducido el espacio para evitar que se desborden */
+        padding: 8px 12px; /* Reducido para aprovechar mejor el espacio en pantalla */
+        box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
+    }
+
+    .logos-icon {
+        width: 20px;
+        height: 24px; /* Ajuste proporcional más adecuado para pantallas pequeñas */
+        margin: 8px 0; /* Margen reducido para evitar que interfiera con otros elementos */
+    }
+
+    .meet-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Alineación superior para mayor consistencia */
+        align-items: stretch; /* Alinear los elementos para maximizar el ancho disponible */
+        gap: 16px; /* Más compacto para pantallas pequeñas */
+        padding: 16px; /* Ajuste para maximizar espacio visible */
+        box-sizing: border-box;
+        width: 100%;
+    }
+    h1{
+        font-size: 35px;
+    }
+
+    h1, .meet-section h2 {
+        width: 100%; /* Ajuste del ancho al 100% para evitar desbordamientos */
+        text-align: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .dias-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 48px; /* Reducido para evitar desplazamientos laterales */
+        padding: 8px 0;
+        overflow-x: auto; 
+        scrollbar-width: thin; /* Mantener discreto el scrollbar */
+    }
+
+    .crear {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px; /* Añadido padding para darle un espacio más uniforme */
+    }
+
+    .frame, .frame2 {
+        padding: 10px; /* Reducido para evitar desbordamientos */
+        gap: 12px; /* Reducido para optimizar el uso del espacio */
+        border-radius: 6px; /* Ligero ajuste para que los bordes sean más uniformes en pantallas pequeñas */
+        background-size: cover;
+    }
+
+    .boton-parent {
+        display: flex;
+        flex-direction: column;
+        gap: 8px; /* Menor espacio entre botones para evitar movimientos innecesarios */
+    }
+
+    .modal {
+        width: 80%; /* Ancho incrementado para una mejor presentación en dispositivos pequeños */
+        padding: 8px; /* Padding reducido para maximizar espacio útil */
+        border-radius: 8px; /* Radio ajustado para armonizar con el tamaño general */
+    }
+
+    .modal-content {
+        font-size: 14px; /* Fuente ligeramente más pequeña para mejorar la legibilidad sin causar desplazamiento */
+        gap: 8px; /* Espacio entre contenido reducido para evitar desbordamientos */
+    }
+}
+
+
