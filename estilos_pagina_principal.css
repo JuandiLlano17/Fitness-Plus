@@ -135,7 +135,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 39px;
-    padding: 0 160px; /* Espaciado a los lados */
+    padding: 0 260px; /* Espaciado a los lados */
     box-sizing: border-box; /* Incluir el padding en el ancho total */
 }
 
@@ -171,7 +171,7 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     line-height: 30px;
-    margin-top: 0;
+    margin-bottom: 24px;
 }
 
 .benefits {
@@ -220,6 +220,7 @@ body{
 }
 
 .trainers {
+    justify-content: space-evenly;
     max-width: 100%; /* O el ancho deseado */
     margin: 0 auto; /* Centra la sección en la página */
     padding: 38px; /* Espacio en la parte superior e inferior y 24px a los lados */
@@ -257,9 +258,8 @@ body{
 
 .trainer-cards {
     display: flex;
-    justify-content:space-around;
-    gap: 20px;
-    padding: 0 0px; /* Espaciado a los lados */
+    justify-content:space-evenly;
+    padding: 0 148px; /* Espaciado a los lados */
     box-sizing: border-box; /* Incluir el padding en el ancho total */
 }
 
@@ -311,10 +311,10 @@ body{
 .join-us {
     display: flex;
     align-items: center; /* Centra verticalmente */
-    justify-content:space-around; /* Centra horizontalmente */
+    justify-content:space-evenly; /* Centra horizontalmente */
     gap: 40px; /* Espacio entre el texto y la imagen */
     width: 100%; /* Asegura que ocupe el 100% del ancho */
-    margin: 0 auto; /* Centra la sección horizontalmente */
+    margin: 0 auto 38px auto; /* Centra la sección horizontalmente */
     padding: 0 160px; /* Espaciado a los lados */
     box-sizing: border-box; /* Incluir el padding en el ancho total */
 }

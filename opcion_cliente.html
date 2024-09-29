@@ -8,33 +8,32 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        // Cargar el header desde header.html
-        $('header').load('header.html');
-        // Cargar el footer desde footer.html
-        $('footer').load('footer.html');
-      });
-    </script>
-
+  <script>
+    $(document).ready(function () {
+      // Cargar el header desde header.html
+      $('header').load('header.html');
+      // Cargar el footer desde footer.html
+      $('footer').load('footer.html');
+    });
+  </script>
 </head>
 
 <body>
-    <header></header>
-    <div class="menu-container">
-      <section class="menu-content">
-        <h1 class="menu-title">Menú de opción</h1>
-        <p class="menu-subtitle">Accede a tu rutina</p>
-      </section>
+  <header></header>
+  <div class="menu-container">
+    <section class="menu-content">
+      <h1 class="menu-title">Menú de opción</h1>
+      <p class="menu-subtitle">Accede a tu rutina</p>
+    </section>
 
-      <div class="card-container">
-        <div class="card">
-            <img src="img/Carlos.png" alt="Rutina" width="300">
-            <h3>Rutina</h3>
-            <p>Aquí encuentras las rutinas de ejercicios personalizados recomendados por tu entrenador</p>
-        </div>
-      </div>
+    <div class="card-container">
+      <a href="Rutina.html" class="card"> <!-- Envolviendo la tarjeta en un <a> -->
+        <img src="img/Carlos.png" alt="Rutina" width="300">
+        <h3>Rutina</h3>
+        <p>Aquí encuentras las rutinas de ejercicios personalizados recomendados por tu entrenador</p>
+      </a>
     </div>
+  </div>
   <footer></footer>
 </body>
 </html>
