@@ -67,13 +67,13 @@
     width: fit-content; /* Ajusta el tamaño del botón al contenido */
 }
 
-.crear
-{
-    display: inline-flex;
+.crear {
+    display: none;
     justify-content: flex-end;
     align-items: center;
     gap: 17px;
 }
+
 .frame {
     display: flex;
     background: url('img/img_sentadilla (2).png') lightgray 50% / cover no-repeat;
@@ -138,7 +138,7 @@ b{
     gap: 80px;
 }
 .modal{
-    display: flex;
+    display:none;
     width: 372px;
     height: 146px;
     flex-direction: column;
@@ -210,9 +210,6 @@ b{
         width: 100%;
     }
 
-    h1 {
-        font-size: 38px; /* Ajuste del tamaño para mantener legibilidad sin causar desbordes */
-    }
 
     h1, .meet-section h2 {
         width: 100%;
@@ -232,7 +229,7 @@ b{
     }
 
     .crear {
-        display: flex;
+        display: none ;
         flex-direction: column;
         align-items: center;
         padding: 10px; /* Ajuste de padding para una mejor presentación */
@@ -252,6 +249,7 @@ b{
     }
 
     .modal {
+        display:none;
         width: 75%; /* Ajuste del ancho para que encaje mejor en pantallas medianas */
         padding: 12px;
         border-radius: 10px;
@@ -293,15 +291,13 @@ b{
         box-sizing: border-box;
         width: 100%;
     }
-    h1{
-        font-size: 35px;
-    }
 
-    h1, .meet-section h2 {
-        width: 100%; /* Ajuste del ancho al 100% para evitar desbordamientos */
+    h1.meet-section h2 {
+        width: 100%;
         text-align: center;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        font-size: 35px; /* Ajuste de tamaño para dispositivos móviles */
     }
 
     .dias-container {
@@ -315,7 +311,7 @@ b{
     }
 
     .crear {
-        display: flex;
+        display: none; 
         flex-direction: column;
         align-items: center;
         padding: 8px; /* Añadido padding para darle un espacio más uniforme */
