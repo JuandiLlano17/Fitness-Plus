@@ -129,13 +129,13 @@ body{
 
 
 .why-us {
-    width: 100%;
-    margin: 0px auto;
+    width: 90%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 39px;
-    padding: 0 260px; /* Espaciado a los lados */
+    padding: 0 160px; /* Espaciado a los lados */
     box-sizing: border-box; /* Incluir el padding en el ancho total */
 }
 
@@ -151,7 +151,6 @@ body{
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-    gap: 48px;
 }
 
 .why-us h2 {
@@ -165,6 +164,7 @@ body{
 }
 
 .titulo.why-us{
+    padding: 0;
     text-align: center;
     color: #0D0B0B;
     font-size: 24px;
@@ -209,12 +209,9 @@ body{
 /* Imágenes en la sección */
 .why-us img {
     justify-content: center;
-
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100%;
-
+    width: 60%;
     max-height: 400px;
     object-fit: cover;
 }
@@ -259,8 +256,8 @@ body{
 .trainer-cards {
     display: flex;
     justify-content:space-evenly;
-    padding: 0 148px; /* Espaciado a los lados */
     box-sizing: border-box; /* Incluir el padding en el ancho total */
+    margin-bottom: 36px;
 }
 
 .trainer-card {
@@ -269,8 +266,8 @@ body{
 }
 
 .trainer-card img {
-    width: 292px; /* Ajusta según sea necesario */
-    height: 395px; /* Ajusta según sea necesario */
+    width: 250px; /* Ajusta según sea necesario */
+    aspect-ratio: 3/4;
     transition: filter 0.3s ease;
 }
 
@@ -382,6 +379,10 @@ body{
     }
 
     .why-us {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
         padding: 0 30px;
     }
     .why-us h2 {
@@ -391,11 +392,12 @@ body{
     }
 
     .titulo.why-us {
-        padding: 0;
+        padding: 0 48px;
         font-size: 20px; /* Reducir tamaño de fuente */
     }
 
     .why-content {
+
         flex-direction: column; /* Cambiar a columna */
         align-items: center; /* Centrar contenido */
         gap: 20px; /* Reducir espacio entre elementos */
@@ -514,6 +516,7 @@ body{
     }
 
     .why-content {
+        width: 70%;
         flex-direction: column; /* Cambiar a columna */
         align-items: center; /* Centrar contenido */
         gap: 20px; /* Reducir espacio entre elementos */
@@ -523,18 +526,21 @@ body{
         max-width: 45%; /* Ajustar ancho de beneficios en pantallas medianas */
     }
 
+    .trainers{
+        padding: 38px 0 38px 0;
+    }
     .trainer-cards {
+        padding: 0;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Espaciado de tarjetas */
+        justify-content: space-around; /* Espaciado de tarjetas */
         align-items: center;
     }
 
     .trainer-card {
-        width: 45%; /* Ajustar el ancho de las tarjetas */
-        margin-bottom: 20px; /* Espacio entre tarjetas */
+        width: 30%; /* Ajustar el ancho de las tarjetas */
     }
 
+    
 
     .join-us {
         flex-direction: column; /* Cambia a columna */
