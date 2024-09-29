@@ -140,6 +140,15 @@
     height: 350px;
 }
 
+.exerciseVenta{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+        gap: 30px; /* Espacio entre las tarjetas */
+        padding: 10px; /* Añade un poco de padding para margen interior */   
+        align-items: center; /* Centra los elementos horizontalmente */
+}
+
 /* Estilos para pantallas de 1025px */
 @media screen and (max-width: 1025px) {
     .routine-header {
@@ -167,6 +176,18 @@
         padding: 5px;
         width: 100%;
     }
+
+    .exerciseVenta{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra el contenido dentro del contenedor */
+        justify-content: center;
+        margin-left: 2px; /* Añade espacio si es necesario */
+        gap: 20px;
+        padding: 5px;
+        width: 100%;
+    }
+
     .ejercicios{
         display: flex;
         flex-direction: row;
@@ -213,6 +234,14 @@
     }
 
     .exercise {
+        display: flex;
+        align-items: center; /* Centra el contenido dentro del contenedor */
+        justify-content: center;
+        padding: 5px;
+
+    }
+
+    .exerciseVenta {
         display: flex;
         align-items: center; /* Centra el contenido dentro del contenedor */
         justify-content: center;
