@@ -3,13 +3,12 @@
 .header {
   padding: 2px 48px;
   position: fixed;
-  margin: 0 auto; /* Centrado automático */
+  margin: 0 auto;
   top: 0;
-  left: 0; /* Cambia para que se alinee con el borde izquierdo */
-  right: 0; /* Añade para que se alinee con el borde derecho */
-  transform: none; /* Elimina el centrado basado en transform */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: none; /* Elimina la limitación del ancho máximo */
+  left: 0;
+  right: 0;
+  width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+  max-width: 100%; /* Evita que el header sea más ancho que la pantalla */
   height: 100px;
   background-color: #0D1F60;
   border-bottom: 4px solid #0D1F60;
@@ -18,7 +17,15 @@
   align-items: center;
   z-index: 1000;
   box-sizing: border-box;
+  overflow-x: hidden; /* Previene el desplazamiento lateral */
 }
+
+.logo-container img {
+  max-width: 100px; /* Asegura que el logo no se agrande demasiado */
+  width: 100%;
+  height: auto;
+}
+
 
 
 label{
@@ -135,20 +142,47 @@ label{
 .yellow-btn:hover img, .white-btn:hover img {
   fill: #FCD23B;
 }
-@media (max-width: 425px) {
+
+.menu {
+  display: flex; /* Mantén visible en pantallas grandes */
+}
+
+/* Estilos del menú desplegable */
+.mobile-menu {
+  display: none; /* Ocultar menú móvil por defecto */
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 769px) {
 
   /* Header */
   .header {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 0px;
     height: auto;
     display: flex;
     flex-direction: row; /* Mantén los elementos en una fila */
-    justify-content: space-between; /* Distribuye los elementos uniformemente */
+    justify-content: space-around; /* Distribuye los elementos entre los bordes */
     align-items: center;
     background-color: #0D1F60;
-    gap: 2px; /* Espacio exacto de 2px entre los elementos */
+    gap: 5px; /* Espacio entre los elementos */
     flex-wrap: nowrap; /* Evita que los elementos se envuelvan */
+    z-index: 100;
+  }
+
+  /* Botón de menú hamburguesa antes del logo */
+  .menu-toggle {
+    padding-left: 5px;
+    display: block;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
   }
 
   /* Logo */
@@ -157,17 +191,24 @@ label{
     align-items: center;
     flex-shrink: 0; /* No permite que el logo se reduzca */
     gap: 0;
-}
-
+  }
 
   .logo-container img {
-    width: 35px;
-    height: 35px;
+    padding-left: 10px;
+    max-width: 35px;
+    width: 100%;
+    height: auto;
+  }
+
+  .logo-title-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
   }
 
   /* Label dentro del header */
   .header label {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -176,22 +217,58 @@ label{
 
   /* Navegación */
   .nav {
-    display: flex;
-    gap: 2px; /* Espacio exacto de 2px entre los enlaces */
-    flex-shrink: 1; /* Permite que la navegación se reduzca si es necesario */
-    justify-content: center; /* Centra los enlaces */
+    display: none; /* Ocultar el menú horizontal en pantallas pequeñas */
+  }
+
+  /* Menú de hamburguesa desplegable */
+  .mobile-menu {
+    position: absolute;
+    top: 60px; /* Ajusta la posición para que quede bien alineado debajo del header */
+    right: 0;
+    width: 100%;
+    background-color: #0D1F60;
+    z-index: 2000;
+    display: none; /* Ocultar por defecto */
+    text-align: center;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-menu li {
+    margin-bottom: 10px;
+  }
+
+  .mobile-menu a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .mobile-menu a:hover {
+    color: #FCD23B;
   }
 
   .nav ul {
-    display: flex;
-    gap: 2px; /* Espacio exacto de 2px entre los elementos de la lista */
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    position: absolute;
+    top: 100px; /* Ajusta esta propiedad para que el menú se despliegue más abajo */
+    right: 0;
+    background-color: #0D1F60;
+    width: 100%;
+    text-align: center;
+    z-index: 999; /* Asegura que el menú esté por encima de otros elementos */
+  }
+
+  .nav ul li {
+    display: block;
+    padding: 10px 0;
   }
 
   .nav a {
-    font-size: 12px;
+    font-size: 8px;
     color: white;
     text-decoration: none;
     white-space: nowrap; /* Evita que los enlaces se dividan en varias líneas */
@@ -206,45 +283,172 @@ label{
   }
 
   .auth-buttons a, .auth-buttons button {
-    font-size: 12px;
+    font-size: 10px;
     padding: 5px 10px; /* Ajusta el padding para hacer los botones más pequeños */
     text-align: center;
     white-space: nowrap; /* Evita que el texto dentro de los botones se divida */
   }
 
-  /* Ajustes generales */
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Evitar el desplazamiento lateral */
+  /* Ocultar los iconos dentro de los botones de autenticación */
+  .auth-buttons a img {
+    display: none;
   }
-
 }
-
-@media (min-width: 501px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* Header */
   .header {
     padding: 10px 20px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D1F60;
+    gap: 5px; /* Espacio entre los elementos */
   }
 
+  /* Botón de menú hamburguesa a la izquierda */
+  .menu-toggle {
+    display: block; /* Asegura que el botón de hamburguesa sea visible */
+    padding-left: 5px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px; /* Ajusta el espacio entre el botón y el logo */
+  }
+
+  /* Logo */
   .logo-container img {
-    width: 60px;
-    height: 60px;
+    max-width: 60px;
+    width: 100%;
+    height: auto;
   }
 
-  .header label {
-    font-size: 24px;
+  /* Navegación */
+  .nav {
+    display: flex; /* Mostrar menú horizontal */
+    position: relative; /* Para el menú desplegable */
+  }
+
+  /* Mostrar menú desplegable cuando se active */
+  .mobile-menu {
+    display: none; /* Mantén oculto por defecto */
+  }
+
+  /* Estilos generales */
+  .auth-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+  }
+
+  .auth-buttons a {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  /* Estilos del menú desplegable */
+  .nav > ul {
+    display: none; /* Mantener oculto por defecto */
+    position: absolute;
+    top: 100%; /* Ajustar la posición para que quede justo debajo del header */
+    right: 0;
+    background-color: #0D1F60; /* Fondo del menú desplegable */
+    width: 100%;
+    z-index: 999; /* Asegura que el menú esté por encima de otros elementos */
+    padding: 10px 0; /* Añadir espacio interno */
+    border-radius: 4px; /* Bordes redondeados */
+    list-style: none; /* Eliminar puntos de la lista */
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar relleno */
+  }
+
+  /* Mostrar el menú al hacer clic en el botón de hamburguesa */
+  .menu-toggle.active + .mobile-menu {
+    display: block; /* Mostrar el menú */
+  }
+
+  .nav > ul li {
+    padding: 10px 20px; /* Espacio interno de cada elemento de la lista */
+    margin: 0; /* Eliminar márgenes */
+  }
+
+  .nav a {
+    font-size: 16px;
+    color: white;
+    white-space: nowrap; /* Evita que los enlaces se dividan en varias líneas */
+    display: block; /* Asegura que los enlaces ocupen todo el espacio */
+    text-decoration: none; /* Sin subrayado */
+  }
+
+  /* Hover del menú desplegable */
+  .nav a:hover {
+    background-color: #FCD23B; /* Cambia el fondo al pasar el mouse */
+    color: black; /* Cambia el color del texto al pasar el mouse */
+  }
+}
+
+
+
+
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+
+  /* Header */
+  .header {
+    padding: 15px 40px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D1F60;
+    gap: 5px; /* Espacio entre los elementos */
+  }
+
+  /* Ocultar el botón de menú hamburguesa */
+  .menu-toggle {
+    display: none; /* Se oculta el botón de hamburguesa */
+  }
+
+  /* Mostrar el menú de navegación */
+  .nav {
+    display: flex; /* Muestra el menú horizontalmente */
+  }
+
+  /* Ajustar el tamaño del logo */
+  .logo-container img {
+    max-width: 80px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Navegación */
+  .nav ul {
+    display: flex;
+    gap: 30px; /* Espacio entre los elementos del menú */
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 
   .nav a {
     font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Hover del menú de navegación */
+  .nav a:hover {
+    color: #FCD23B; /* Cambia el color al pasar el mouse */
+  }
+
+  /* Botones de autenticación */
+  .auth-buttons {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
   }
 
   .auth-buttons a {
     font-size: 14px;
-    padding: 12px 18px;
+    padding: 12px 20px;
   }
 }
-
-
-
-
