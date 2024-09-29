@@ -9,7 +9,7 @@ meet h1  {
   margin-top: 100px; /* revisar */
   width: 1095px;
   height: 700px;
-  margin: 80px; /* Centra el contenedor en la página */
+  margin: 40px; /* Centra el contenedor en la página */
   padding: 50px;
   background: linear-gradient(180deg, #C4C4C4 10%, #7D8AD0 60%, #162B95 100%);
   border-radius: 135px;
