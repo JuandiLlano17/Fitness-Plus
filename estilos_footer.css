@@ -1,29 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
-
-label{
-    font-weight: 700;
-    font-size: 36px;
-    letter-spacing: 0px;
-    line-height: 66px;
-    font-style: normal;
-    color: #fff;
-}
-.footer { 
-  width: 1280px; /* Limita el ancho máximo */
-  padding: 48px 135px 24px 135px; /* Espaciado interno */
-  background: #0D1F60;
+/* Estilos generales para el footer */
+.footer {
+  width: 100%; /* Asegura que el footer ocupe todo el ancho de la página */
+  background-color: #0D1F60; /* Color de fondo del footer */
+  padding: 48px 0; /* Padding para agregar espacio alrededor de los elementos */
   border-top: 5px solid white;
   color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 36px;
-  margin-top: auto; /* Empuja el footer hacia abajo si el contenido es corto */
 }
 
+/* Contenedor dentro del footer */
+.footer-container {
+  max-width: 100%; /* Ancho máximo para el contenido */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  display: flex; /* Utiliza flexbox para alinear los elementos */
+  justify-content:space-around; /* Distribuye los elementos de manera uniforme */
+  align-items: flex-start; /* Alinea los elementos verticalmente */
+  padding: 0 20px; /* Espaciado lateral interno */
+}
 
+/* Logo y descripción */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -36,11 +30,11 @@ label{
   object-fit: contain;
 }
 
-.logoydesc{
-  width: 330px;
+.logoydesc {
+  width: 330px; /* Ancho fijo para pantallas grandes */
 }
 
-
+/* Menú del footer */
 .footer-menu, .footer-social {
   display: flex;
   flex-direction: column;
@@ -70,101 +64,63 @@ label{
   transition: color 0.3s;
 }
 
-
 .footer-menu a:hover, .footer-social a:hover {
-  color: #FFCC00; /* Cambia el color al pasar el mouse */
+  color: #FFCC00;
 }
 
-/* ADAPTATIVO*/
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  .footer {
-    padding: 40px 80px; /* Reduce el padding */
-    gap: 24px;
-  }
-
-  .footer-logo, .footer-menu, .footer-social {
-    flex: 1 1 45%; /* Las columnas ocupan el 45% del ancho cada una */
+/* Media Query para pantallas menores a 425px */
+@media (max-width: 425px) {
+  .footer-container {
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    align-items: center; /* Centra los elementos */
+    justify-content: space-around; /* Distribuye los elementos de manera uniforme */
+    padding: 20px; /* Reduce el padding para un mejor ajuste */
   }
 
   .logoydesc {
-    max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  }
-}
-
-/* Media Queries para pantallas medianas (768px a 1023px) */
-@media screen and (max-width: 1023px) {
-  .footer {
-    padding: 40px 20px;
-    gap: 24px;
+    width: 100%; /* Asegura que el logo y descripción ocupen todo el ancho */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio entre el logo y el menú */
   }
 
-  .footer-logo, .footer-menu, .footer-social {
-    flex: 1 1 100%; /* Los elementos ocupan el 100% del ancho */
-    margin-bottom: 20px; /* Añade margen inferior entre las columnas */
+  .footer-menu, .footer-social {
+    width: 100%; /* Asegura que el menú y redes sociales ocupen todo el ancho */
+    align-items: center; /* Centra los elementos dentro de cada sección */
+    text-align: center; /* Centra el texto dentro de los elementos */
   }
 
-  .footer-menu ul, .footer-social ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  .footer-menu h3, .footer-social h3 {
+    font-size: 20px; /* Reduce el tamaño de fuente */
   }
 
   .footer-menu li, .footer-social li {
-    font-size: 18px; /* Ajusta el tamaño de fuente para pantallas medianas */
+    font-size: 16px; /* Reduce el tamaño de fuente */
   }
 }
 
-/* Media Queries para pantallas pequeñas (431px a 767px) */
-@media screen and (max-width: 767px) {
-  .footer {
-    padding: 30px 15px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Media Query para pantallas entre 425px y 1200px */
+@media (min-width: 426px) and (max-width: 1200px) {
+  .footer-container {
+    flex-direction: row; /* Mantiene la dirección del flex en fila */
+    justify-content: space-around; /* Distribuye los elementos de manera uniforme */
+    padding: 20px; /* Ajusta el padding para un mejor ajuste */
   }
 
-  .footer-logo, .footer-menu, .footer-social {
-    flex: 1 1 100%; /* Los elementos ocupan todo el ancho disponible */
-    margin-bottom: 15px; /* Menor margen inferior */
+  .logoydesc {
+    width: 330px; /* Permite que el ancho se ajuste automáticamente */
+    text-align: left; /* Alinea el texto a la izquierda */
   }
 
-  .footer-menu ul, .footer-social ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+  .footer-menu, .footer-social {
+    width: auto; /* Permite que el ancho se ajuste automáticamente */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+
+  .footer-menu h3, .footer-social h3 {
+    font-size: 22px; /* Tamaño de fuente ajustado */
   }
 
   .footer-menu li, .footer-social li {
-    font-size: 16px; /* Reduce ligeramente el tamaño de fuente */
+    font-size: 18px; /* Tamaño de fuente ajustado */
   }
 }
-
-
-@media screen and (max-width: 430px) {
-  .footer {
-    padding: 10px 5px; /* Reduce el padding del footer */
-    gap: 5px; /* Reduce el espacio entre los elementos del footer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Asegúrate de que ocupe el 100% del ancho de la pantalla */
-    position: relative; /* Asegura que el footer no sea fijo */
-  }
-
-  .footer-logo img {
-    width: 30px; /* Reduce aún más el tamaño del logo */
-    height: 30px;
-  }
-
-  .footer-menu li, .footer-social li {
-    font-size: 12px; /* Reduce el tamaño de fuente para pantallas pequeñas */
-  }
-
-  .footer-menu ul, .footer-social ul {
-    gap: 3px; /* Reduce el espacio entre los elementos del menú */
-  }
-}
-

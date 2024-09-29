@@ -2,21 +2,24 @@
 
 .header {
   padding: 2px 48px;
-  position: fixed; /* Mantiene el header fijo en la parte superior */
-  top: 0; /* Coloca el header en la parte superior */
-  left: 50%; /* Centra horizontalmente */
-  transform: translateX(-50%); /* Ajusta el centrado */
-  width: calc(100% - 160px); /* Ancho total menos márgenes (80px a cada lado) */
-  max-width: 1280px; /* Ancho máximo del header */
-  height: 100px; /* Altura del header */
+  position: fixed;
+  margin: 0 auto; /* Centrado automático */
+  top: 0;
+  left: 0; /* Cambia para que se alinee con el borde izquierdo */
+  right: 0; /* Añade para que se alinee con el borde derecho */
+  transform: none; /* Elimina el centrado basado en transform */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: none; /* Elimina la limitación del ancho máximo */
+  height: 100px;
   background-color: #0D1F60;
   border-bottom: 4px solid #0D1F60;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
-  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+  z-index: 1000;
+  box-sizing: border-box;
 }
+
 
 label{
   font-family: "Montserrat", Helvetica;
@@ -36,7 +39,9 @@ label{
 }
 
 .logo-container img {
-  width: 100%; /* Ajusta el tamaño según sea necesario */
+  width: 100% !important;  /* Ajusta el tamaño según sea necesario */
+  max-width: 120px;
+  height: auto!important;
   object-fit: contain; /* Mantiene la proporción de la imagen */
 }
 
@@ -130,7 +135,7 @@ label{
 .yellow-btn:hover img, .white-btn:hover img {
   fill: #FCD23B;
 }
-@media (max-width: 431px) {
+@media (max-width: 425px) {
 
   /* Header */
   .header {
@@ -162,7 +167,7 @@ label{
 
   /* Label dentro del header */
   .header label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: white;
     text-align: center;
@@ -216,6 +221,29 @@ label{
 
 }
 
+@media (min-width: 501px) and (max-width: 1200px) {
+  .header {
+    padding: 10px 20px;
+  }
+
+  .logo-container img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header label {
+    font-size: 24px;
+  }
+
+  .nav a {
+    font-size: 18px;
+  }
+
+  .auth-buttons a {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+}
 
 
 

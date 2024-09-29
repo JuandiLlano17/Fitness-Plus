@@ -1,3 +1,4 @@
+/* General Styles */
 .logos-icon {
   width: 43px; /* Ajusta el tamaño según lo que necesites */
   height: 50px; /* Mantiene la proporción del icono */
@@ -7,79 +8,152 @@
   bottom: 45px;
 }
 
-.cliente{
-    margin-top: 50px; /* Ajusta según la altura de tu header */
-    display: flex;
-    flex-direction: row;
-    justify-content: center; /* Espacio uniforme entre las tarjetas */
-    gap:600px; /* Espacio entre las tarjetas */
-    align-items: center; /* Centra los elementos horizontalmente */
+.cliente {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap:600px; /* Espacio entre las tarjetas */
+}
+
+.logos-icon {
+  width: 43px;
+  height: 50px;
+  object-fit: contain;
+  position: relative;
 }
 
 .parte1 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-    gap: 50px; /* Espacio entre las tarjetas */
-    padding: 0px; /* Añade un poco de padding para margen interior */
-    align-items: center; /* Centra los elementos horizontalmente */
-  }
-  
- .tablita {
-
-    max-width: 300px; /* Ajusta según tus necesidades */
-    padding: 10px 50px;
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    overflow: hidden; /* Si el contenido excede la altura, se oculta */
-    align-items: center; /* Centra los elementos horizontalmente */
-    
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 0px;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.nombre-cliente h2{
-font-weight: bold;
+.tablita {
+  max-width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cliente-info {
-  padding: 50px; /* Espacio interno */
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra horizontalmente el contenido */
-  background: white; /* Fondo blanco */
-  margin: 5px; /* Margen exterior */
-  width: 300px; /* Ancho ajustado */
-  height: 300px; /* Altura ajustada */
+  align-items: center;
+  background: white;
+  margin-top: 20px;
+  width: 100%;
+  height: 300px;
 }
 
 .info-item p {
-  margin: 20px 0px; /* Espaciado superior e inferior */
+  margin: 10px 0;
 }
-
 
 .cara {
-  display: flex; /* Asegura que las figuras estén en una fila */
-  gap: 20px; /* Espacio entre las figuras */
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.cara figure{
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  margin: 0 auto;
-  gap: 23px;
+.cara figure {
   border: none;
-  border-radius: 100%; /* Esto hace que el botón sea redondo */
-  font-size: 18px;
-  text-align: center;
-  line-height: 50px; /* Para centrar el contenido verticalmente */
+  border-radius: 50%;
   cursor: pointer;
 }
-  
-  .button-group1 {
-    display: flex;
+
+.button-group1 {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nombre-cliente h2 {
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Responsive for 1025px */
+@media (max-width: 1025px) {
+  .cliente {
     flex-direction: row;
-    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Añade un poco de padding para margen interior */
+    gap: 250px;
   }
+
+  .parte1 {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .tablita {
+    max-width: 280px;
+  }
+
+  .cliente-info {
+    height: 280px;
+  }
+
+  .button-group1 {
+    justify-content: center;
+  }
+
+  .cara figure img {
+    width: 50px;
+  }
+}
+
+/* Responsive for 431px */
+@media (max-width: 431px) {
+  .cliente {
+    flex-direction: row;
+    gap: 200px;
+  }
+
+  
+  .parte1 {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tablita {
+    max-width: 240px;
+  }
+
+  .cliente-info {
+    height: 260px;
+  }
+
+  .button-group1 {
+
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .cara figure img {
+    width: 40px;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
