@@ -54,10 +54,19 @@
 @media screen and (max-width: 1025px) {
 
     .inicio-img img{
-        width: 100%;
+        width: 90%;
         height: 507px;
         object-fit: cover;
     }
+    .inicio-img {
+        display: flex; /* Añadir flex para permitir centrar el contenido */
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 37px;
+        overflow: hidden; /* Asegura que el contenido no se desborde */
+    }    
     .ini-sesion {
         display: flex;
         width: 100%;
@@ -96,13 +105,20 @@
     h1{
         font-size: 48px;
     }
-
-
     .inicio-img img{
-        width: 100%;
+        width: 90%;
         height: 507px;
         object-fit: cover;
     }
+    .inicio-img {
+        display: flex; /* Añadir flex para permitir centrar el contenido */
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        margin-top: 37px;
+    }    
     .ini-sesion {
         display: flex;
         width: 100%;
