@@ -139,6 +139,7 @@ b{
 }
 .modal{
     display:none;
+    position: absolute;
     width: 372px;
     height: 146px;
     flex-direction: column;
@@ -151,7 +152,6 @@ b{
 .modal-content{
     display: flex;
     color: #000;
-    display: flex;
     font-family: Montserrat;
     font-size: 20px;
     font-style: normal;
@@ -180,6 +180,23 @@ b{
     border: 1px solid transparent;
     box-sizing: border-box;
     border: 1px solid #ccc;
+}
+.exercise-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center; /* Alinear los elementos en la parte superior */
+    justify-content: space-between; /* Espaciado entre el botón + y el modal */
+    gap: 20px; /* Espacio entre el botón + y el modal */
+}
+.overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    z-index: 1000; /* Justo debajo del modal */
 }
 @media (min-width: 481px) and (max-width: 768px) {
     .editar-ejercicios {
@@ -259,6 +276,7 @@ b{
         font-size: 15px; /* Tamaño ajustado para mantener legibilidad sin causar desbordes */
         gap: 10px;
     }
+    
 }
 
 
