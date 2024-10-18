@@ -68,6 +68,7 @@
 
 /* Estilos del Modal Cronómetro */
 /* Modal Styling */
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
@@ -87,6 +88,39 @@
     border: 1px solid #888;
     width: 300px;
     text-align: center;
+}
+
+/* Timer Display */
+.tiempo {
+    font-size: 48px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Control Buttons */
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.boton-control {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.boton-control:active {
+    background-color: #444;
 }
 
 
