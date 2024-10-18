@@ -1,148 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rutina</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Archivos CSS -->
-    <link rel="stylesheet" href="estilos_generales.css">
-    <link rel="stylesheet" href="estilo_rutina.css">
+    <link rel="stylesheet" href="estilos_generales.css" />
+    <link rel="stylesheet" href="estilo_rutina.css" />
     <script>
       $(document).ready(function () {
         // Cargar el header desde header.html
-        $('header').load('header.html');
+        $("header").load("header.html");
         // Cargar el footer desde footer.html
-        
+        $("footer").load("footer.html");
         // Evento para abrir el modal del cronómetro
         $(".button-cronometro").on("click", function () {
-            $("#modalCronometro").fadeIn();
+          $("#modalCronometro").fadeIn();
         });
 
         // Evento para cerrar el modal del cronómetro
         $(".close").on("click", function () {
-            $("#modalCronometro").fadeOut();
+          $("#modalCronometro").fadeOut();
         });
       });
-    </script>
-</head><!-- Encabezado -->
+    </script></head
+  ><!-- Encabezado -->
 
-<body>
+  <body>
     <header></header>
 
     <div class="routine-header">
-        <a href="opcion_cliente.html">
-            <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg">
-        </a>
-        <div class="Titulo"> 
-            <h1>Lunes</h1>
-            <h2>Duración de la rutina 2 horas</h2>
+      <a href="opcion_cliente.html">
+        <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg" />
+      </a>
+      <div class="Titulo">
+        <h1>Lunes</h1>
+        <h2>Duración de la rutina 2 horas</h2>
+      </div>
+
+      <section class="exercise">
+        <div class="video-container">
+          <video controls>
+            <source src="Video/20240823_151057000_iOS.MOV" type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
         </div>
 
-        <section class="exercise">
-            <div class="video-container">
-                <video controls>
-                    <source src="Video/20240823_151057000_iOS.MOV" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
+        <article class="exercise-details">
+          <h2>Músculo</h2>
+          <h1>Sentadilla Libre</h1>
+          <ul class="exercise-tips">
+            <li>Toma un peso que puedas cargar sin mucho problema</li>
+            <li>Mantén la barra estable en tu espalda</li>
+            <li>Mantén la espalda recta</li>
+            <li>Baja de forma controlada hasta los 90 grados</li>
+          </ul>
+          <div class="exercise-actions">
+            <button class="button" id="boton-cronometro">Cronómetro</button>
+            <button class="button button-change-exercise">
+              Cambiar Ejercicio
+            </button>
+          </div>
+        </article>
+      </section>
 
-            <article class="exercise-details">
-                <h2>Músculo</h2>
-                <h1>Sentadilla Libre</h1>
-                <ul class="exercise-tips">
-                    <li>Toma un peso que puedas cargar sin mucho problema</li>
-                    <li>Mantén la barra estable en tu espalda</li>
-                    <li>Mantén la espalda recta</li>
-                    <li>Baja de forma controlada hasta los 90 grados</li>
-                </ul>
-                <div class="exercise-actions">
-                    <button class="button" id="boton-cronometro">Cronómetro</button>
-                    <button class="button button-change-exercise">Cambiar Ejercicio</button>
-                </div>
-            </article>
-        </section>
-
-        <section class="exercise1">
-            <div class="video-container1">
-                <video controls>
-                    <source src="Video/20240823_151734000_iOS.MOV" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
-            <div class="exercise-details1">
-                <div class="exercise-category">
-                    <h2>Pectoral</h2>
-                    <h1>Press Inclinado</h1>
-                </div>
-                <ul class="exercise-tips">
-                    <li>Toma un peso que puedas cargar sin mucho problema</li>
-                    <li>Mantén la barra estable en tu espalda</li>
-                    <li>Mantén la espalda recta</li>
-                    <li>Baja de forma controlada hasta los 90 grados</li>
-                </ul>
-                <div class="exercise-actions1">
-                    <button class="button button-cronometro">Cronómetro</button>
-                    <button class="button button-change-exercise">Cambiar Ejercicio</button>
-                </div>
-            </div>         
-        </section>
+      <section class="exercise1">
+        <div class="video-container1">
+          <video controls>
+            <source src="Video/20240823_151734000_iOS.MOV" type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <div class="exercise-details1">
+          <div class="exercise-category">
+            <h2>Pectoral</h2>
+            <h1>Press Inclinado</h1>
+          </div>
+          <ul class="exercise-tips">
+            <li>Toma un peso que puedas cargar sin mucho problema</li>
+            <li>Mantén la barra estable en tu espalda</li>
+            <li>Mantén la espalda recta</li>
+            <li>Baja de forma controlada hasta los 90 grados</li>
+          </ul>
+          <div class="exercise-actions1">
+            <button class="button button-cronometro">Cronómetro</button>
+            <button class="button button-change-exercise">
+              Cambiar Ejercicio
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div class="ejercicios">
-        <div class="buton">
-            <a href="NivelSatisfaccion.html">
-                <span class="button">Calificar Rutina</span>
-            </a>
-        </div>
-        <a href="pagina_principal.html">
-            <div class="buton">
-                <span class="button">Finalizado</span>
-            </div>
+      <div class="buton">
+        <a href="NivelSatisfaccion.html">
+          <span class="button">Calificar Rutina</span>
         </a>
+      </div>
+      <a href="pagina_principal.html">
+        <div class="buton">
+          <span class="button">Finalizado</span>
+        </div>
+      </a>
     </div>
 
     <!-- Modal Cronómetro -->
     <div id="modalCronometro" class="modal">
-        <div class="modal-content">
-            <div class="tiempo">
-                <span id="minutos">00</span>:<span id="segundos">00</span>
-            </div>
-            <div class="controles">
-                <button id="boton-regresar" class="boton-control"><</button>
-                <button id="boton-reiniciar" class="boton-control">&#8634;</button>
-            </div>
+      <div class="modal-content">
+        <div class="tiempo">
+          <span id="minutos">00</span>:<span id="segundos">00</span>
         </div>
+        <div class="controles">
+          <button id="boton-regresar" class="boton-control"><</button>
+          <button id="boton-reiniciar" class="boton-control">&#8634;</button>
+        </div>
+      </div>
     </div>
-    
 
     <!-- Modal Video extra Borrado -->
-        <section class="exerciseVenta">
-            <div class="video-container">
-                <video controls>
-                    <source src="Video\20240823_152007000_iOS.MOV" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
-                    <div class="exercise-details">
-                        <div class="exercise-category">
-                            <h2>Pectoral</h2>
-                            <h1>Press en máquina</h1>
-                        </div>
-                        <ul class="exercise-tips">
-                            <li>Toma un peso que puedas cargar sin mucho problema</li>
-                            <li>Mantén la barra estable en tu espalda</li>
-                            <li>Mantén la espalda recta</li>
-                            <li>Baja de forma controlada hasta los 90 grados</li>
-                        </ul>
-                        <div class="exercise-actions">
-                            <button class="button">Cronómetro</button>
-                            <button class="button">Cambiar Ejercicio</button>
-                        </div>
-                    </div>         
-        </section>
+    <section class="exerciseVenta">
+      <div class="video-container">
+        <video controls>
+          <source src="Video\20240823_152007000_iOS.MOV" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+      <div class="exercise-details">
+        <div class="exercise-category">
+          <h2>Pectoral</h2>
+          <h1>Press en máquina</h1>
+        </div>
+        <ul class="exercise-tips">
+          <li>Toma un peso que puedas cargar sin mucho problema</li>
+          <li>Mantén la barra estable en tu espalda</li>
+          <li>Mantén la espalda recta</li>
+          <li>Baja de forma controlada hasta los 90 grados</li>
+        </ul>
+        <div class="exercise-actions">
+          <button class="button">Cronómetro</button>
+          <button class="button">Cambiar Ejercicio</button>
+        </div>
+      </div>
+    </section>
 
     <script src="Rutina.js"></script>
     <footer></footer>
-</body>
+  </body>
 </html>

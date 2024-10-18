@@ -145,7 +145,7 @@
 
 /* Estilos para pantallas de 1025px */
 @media screen and (max-width: 1025px) {
-  .routine-header {
+    .routine-header {
     display: flex;
     flex-direction: column;
     padding: 0px 0px;
@@ -212,6 +212,7 @@
 
 /* Estilos para pantallas de 431px */
 @media screen and (max-width: 431px) {
+
   .routine-header {
     display: flex;
     flex-direction: column; /* Cambiado a 'row' para que el contenido esté en fila */
