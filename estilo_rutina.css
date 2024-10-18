@@ -67,8 +67,6 @@
 
 
 /* Estilos del Modal Cronómetro */
-/* Modal Styling */
-/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
@@ -122,10 +120,6 @@
 .boton-control:active {
     background-color: #444;
 }
-
-
-
-
 
 
 /* Estilos para el video */

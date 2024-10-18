@@ -44,3 +44,31 @@ $(document).ready(function () {
         iniciarCuentaRegresiva(); // Reiniciar la cuenta regresiva desde 60
     }
 });
+
+// Evento para cambiar ejercicio
+$(".button-change-exercise").on("click", function () {
+    // Cambiar el contenido de la sección exercise con nuevo contenido
+    $(".exercise").html(`
+        <div class="video-container">
+            <video controls>
+                <source src="Video/20240823_152007000_iOS.MOV" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+
+        <article class="exercise-details">
+            <h2>Pectoral</h2>
+            <h1>Press en máquina</h1>
+            <ul class="exercise-tips">
+                <li>Toma un peso que puedas cargar sin mucho problema</li>
+                <li>Mantén la barra estable en tu espalda</li>
+                <li>Mantén la espalda recta</li>
+                <li>Baja de forma controlada hasta los 90 grados</li>
+            </ul>
+            <div class="exercise-actions">
+                <button class="button button-cronometro">Cronómetro</button>
+                <button class="button button-change-exercise">Cambiar Ejercicio</button>
+            </div>
+        </article>
+    `);
+});
