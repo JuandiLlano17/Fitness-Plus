@@ -1,44 +1,46 @@
-// Variables para el cronómetro
-let tiempo = 0;
+let segundos = 60;
 let intervalo;
-let iniciado = false;
 
-// Elementos del cronómetro en el DOM
-const displayTiempo = document.querySelector('.tiempo');
-const botonIniciar = document.getElementById('boton-iniciar');
-const botonReiniciar = document.getElementById('boton-reiniciar');
+$(document).ready(function () {
+    // Mostrar el modal del cronómetro cuando se hace clic en el botón de apertura (puedes ajustarlo según el botón que quieras usar)
+    $('#boton-cronometro').on('click', function () {
+        $('#modalCronometro').css('display', 'block');
+        iniciarCuentaRegresiva();
+    });
 
-// Función para actualizar el cronómetro en pantalla
-function actualizarDisplay() {
-  let segundos = tiempo % 60;
-  let minutos = Math.floor(tiempo / 60);
+    // Botón de regresar (cierra el cronómetro)
+    $('#boton-regresar').on('click', function () {
+        $('#modalCronometro').css('display', 'none');
+        clearInterval(intervalo); // Detener la cuenta regresiva cuando se cierra la ventana
+    });
 
-  // Formatear los minutos y segundos para mostrar siempre dos dígitos
-  displayTiempo.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-}
+    // Botón de reiniciar la cuenta regresiva
+    $('#boton-reiniciar').on('click', function () {
+        reiniciarCuentaRegresiva();
+    });
 
-// Función para iniciar o pausar el cronómetro
-function iniciarCronometro() {
-  if (!iniciado) {
-    intervalo = setInterval(() => {
-      tiempo++;
-      actualizarDisplay();
-    }, 1000);
-    iniciado = true;
-  } else {
-    clearInterval(intervalo);
-    iniciado = false;
-  }
-}
+    // Función para iniciar la cuenta regresiva
+    function iniciarCuentaRegresiva() {
+        segundos = 60; // Restablecer a 60 segundos
+        clearInterval(intervalo); // Asegurarse de no tener múltiples intervalos
+        intervalo = setInterval(actualizarCuentaRegresiva, 1000);
+    }
 
-// Función para reiniciar el cronómetro
-function reiniciarCronometro() {
-  clearInterval(intervalo);
-  tiempo = 0;
-  iniciado = false;
-  actualizarDisplay();
-}
+    // Función para actualizar los segundos
+    function actualizarCuentaRegresiva() {
+        if (segundos > 0) {
+            segundos--;
+            $('#segundos').text(segundos.toString().padStart(2, '0'));
+        } else {
+            clearInterval(intervalo); // Detener la cuenta regresiva cuando llega a 0
+        }
+    }
 
-// Event listeners para los botones
-botonIniciar.addEventListener('click', iniciarCronometro);
-botonReiniciar.addEventListener('click', reiniciarCronometro);
+    // Función para reiniciar la cuenta regresiva
+    function reiniciarCuentaRegresiva() {
+        clearInterval(intervalo);
+        segundos = 60;
+        $('#segundos').text('60');
+        iniciarCuentaRegresiva(); // Reiniciar la cuenta regresiva desde 60
+    }
+});
