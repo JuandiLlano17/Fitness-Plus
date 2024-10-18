@@ -81,4 +81,18 @@ $(document).ready(function () {
       `);
     }
   });
+
+  $(document).ready(function () {
+    // Mostrar modal al hacer clic en el botón de finalizado
+    $("#boton-finalizado").on("click", function () {
+      $("#modalSatisfaccion").fadeIn();
+    });
+  
+    // Redirigir a la página principal al hacer clic en el botón de salir
+    $("#boton-salir").on("click", function () {
+      window.location.href = "index.html";  // Redirige a la página iden.html
+    });
+  });
+  
+
 });

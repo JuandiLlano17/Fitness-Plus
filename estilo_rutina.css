@@ -89,7 +89,35 @@
   width: 300px;
   text-align: center;
 }
+.modal1 {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    color: #fff;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
 
+.modal-content1 {
+  background: linear-gradient(to bottom, #0d1f60, #7991E8); /* Degradado de azul a morado */
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 50px;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  
 /* Timer Display */
 .tiempo {
   font-size: 48px;
