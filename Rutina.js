@@ -1,11 +1,12 @@
 let segundos = 60;
 let intervalo;
+let ejercicioAnterior = ""; // Variable global para almacenar el ejercicio anterior
 
 $(document).ready(function () {
   // Mostrar el modal del cronómetro cuando se hace clic en el botón de apertura
   $(document).on("click", ".button-cronometro", function () {
     $("#modalCronometro").css("display", "block");
-    iniciarCuentaRegresiva();
+    iniciarCuentaRegresiva(); // Iniciar la cuenta regresiva cuando se abre el cronómetro
   });
 
   // Botón de regresar (cierra el cronómetro)
@@ -46,7 +47,16 @@ $(document).ready(function () {
 
   // Evento para cambiar ejercicio
   $(document).on("click", ".button-change-exercise", function () {
-    $(".exercise1").html(`
+    // Si hay un ejercicio anterior guardado, se restaura
+    if (ejercicioAnterior !== "") {
+      $(".exercise1").html(ejercicioAnterior);
+      ejercicioAnterior = ""; // Reseteamos el valor una vez restaurado
+    } else {
+      // Guardar el contenido actual del ejercicio antes de cambiar
+      ejercicioAnterior = $(".exercise1").html();
+
+      // Cambiar el contenido del ejercicio
+      $(".exercise1").html(`
         <div class="video-container">
             <video controls>
                 <source src="Video/20240823_152007000_iOS.MOV" type="video/mp4">
@@ -68,6 +78,7 @@ $(document).ready(function () {
                 <button class="button button-change-exercise">Cambiar Ejercicio</button>
             </div>
         </article>
-    `);
+      `);
+    }
   });
 });
