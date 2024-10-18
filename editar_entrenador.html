@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar ejercicios</title>
-    <!-- Archivos CSS -->
-    <link rel="stylesheet" href="estilos_generales.css">
-    <link rel="stylesheet" href="estilos_editar_entrenador.css">
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-     $(document).ready(function () {
-        // Cargar el header desde header.html
-        $('header').load('header.html');
-        // Cargar el footer desde footer.html
-        $('footer').load('footer.html');
-      });
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar ejercicios</title>
+        <!-- Archivos CSS -->
+        <link rel="stylesheet" href="estilos_generales.css">
+        <link rel="stylesheet" href="estilos_editar_entrenador.css">
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+        <script>
+            $(document).ready(function () {
+                // Cargar el header desde header.html
+                $('header').load('header.html');
+                $('footer').load('footer.html');
+            }); 
+        </script>
+    </head>
 <body>
     <header></header>
 
@@ -36,6 +35,9 @@
                     <h2 class="dia">Miércoles</h2>
                     <h2 class="dia">Jueves</h2>
                     <h2 class="dia">Viernes</h2>
+                    <h2 class="dia">Sabado</h2>
+                    <h2 class="dia">Domingo</h2>
+
                 </div>
             </div>
             <div class="opciones">
@@ -168,133 +170,172 @@
 
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    // Para el tiempo 
-    const radiosTiempo = document.querySelectorAll('input[name="tiempo-rutina"]');
-    const summaryTiempo = document.getElementById('tiempoSeleccionado');
-
-    // Para el músculo
-    const radiosMusculo = document.querySelectorAll('input[name="musculo"]');
-    const summaryMusculo = document.getElementById('musculoSeleccionado');
-
-    // Obtener el modal y el campo para el nombre del ejercicio
-    const modal = document.getElementById('crearEjercicioModal');
-    const ejercicioNombre = document.getElementById('ejercicio-nombre');
-    const radioButtons = document.querySelectorAll('input[name="agregar"]');
-
-    // Obtener los modales de borrado y sus botones
-    const borrarModal = document.getElementById('borrarModal');
-    const siButton = borrarModal.querySelector('.boton-parent .button:first-child');
-    const noButton = borrarModal.querySelector('.boton-parent .button:last-child');
-    const borrarButtons = document.querySelectorAll('.frame .button');
-
-    // Guardar modal y botón de guardar
-    const guardarModal = document.getElementById('guardarModal');
-    const guardarButton = document.querySelector('.button-centrado');
-
-    // borrar modal
-    const borrar = document.getElementById('ejercicioBorradoModal');
-    const cerrarBorrarButton = document.getElementById('cerrarBorrarButton'); // Corregido
-
-    // Mostrar el modal de confirmación de borrado al hacer clic en borrar
-    borrarButtons.forEach(boton => {
-        boton.addEventListener('click', function () {
-            borrarModal.style.display = 'flex'; // Mostrar el modal
+        $(document).ready(function () {
+            // Cargar el header desde header.html
+            $('header').load('header.html');
+            $('footer').load('footer.html');
+    
+            // Recuperar los días de entreno almacenados en localStorage
+            const diasEntreno = localStorage.getItem('diasEntreno');
+            
+            if (diasEntreno) {
+                // Convertimos la cadena almacenada en un arreglo
+                const diasSeleccionados = JSON.parse(diasEntreno);
+                
+                // Obtenemos los elementos con la clase "dia"
+                const diasElements = document.getElementsByClassName('dia');
+    
+                // Ocultar todos los días primero
+                for (let i = 0; i < diasElements.length; i++) {
+                    diasElements[i].style.display = "none";
+                }
+    
+                // Iteramos sobre los días seleccionados y los mostramos
+                for (let i = 0; i < diasSeleccionados.length; i++) {
+                    for (let j = 0; j < diasElements.length; j++) {
+                        // Convertimos la abreviatura al nombre completo usando determinarDia
+                        if (diasElements[j].textContent === determinarDia(diasSeleccionados[i])) {
+                            diasElements[j].style.display = "flex"; // Mostramos los días seleccionados
+                        }
+                    }
+                }
+            } else {
+                // Si no hay días almacenados, mostramos "No disponible"
+                const diasElements = document.getElementsByClassName('dia');
+                for (let i = 0; i < diasElements.length; i++) {
+                    diasElements[i].textContent = "No disponible";
+                }
+            }
+    
+            // Función para cambiar la abreviatura a nombre completo
+            function determinarDia(diasEntreno) {
+                switch (diasEntreno) {
+                    case "Lun":
+                        return "Lunes";
+                    case "Mar":
+                        return "Martes";
+                    case "Mié":
+                        return "Miércoles";
+                    case "Jue":
+                        return "Jueves";
+                    case "Vie":
+                        return "Viernes";
+                    case "Sáb":
+                        return "Sábado";
+                    case "Dom":
+                        return "Domingo";
+                    default:
+                        return "Día no disponible";
+                }
+            }
+    
+            // Configuración para el manejo de tiempos de rutina y músculos
+            const radiosTiempo = document.querySelectorAll('input[name="tiempo-rutina"]');
+            const summaryTiempo = document.getElementById('tiempoSeleccionado');
+    
+            const radiosMusculo = document.querySelectorAll('input[name="musculo"]');
+            const summaryMusculo = document.getElementById('musculoSeleccionado');
+    
+            const modal = document.getElementById('crearEjercicioModal');
+            const ejercicioNombre = document.getElementById('ejercicio-nombre');
+            const radioButtons = document.querySelectorAll('input[name="agregar"]');
+    
+            const borrarModal = document.getElementById('borrarModal');
+            const siButton = borrarModal.querySelector('.boton-parent .button:first-child');
+            const noButton = borrarModal.querySelector('.boton-parent .button:last-child');
+            const borrarButtons = document.querySelectorAll('.frame .button');
+    
+            const guardarModal = document.getElementById('guardarModal');
+            const guardarButton = document.querySelector('.button-centrado');
+    
+            const borrar = document.getElementById('ejercicioBorradoModal');
+            const cerrarBorrarButton = document.getElementById('cerrarBorrarButton');
+    
+            // Mostrar el modal de confirmación de borrado al hacer clic en borrar
+            borrarButtons.forEach(boton => {
+                boton.addEventListener('click', function () {
+                    borrarModal.style.display = 'flex'; // Mostrar el modal
+                });
+            });
+    
+            // Al hacer clic en "Sí", ocultar el modal
+            siButton.addEventListener('click', function () {
+                borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
+                modal.style.display = 'none'; // Ocultar también el modal de creación de ejercicios (si es necesario)
+    
+                borrar.style.display = 'flex'; // Mostrar el modal de ejercicio borrado
+            });
+    
+            // Al hacer clic en "No", simplemente ocultar el modal de confirmación
+            noButton.addEventListener('click', function () {
+                borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
+            });
+    
+            // Cerrar el modal de ejercicio borrado al hacer clic en "Cerrar"
+            cerrarBorrarButton.addEventListener('click', function () {
+                borrar.style.display = 'none'; // Ocultar el modal de ejercicio borrado
+            });
+    
+            // Función para actualizar el texto del summary de tiempo de la rutina
+            function actualizarTiempo() {
+                const tiempoSeleccionado = Array.from(radiosTiempo)
+                    .filter(radio => radio.checked)
+                    .map(radio => radio.labels[0].innerText);
+    
+                if (tiempoSeleccionado.length > 0) {
+                    summaryTiempo.textContent = tiempoSeleccionado[0]; 
+                    summaryTiempo.style.color = 'black';
+                } else {
+                    summaryTiempo.textContent = 'Tiempo de la Rutina';
+                    summaryTiempo.style.color = '';
+                }
+            }
+    
+            // Función para actualizar el texto del summary de músculo
+            function actualizarMusculo() {
+                const musculoSeleccionado = Array.from(radiosMusculo)
+                    .filter(radio => radio.checked)
+                    .map(radio => radio.labels[0].innerText);
+    
+                if (musculoSeleccionado.length > 0) {
+                    summaryMusculo.textContent = musculoSeleccionado[0];
+                    summaryMusculo.style.color = 'black';
+                } else {
+                    summaryMusculo.textContent = 'Músculo';
+                    summaryMusculo.style.color = '';
+                }
+            }
+    
+            // Actualizar el contenido del modal de ejercicios cuando se selecciona un ejercicio
+            radioButtons.forEach(radio => {
+                radio.addEventListener('click', function () {
+                    const label = document.querySelector(`label[for="${radio.id}"]`).innerText;
+                    ejercicioNombre.textContent = label;
+                    modal.style.display = 'flex'; 
+                    modal.style.zIndex = '1000'; 
+                });
+            });
+    
+            radiosTiempo.forEach(radio => {
+                radio.addEventListener('change', actualizarTiempo);
+            });
+    
+            radiosMusculo.forEach(radio => {
+                radio.addEventListener('change', actualizarMusculo);
+            });
+    
+            actualizarTiempo();
+            actualizarMusculo();
+    
+            guardarButton.addEventListener('click', function () {
+                guardarModal.style.display = 'flex'; 
+            });
+    
+            const cerrarGuardarButton = guardarModal.querySelector('button');
+            cerrarGuardarButton.addEventListener('click', function () {
+                guardarModal.style.display = 'none'; 
+            });
         });
-    });
-
-    // Al hacer clic en "Sí", ocultar el modal
-    siButton.addEventListener('click', function () {
-        borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
-        modal.style.display = 'none'; // Ocultar también el modal de creación de ejercicios (si es necesario)
-
-        // Mostrar el botón de borrar
-        borrar.style.display = 'flex'; // Mostrar el modal de ejercicio borrado
-    });
-
-    // Al hacer clic en "No", simplemente ocultar el modal de confirmación
-    noButton.addEventListener('click', function () {
-        borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
-    });
-
-    // Cerrar el modal de ejercicio borrado al hacer clic en "Cerrar"
-    cerrarBorrarButton.addEventListener('click', function () {
-        borrar.style.display = 'none'; // Ocultar el modal de ejercicio borrado
-    });
-
-    // Función para actualizar el texto del summary de tiempo de la rutina
-    function actualizarTiempo() {
-        const tiempoSeleccionado = Array.from(radiosTiempo)
-            .filter(radio => radio.checked) // Filtrar el que está seleccionado
-            .map(radio => radio.labels[0].innerText); // Obtener el texto de la etiqueta
-
-        // Si hay una medida seleccionada, mostrarla
-        if (tiempoSeleccionado.length > 0) {
-            summaryTiempo.textContent = tiempoSeleccionado[0]; // Mostrar la medida seleccionada
-            summaryTiempo.style.color = 'black'; // Cambiar el color a negro
-        } else {
-            summaryTiempo.textContent = 'Tiempo de la Rutina'; // Texto predeterminado
-            summaryTiempo.style.color = ''; // Volver al color predeterminado
-        }
-    }
-
-    // Función para actualizar el texto del summary de músculo
-    function actualizarMusculo() {
-        const musculoSeleccionado = Array.from(radiosMusculo)
-            .filter(radio => radio.checked) // Filtrar el que está seleccionado
-            .map(radio => radio.labels[0].innerText); // Obtener el texto de la etiqueta
-
-        // Si hay un músculo seleccionado, mostrarlo
-        if (musculoSeleccionado.length > 0) {
-            summaryMusculo.textContent = musculoSeleccionado[0]; // Mostrar el músculo seleccionado
-            summaryMusculo.style.color = 'black'; // Cambiar el color a negro
-        } else {
-            summaryMusculo.textContent = 'Músculo'; // Texto predeterminado
-            summaryMusculo.style.color = ''; // Volver al color predeterminado
-        }
-    }
-
-    // Actualizar el contenido del modal de ejercicios cuando se selecciona un ejercicio
-    radioButtons.forEach(radio => {
-        radio.addEventListener('click', function () {
-            // Obtener el texto del label asociado al radio button seleccionado
-            const label = document.querySelector(`label[for="${radio.id}"]`).innerText;
-
-            // Cambiar el nombre del ejercicio en el modal
-            ejercicioNombre.textContent = label;
-
-            // Mostrar el modal
-            modal.style.display = 'flex';  // Mostrar el modal
-            modal.style.zIndex = '1000'; // Asegurar que esté por encima de otros elementos
-        });
-    });
-
-    // Añadir eventos a los radio buttons de tiempo para detectar los cambios
-    radiosTiempo.forEach(radio => {
-        radio.addEventListener('change', actualizarTiempo);
-    });
-
-    // Añadir eventos a los radio buttons de músculo para detectar los cambios
-    radiosMusculo.forEach(radio => {
-        radio.addEventListener('change', actualizarMusculo);
-    });
-
-    // Actualizar los valores iniciales por si hay selección previa
-    actualizarTiempo();
-    actualizarMusculo();
-
-    // Mostrar el modal de guardar cuando se hace clic en el botón "Guardar"
-    guardarButton.addEventListener('click', function () {
-        guardarModal.style.display = 'flex'; // Mostrar el modal de guardado
-    });
-
-    // Cerrar el modal de guardar al hacer clic en el botón dentro del modal
-    const cerrarGuardarButton = guardarModal.querySelector('button');
-    cerrarGuardarButton.addEventListener('click', function () {
-        guardarModal.style.display = 'none'; // Cerrar el modal
-    });
-});
-
-    </script>
+    </script>    
 </body>
 </html>
