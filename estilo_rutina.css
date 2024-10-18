@@ -1,297 +1,300 @@
 .routine-header {
-    display:flex;
-    padding: 0px 100px;
-    flex-direction: column;
-    gap: 45px;
-    justify-content: center; /* Centra el video */
-}  
-    
+  display: flex;
+  padding: 0px 100px;
+  flex-direction: column;
+  gap: 45px;
+  justify-content: center; /* Centra el video */
+}
 
 .logos-icon {
-    width: 43px; /* Ajusta el tamaño según lo que necesites */
-    height: 50px; /* Mantiene la proporción del icono */
-    object-fit: contain; /* Asegura que el icono no se deforme */
-    position: relative;
-    top:10px;
-    bottom: 45px;
-  }
-
-.Titulo h1  {
-    font-size: 56px;
-    color: black;
-    margin-bottom: 10px;
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    align-items: center; /* Centra los elementos horizontalmente */
+  width: 43px; /* Ajusta el tamaño según lo que necesites */
+  height: 50px; /* Mantiene la proporción del icono */
+  object-fit: contain; /* Asegura que el icono no se deforme */
+  position: relative;
+  top: 10px;
+  bottom: 45px;
 }
-.Titulo   {
-    margin-bottom: 10px;
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    align-items: center; /* Centra los elementos horizontalmente */
-    text-align: center; /* Centra los textos */
-}
-/*Contenedor 2*/
 
-.exercise {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; /* Espacio uniforme entre las tarjetas */
-        gap: 30px; /* Espacio entre las tarjetas */
-        padding: 10px; /* Añade un poco de padding para margen interior */   
-        align-items: center; /* Centra los elementos horizontalmente */
+.Titulo h1 {
+  font-size: 56px;
+  color: black;
+  margin-bottom: 10px;
+  display: flex; /* Habilita flexbox */
+  flex-direction: column; /* Organiza los hijos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+.Titulo {
+  margin-bottom: 10px;
+  display: flex; /* Habilita flexbox */
+  flex-direction: column; /* Organiza los hijos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  text-align: center; /* Centra los textos */
+}
+
+.exercise, .exercise1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+  gap: 30px; /* Espacio entre las tarjetas */
+  padding: 10px; /* Añade un poco de padding para margen interior */
+  align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .exercise-details h2 {
-    font-weight: bold;
-}
-
-.exercise-actions{
-        display: flex;
-        gap: 20px; /* Espacio entre las tarjetas */
-        padding: 10px; /* Añade un poco de padding para margen interior */    
-}
-
-/*Contenedor 2*/
-.exercise1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
-    gap: 30px; /* Espacio entre las tarjetas */
-    padding: 10px; /* Añade un poco de padding para margen interior */   
-    align-items: center; /* Centra los elementos horizontalmente */
+  font-weight: bold;
 }
 
 .exercise-details1 h2 {
-font-weight: bold;
+    font-weight: bold;
+  }
+
+.exercise-actions, .exercise-actions1 {
+  display: flex;
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 10px; /* Añade un poco de padding para margen interior */
 }
 
-.exercise-actions1{
-    display: flex;
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 10px; /* Añade un poco de padding para margen interior */    
+.button {
+  color: black;
 }
 
-
-
-
-.button{ 
-    color: black;
+.ejercicios {
+  display: flex;
+  color: black;
+  flex-direction: row;
+  flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+  justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+  gap: 100px; /* Espacio entre las tarjetas */
+  padding: 10px; /* Añade un poco de padding para margen interior */
 }
-
-.ejercicios{
-    display: flex;
-    color: black;
-    flex-direction: row;
-    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
-    gap: 100px; /* Espacio entre las tarjetas */
-    padding: 10px; /* Añade un poco de padding para margen interior */
-}
-
 
 /* Estilos del Modal Cronómetro */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #f1f1f1;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid #888;
-    width: 300px;
-    text-align: center;
+  background-color: #f1f1f1;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
 }
 
 /* Timer Display */
 .tiempo {
-    font-size: 48px;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  font-size: 48px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 /* Control Buttons */
 .controles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .boton-control {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .boton-control:active {
-    background-color: #444;
+  background-color: #444;
 }
-
 
 /* Estilos para el video */
 .video-container video {
-    width: 500px;
-    height: 350px;
+  width: 500px;
+  height: 350px;
 }
 
-.exerciseVenta{
-        display: none;
-        flex-direction: row;
-        justify-content: space-between; /* Espacio uniforme entre las tarjetas */
-        gap: 30px; /* Espacio entre las tarjetas */
-        padding: 10px; /* Añade un poco de padding para margen interior */   
-        align-items: center; /* Centra los elementos horizontalmente */
+.video-container1 video {
+  width: 500px;
+  height: 350px;
+}
+
+.exerciseVenta {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+  gap: 30px; /* Espacio entre las tarjetas */
+  padding: 10px; /* Añade un poco de padding para margen interior */
+  align-items: center; /* Centra los elementos horizontalmente */
 }
 
 /* Estilos para pantallas de 1025px */
 @media screen and (max-width: 1025px) {
-    .routine-header {
-        display: flex;
-        flex-direction: column;
-        padding: 0px 0px;
-        gap: 0px;
-        width: 100%; /* Ocupa todo el ancho disponible */
-        justify-content: center; /* Centra el video */
-    }
-    .logos-icon {
-       
-        margin-left: 20px; /* Añade espacio si es necesario */
-    }
+  .routine-header {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px;
+    gap: 0px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    justify-content: center; /* Centra el video */
+  }
+  
+  .logos-icon {
+    margin-left: 20px; /* Añade espacio si es necesario */
+  }
+
+  .exercise .exercise1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro del contenedor */
+    justify-content: center;
+    margin-left: px; /* Añade espacio si es necesario */
+    gap: 20px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  .exerciseVenta {
+    display: none;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro del contenedor */
+    justify-content: center;
+    margin-left: 2px; /* Añade espacio si es necesario */
+    gap: 20px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  .ejercicios {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
+    gap: 50px; /* Espacio entre las tarjetas */
+    padding: 10px; /* Añade un poco de padding para margen interior */
+  }
+
+  .boton {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Asegura que los íconos estén centrados */
+  }
+  
+
+  .video-container video {
+    width: 420px;
+    height: 330px;
+  }
 
 
-    .exercise .exercise1 {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Centra el contenido dentro del contenedor */
-        justify-content: center;
-        margin-left: 2px; /* Añade espacio si es necesario */
-        gap: 20px;
-        padding: 5px;
-        width: 100%;
-    }
-
-    .exerciseVenta{
-        display: none;
-        flex-direction: column;
-        align-items: center; /* Centra el contenido dentro del contenedor */
-        justify-content: center;
-        margin-left: 2px; /* Añade espacio si es necesario */
-        gap: 20px;
-        padding: 5px;
-        width: 100%;
-    }
-
-    .ejercicios{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-        gap: 50px; /* Espacio entre las tarjetas */
-        padding: 10px; /* Añade un poco de padding para margen interior */
-    }
-
-    .boton {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center; /* Asegura que los íconos estén centrados */
-    }
-    .video-container {
-        padding-bottom: 350px; /* Ajusta la relación de aspecto si es necesario */
-        display: flex;
-        justify-content: center; /* Centra el video */
-    }
-
-    .video-container video {
-        position: absolute;
-        width: 420px;
-        height: 330px;
-    }
+  .video-container1 video {
+    width: 420px;
+    height: 330px;
+  }
 }
 
 /* Estilos para pantallas de 431px */
 @media screen and (max-width: 431px) {
-    .routine-header {
-        display: flex;
-        flex-direction: column;
-        padding: 50px 0px;
-        gap: 0px;
-        margin: 0px;
-        justify-content: center; /* Centra el video */
-    }
-    .logos-icon {
-       
-        margin-left: 20px; /* Añade espacio si es necesario */
-    }
+  .routine-header {
+    display: flex;
+    flex-direction: column; /* Cambiado a 'row' para que el contenido esté en fila */
+    padding: 50px 0px;
+    gap: 0px;
+    margin: 0px;
+    justify-content: center; /* Centra el contenido horizontalmente */
+  }
 
-    .exercise .exercise1{
-        display: flex;
-        align-items: center; /* Centra el contenido dentro del contenedor */
-        justify-content: center;
-        padding: 5px;
+  .logos-icon {
+    margin-left: 20px; /* Añade espacio si es necesario */
+  }
 
-    }
+  .exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 5px;
+  }
 
-    .exerciseVenta {
-        display: none;
-        align-items: center; /* Centra el contenido dentro del contenedor */
-        justify-content: center;
-        padding: 5px;
+  .exercise1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 5px;
+  }
 
-    }
-    .ejercicios{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap; /* Para que las tarjetas se envuelvan si no caben en una sola fila */
-        gap: 50px; /* Espacio entre las tarjetas */
+  .exerciseVenta {
+    display: none;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    padding: 5px;
+  }
 
-    }
+  .ejercicios {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en fila */
+    flex-wrap: wrap; /* Las tarjetas se envuelven si no caben en una sola fila */
+    gap: 50px; /* Espacio entre las tarjetas */
+  }
 
-    .boton {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center; /* Asegura que los íconos estén centrados */
-    }
+  .boton {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Asegura que los íconos estén centrados */
+  }
 
-    .exercise-video {
+  .exercise-video {
+    display: flex;
+    justify-content: center; /* Centra el video */
+  }
 
-        display: flex;
-        justify-content: center; /* Centra el video */
-    }
+  .video-container {
+    padding-bottom: 250px; /* Ajusta la relación de aspecto si es necesario */
+    display: flex;
+    justify-content: center; /* Centra el video */
+  }
 
-    .video-container {
-        padding-bottom: 250px; /* Ajusta la relación de aspecto si es necesario */
-        display: flex;
-        justify-content: center; /* Centra el video */
-    }
+  .video-container video {
+    position: absolute;
+    width: 350px;
+    height: 230px;
+  }
 
-    .video-container video {
-        position: absolute;
-        width: 350px;
-        height: 230px;
-    }
+  .exercise-video1 {
+    display: flex;
+    justify-content: center; /* Centra el video */
+  }
+
+  .video-container1 {
+    padding-bottom: 250px; /* Ajusta la relación de aspecto si es necesario */
+    display: flex;
+    justify-content: center; /* Centra el video */
+  }
+
+  .video-container1 video {
+    position: absolute;
+    width: 350px;
+    height: 230px;
+  }
 }
-
-
