@@ -48,7 +48,7 @@ $(document).ready(function () {
 // Evento para cambiar ejercicio
 $(".button-change-exercise").on("click", function () {
     // Cambiar el contenido de la sección exercise con nuevo contenido
-    $(".exercise").html(`
+    $(".exercise1").html(`
         <div class="video-container">
             <video controls>
                 <source src="Video/20240823_152007000_iOS.MOV" type="video/mp4">
