@@ -151,7 +151,7 @@
     <div id="ejercicioBorradoModal" class="modal">
         <div class="modal-content">
             Se ha borrado el ejercicio
-        <button class="button">Cerrar</button>
+        <button id="cerrarBorrarButton"class="button">Cerrar</button>
     </div>
 </div>
 
@@ -168,7 +168,7 @@
 
     <!-- JavaScript -->
     <script>
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
     // Para el tiempo 
     const radiosTiempo = document.querySelectorAll('input[name="tiempo-rutina"]');
     const summaryTiempo = document.getElementById('tiempoSeleccionado');
@@ -192,10 +192,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const guardarModal = document.getElementById('guardarModal');
     const guardarButton = document.querySelector('.button-centrado');
 
+    // borrar modal
+    const borrar = document.getElementById('ejercicioBorradoModal');
+    const cerrarBorrarButton = document.getElementById('cerrarBorrarButton'); // Corregido
+
     // Mostrar el modal de confirmación de borrado al hacer clic en borrar
     borrarButtons.forEach(boton => {
         boton.addEventListener('click', function () {
-            borrarModal.style.display = 'block'; // Mostrar el modal
+            borrarModal.style.display = 'flex'; // Mostrar el modal
         });
     });
 
@@ -203,11 +207,19 @@ document.addEventListener('DOMContentLoaded', function () {
     siButton.addEventListener('click', function () {
         borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
         modal.style.display = 'none'; // Ocultar también el modal de creación de ejercicios (si es necesario)
+
+        // Mostrar el botón de borrar
+        borrar.style.display = 'flex'; // Mostrar el modal de ejercicio borrado
     });
 
     // Al hacer clic en "No", simplemente ocultar el modal de confirmación
     noButton.addEventListener('click', function () {
         borrarModal.style.display = 'none'; // Ocultar el modal de confirmación
+    });
+
+    // Cerrar el modal de ejercicio borrado al hacer clic en "Cerrar"
+    cerrarBorrarButton.addEventListener('click', function () {
+        borrar.style.display = 'none'; // Ocultar el modal de ejercicio borrado
     });
 
     // Función para actualizar el texto del summary de tiempo de la rutina
@@ -273,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mostrar el modal de guardar cuando se hace clic en el botón "Guardar"
     guardarButton.addEventListener('click', function () {
-        guardarModal.style.display = 'block'; // Mostrar el modal de guardado
+        guardarModal.style.display = 'flex'; // Mostrar el modal de guardado
     });
 
     // Cerrar el modal de guardar al hacer clic en el botón dentro del modal
@@ -282,7 +294,6 @@ document.addEventListener('DOMContentLoaded', function () {
         guardarModal.style.display = 'none'; // Cerrar el modal
     });
 });
-
 
     </script>
 </body>
