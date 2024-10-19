@@ -12,21 +12,34 @@
 
     <script>
       $(document).ready(function () {
-        // Cargar el header desde header.html
+        let selectedEmoji = '';
+  
+        // Cargar el header y footer
         $('header').load('header.html');
-        // Cargar el footer desde footer.html
         $('footer').load('footer.html');
   
-         // Mostrar el modal al hacer clic en "Guardar"
-      $('#GuardarBtn').click(function (e) {
-        e.preventDefault(); // Evita la redirección a otra página
-        $('#Satisfaccion').css('display', 'block'); // Muestra el modal
-      });
-
-      // Cerrar el modal y redirigir a Rutina.html al hacer clic en "Salir"
-      $('#Cerrar').click(function () {
-        window.location.href = 'Rutina.html'; // Redirige a Rutina.html
-      });
+        // Capturar el emoji seleccionado al hacer clic
+        $('.emoji-satisfaction').click(function () {
+          selectedEmoji = $(this).attr('src'); // Almacenar la ruta de la imagen seleccionada
+          $('.emoji-satisfaction').removeClass('selected'); // Eliminar la clase seleccionada de todos
+          $(this).addClass('selected'); // Agregar la clase seleccionada a la imagen clickeada
+        });
+  
+        // Al presionar "Guardar", mostrar el modal
+        $('#GuardarBtn').click(function (e) {
+          e.preventDefault();
+          if (selectedEmoji) {
+            localStorage.setItem('emojiSeleccionado', selectedEmoji); // Guardar en localStorage
+            $('#Satisfaccion').css('display', 'block'); // Mostrar el modal
+          } else {
+            alert('Por favor, seleccione un emoji');
+          }
+        });
+  
+        // Al hacer clic en "Salir", redirigir a la página de Rutina.html
+        $('#Cerrar').click(function () {
+          window.location.href = 'Rutina.html'; // Redirigir a la página de Rutina
+        });
       });
     </script>
 </head><!-- Encabezado -->
@@ -45,7 +58,7 @@
         <div class="satisfaccion-caras-opciones">
           <div class="cara"> 
             <figure>
-              <img class="emoji-satisfaction" src="img\ENOJO.svg" alt="Emoji 1" />
+              <img class="emoji-satisfaction" src="img/ENOJO.svg" alt="Emoji 1" />
             </figure>
             <figure> 
               <img class="emoji-satisfaction" src="img\TRISTEZA.svg" alt="Emoji 2" />
@@ -73,7 +86,6 @@
           <button class="button" id="Cerrar">Salir</button>
         </div>
       </div>
-    
 </body>
 <footer></footer>
 </body>

@@ -43,6 +43,17 @@
         return "Endomorfo";
       }
     }
+
+    $(document).ready(function () {
+        // Al cargar la página, recuperar la imagen seleccionada desde localStorage
+        const selectedEmoji = localStorage.getItem('emojiSeleccionado');
+        
+        if (selectedEmoji) {
+          // Actualizar la imagen de la carita en la sección del cliente
+          $('.cara figure img').attr('src', selectedEmoji);
+        }
+      });
+
     
   </script>
 </head><!-- Encabezado -->

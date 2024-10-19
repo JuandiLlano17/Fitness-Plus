@@ -120,6 +120,9 @@ cursor: pointer;
     flex-direction: row; /* Organiza los hijos en columna */
     padding: 5px; /* Añade un poco de padding para margen interior */
   }
+  .selected {
+    border: 2px solid blue;
+  }
   
  
   .button {
