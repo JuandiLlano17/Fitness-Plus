@@ -232,7 +232,8 @@ body{
     font-weight: 700;
     line-height: 66px;
     opacity: 0.90; /* Opacidad */
-    margin-bottom: 0px; /* Espacio debajo del título */
+    margin-bottom: 0;
+    margin-top: 70px; /* Espacio debajo del título */
 }
 
 .trainers p {
@@ -317,6 +318,7 @@ body{
 }
 
 .join-content {
+    margin-top: 60px;
     max-width: 500px; /* Limita el ancho del texto */
     width: 100%; /* Asegura que ocupe todo el ancho permitido */
     text-align: left; /* Alineación del texto a la izquierda */
@@ -341,6 +343,7 @@ body{
 }
 
 .join-us img {
+    margin-top: 100px;
     height: auto; /* Permitir que la altura se ajuste automáticamente */
     max-width: 100%; /* Ajustar la imagen al contenedor */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
@@ -415,8 +418,10 @@ body{
 
     .trainers{
         padding: 0;
+        padding-top: 60px;
     }
     .trainers h2{
+        margin: 0;
         font-size: 36px; /* Reducir tamaño de fuente */
     }
     .trainers p{
@@ -465,6 +470,7 @@ body{
     }
 
     .join-us img {
+        margin: 0;
         width: 100%; /* Ajustar imagen al ancho */
         order: 2;
     }

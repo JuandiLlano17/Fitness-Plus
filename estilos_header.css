@@ -222,7 +222,7 @@ label{
 
   /* Menú de hamburguesa desplegable */
   .mobile-menu {
-    position: absolute;
+    position: fixed;
     top: 60px; /* Ajusta la posición para que quede bien alineado debajo del header */
     right: 0;
     width: 100%;

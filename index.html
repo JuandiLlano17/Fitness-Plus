@@ -18,6 +18,18 @@
         // Cargar el footer desde footer.html
         $('footer').load('footer.html');
       });
+
+        // Cuando la página cargue, verifica si hay un hash y desplázate a la sección
+  window.addEventListener('load', function() {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetSection = document.querySelector(hash);
+      if (targetSection) {
+        // Desplazarse a la sección
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
     </script>
 
 </head>
@@ -73,7 +85,7 @@
             </ul>
         </section>
 
-        <section class="why-us">
+        <section id="why-us" class="why-us">
             <h2>¿Por qué escoger Fitness Plus?</h2>
             <p class="titulo why-us">Las ventajas de un gimnasio como Fitness Plus van más allá de simplemente tener un lugar donde hacer ejercicio.</p>
             <div class="why-content">
@@ -96,7 +108,7 @@
               
         </section>
 
-        <section class="trainers">
+        <section id="trainers" class="trainers">
             <h2>Nuestros Entrenadores</h2>
             <p class="titulo trainers">Cuentan con certificaciones avanzadas y amplia experiencia en el sector del fitness, garantizando entrenamientos efectivos y profesionales.</p>
             <div class="trainer-cards">
@@ -125,7 +137,7 @@
         </section>
         
 
-        <section class="join-us">
+        <section id="join-us" class="join-us">
             <img src="img/accion.png" alt="Persona haciendo ejercicio" width="400">
             <div class="join-content">
                 <h2>Únete</h2>

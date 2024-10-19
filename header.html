@@ -11,6 +11,43 @@
         mobileMenu.style.display = 'block';
       }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    function toggleMenu() {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'block';
+      }
+    }
+
+    // Redirigir a index.html con el hash
+    function navigateToSection(sectionId) {
+      const currentPage = window.location.pathname.split('/').pop(); // Obtener el archivo actual
+      if (currentPage === 'index.html' || currentPage === '') {
+        scrollToSection(sectionId);  // Si ya estamos en index.html, solo desplázate
+      } else {
+        window.location.href = `index.html#${sectionId.substring(1)}`;  // Redirigir a index.html con el hash
+      }
+    }
+
+    // Listeners para los enlaces del menú
+    document.querySelector('.menu a[href="#gym"]').addEventListener('click', function(event) {
+      event.preventDefault();
+      navigateToSection('#why-us'); // Sección para "GYM"
+    });
+
+    document.querySelector('.menu a[href="#trainers"]').addEventListener('click', function(event) {
+      event.preventDefault();
+      navigateToSection('#trainers'); // Sección para "Entrenadores"
+    });
+
+    document.querySelector('.menu a[href="#about"]').addEventListener('click', function(event) {
+      event.preventDefault();
+      navigateToSection('#join-us'); // Sección para "Acerca de"
+    });
+  });
   </script>
 
   <div class="header">
@@ -19,7 +56,7 @@
       &#9776; <!-- Ícono de menú (tres líneas) -->
     </div>
 
-    <div class="logo-title-container" onclick="location.href='pagina_principal.html';" style="cursor: pointer;">
+    <div class="logo-title-container" onclick="location.href='index.html';" style="cursor: pointer;">
       <div class="logo-container">
         <img src="img\Logo Fitness Pluss.png" alt="Logo de Fitness Pluss">
       </div>
@@ -28,9 +65,9 @@
 
     <nav class="nav">
       <ul class="menu">
-        <li><a href="#gym">Gym</a></li>
+        <li><a href="#why-us">Gym</a></li>
         <li><a href="#trainers">Entrenadores</a></li>
-        <li><a href="#about">Acerca de</a></li>
+        <li><a href="#join-us">Acerca de</a></li>
       </ul>
     </nav>
 
@@ -49,9 +86,9 @@
   <!-- Menú desplegable para pantallas pequeñas -->
   <div class="mobile-menu">
     <ul>
-      <li><a href="#gym">Gym</a></li>
+      <li><a href="#why-us">Gym</a></li>
       <li><a href="#trainers">Entrenadores</a></li>
-      <li><a href="#about">Acerca de</a></li>
+      <li><a href="#join-us">Acerca de</a></li>
     </ul>
   </div>
 </header>
