@@ -61,35 +61,33 @@
     </div>
 
     <script>
-      // Cargar el JSON y generar contenido HTML dinámicamente
-      document.addEventListener("DOMContentLoaded", function() {
-        fetch('usuarios.json')
-          .then(response => response.json())
-          .then(data => {
-            const usuarios = data.usuarios;
-            
-            usuarios.forEach(usuario => {
-              const tipoUsuario = usuario.tipoUsuario;
-              const correo = usuario.datosPersonales.correo;
-              const contrasena = usuario.datosPersonales.contraseña;
-              const textoBoton = usuario.botonInicioSesion.texto;
-              const accionBoton = usuario.botonInicioSesion.accion;
-  
-              // Crear el formulario dinámicamente
-              const form = document.createElement('form');
-              form.innerHTML = `
-                <h2>Iniciar sesión ${tipoUsuario.charAt(0).toUpperCase() + tipoUsuario.slice(1)}</h2>
-                <input type="email" placeholder="Correo" value="${correo}" required>
-                <input type="password" placeholder="Contraseña" value="${contrasena}" required>
-                <button type="${accionBoton}">${textoBoton}</button>
-              `;
-              
-              // Agregar el formulario al cuerpo de la página
-              document.querySelector('.ini-sesion').appendChild(form);
-            });
-          })
-          .catch(error => console.error('Error al cargar el JSON:', error));
-      });
+     // Función para capturar los datos de correo y contraseña
+     function iniciarSesion(tipoUsuario) {
+      const correo = document.getElementById("email").value;
+      const contrasena = document.getElementById("Contraseña").value;
+
+      // Verificación básica
+      if (correo === "" || contrasena === "") {
+        alert("Por favor, ingrese ambos el correo y la contraseña.");
+        return;
+      }
+
+      // Simulación de registro de los datos (podría ser enviado al servidor o almacenado)
+      const usuario = {
+        tipoUsuario: tipoUsuario,
+        correo: correo,
+        contraseña: contrasena,
+      };
+
+      console.log("Datos del usuario:", usuario);
+
+      // Redirigir a la página correspondiente según el tipo de usuario
+      if (tipoUsuario === "entrenador") {
+        window.location.href = "Cli-ente.html"; // Cambia esto según la página del entrenador
+      } else {
+        window.location.href = "opcion_cliente.html"; // Cambia esto según la página del cliente
+      }
+    }
     </script>
     <footer></footer>
   </body>
