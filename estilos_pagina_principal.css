@@ -216,11 +216,11 @@ body{
     object-fit: cover;
 }
 
-.trainers {
+#trainers {
     justify-content: space-evenly;
     max-width: 100%; /* O el ancho deseado */
     margin: 0 auto; /* Centra la sección en la página */
-    padding: 38px; /* Espacio en la parte superior e inferior y 24px a los lados */
+    padding: 99px 38px 0 ; /* Espacio en la parte superior e inferior y 24px a los lados */
     text-align: center; /* Alinea el texto al centro */
     box-sizing: border-box;
 }
@@ -233,7 +233,7 @@ body{
     line-height: 66px;
     opacity: 0.90; /* Opacidad */
     margin-bottom: 0;
-    margin-top: 70px; /* Espacio debajo del título */
+    margin-top: 0;
 }
 
 .trainers p {
@@ -244,7 +244,7 @@ body{
     font-family: Montserrat, sans-serif;
     font-weight: 20;
     line-height: 30px;
-    margin: 0 auto 30px; /* Centrado horizontal y espacio debajo */
+    margin: 24px auto;
     text-align: center; /* Centra el texto dentro del párrafo */
     margin-top: 0;
 }
@@ -258,7 +258,7 @@ body{
     display: flex;
     justify-content:space-evenly;
     box-sizing: border-box; /* Incluir el padding en el ancho total */
-    margin-bottom: 36px;
+    margin-bottom: 0px;
 }
 
 .trainer-card {
@@ -387,6 +387,7 @@ body{
         align-items: center;
         justify-items: center;
         padding: 0 30px;
+        gap: 12px;
     }
     .why-us h2 {
         font-size: 36px; /* Reducir tamaño de fuente */
@@ -404,8 +405,7 @@ body{
         flex-direction: column; /* Cambiar a columna */
         align-items: center; /* Centrar contenido */
         gap: 20px; /* Reducir espacio entre elementos */
-        margin: 40px 0 0 0; /* Espacio superior */
-    }
+        }
 
     .benefit-item {
         max-width: 90%; /* Asegurar que no exceda el ancho en dispositivos pequeños */
@@ -445,19 +445,21 @@ body{
     .join-us {
         display:flex;
         flex-direction: column; /* Cambiar a columna */
-        padding: 80px; /* Ajustar espaciado */
+        padding: 0 80px; /* Ajustar espaciado */
         box-sizing: border-box; /* Incluye padding en el ancho total */
         align-items: center; /* Centrar horizontalmente */
         justify-content: center; /* Centrar verticalmente si es necesario */
     }
 
     .join-content{
+        margin-top: 24px;
         max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
         padding: 0; /* Sin espaciado lateral */
         order: 1;
     }
 
     .join-us h2 {
+        margin: 24px;
         display: flex;
         font-size: 36px; /* Reducir tamaño de fuente */
         align-items: center; /* Centrar horizontalmente */
