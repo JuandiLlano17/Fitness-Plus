@@ -1,59 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de Sesión</title>
-  <!-- Archivos CSS -->
-  <link rel="stylesheet" href="estilos_generales.css">
-  <link rel="stylesheet" href="estilos_iniciar_sesion.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio de Sesión</title>
+    <!-- Archivos CSS -->
+    <link rel="stylesheet" href="estilos_generales.css" />
+    <link rel="stylesheet" href="estilos_iniciar_sesion.css" />
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
-    $(document).ready(function () {
-      // Cargar el header desde header.html
-       $('header').load('header.html');
-      // Cargar el footer desde footer.html
-      $('footer').load('footer.html');
-    });
-  </script>
-</head>
-<body>
-  <header></header>
+    <script>
+      $(document).ready(function () {
+        // Cargar el header desde header.html
+        $("header").load("header.html");
+        // Cargar el footer desde footer.html
+        $("footer").load("footer.html");
+      });
+    </script>
+  </head>
+  <body>
+    <header></header>
     <div class="ini-sesion">
-        <!-- Imagen a la izquierda -->
-        <div class="inicio-img">
-            <img src="img/inicio_img.png" alt="Imagen de entrenamiento">
-        </div>
-
-        <div class="inscribete">
-            <h1>Iniciar Sesión</h1>
-
-            <!-- Campo de email con icono de cerrar -->
-            <div class="inicio-de-sesion">
-                <input type="email" id="email" placeholder="Ingresar email" required>
-            </div>
-
-            <!-- Campo de contraseña con icono de mostrar/ocultar -->
-            <div class="inicio-de-sesion">
-                <input type="password" id="Contraseña" placeholder="••••••••" required>
-            </div>  
-
-            <a href="Cli-ente.html">
-              <button class="button">
-                Inicia sesión Entrenador
-              </button>
-            </a>
-            
-            <a href="opcion_cliente.html">
-              <button class="button">
-                Inicia sesión Cliente
-              </button>
-            </a>
-            
-        </div>
+      <!-- Imagen a la izquierda -->
+      <div class="inicio-img">
+        <img src="img/inicio_img.png" alt="Imagen de entrenamiento" />
       </div>
-  <footer></footer>
-</body>
+
+      <div class="inscribete">
+        <h1>Iniciar Sesión</h1>
+
+        <!-- Campo de email con icono de cerrar -->
+        <div class="inicio-de-sesion">
+          <input
+            type="email"
+            id="email"
+            placeholder="Ingresar email"
+            required
+          />
+        </div>
+
+        <!-- Campo de contraseña con icono de mostrar/ocultar -->
+        <div class="inicio-de-sesion">
+          <input
+            type="password"
+            id="Contraseña"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <a href="Cli-ente.html">
+          <button class="button">Inicia sesión Entrenador</button>
+        </a>
+
+        <a href="opcion_cliente.html">
+          <button class="button">Inicia sesión Cliente</button>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Cargar el JSON y generar contenido HTML dinámicamente
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch('usuarios.json')
+          .then(response => response.json())
+          .then(data => {
+            const usuarios = data.usuarios;
+            
+            usuarios.forEach(usuario => {
+              const tipoUsuario = usuario.tipoUsuario;
+              const correo = usuario.datosPersonales.correo;
+              const contrasena = usuario.datosPersonales.contraseña;
+              const textoBoton = usuario.botonInicioSesion.texto;
+              const accionBoton = usuario.botonInicioSesion.accion;
+  
+              // Crear el formulario dinámicamente
+              const form = document.createElement('form');
+              form.innerHTML = `
+                <h2>Iniciar sesión ${tipoUsuario.charAt(0).toUpperCase() + tipoUsuario.slice(1)}</h2>
+                <input type="email" placeholder="Correo" value="${correo}" required>
+                <input type="password" placeholder="Contraseña" value="${contrasena}" required>
+                <button type="${accionBoton}">${textoBoton}</button>
+              `;
+              
+              // Agregar el formulario al cuerpo de la página
+              document.querySelector('.ini-sesion').appendChild(form);
+            });
+          })
+          .catch(error => console.error('Error al cargar el JSON:', error));
+      });
+    </script>
+    <footer></footer>
+  </body>
 </html>
