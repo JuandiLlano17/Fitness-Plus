@@ -28,47 +28,90 @@
     </div>
 
     <div class="formulario">
-        <div class="columnas-editar">
-            <div class="columna">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" placeholder="Nombre" />
-            </div>
-            <div class="columnas-datos">
+      <form id="formularioEntrenador" method="POST">
+          <div class="columnas-editar">
               <div class="columna">
-                <label for="edad">Edad</label>
-                <input id="edad" type="number" placeholder="Edad" />
+                  <label for="nombre">Nombre</label>
+                  <input id="nombre" name="nombre" type="text" placeholder="Nombre" required />
               </div>
-              <div class="columna">
-                <label for="identificacion">Identificación</label>
-                <input id="identificacion" type="text" placeholder="Identificación"class="identificacion" />
+              <div class="columnas-datos">
+                <div class="columna">
+                  <label for="edad">Edad</label>
+                  <input id="edad" name="edad" type="number" placeholder="Edad" required />
+                </div>
+                <div class="columna">
+                  <label for="identificacion">Identificación</label>
+                  <input id="identificacion" name="identificacion" type="text" placeholder="Identificación" class="identificacion" required />
+                </div>
               </div>
-            </div>
-            <div class="columnas-datos">
-              <div class="columna">
-                <label for="correo">Correo</label>
-                <input id="correo" type="email" placeholder="Correo" />
+              <div class="columnas-datos">
+                <div class="columna">
+                  <label for="correo">Correo</label>
+                  <input id="correo" name="correo" type="email" placeholder="Correo" required />
+                </div>
+                <div class="columna">
+                  <label for="contrasena">Contraseña</label>
+                  <input id="contrasena" name="contrasena" type="password" placeholder="Contraseña" required />
+                </div>
               </div>
-              <div class="columna">
-                <label for="contrasena">Contraseña</label>
-                <input id="contrasena" type="password" placeholder="Contraseña" />
-              </div>
-            </div>
-
-            <!-- Botón de Registro con Flecha -->
-            <a href="iniciar_sesion.html">
-            <button class="button_flecha">
-                Registro
-                <img src="img\flecha.svg" alt="Flecha" width="16" height="16">
-              </a>
-            </button>
-        </div>
-        <div class="imagen-perfil">
-            <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-            <!-- Botón de Agregar Foto -->
-            <button class="button button-sobre-imagen">Agregar Foto</button>
-        </div>
-    </div>
-
+  
+              <!-- Botón de Registro -->
+              <button type="button" class="button_flecha" id="registroEntrenadorBtn">
+                  Registro
+                  <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
+              </button>
+          </div>
+  
+          <!-- Imagen de perfil con botón de agregar foto -->
+          <div class="imagen-perfil">
+              <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+              <button type="button" class="button button-sobre-imagen">Agregar Foto</button>
+          </div>
+      </form>
+  </div>
+  
     <footer></footer>
+    <script>
+      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
+        // Capturar los datos del formulario entrenador
+        const nombre = document.querySelector('input[name="nombre"]').value;
+        const identificacion = document.querySelector('input[name="identificacion"]').value;
+        const edad = document.querySelector('input[name="edad"]').value;
+        const correo = document.querySelector('input[name="correo"]').value;
+        const contraseña = document.querySelector('input[name="contraseña"]').value;
+    
+        // Crear un objeto con los datos del entrenador
+        const entrenador = {
+            tipoUsuario: "entrenador",
+            datosPersonales: {
+            nombre: nombre,
+            identificacion: identificacion,
+            edad: edad,
+            correo: correo,
+            contraseña: contraseña
+          }
+        };
+    
+        // Convertir a JSON
+        const entrenadorJSON = JSON.stringify(entrenador);
+    
+        // Enviar a PHP usando fetch
+        fetch('tu_archivo_php.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: entrenadorJSON
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+    </script>
+    
 </body>
 </html>
