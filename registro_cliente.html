@@ -210,6 +210,88 @@
           // Actualizar la medida de la muñeca seleccionada inicialmente
           actualizarMedidaMuñeca();
       });
+
+      // Manejo del registro para el php 
+      document.getElementById('registroClienteBtn').addEventListener('click', function () {
+        const nombre = document.querySelector('input[name="nombre"]').value;
+        const identificacion = document.querySelector('input[name="identificacion"]').value;
+        const edad = document.querySelector('input[name="edad"]').value;
+        const peso = document.querySelector('input[name="peso"]').value;
+        const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked').value;
+        const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
+        const altura = document.querySelector('input[name="altura"]').value;
+        const correo = document.querySelector('input[name="correo"]').value;
+        const contraseña = document.querySelector('input[name="contraseña"]').value;
+
+        const cliente = {
+          tipoUsuario: "cliente",
+          datosPersonales: {
+            nombre: nombre,
+            identificacion: identificacion,
+            edad: edad,
+            peso: peso,
+            medidaMuñeca: medidaMuñeca,
+            diasEntreno: diasEntreno,
+            altura: altura,
+            correo: correo,
+            contraseña: contraseña
+          }
+        };
+
+        const clienteJSON = JSON.stringify(cliente);
+
+        fetch('tu_archivo_php.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: clienteJSON
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+
+      // Manejo del registro de entrenador
+      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
+        const nombre = document.querySelector('input[name="nombre"]').value;
+        const identificacion = document.querySelector('input[name="identificacion"]').value;
+        const edad = document.querySelector('input[name="edad"]').value;
+        const correo = document.querySelector('input[name="correo"]').value;
+        const contraseña = document.querySelector('input[name="contraseña"]').value;
+
+        const entrenador = {
+          tipoUsuario: "entrenador",
+          datosPersonales: {
+            nombre: nombre,
+            identificacion: identificacion,
+            edad: edad,
+            correo: correo,
+            contraseña: contraseña
+          }
+        };
+
+        const entrenadorJSON = JSON.stringify(entrenador);
+
+        fetch('tu_archivo_php.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: entrenadorJSON
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
     </script>
     
     
