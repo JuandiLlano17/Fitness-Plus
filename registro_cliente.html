@@ -23,100 +23,93 @@
         <h1>Registro</h1>
         <h2>Por favor diligencia tus datos</h2>
     </div>
-
     <div class="formulario">
       <form action="registroCliente" method="POST">
-        <div class="columnas-editar">
-          <div class="columna">
-            <label>Nombre</label>
-            <input type="text" name="nombre" placeholder="Nombre" required />
-          </div>
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Identificación</label>
-                    <input type="number" name="identificacion" placeholder="Identificación" class="identificacion" required />
-                </div>
-                <div class="columna">
-                    <label>Edad</label>
-                    <input type="number" name="edad" placeholder="Edad" required />
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Peso</label>
-                    <input type="number" name="peso" placeholder="Peso" min="20" step="1" required />
-                </div>
-                <div class="columna">
-                  <label>Medida de Muñeca</label>
-                  <details class="custom-dropdown">
-                    <summary class="dropdown-header"id="medidaMuñecaSeleccionada">Medida de Muñeca</summary>
-                    <div class="radio-options">
-                      <input type="radio" id="menos-17" name="muñeca" value="menos-17" />
-                      <label for="menos-17" class="custom-radio">Menos de 17cm</label><br>
-                      
-                      <input type="radio" id="17-20" name="muñeca" value="17-20" />
-                      <label for="17-20" class="custom-radio">Entre 17-20cm</label><br>
-                      
-                      <input type="radio" id="mas-20" name="muñeca" value="mas-20" />
-                      <label for="mas-20" class="custom-radio">Más de 20cm</label>
-                    </div>
-                  </details>
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                  <label>Días de entreno</label>
-                  <details class="custom-dropdown">
-                    <summary class="dropdown-header" id="diasSeleccionados">Días de entreno</summary>
-                    <div class="dropdown-options">
-                        <input type="checkbox" name="diasEntreno" id="lunes" value="lunes" />
-                        <label for="lunes">Lunes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="martes" value="martes" />
-                        <label for="martes">Martes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="miercoles" value="miercoles" />
-                        <label for="miercoles">Miércoles</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="jueves" value="jueves" />
-                        <label for="jueves">Jueves</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="viernes" value="viernes" />
-                        <label for="viernes">Viernes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="sabado" value="sabado" />
-                        <label for="sabado">Sábado</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="domingo" value="domingo" />
-                        <label for="domingo">Domingo</label>
-                    </div>
-                  </details>
-                </div>
-                <div class="columna">
-                    <label>Altura</label>
-                    <input type="number" name="altura" placeholder="Altura" min="13" step="1" required />
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Correo</label>
-                    <input type="email" name="correo" placeholder="Correo" required />
-                </div>
-                <div class="columna">
-                    <label>Contraseña</label>
-                    <input type="password" name="contraseña" placeholder="Contraseña" required />
-                </div>
-            </div>
-            <a href="iniciar_sesion.html">
-              <button class="button_flecha">
+          <div class="columnas-editar">
+              <div class="columna">
+                  <label for="nombre">Nombre</label>
+                  <input id="nombre" name="nombre" type="text" placeholder="Nombre" required />
+              </div>
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="identificacion">Identificación</label>
+                      <input id="identificacion" name="identificacion" type="number" placeholder="Identificación" class="identificacion" required />
+                  </div>
+                  <div class="columna">
+                      <label for="edad">Edad</label>
+                      <input id="edad" name="edad" type="number" placeholder="Edad" required />
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="peso">Peso</label>
+                      <input id="peso" name="peso" type="number" placeholder="Peso" min="20" step="1" required />
+                  </div>
+                  <div class="columna">
+                      <label for="medidaMuñeca">Medida de Muñeca</label>
+                      <details class="custom-dropdown">
+                          <summary class="dropdown-header" id="medidaMuñecaSeleccionada">Medida de Muñeca</summary>
+                          <div class="radio-options">
+                              <input type="radio" id="menos-17" name="muñeca" value="menos-17" />
+                              <label for="menos-17" class="custom-radio">Menos de 17cm</label><br>
+  
+                              <input type="radio" id="17-20" name="muñeca" value="17-20" />
+                              <label for="17-20" class="custom-radio">Entre 17-20cm</label><br>
+  
+                              <input type="radio" id="mas-20" name="muñeca" value="mas-20" />
+                              <label for="mas-20" class="custom-radio">Más de 20cm</label>
+                          </div>
+                      </details>
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="diasEntreno">Días de entreno</label>
+                      <details class="custom-dropdown">
+                          <summary class="dropdown-header" id="diasSeleccionados">Días de entreno</summary>
+                          <div class="dropdown-options">
+                              <input type="checkbox" name="diasEntreno" id="lunes" value="lunes" />
+                              <label for="lunes">Lunes</label>
+                              <input type="checkbox" name="diasEntreno" id="martes" value="martes" />
+                              <label for="martes">Martes</label>
+                              <input type="checkbox" name="diasEntreno" id="miercoles" value="miercoles" />
+                              <label for="miercoles">Miércoles</label>
+                              <input type="checkbox" name="diasEntreno" id="jueves" value="jueves" />
+                              <label for="jueves">Jueves</label>
+                              <input type="checkbox" name="diasEntreno" id="viernes" value="viernes" />
+                              <label for="viernes">Viernes</label>
+                              <input type="checkbox" name="diasEntreno" id="sabado" value="sabado" />
+                              <label for="sabado">Sábado</label>
+                              <input type="checkbox" name="diasEntreno" id="domingo" value="domingo" />
+                              <label for="domingo">Domingo</label>
+                          </div>
+                      </details>
+                  </div>
+                  <div class="columna">
+                      <label for="altura">Altura</label>
+                      <input id="altura" name="altura" type="number" placeholder="Altura" min="13" step="1" required />
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="correo">Correo</label>
+                      <input id="correo" name="correo" type="email" placeholder="Correo" required />
+                  </div>
+                  <div class="columna">
+                      <label for="contraseña">Contraseña</label>
+                      <input id="contraseña" name="contraseña" type="password" placeholder="Contraseña" required />
+                  </div>
+              </div>
+  
+              <!-- Botón de Registro -->
+              <button type="submit" class="button_flecha">
                   Registro
-                  <img src="img\flecha.svg" alt="Flecha" width="16" height="16">
-                </a>
+                  <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
               </button>
-        </div>
+          </div>
       </form>
   
       <div class="imagen-perfil">
@@ -124,7 +117,7 @@
           <!-- Botones -->
           <button class="button button-sobre-imagen">Agregar Foto</button>
       </div>
-    </div>  
+  </div>
     <footer></footer>
 
     <script>
