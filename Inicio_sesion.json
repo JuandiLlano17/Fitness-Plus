@@ -1,0 +1,27 @@
+{
+    "usuarios": [
+      {
+        "tipoUsuario": "cliente",
+        "datosPersonales": {
+          "correo": "",
+          "contraseña": ""
+        },
+        "botonInicioSesion": {
+          "texto": "Inicia sesion Cliente",
+          "accion": "submit"
+        }
+      },
+      {
+        "tipoUsuario": "entrenador",
+        "datosPersonales": {
+          "correo": "",
+          "contraseña": ""
+        },
+        "botonInicioSesion": {
+          "texto": "Inicia sesion Entrenador",
+          "accion": "submit"
+        }
+      }
+    ]
+  }
+  
