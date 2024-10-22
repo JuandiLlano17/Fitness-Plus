@@ -5,19 +5,20 @@ $json = file_get_contents('php://input');
 // Decodificar el JSON a un array asociativo de PHP
 $data = json_decode($json, true);
 
-// Verificar el tipo de usuario y procesar los datos
-if ($data['tipoUsuario'] === 'cliente') {
-    // Procesar datos de cliente
+// Procesar los datos recibidos
+if (isset($data['tipoUsuario']) && $data['tipoUsuario'] === 'entrenador') {
+    // Obtener los datos personales del entrenador
     $nombre = $data['datosPersonales']['nombre'];
     $identificacion = $data['datosPersonales']['identificacion'];
-    // Otros datos del cliente...
-} elseif ($data['tipoUsuario'] === 'entrenador') {
-    // Procesar datos de entrenador
-    $nombre = $data['datosPersonales']['nombre'];
-    $identificacion = $data['datosPersonales']['identificacion'];
-    // Otros datos del entrenador...
-}
+    $edad = $data['datosPersonales']['edad'];
+    $correo = $data['datosPersonales']['correo'];
+    $contraseña = $data['datosPersonales']['contraseña'];
 
-// Enviar respuesta
-echo json_encode(['status' => 'success', 'data' => $data]);
+    // Aquí puedes hacer algo con los datos, como guardarlos en una base de datos
+    // Ejemplo de respuesta exitosa
+    echo json_encode(['status' => 'success', 'message' => 'Datos del entrenador guardados correctamente']);
+} else {
+    // Enviar respuesta de error
+    echo json_encode(['status' => 'error', 'message' => 'Datos incorrectos o faltantes']);
+}
 ?>

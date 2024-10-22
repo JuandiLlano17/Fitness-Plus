@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Cliente</title>
-    <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilos_registro_cliente.css">
   
@@ -23,8 +22,9 @@
         <h1>Registro</h1>
         <h2>Por favor diligencia tus datos</h2>
     </div>
+
     <div class="formulario">
-      <form action="registroCliente" method="POST">
+      <form id="formularioCliente">
           <div class="columnas-editar">
               <div class="columna">
                   <label for="nombre">Nombre</label>
@@ -33,7 +33,7 @@
               <div class="columnas-datos">
                   <div class="columna">
                       <label for="identificacion">Identificación</label>
-                      <input id="identificacion" name="identificacion" type="number" placeholder="Identificación" class="identificacion" required />
+                      <input id="identificacion" name="identificacion" type="number" placeholder="Identificación" required />
                   </div>
                   <div class="columna">
                       <label for="edad">Edad</label>
@@ -105,7 +105,7 @@
               </div>
   
               <!-- Botón de Registro -->
-              <button type="submit" class="button_flecha">
+              <button type="button" id="registroClienteBtn" class="button_flecha">
                   Registro
                   <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
               </button>
@@ -114,22 +114,18 @@
   
       <div class="imagen-perfil">
           <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-          <!-- Botones -->
           <button class="button button-sobre-imagen">Agregar Foto</button>
       </div>
-  </div>
+    </div>
     <footer></footer>
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-          // Obtén todos los checkboxes de los días de entreno
           const checkboxes = document.querySelectorAll('input[name="diasEntreno"]');
           const summary = document.getElementById('diasSeleccionados');
-          // Para la medida de la muñeca
           const radios = document.querySelectorAll('input[name="muñeca"]');
           const summaryMuñeca = document.getElementById('medidaMuñecaSeleccionada');
           
-          // Diccionario de abreviaturas para los días
           const abreviaturas = {
               'lunes': 'Lun',
               'martes': 'Mar',
@@ -140,81 +136,71 @@
               'domingo': 'Dom'
           };
     
-          // Función para actualizar el texto del summary de días seleccionados
           function actualizarDiasSeleccionados() {
               const diasSeleccionados = Array.from(checkboxes)
-                  .filter(checkbox => checkbox.checked) // Filtrar solo los que están seleccionados
-                  .map(checkbox => abreviaturas[checkbox.value]); // Obtener la abreviatura correspondiente
-    
-              // Si no hay días seleccionados, mostrar texto predeterminado
+                  .filter(checkbox => checkbox.checked)
+                  .map(checkbox => abreviaturas[checkbox.value]);
+
               if (diasSeleccionados.length > 0) {
-                  summary.textContent = diasSeleccionados.join(', '); // Mostrar los días abreviados
-                  summary.style.color = 'black'; // Cambiar el color a negro
-                  guardarDias(diasSeleccionados); // Guardar los días seleccionados en localStorage
+                  summary.textContent = diasSeleccionados.join(', ');
+                  summary.style.color = 'black';
+                  guardarDias(diasSeleccionados);
               } else {
-                  summary.textContent = 'Días de entreno'; // Texto predeterminado
-                  summary.style.color = ''; // Volver al color predeterminado
-                  guardarDias([]); // Si no hay días, guardar un arreglo vacío
+                  summary.textContent = 'Días de entreno';
+                  summary.style.color = '';
+                  guardarDias([]);
               }
           }
     
-          // Función del summary de la medida de la muñeca
           function actualizarMedidaMuñeca() {
               const muñecaSeleccionada = Array.from(radios)
-                  .filter(radio => radio.checked) // Filtrar el que está seleccionado
-                  .map(radio => radio.labels[0].innerText); // Obtener el texto de la etiqueta
+                  .filter(radio => radio.checked)
+                  .map(radio => radio.labels[0].innerText);
     
-              // Si hay una medida seleccionada, mostrarla
               if (muñecaSeleccionada.length > 0) {
-                  summaryMuñeca.textContent = muñecaSeleccionada[0]; // Mostrar la medida seleccionada
-                  summaryMuñeca.style.color = 'black'; // Cambiar el color a negro
+                  summaryMuñeca.textContent = muñecaSeleccionada[0];
+                  summaryMuñeca.style.color = 'black';
               } else {
-                  summaryMuñeca.textContent = 'Medida de Muñeca'; // Texto predeterminado
-                  summaryMuñeca.style.color = ''; // Volver al color predeterminado
+                  summaryMuñeca.textContent = 'Medida de Muñeca';
+                  summaryMuñeca.style.color = '';
               }
           }
     
-          // Añadir evento a cada checkbox para detectar los cambios en los días de entreno
           checkboxes.forEach(checkbox => {
               checkbox.addEventListener('change', actualizarDiasSeleccionados);
           });
     
-          // Añadir evento a cada input de radio para detectar los cambios en la medida de la muñeca
           radios.forEach(radio => {
             radio.addEventListener('change', function () {
-              const medida = this.value; // Obtenemos el valor de la medida seleccionada
-              guardarMedidaMuñeca(medida); // Guardamos la medida en localStorage
-              actualizarMedidaMuñeca(); // Actualizamos el summary de la muñeca
+              const medida = this.value;
+              guardarMedidaMuñeca(medida);
+              actualizarMedidaMuñeca();
             });
           });
     
-          // Función para almacenar la medida de muñeca seleccionada en localStorage
           function guardarMedidaMuñeca(medida) {
-            localStorage.setItem('medidaMuñeca', medida); // Guardar en localStorage
+            localStorage.setItem('medidaMuñeca', medida);
           }
     
-          // Función para almacenar los días seleccionados en localStorage
           function guardarDias(dias) {
-            localStorage.setItem('diasEntreno', JSON.stringify(dias)); // Guardar en localStorage como string
+            localStorage.setItem('diasEntreno', JSON.stringify(dias));
           }
-    
-          // Actualizar los días seleccionados inicialmente (por si hay selección previa)
+
           actualizarDiasSeleccionados();
-          // Actualizar la medida de la muñeca seleccionada inicialmente
           actualizarMedidaMuñeca();
       });
 
-      // Manejo del registro para el php 
+      // Manejo del registro de cliente para PHP
       document.getElementById('registroClienteBtn').addEventListener('click', function () {
-        const nombre = document.querySelector('input[name="nombre"]').value;
-        const identificacion = document.querySelector('input[name="identificacion"]').value;
-        const edad = document.querySelector('input[name="edad"]').value;
-        const peso = document.querySelector('input[name="peso"]').value;
+        const nombre = document.getElementById('nombre').value;
+        const identificacion = document.getElementById('identificacion').value;
+        const edad = document.getElementById('edad').value;
+        const peso = document.getElementById('peso').value;
         const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked').value;
         const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
-        const altura = document.querySelector('input[name="altura"]').value;
-        const correo = document.querySelector('input[name="correo"]').value;
-        const contraseña = document.querySelector('input[name="contraseña"]').value;
+        const altura = document.getElementById('altura').value;
+        const correo = document.getElementById('correo').value;
+        const contraseña = document.getElementById('contraseña').value;
 
         const cliente = {
           tipoUsuario: "cliente",
@@ -243,50 +229,13 @@
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-      });
-
-      // Manejo del registro de entrenador
-      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
-        const nombre = document.querySelector('input[name="nombre"]').value;
-        const identificacion = document.querySelector('input[name="identificacion"]').value;
-        const edad = document.querySelector('input[name="edad"]').value;
-        const correo = document.querySelector('input[name="correo"]').value;
-        const contraseña = document.querySelector('input[name="contraseña"]').value;
-
-        const entrenador = {
-          tipoUsuario: "entrenador",
-          datosPersonales: {
-            nombre: nombre,
-            identificacion: identificacion,
-            edad: edad,
-            correo: correo,
-            contraseña: contraseña
-          }
-        };
-
-        const entrenadorJSON = JSON.stringify(entrenador);
-
-        fetch('tu_archivo_php.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: entrenadorJSON
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
+          // Redirigir a la página de iniciar sesión
+          window.location.href = "iniciar_sesion.html"; // Cambia el nombre según tu archivo
         })
         .catch((error) => {
           console.error('Error:', error);
         });
       });
     </script>
-    
-    
 </body>
 </html>
