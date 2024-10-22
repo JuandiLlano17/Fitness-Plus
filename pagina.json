@@ -1,114 +1,97 @@
 {
-    "usuarios": [
-      {
-        "tipoUsuario": "cliente",
-        "datosPersonales": {
-          "nombre": "",
-          "identificacion": "",
-          "edad": "",
-          "peso": "",
-          "medidaMuñeca": "", 
-          "diasEntreno": [],
-          "altura": "",
-          "correo": "",
-          "contraseña": "",
-          "fotoPerfil": ""
-        },
-        "botonAgregarFoto": {
-          "texto": "Agregar Foto",
-          "accion": "abrirSelectorArchivos"
-        },
-        "botonRegistro": {
-          "texto": "Registro",
-          "accion": "submit"
-        }
+  "usuarios": [
+    {
+      "tipoUsuario": "cliente",
+      "datosPersonales": {
+        "correo": "",
+        "contraseña": ""
       },
-      {
-        "tipoUsuario": "entrenador",
-        "datosPersonales": {
-          "nombre": "",
-          "edad": "",
-          "identificacion": "",
-          "correo": "",
-          "contraseña": "",
-          "fotoPerfil": ""
+      "botonInicioSesion": {
+        "accion": "submit"
+      }
+    },
+    {
+      "tipoUsuario": "entrenador",
+      "datosPersonales": {
+        "correo": "",
+        "contraseña": ""
+      },
+      "botonInicioSesion": {
+        "accion": "submit"
+      },
+      "editarEntrenador": {
+        "diasEntreno": {
+          "seleccionDias": []
         },
-        "botonAgregarFoto": {
-          "texto": "Agregar Foto",
-          "accion": "abrirSelectorArchivos"
+        "tiempoRutina": {
+          "opciones": [
+            "30 minutos",
+            "45 minutos",
+            "60 minutos",
+            "90 minutos"
+          ],
+          "seleccion": ""
         },
-        "editarEntrenador": {
-          "diasEntreno": {
-            "seleccionDias": []
-          },
-          "tiempoRutina": {
-            "opciones": [
-              "30 minutos",
-              "45 minutos",
-              "60 minutos",
-              "90 minutos"
+        "musculo": {
+          "opciones": [
+            "Pecho",
+            "Espalda",
+            "Piernas",
+            "Brazos",
+            "Hombros",
+            "Abdomen"
+          ],
+          "seleccion": "",
+          "ejercicios": {
+            "Pecho": [
+              "Press de Banca",
+              "Aperturas con Mancuernas",
+              "Press Inclinado"
             ],
-            "seleccion": ""
-          },
-          "musculo": {
-            "opciones": [
-              "Pecho",
-              "Espalda",
-              "Piernas",
-              "Brazos",
-              "Hombros",
-              "Abdomen"
+            "Espalda": [
+              "Remo con Barra",
+              "Dominadas",
+              "Peso Muerto"
             ],
-            "seleccion": "",
-            "ejercicios": {
-              "Pecho": [
-                "Press de Banca",
-                "Aperturas con Mancuernas",
-                "Press Inclinado"
-              ],
-              "Espalda": [
-                "Remo con Barra",
-                "Dominadas",
-                "Peso Muerto"
-              ],
-              "Piernas": [
-                "Sentadilla Libre",
-                "Prensa",
-                "Extensiones De Cuádriceps",
-                "Sentadilla Hack",
-                "Sentadilla Smith"
-              ],
-              "Brazos": [
-                "Curl de Bíceps",
-                "Tríceps en Polea",
-                "Curl Martillo"
-              ],
-              "Hombros": [
-                "Press Militar",
-                "Elevaciones Laterales",
-                "Face Pull"
-              ],
-              "Abdomen": [
-                "Crunch",
-                "Plancha",
-                "Elevaciones de Piernas"
-              ]
-            }
-          },
-          "tipologiaCorporal": {
-            "clasificacion": "", 
-            "condiciones": {
-              "ectomorfo": "Si la medida de la muñeca es menor de 16 cm",
-              "mesomorfo": "Si la medida de la muñeca está entre 16 cm y 18 cm",
-              "endomorfo": "Si la medida de la muñeca es mayor de 18 cm"
-            }
+            "Piernas": [
+              "Sentadilla Libre",
+              "Prensa",
+              "Extensiones De Cuádriceps",
+              "Sentadilla Hack",
+              "Sentadilla Smith"
+            ],
+            "Brazos": [
+              "Curl de Bíceps",
+              "Tríceps en Polea",
+              "Curl Martillo"
+            ],
+            "Hombros": [
+              "Press Militar",
+              "Elevaciones Laterales",
+              "Face Pull"
+            ],
+            "Abdomen": [
+              "Crunch",
+              "Plancha",
+              "Elevaciones de Piernas"
+            ]
           }
         },
-        "botonRegistro": {
-          "texto": "Registro",
-          "accion": "submit"
+        "tipologiaCorporal": {
+          "clasificacion": "",
+          "condiciones": {
+            "ectomorfo": "Si la medida de la muñeca es menor de 16 cm",
+            "mesomorfo": "Si la medida de la muñeca está entre 16 cm y 18 cm",
+            "endomorfo": "Si la medida de la muñeca es mayor de 18 cm"
+          }
         }
+      },
+      "botonRegistro": {
+        "texto": "Registro",
+        "accion": "submit"
       }
-    ]
-  }
+    }
+  ]
+}
+
   
