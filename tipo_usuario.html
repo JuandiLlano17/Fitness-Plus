@@ -41,7 +41,7 @@
         // Función para enviar los datos al servidor PHP
         function enviarAlServidor(usuario, tipo) {
           $.ajax({
-            url: 'guardar_usuario.php', // Cambia a tu archivo PHP
+            url: 'index.php', 
             method: 'POST',
             data: {
               usuario: JSON.stringify(usuario), // Enviar el objeto usuario como JSON
