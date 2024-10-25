@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Ruta del archivo JSON (asegúrate de que la ruta sea correcta)
-$jsonFilePath = __DIR__ . '/pagina.json';
+// Definir la ruta del archivo JSON
+$jsonFilePath = 'pagina.json'; // Cambia esta ruta si el archivo está en otra ubicación
 
 // Verificar si el archivo JSON existe
 if (file_exists($jsonFilePath)) {
@@ -33,16 +33,19 @@ if (file_exists($jsonFilePath)) {
         // Recibir el JSON enviado desde el cliente (AJAX)
         $inputData = json_decode(file_get_contents('php://input'), true);
 
-        // Validar que el JSON enviado sea válido
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            echo json_encode(['status' => 'error', 'message' => 'Datos JSON enviados desde el cliente son inválidos']);
-            exit();
-        }
+        // Registrar los datos recibidos para depuración
+        error_log(print_r($inputData, true));
 
         // Verificar que los datos sean válidos
         if ($inputData && isset($inputData['tipoUsuario']) && isset($inputData['datosPersonales'])) {
             $tipoUsuario = $inputData['tipoUsuario'];
             $datosPersonales = $inputData['datosPersonales'];
+
+            // Validar que el correo y la contraseña no estén vacíos
+            if (empty($datosPersonales['correo']) || empty($datosPersonales['contraseña'])) {
+                echo json_encode(['status' => 'error', 'message' => 'Correo o contraseña están vacíos']);
+                exit();
+            }
 
             // Verificar el tipo de usuario
             if ($tipoUsuario === 'entrenador' || $tipoUsuario === 'cliente') {
@@ -51,7 +54,12 @@ if (file_exists($jsonFilePath)) {
 
                 // Guardar los datos actualizados en el archivo JSON
                 if (file_put_contents($jsonFilePath, json_encode($data, JSON_PRETTY_PRINT)) === false) {
-                    echo json_encode(['status' => 'error', 'message' => 'No se pudo guardar el archivo JSON']);
+                    // Si no se pudo guardar, mostrar los datos que no pudieron ser guardados
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'No se pudo guardar el archivo JSON',
+                        'data_no_guardados' => $inputData
+                    ]);
                     exit();
                 }
 
@@ -63,7 +71,7 @@ if (file_exists($jsonFilePath)) {
             }
         } else {
             // Datos enviados son inválidos
-            echo json_encode(['status' => 'error', 'message' => 'Datos incompletos o inválidos enviados desde el cliente']);
+            echo json_encode(['status' => 'error', 'message' => 'Datos incompletos o inválidos enviados']);
         }
     } else {
         // El archivo JSON no tiene la estructura esperada

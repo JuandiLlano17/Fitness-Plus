@@ -192,19 +192,25 @@
 
       // Manejo del registro de cliente para PHP
       document.getElementById('registroClienteBtn').addEventListener('click', function () {
-        const nombre = document.getElementById('nombre').value;
-        const identificacion = document.getElementById('identificacion').value;
-        const edad = document.getElementById('edad').value;
-        const peso = document.getElementById('peso').value;
-        const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked').value;
-        const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
-        const altura = document.getElementById('altura').value;
-        const correo = document.getElementById('correo').value;
-        const contraseña = document.getElementById('contraseña').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const identificacion = document.getElementById('identificacion').value.trim();
+    const edad = document.getElementById('edad').value.trim();
+    const peso = document.getElementById('peso').value.trim();
+    const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked') ? document.querySelector('input[name="muñeca"]:checked').value : null;
+    const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
+    const altura = document.getElementById('altura').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const contraseña = document.getElementById('contraseña').value.trim();
 
-        const cliente = {
-          tipoUsuario: "cliente",
-          datosPersonales: {
+    // Validación para asegurarse de que todos los campos estén completos
+    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const cliente = {
+        tipoUsuario: "cliente",
+        datosPersonales: {
             nombre: nombre,
             identificacion: identificacion,
             edad: edad,
@@ -214,28 +220,31 @@
             altura: altura,
             correo: correo,
             contraseña: contraseña
-          }
-        };
+        }
+    };
 
-        const clienteJSON = JSON.stringify(cliente);
+    const clienteJSON = JSON.stringify(cliente);
 
-        fetch('index.php', {
-          method: 'POST',
-          headers: {
+    // Para revisar qué datos se están enviando
+    console.log(clienteJSON);
+
+    fetch('index.php', {
+        method: 'POST',
+        headers: {
             'Content-Type': 'application/json'
-          },
-          body: clienteJSON
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-          // Redirigir a la página de iniciar sesión
-          window.location.href = "iniciar_sesion.html"; // Cambia el nombre según tu archivo
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-      });
+        },
+        body: clienteJSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        window.location.href = "iniciar_sesion.html"; // Redirigir si tiene éxito
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
     </script>
 </body>
 </html>

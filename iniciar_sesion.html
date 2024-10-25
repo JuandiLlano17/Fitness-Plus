@@ -15,39 +15,46 @@
         $('footer').load('footer.html');
       });
 
-      $.getJSON('pagina.json', function(data) {
-    // Recorrer los usuarios en el JSON
-    let usuarioEncontrado = null;
+      function iniciarSesion() {
+        // Obtener los valores de los campos de entrada
+        var correo = $('#email').val();
+        var contraseña = $('#Contraseña').val();  // Cambiado a 'contraseña'
 
-    data.usuarios.forEach(function(usuario) {
-        console.log("Revisando usuario:", usuario); // Debug para verificar qué usuarios se están cargando
-        console.log("Correo en JSON:", usuario.datosPersonales.correo);
-        console.log("Contraseña en JSON:", usuario.datosPersonales.contraseña);
-        console.log("Correo ingresado:", correo);
-        console.log("Contraseña ingresada:", contrasena);
+        $.getJSON('pagina.json', function(data) {
+          // Recorrer los usuarios en el JSON
+          let usuarioEncontrado = null;
 
-        // Verificar si el correo y la contraseña coinciden con algún usuario del JSON
-        if (usuario.datosPersonales.correo === correo && usuario.datosPersonales.contraseña === contrasena) {
-            usuarioEncontrado = usuario;
-        }
-    });
+          data.usuarios.forEach(function(usuario) {  // Usamos "usuario" como nombre del parámetro
+            if (usuario && usuario.datosPersonales) {  // Verificar si 'usuario' y 'datosPersonales' existen
+              console.log("Revisando usuario:", usuario); // Debug para verificar qué usuarios se están cargando
+              console.log("Correo en JSON:", usuario.datosPersonales.correo);
+              console.log("Contraseña en JSON:", usuario.datosPersonales.contraseña);
+              console.log("Correo ingresado:", correo);
+              console.log("Contraseña ingresada:", contraseña);  // Cambiado a 'contraseña'
 
-    if (usuarioEncontrado) {
-        // Si el usuario fue encontrado, redirigir según el tipo de usuario
-        if (usuarioEncontrado.tipoUsuario === 'entrenador') {
-            window.location.href = "Cliente-Entrenado.html";
-        } else if (usuarioEncontrado.tipoUsuario === 'cliente') {
-            window.location.href = "opcion_cliente.html";
-        }
-    } else {
-        // Mostrar mensaje de error si el usuario no fue encontrado
-        $('#mensajeError').text("Correo o contraseña incorrectos.");
-    }
-}).fail(function() {
-    // En caso de que no se pueda cargar el archivo JSON
-    $('#mensajeError').text("Error al cargar el archivo de usuarios.");
-});
+              // Verificar si el correo y la contraseña coinciden con algún usuario del JSON
+              if (usuario.datosPersonales.correo === correo && usuario.datosPersonales.contraseña === contraseña) {
+                usuarioEncontrado = usuario;
+              }
+            }
+          });
 
+          if (usuarioEncontrado) {
+            // Si el usuario fue encontrado, redirigir según el tipo de usuario
+            if (usuarioEncontrado.tipoUsuario === 'entrenador') {
+              window.location.href = "Cliente-Entrenado.html";
+            } else if (usuarioEncontrado.tipoUsuario === 'cliente') {
+              window.location.href = "opcion_cliente.html";
+            }
+          } else {
+            // Mostrar mensaje de error si el usuario no fue encontrado
+            $('#mensajeError').text("Correo o contraseña incorrectos.");
+          }
+        }).fail(function() {
+          // En caso de que no se pueda cargar el archivo JSON
+          $('#mensajeError').text("Error al cargar el archivo de usuarios.");
+        });
+      }
     </script>
 </head>
 <body>
