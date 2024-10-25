@@ -17,43 +17,43 @@
 
       // Función para cargar el archivo JSON (pagina.json) y verificar el inicio de sesión
       function iniciarSesion() {
-        const correo = document.getElementById("email").value;
-        const contrasena = document.getElementById("Contraseña").value;
+    const correo = document.getElementById("email").value;
+    const contrasena = document.getElementById("Contraseña").value;
 
-        // Verificación básica de campos vacíos
-        if (correo === "" || contrasena === "") {
-          alert("Por favor, complete todos los campos.");
-          return;
-        }
+    // Verificación básica de campos vacíos
+    if (correo === "" || contrasena === "") {
+        alert("Por favor, complete todos los campos.");
+        return;
+    }
 
-        // Cargar el archivo JSON (pagina.json) usando AJAX
-        $.getJSON('pagina.json', function(data) {
-          // Recorrer los usuarios en el JSON
-          let usuarioEncontrado = null;
+    // Cargar el archivo JSON (pagina.json) usando AJAX
+    $.getJSON('pagina.json', function(data) {
+        // Recorrer los usuarios en el JSON
+        let usuarioEncontrado = null;
 
-          data.usuarios.forEach(function(usuario) {
+        data.usuarios.forEach(function(usuario) {
             // Verificar si el correo y la contraseña coinciden con algún usuario del JSON
             if (usuario.datosPersonales.correo === correo && usuario.datosPersonales.contraseña === contrasena) {
-              usuarioEncontrado = usuario;
+                usuarioEncontrado = usuario;
             }
-          });
+        });
 
-          if (usuarioEncontrado) {
+        if (usuarioEncontrado) {
             // Si el usuario fue encontrado, redirigir según el tipo de usuario
             if (usuarioEncontrado.tipoUsuario === 'entrenador') {
-              window.location.href = "Cliente-Entrenado.html";
-            } else {
-              window.location.href = "opcion_cliente.html";
+                window.location.href = "Cliente-Entrenado.html";
+            } else if (usuarioEncontrado.tipoUsuario === 'cliente') {
+                window.location.href = "opcion_cliente.html";
             }
-          } else {
+        } else {
             // Mostrar mensaje de error si el usuario no fue encontrado
             $('#mensajeError').text("Correo o contraseña incorrectos.");
-          }
-        }).fail(function() {
-          // En caso de que no se pueda cargar el archivo JSON
-          $('#mensajeError').text("Error al cargar el archivo de usuarios.");
-        });
-      }
+        }
+    }).fail(function() {
+        // En caso de que no se pueda cargar el archivo JSON
+        $('#mensajeError').text("Error al cargar el archivo de usuarios.");
+    });
+  }
     </script>
 </head>
 <body>
