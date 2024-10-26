@@ -20,6 +20,12 @@
         var correo = $('#email').val();
         var contraseña = $('#Contraseña').val();  // Cambiado a 'contraseña'
 
+         // Verificar si los campos están vacíos
+         if (correo === "" || contraseña === "") {
+          $('#mensajeError').text("Por favor completa todos los campos.");
+          return; // Detener la ejecución si algún campo está vacío
+        }
+
         $.getJSON('pagina.json', function(data) {
           // Recorrer los usuarios en el JSON
           let usuarioEncontrado = null;
