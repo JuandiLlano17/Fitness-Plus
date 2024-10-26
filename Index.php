@@ -18,8 +18,6 @@ $jsonFilePath = 'pagina.json'; // Cambia esta ruta si el archivo está en otra u
 if (file_exists($jsonFilePath)) {
     // Leer el archivo JSON
     $json = file_get_contents($jsonFilePath);
-
-    // Decodificar el JSON a un array asociativo de PHP
     $data = json_decode($json, true);
 
     // Validar que la decodificación JSON fue exitosa
