@@ -114,12 +114,14 @@
   
       <div class="imagen-perfil">
           <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+          <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
           <button class="button button-sobre-imagen">Agregar Foto</button>
       </div>
     </div>
     <footer></footer>
 
     <script>
+
       document.addEventListener('DOMContentLoaded', function () {
           const checkboxes = document.querySelectorAll('input[name="diasEntreno"]');
           const summary = document.getElementById('diasSeleccionados');
@@ -188,6 +190,17 @@
 
           actualizarDiasSeleccionados();
           actualizarMedidaMuñeca();
+      });
+
+      document.getElementById('fotoPerfil').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  document.getElementById('previewImagen').src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
       });
 
       // Manejo del registro de cliente para PHP

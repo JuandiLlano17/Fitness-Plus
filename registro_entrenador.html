@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilos_registro_cliente.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
      $(document).ready(function () {
-        // Cargar el header desde header.html
         $('header').load('header.html');
-        // Cargar el footer desde footer.html
         $('footer').load('footer.html');
       });
     </script>
@@ -40,7 +36,7 @@
                 </div>
                 <div class="columna">
                   <label for="identificacion">Identificación</label>
-                  <input id="identificacion" name="identificacion" type="text" placeholder="Identificación" class="identificacion" required />
+                  <input id="identificacion" name="identificacion" type="text" placeholder="Identificación" required />
                 </div>
               </div>
               <div class="columnas-datos">
@@ -53,65 +49,73 @@
                   <input id="contrasena" name="contraseña" type="password" placeholder="Contraseña" required />
                 </div>
               </div>
-  
-              <!-- Botón de Registro -->
+
               <button type="button" class="button_flecha" id="registroEntrenadorBtn">
                   Registro
                   <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
               </button>
           </div>
-  
+
           <!-- Imagen de perfil con botón de agregar foto -->
           <div class="imagen-perfil">
-              <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-              <button type="button" class="button button-sobre-imagen">Agregar Foto</button>
-          </div>
+            <img id="previewImagen" class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+            <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
+            <button type="button" class="button button-sobre-imagen" onclick="document.getElementById('fotoPerfil').click()">Agregar Foto</button>
+        </div>
   </div>
 </form>
-  
+
     <footer></footer>
     <script>
-      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
-        // Capturar los datos del formulario entrenador
-        const nombre = document.querySelector('input[name="nombre"]').value;
-        const identificacion = document.querySelector('input[name="identificacion"]').value;
-        const edad = document.querySelector('input[name="edad"]').value;
-        const correo = document.querySelector('input[name="correo"]').value;
-        const contraseña = document.querySelector('input[name="contraseña"]').value;
-    
-        // Crear un objeto con los datos del entrenador
-        const entrenador = {
-            tipoUsuario: "entrenador",
-            datosPersonales: {
-            nombre: nombre,
-            identificacion: identificacion,
-            edad: edad,
-            correo: correo,
-            contraseña: contraseña
+      // Previsualización de la imagen cuando se selecciona
+      document.getElementById('fotoPerfil').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  document.getElementById('previewImagen').src = e.target.result;
+              };
+              reader.readAsDataURL(file);
           }
-        };
-    
-        // Convertir a JSON
-        const entrenadorJSON = JSON.stringify(entrenador);
-    
-        // Enviar a PHP usando fetch
-        fetch('index.php', {
+      });
+
+      // Manejo del envío de datos y foto al servidor
+      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
+        const formData = new FormData();
+
+        // Añadir datos del entrenador al FormData
+        formData.append('tipoUsuario', 'entrenador');
+        formData.append('nombre', document.getElementById('nombre').value);
+        formData.append('identificacion', document.getElementById('identificacion').value);
+        formData.append('edad', document.getElementById('edad').value);
+        formData.append('correo', document.getElementById('correo').value);
+        formData.append('contraseña', document.getElementById('contrasena').value);
+
+        // Añadir la imagen de perfil al FormData
+        const fotoPerfil = document.getElementById('fotoPerfil').files[0];
+        if (fotoPerfil) {
+            formData.append('fotoPerfil', fotoPerfil); // Añadir archivo al FormData
+        }
+
+        // Enviar los datos y la imagen a PHP usando fetch
+        fetch('registro.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: entrenadorJSON
+          body: formData
         })
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data);
-          window.location.href = "iniciar_sesion.html";
+          if (data.status === 'success') {
+            window.location.href = "iniciar_sesion.html";
+          } else {
+            alert(data.message);
+          }
         })
         .catch((error) => {
           console.error('Error:', error);
         });
       });
     </script>
-    
+
 </body>
 </html>
