@@ -113,14 +113,86 @@
       </form>
   
       <div class="imagen-perfil">
-          <img id="previewImagen" class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-          <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
-          <button type="button" class="button button-sobre-imagen" onclick="document.getElementById('fotoPerfil').click()">Agregar Foto</button>
-      </div>
+        <img id="previewImagen" class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
+        <button type="button" class="button button-sobre-imagen" onclick="document.getElementById('fotoPerfil').click()">Agregar Foto</button>
+    </div>
+    
     </div>
     <footer></footer>
 
     <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+          const checkboxes = document.querySelectorAll('input[name="diasEntreno"]');
+          const summary = document.getElementById('diasSeleccionados');
+          const radios = document.querySelectorAll('input[name="muñeca"]');
+          const summaryMuñeca = document.getElementById('medidaMuñecaSeleccionada');
+          
+          const abreviaturas = {
+              'lunes': 'Lun',
+              'martes': 'Mar',
+              'miercoles': 'Mié',
+              'jueves': 'Jue',
+              'viernes': 'Vie',
+              'sabado': 'Sáb',
+              'domingo': 'Dom'
+          };
+    
+          function actualizarDiasSeleccionados() {
+              const diasSeleccionados = Array.from(checkboxes)
+                  .filter(checkbox => checkbox.checked)
+                  .map(checkbox => abreviaturas[checkbox.value]);
+
+              if (diasSeleccionados.length > 0) {
+                  summary.textContent = diasSeleccionados.join(', ');
+                  summary.style.color = 'black';
+                  guardarDias(diasSeleccionados);
+              } else {
+                  summary.textContent = 'Días de entreno';
+                  summary.style.color = '';
+                  guardarDias([]);
+              }
+          }
+    
+          function actualizarMedidaMuñeca() {
+              const muñecaSeleccionada = Array.from(radios)
+                  .filter(radio => radio.checked)
+                  .map(radio => radio.labels[0].innerText);
+    
+              if (muñecaSeleccionada.length > 0) {
+                  summaryMuñeca.textContent = muñecaSeleccionada[0];
+                  summaryMuñeca.style.color = 'black';
+              } else {
+                  summaryMuñeca.textContent = 'Medida de Muñeca';
+                  summaryMuñeca.style.color = '';
+              }
+          }
+    
+          checkboxes.forEach(checkbox => {
+              checkbox.addEventListener('change', actualizarDiasSeleccionados);
+          });
+    
+          radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+              const medida = this.value;
+              guardarMedidaMuñeca(medida);
+              actualizarMedidaMuñeca();
+            });
+          });
+    
+          function guardarMedidaMuñeca(medida) {
+            localStorage.setItem('medidaMuñeca', medida);
+          }
+    
+          function guardarDias(dias) {
+            localStorage.setItem('diasEntreno', JSON.stringify(dias));
+          }
+
+          actualizarDiasSeleccionados();
+          actualizarMedidaMuñeca();
+      });
+
       document.getElementById('fotoPerfil').addEventListener('change', function () {
           const file = this.files[0];
           if (file) {
@@ -132,45 +204,69 @@
           }
       });
 
+      
+
+      // Manejo del registro de cliente para PHP
       document.getElementById('registroClienteBtn').addEventListener('click', function () {
-        const formData = new FormData();
-
-        // Agregar los datos al FormData
-        formData.append('tipoUsuario', 'cliente');
-        formData.append('nombre', document.getElementById('nombre').value.trim());
-        formData.append('identificacion', document.getElementById('identificacion').value.trim());
-        formData.append('edad', document.getElementById('edad').value.trim());
-        formData.append('peso', document.getElementById('peso').value.trim());
-        formData.append('medidaMuñeca', document.querySelector('input[name="muñeca"]:checked') ? document.querySelector('input[name="muñeca"]:checked').value : '');
-        formData.append('diasEntreno', JSON.stringify(Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value)));
-        formData.append('altura', document.getElementById('altura').value.trim());
-        formData.append('correo', document.getElementById('correo').value.trim());
-        formData.append('contraseña', document.getElementById('contraseña').value.trim());
-
-        // Agregar la foto al FormData
-        const fotoPerfil = document.getElementById('fotoPerfil').files[0];
+    const formData = new FormData();
+    const nombre = document.getElementById('nombre').value.trim();
+    const identificacion = document.getElementById('identificacion').value.trim();
+    const edad = document.getElementById('edad').value.trim();
+    const peso = document.getElementById('peso').value.trim();
+    const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked') ? document.querySelector('input[name="muñeca"]:checked').value : null;
+    const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
+    const altura = document.getElementById('altura').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const contraseña = document.getElementById('contraseña').value.trim();
+    
+    const fotoPerfil = document.getElementById('fotoPerfil').files[0];
         if (fotoPerfil) {
-            formData.append('fotoPerfil', fotoPerfil);
+            formData.append('fotoPerfil', fotoPerfil); // Añadir archivo al FormData
         }
 
-        // Enviar los datos y la imagen a PHP usando fetch
-        fetch('index.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-          if (data.status === 'success') {
-            window.location.href = "iniciar_sesion.html";
-          } else {
-            alert(data.message);
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-      });
+    // Validación para asegurarse de que todos los campos estén completos
+    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const cliente = {
+        tipoUsuario: "cliente",
+        datosPersonales: {
+            nombre: nombre,
+            identificacion: identificacion,
+            edad: edad,
+            peso: peso,
+            medidaMuñeca: medidaMuñeca,
+            diasEntreno: diasEntreno,
+            altura: altura,
+            correo: correo,
+            contraseña: contraseña
+        }
+    };
+
+    const clienteJSON = JSON.stringify(cliente);
+
+    // Para revisar qué datos se están enviando
+    console.log(clienteJSON);
+
+    fetch('index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: clienteJSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        window.location.href = "iniciar_sesion.html"; // Redirigir si tiene éxito
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
     </script>
 </body>
 </html>
