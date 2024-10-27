@@ -7,9 +7,9 @@
         "contraseña": ""
       },
       "rutina": {
-          "diasEntreno": [],
-          "medidaMuñeca": ""
-        },
+        "diasEntreno": [],
+        "medidaMuñeca": ""
+      },
       "botonInicioSesion": {
         "accion": "submit"
       }
@@ -39,36 +39,203 @@
           "seleccion": "",
           "ejercicios": {
             "Pecho": [
-              "Press de Banca",
-              "Aperturas con Mancuernas",
-              "Press Inclinado"
+              {
+                "nombre": "Press de Banca",
+                "instrucciones": [
+                  "Coloca las manos en la barra a la altura de los hombros.",
+                  "Mantén los pies firmes en el suelo y la espalda ligeramente arqueada.",
+                  "Baja la barra hasta que toque suavemente tu pecho y luego empújala hacia arriba de forma controlada."
+                ],
+                "video": "Video/PressBanca.MOV"
+              },
+              {
+                "nombre": "Aperturas con Mancuernas",
+                "instrucciones": [
+                  "Acuéstate en un banco con una mancuerna en cada mano.",
+                  "Mantén los brazos ligeramente flexionados y abre los brazos hacia los lados, sintiendo el estiramiento en el pecho.",
+                  "Junta las mancuernas nuevamente de forma controlada en la parte superior."
+                ],
+                "video": "Video/ExtensionesCuadri.MOV"
+              },
+              {
+                "nombre": "Press Inclinado",
+                "instrucciones": [
+                  "Ajusta el banco a una inclinación de aproximadamente 45 grados.",
+                  "Sujeta la barra o las mancuernas con las manos a la altura de los hombros.",
+                  "Baja de forma controlada hasta el pecho y empuja de regreso hacia arriba, manteniendo el enfoque en la parte superior del pecho."
+                ],
+                "video": "Video/PressInclinado.MOV"
+              }
             ],
             "Espalda": [
-              "Remo con Barra",
-              "Dominadas",
-              "Peso Muerto"
+              {
+                "nombre": "Remo con Barra",
+                "instrucciones": [
+                  "Coloca la barra en el suelo frente a ti, con una posición de agarre a la anchura de los hombros.",
+                  "Inclina tu torso hacia adelante mientras mantienes la espalda recta.",
+                  "Levanta la barra hacia tu abdomen, apretando los músculos de la espalda, y baja de forma controlada."
+                ],
+                "video": "Video/PesoMuerto.MOV"
+              },
+              {
+                "nombre": "Dominadas",
+                "instrucciones": [
+                  "Sujeta la barra de dominadas con un agarre ligeramente más ancho que los hombros.",
+                  "Mantén el cuerpo recto y sube hasta que la barbilla esté por encima de la barra.",
+                  "Baja lentamente hasta la posición inicial."
+                ],
+                "video": "Video/Dominadass.MOV"
+              },
+              {
+                "nombre": "Peso Muerto",
+                "instrucciones": [
+                  "Coloca la barra en el suelo frente a ti y agarra con ambas manos a la anchura de los hombros.",
+                  "Mantén la espalda recta y levanta la barra extendiendo las caderas y las rodillas.",
+                  "Baja la barra de forma controlada hasta el suelo."
+                ],
+                "video": "Video/PesoMuerto.MOV"
+              }
             ],
             "Piernas": [
-              "Sentadilla Libre",
-              "Prensa",
-              "Extensiones De Cuádriceps",
-              "Sentadilla Hack",
-              "Sentadilla Smith"
+              {
+                "nombre": "Sentadilla Libre",
+                "instrucciones": [
+                  "Toma un peso que puedas cargar sin mucho problema.",
+                  "Mantén la barra estable en tu espalda.",
+                  "Mantén la espalda recta.",
+                  "Baja de forma controlada hasta los 90 grados."
+                ],
+                "video": "Video/SentadillaLibre.MOV"
+              },
+              {
+                "nombre": "Prensa",
+                "instrucciones": [
+                  "Coloca los pies en la plataforma a la anchura de los hombros.",
+                  "Desbloquea la máquina y baja la plataforma controladamente hasta que las rodillas estén en un ángulo de 90 grados.",
+                  "Empuja la plataforma hacia arriba sin bloquear las rodillas."
+                ],
+                "video": "Video/Prensa.MOV"
+              },
+              {
+                "nombre": "Extensiones de Cuádriceps",
+                "instrucciones": [
+                  "Siéntate en la máquina con las piernas debajo del cojín.",
+                  "Extiende las piernas hasta que estén completamente rectas, sintiendo la contracción en los cuádriceps.",
+                  "Baja lentamente las piernas a la posición inicial."
+                ],
+                "video": "Video/ExtensionesCuadri.MOV"
+              },
+              {
+                "nombre": "Sentadilla Hack",
+                "instrucciones": [
+                  "Colócate en la máquina de sentadillas Hack con los hombros apoyados.",
+                  "Desbloquea el equipo y baja controladamente hasta los 90 grados.",
+                  "Empuja hacia arriba, concentrándote en trabajar los cuádriceps y glúteos."
+                ],
+                "video": "Video/SentadillaHack.MOVk"
+              },
+              {
+                "nombre": "Sentadilla Smith",
+                "instrucciones": [
+                  "Colócate bajo la barra Smith con los pies alineados con los hombros.",
+                  "Baja lentamente en una posición de sentadilla hasta que las rodillas estén a 90 grados.",
+                  "Empuja hacia arriba de forma controlada manteniendo la espalda recta."
+                ],
+                "video": "Video/Sentadilla Smith.MOV"
+              }
             ],
             "Brazos": [
-              "Curl de Bíceps",
-              "Tríceps en Polea",
-              "Curl Martillo"
+              {
+                "nombre": "Curl de Bíceps",
+                "instrucciones": [
+                  "Sujeta una mancuerna en cada mano con las palmas hacia arriba.",
+                  "Flexiona los codos y lleva las mancuernas hacia los hombros.",
+                  "Baja las mancuernas de forma controlada a la posición inicial."
+                ],
+                "video": "Video/CurlBicepsChico.MOV"
+              },
+
+              {
+                "nombre": "Tríceps en Polea",
+                "instrucciones": [
+                  "Coloca las manos en el agarre de la polea y mantén los codos pegados al cuerpo.",
+                  "Empuja hacia abajo extendiendo completamente los brazos.",
+                  "Regresa a la posición inicial de forma controlada."
+                ],
+                "video": "Video/TricepsPolea.MOV"
+              },
+
+              {
+                "nombre": "Curl Martillo",
+                "instrucciones": [
+                  "Sujeta una mancuerna en cada mano con las palmas hacia el cuerpo.",
+                  "Flexiona los codos y lleva las mancuernas hacia los hombros.",
+                  "Baja las mancuernas de forma controlada a la posición inicial."
+                ],
+                "video": "Video/CurlMartillo.MOV"
+              }
             ],
             "Hombros": [
-              "Press Militar",
-              "Elevaciones Laterales",
-              "Face Pull"
+              {
+                "nombre": "Press Militar",
+                "instrucciones": [
+                  "Sujeta una barra a la altura de los hombros con las manos separadas un poco más del ancho de los hombros.",
+                  "Empuja la barra hacia arriba hasta que los brazos estén completamente extendidos.",
+                  "Baja la barra de forma controlada a la posición inicial."
+                ],
+                "video": "Video/PressMaquina.MOV"
+              },
+
+              {
+                "nombre": "Elevaciones Laterales",
+                "instrucciones": [
+                  "Sujeta una mancuerna en cada mano y mantén los brazos a los costados.",
+                  "Levanta las mancuernas hacia los lados hasta que estén a la altura de los hombros.",
+                  "Baja de forma controlada a la posición inicial."
+                ],
+                "video": "Video/CurlBicepsChico.MOV"
+              },
+
+              {
+                "nombre": "Face Pull",
+                "instrucciones": [
+                  "Sujeta la cuerda de la polea a la altura de los ojos.",
+                  "Jala hacia la cara manteniendo los codos altos.",
+                  "Regresa de forma controlada a la posición inicial."
+                ],
+                "video": "Video/Face Pull.MOV"
+              }
             ],
+
             "Abdomen": [
-              "Crunch",
-              "Plancha",
-              "Elevaciones de Piernas"
+              {
+                "nombre": "Crunch",
+                "instrucciones": [
+                  "Acuéstate en el suelo con las rodillas dobladas.",
+                  "Levanta el torso hacia las rodillas contrayendo el abdomen.",
+                  "Baja de forma controlada a la posición inicial."
+                ],
+                "video": "Video/Crunch.MOV"
+              },
+
+              {
+                "nombre": "Plancha",
+                "instrucciones": [
+                  "Colócate en posición de plancha con los antebrazos y los dedos de los pies en el suelo.",
+                  "Mantén el cuerpo en línea recta y aprieta el abdomen.",
+                  "Sostén la posición durante el tiempo deseado."
+                ],
+                "video": "Video/Plancha.MOV"
+              },
+              {
+                "nombre": "Elevaciones de Piernas",
+                "instrucciones": [
+                  "Acuéstate en el suelo con las piernas rectas.",
+                  "Levanta las piernas hasta formar un ángulo de 90 grados con el cuerpo.",
+                  "Baja de forma controlada a la posición inicial."
+                ],
+                "video": "Video/Plancha.MOV"
+              }
             ]
           }
         },
@@ -88,5 +255,3 @@
     }
   ]
 }
-
-  
