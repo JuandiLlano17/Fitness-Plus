@@ -48,11 +48,21 @@ if (file_exists($jsonFilePath)) {
             // Verificar el tipo de usuario y agregar la estructura correspondiente
             if ($tipoUsuario === 'cliente') {
                 // Agregar la estructura 'rutina' para el cliente
+                $inputData['datosPersonales'] = [
+                    'correo' => isset($inputData['datosPersonales']['correo']) ? $inputData['datosPersonales']['correo'] : [],
+                    'contraseña' => isset($inputData['datosPersonales']['contraseña']) ? $inputData['datosPersonales']['contraseña'] : ""
+                ];
                 $inputData['rutina'] = [
                     'diasEntreno' => isset($inputData['rutina']['diasEntreno']) ? $inputData['rutina']['diasEntreno'] : [],
                     'medidaMuñeca' => isset($inputData['rutina']['medidaMuñeca']) ? $inputData['rutina']['medidaMuñeca'] : ""
                 ];
-            } elseif ($tipoUsuario === 'entrenador') {
+            } 
+            
+            if ($tipoUsuario === 'entrenador') {
+                $inputData['datosPersonales'] = [
+                    'correo' => isset($inputData['datosPersonales']['correo']) ? $inputData['datosPersonales']['correo'] : [],
+                    'contraseña' => isset($inputData['datosPersonales']['contraseña']) ? $inputData['datosPersonales']['contraseña'] : ""
+                ];
                 // Agregar la estructura 'editarEntrenador' para el entrenador
                 $inputData['editarEntrenador'] = [
                     'tiempoRutina' => [
