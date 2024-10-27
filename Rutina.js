@@ -59,7 +59,7 @@ $(document).ready(function () {
       $(".exercise1").html(`
         <div class="video-container">
             <video controls>
-                <source src="Video/20240823_152007000_iOS.MOV" type="video/mp4">
+                <source src="Video\PressMaquina.MOV" type="video/mp4">
                 Tu navegador no soporta el elemento de video.
             </video>
         </div>
