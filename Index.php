@@ -38,7 +38,6 @@ if (file_exists($jsonFilePath)) {
         if ($inputData && isset($inputData['tipoUsuario']) && isset($inputData['datosPersonales'])) {
             $tipoUsuario = $inputData['tipoUsuario'];
             $datosPersonales = $inputData['datosPersonales'];
-            $tiempoRutina = $inputData['tiempoRutina'];
 
             // Validar que el correo y la contraseña no estén vacíos
             if (empty($datosPersonales['correo']) || empty($datosPersonales['contraseña'])) {
@@ -46,28 +45,42 @@ if (file_exists($jsonFilePath)) {
                 exit();
             }
 
-            // Verificar el tipo de usuario
-            if ($tipoUsuario === 'entrenador' || $tipoUsuario === 'cliente') {
-                // Agregar el nuevo usuario al array de usuarios
-                $data['usuarios'][] = $inputData;
-
-                // Guardar los datos actualizados en el archivo JSON
-                if (file_put_contents($jsonFilePath, json_encode($data, JSON_PRETTY_PRINT)) === false) {
-                    // Si no se pudo guardar, mostrar los datos que no pudieron ser guardados
-                    echo json_encode([
-                        'status' => 'error',
-                        'message' => 'No se pudo guardar el archivo JSON',
-                        'data_no_guardados' => $inputData
-                    ]);
-                    exit();
-                }
-
-                // Respuesta exitosa
-                echo json_encode(['status' => 'success', 'message' => 'Usuario registrado correctamente']);
+            // Verificar el tipo de usuario y agregar la estructura correspondiente
+            if ($tipoUsuario === 'cliente') {
+                // Agregar la estructura 'rutina' para el cliente
+                $inputData['rutina'] = [
+                    'diasEntreno' => isset($inputData['rutina']['diasEntreno']) ? $inputData['rutina']['diasEntreno'] : [],
+                    'medidaMuñeca' => isset($inputData['rutina']['medidaMuñeca']) ? $inputData['rutina']['medidaMuñeca'] : ""
+                ];
+            } elseif ($tipoUsuario === 'entrenador') {
+                // Agregar la estructura 'editarEntrenador' para el entrenador
+                $inputData['editarEntrenador'] = [
+                    'tiempoRutina' => [
+                        'seleccionTiempo' => isset($inputData['tiempoRutina']) ? $inputData['tiempoRutina'] : ""
+                    ]
+                ];
             } else {
                 // Tipo de usuario no válido
                 echo json_encode(['status' => 'error', 'message' => 'Tipo de usuario no válido']);
+                exit();
             }
+
+            // Agregar el nuevo usuario al array de usuarios
+            $data['usuarios'][] = $inputData;
+
+            // Guardar los datos actualizados en el archivo JSON
+            if (file_put_contents($jsonFilePath, json_encode($data, JSON_PRETTY_PRINT)) === false) {
+                // Si no se pudo guardar, mostrar los datos que no pudieron ser guardados
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'No se pudo guardar el archivo JSON',
+                    'data_no_guardados' => $inputData
+                ]);
+                exit();
+            }
+
+            // Respuesta exitosa
+            echo json_encode(['status' => 'success', 'message' => 'Usuario registrado correctamente']);
         } else {
             // Datos enviados son inválidos
             echo json_encode(['status' => 'error', 'message' => 'Datos incompletos o inválidos enviados']);
