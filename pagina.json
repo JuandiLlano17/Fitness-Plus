@@ -148,9 +148,9 @@
               {
                 "nombre": "Curl de Bíceps",
                 "instrucciones": [
-                  "Sujeta una mancuerna en cada mano con las palmas hacia arriba.",
-                  "Flexiona los codos y lleva las mancuernas hacia los hombros.",
-                  "Baja las mancuernas de forma controlada a la posición inicial."
+                  "Sujeta una barra o mancuernas con las manos a la anchura de los hombros.",
+                  "Flexiona los codos y lleva el peso hacia los hombros, manteniendo los codos pegados al cuerpo.",
+                  "Baja lentamente el peso a la posición inicial."
                 ],
                 "video": "Video/CurlBicepsChico.MOV"
               },
@@ -158,9 +158,9 @@
               {
                 "nombre": "Tríceps en Polea",
                 "instrucciones": [
-                  "Coloca las manos en el agarre de la polea y mantén los codos pegados al cuerpo.",
-                  "Empuja hacia abajo extendiendo completamente los brazos.",
-                  "Regresa a la posición inicial de forma controlada."
+                  "Sujeta la cuerda o barra de la polea con las manos en pronación.",
+                  "Empuja la cuerda hacia abajo hasta que los brazos estén completamente extendidos.",
+                  "Regresa de forma controlada a la posición inicial."
                 ],
                 "video": "Video/TricepsPolea.MOV"
               },
@@ -169,8 +169,8 @@
                 "nombre": "Curl Martillo",
                 "instrucciones": [
                   "Sujeta una mancuerna en cada mano con las palmas hacia el cuerpo.",
-                  "Flexiona los codos y lleva las mancuernas hacia los hombros.",
-                  "Baja las mancuernas de forma controlada a la posición inicial."
+                  "Flexiona los codos, levantando las mancuernas hacia los hombros.",
+                  "Baja lentamente hasta la posición inicial."
                 ],
                 "video": "Video/CurlMartillo.MOV"
               }
@@ -179,9 +179,9 @@
               {
                 "nombre": "Press Militar",
                 "instrucciones": [
-                  "Sujeta una barra a la altura de los hombros con las manos separadas un poco más del ancho de los hombros.",
+                  "Sujeta la barra con las manos un poco más anchas que los hombros.",
                   "Empuja la barra hacia arriba hasta que los brazos estén completamente extendidos.",
-                  "Baja la barra de forma controlada a la posición inicial."
+                  "Baja de forma controlada hasta la altura del pecho."
                 ],
                 "video": "Video/PressMaquina.MOV"
               },
@@ -189,9 +189,9 @@
               {
                 "nombre": "Elevaciones Laterales",
                 "instrucciones": [
-                  "Sujeta una mancuerna en cada mano y mantén los brazos a los costados.",
-                  "Levanta las mancuernas hacia los lados hasta que estén a la altura de los hombros.",
-                  "Baja de forma controlada a la posición inicial."
+                  "Toma una mancuerna en cada mano con los brazos a los lados.",
+                  "Eleva los brazos lateralmente hasta que estén a la altura de los hombros.",
+                  "Baja lentamente los brazos a la posición inicial."
                 ],
                 "video": "Video/CurlBicepsChico.MOV"
               },
@@ -199,9 +199,9 @@
               {
                 "nombre": "Face Pull",
                 "instrucciones": [
-                  "Sujeta la cuerda de la polea a la altura de los ojos.",
-                  "Jala hacia la cara manteniendo los codos altos.",
-                  "Regresa de forma controlada a la posición inicial."
+                  "Sujeta la cuerda de una polea alta con las manos en pronación.",
+                  "Jala la cuerda hacia tu cara, manteniendo los codos altos.",
+                  "Vuelve a la posición inicial de forma controlada."
                 ],
                 "video": "Video/Face Pull.MOV"
               }
@@ -211,8 +211,8 @@
               {
                 "nombre": "Crunch",
                 "instrucciones": [
-                  "Acuéstate en el suelo con las rodillas dobladas.",
-                  "Levanta el torso hacia las rodillas contrayendo el abdomen.",
+                  "Acuéstate boca arriba con las rodillas dobladas.",
+                  "Cruza las manos sobre el pecho y levanta los hombros del suelo, apretando los músculos abdominales.",
                   "Baja de forma controlada a la posición inicial."
                 ],
                 "video": "Video/Crunch.MOV"
@@ -221,18 +221,18 @@
               {
                 "nombre": "Plancha",
                 "instrucciones": [
-                  "Colócate en posición de plancha con los antebrazos y los dedos de los pies en el suelo.",
-                  "Mantén el cuerpo en línea recta y aprieta el abdomen.",
-                  "Sostén la posición durante el tiempo deseado."
+                  "Coloca los antebrazos en el suelo con el cuerpo estirado.",
+                  "Mantén el cuerpo recto y los abdominales contraídos.",
+                  "Mantén la posición el mayor tiempo posible."
                 ],
                 "video": "Video/Plancha.MOV"
               },
               {
                 "nombre": "Elevaciones de Piernas",
                 "instrucciones": [
-                  "Acuéstate en el suelo con las piernas rectas.",
-                  "Levanta las piernas hasta formar un ángulo de 90 grados con el cuerpo.",
-                  "Baja de forma controlada a la posición inicial."
+                  "Acuéstate boca arriba con las piernas extendidas.",
+                  "Levanta las piernas hasta formar un ángulo de 90 grados.",
+                  "Baja lentamente las piernas sin tocar el suelo."
                 ],
                 "video": "Video/Plancha.MOV"
               }
