@@ -38,6 +38,7 @@ if (file_exists($jsonFilePath)) {
         if ($inputData && isset($inputData['tipoUsuario']) && isset($inputData['datosPersonales'])) {
             $tipoUsuario = $inputData['tipoUsuario'];
             $datosPersonales = $inputData['datosPersonales'];
+            $tiempoRutina = $inputData['tiempoRutina'];
 
             // Validar que el correo y la contraseña no estén vacíos
             if (empty($datosPersonales['correo']) || empty($datosPersonales['contraseña'])) {

@@ -13,25 +13,42 @@
     $(document).ready(function () {
       $('header').load('header.html');
       $('footer').load('footer.html');
-
-      // Recuperar la medida de muñeca almacenada en localStorage
-      const medidaMuñeca = localStorage.getItem('medidaMuñeca');
-      if (medidaMuñeca) {
-        const tipoCuerpo = determinarTipologia(parseFloat(medidaMuñeca));
-        document.getElementById('tipoCuerpoCliente').textContent = tipoCuerpo;
-      } else {
-        document.getElementById('tipoCuerpoCliente').textContent = "No disponible";
-      }
-      const diasEntreno = localStorage.getItem('diasEntreno');
-      if (diasEntreno) {
-        // Convertimos la cadena almacenada en un arreglo
-        const diasSeleccionados = JSON.parse(diasEntreno);
-        // Mostramos los días seleccionados en el elemento correspondiente
-        document.getElementById('dias-entreno').textContent = diasSeleccionados.join(', ');
-      } else {
-        document.getElementById('dias-entreno').textContent = "No disponible";
-      }
     });
+
+    // Función para cargar datos del archivo JSON
+    async function cargarDatosJSON() {
+        try {
+            const response = await fetch('pagina.json'); // Asegúrate de que la ruta sea correcta
+            const data = await response.json();
+
+            // Supongamos que quieres tomar los datos del primer usuario "entrenador"
+            const cliente = data.usuarios.find(usuario => usuario.tipoUsuario === 'cliente');
+
+            // Verificar si existe el entrenador y contiene los datos necesarios
+            if (cliente && cliente.rutina) {
+                // Recuperar la medida de muñeca y asignarla
+                const medidaMuñeca = cliente.rutina.medidaMuñeca;
+                const tipoCuerpo = determinarTipologia(parseFloat(medidaMuñeca));
+                document.getElementById('tipoCuerpoCliente').textContent = tipoCuerpo;
+
+                // Recuperar y mostrar los días de entrenamiento
+                const diasSeleccionados = cliente.rutina.diasEntreno;
+                if (diasSeleccionados && diasSeleccionados.length > 0) {
+                    document.getElementById('dias-entreno').textContent = diasSeleccionados.join(', ');
+                } else {
+                    document.getElementById('dias-entreno').textContent = "No disponible";
+                }
+            } else {
+                document.getElementById('tipoCuerpoCliente').textContent = "No disponible";
+                document.getElementById('dias-entreno').textContent = "No disponible";
+            }
+        } catch (error) {
+            console.error('Error al cargar el archivo JSON:', error);
+        }
+    }
+
+    // Llamada a la función para cargar los datos del JSON
+    cargarDatosJSON();
 
     // Función para determinar la tipología corporal
     function determinarTipologia(medidaMuñeca) {
@@ -52,10 +69,9 @@
           // Actualizar la imagen de la carita en la sección del cliente
           $('.cara figure img').attr('src', selectedEmoji);
         }
-      });
+    });
+</script>
 
-    
-  </script>
 </head><!-- Encabezado -->
 
 <body>

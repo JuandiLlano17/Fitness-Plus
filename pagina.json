@@ -6,6 +6,10 @@
         "correo": "",
         "contraseña": ""
       },
+      "rutina": {
+          "diasEntreno": [],
+          "medidaMuñeca": ""
+        },
       "botonInicioSesion": {
         "accion": "submit"
       }
@@ -20,17 +24,8 @@
         "accion": "submit"
       },
       "editarEntrenador": {
-        "diasEntreno": {
-          "seleccionDias": []
-        },
         "tiempoRutina": {
-          "opciones": [
-            "30 minutos",
-            "45 minutos",
-            "60 minutos",
-            "90 minutos"
-          ],
-          "seleccion": ""
+          "seleccionTiempo": ""
         },
         "musculo": {
           "opciones": [
