@@ -81,6 +81,13 @@
   font-size: 18px;
 }
 
+.cara figure img {
+  width: 70px;
+  height: 70px;
+}
+
+
+
 /* Responsive for 1025px */
 @media (max-width: 1025px) {
   .cliente {
@@ -151,3 +158,4 @@
     font-size: 14px;
   }
 }
+
