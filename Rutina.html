@@ -14,6 +14,21 @@
         $("header").load("header.html");
         // Cargar el footer desde footer.html
         $("footer").load("footer.html");
+
+        function cargarEjercicios() {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "pagina.json", true); // Cambia el archivo JSON a 'pagina.json'
+
+          xhr.onload = function () {
+              if (this.status === 200) {
+                  const data = JSON.parse(this.responseText);
+                  mostrarEjercicios(data);
+              }
+          };
+
+          xhr.send();
+      }
+      
         // Evento para abrir el modal del cronómetro
         $(".button-cronometro").on("click", function () {
           $("#modalCronometro").fadeIn();
@@ -42,11 +57,11 @@
       <section class="exercise">
         <div class="video-container">
           <video controls>
-            <source src="Video/20240823_151057000_iOS.MOV" type="video/mp4" />
+            <source src="Video\SentadillaLibre.MOV" type="video/mp4" />
             Tu navegador no soporta el elemento de video.
           </video>
         </div>
-
+<!-- Ejerccio uno -->
         <article class="exercise-details">
           <h2>Músculo</h2>
           <h1>Sentadilla Libre</h1>
@@ -57,18 +72,18 @@
             <li>Baja de forma controlada hasta los 90 grados</li>
           </ul>
           <div class="exercise-actions">
-            <button class="button" id="boton-cronometro">Cronómetro</button>
-            <button class="button button-change-exercise">
+            <button class="button button-cronometro">Cronómetro</button>
+            <button class="button button-change-exercise1">
               Cambiar Ejercicio
             </button>
           </div>
         </article>
       </section>
-
+<!-- Ejerccio dos -->
       <section class="exercise1">
         <div class="video-container1">
           <video controls>
-            <source src="Video/20240823_151734000_iOS.MOV" type="video/mp4" />
+            <source src="Video\PressInclinado.MOV" type="video/mp4" />
             Tu navegador no soporta el elemento de video.
           </video>
         </div>

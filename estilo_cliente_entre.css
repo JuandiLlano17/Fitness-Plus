@@ -8,29 +8,19 @@
   bottom: 45px;
 }
 
-.cliente {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap:600px; /* Espacio entre las tarjetas */
-}
-
 .parte1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
-  padding: 0px;
   align-items: center;
   margin-bottom: 30px;
 }
 
 .tablita {
   max-width: 300px;
-  padding: 10px;
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -60,12 +50,6 @@
   margin-top: 20px;
 }
 
-.cara figure {
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .button-group1 {
   display: flex;
   gap: 10px;
@@ -80,6 +64,13 @@
   text-align: center;
   font-size: 18px;
 }
+
+.cara figure img {
+  width: 70px;
+  height: 70px;
+}
+
+
 
 /* Responsive for 1025px */
 @media (max-width: 1025px) {
@@ -139,6 +130,7 @@
 
   .cara figure img {
     width: 40px;
+    height: 50px;
   }
 
   h1 {
@@ -150,3 +142,4 @@
     font-size: 14px;
   }
 }
+

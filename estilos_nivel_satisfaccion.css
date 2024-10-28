@@ -85,6 +85,27 @@ line-height: 00px; /* Para centrar el contenido verticalmente */
 cursor: pointer;
 }
 
+.emoji-satisfaction {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji-satisfaction.selected {
+  width: 160px;
+  height: 160px;
+  transform: scale(1.1); /* Agrega una pequeña animación al seleccionar */
+}
+.selected {
+  border: 2px solid blue;
+}
+
+
+.button {
+  font-size: 16px;
+  padding: 15px 12px;
+}
+
+
 
 /* Media queries */
 
@@ -129,6 +150,19 @@ cursor: pointer;
     font-size: 16px;
     padding: 15px 12px;
   }
+
+
+  .emoji-satisfaction {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .emoji-satisfaction.selected {
+    width: 80px;
+    height: 80px;
+    transform: scale(1.1); /* Agrega una pequeña animación al seleccionar */
+  }
+  
 }
 
 @media (max-width: 768px) {
@@ -166,6 +200,31 @@ cursor: pointer;
     font-size: 16px;
     padding: 15px 12px;
   }
+
+  .selected {
+    border: 2px solid blue;
+  }
+  
+ 
+  .button {
+    font-size: 16px;
+    padding: 15px 12px;
+  }
+
+
+  .emoji-satisfaction {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .emoji-satisfaction.selected {
+    width: 70px;
+    height: 70px;
+    transform: scale(1.1); /* Agrega una pequeña animación al seleccionar */
+  }
+  
+
+
 }
 
 
@@ -204,6 +263,30 @@ cursor: pointer;
     font-size: 10px;
     padding: 6px 12px;
   }
+
+  .selected {
+    border: 2px solid blue;
+  }
+  
+ 
+  .button {
+    font-size: 16px;
+    padding: 15px 12px;
+  }
+
+
+  .emoji-satisfaction {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .emoji-satisfaction.selected {
+    width: 30px;
+    height: 30px;
+    transform: scale(1.1); /* Agrega una pequeña animación al seleccionar */
+  }
+  
+
 }
 
 /* Pantallas de hasta 431px */

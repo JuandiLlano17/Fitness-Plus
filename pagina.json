@@ -1,114 +1,257 @@
 {
-    "usuarios": [
-      {
-        "tipoUsuario": "cliente",
-        "datosPersonales": {
-          "nombre": "",
-          "identificacion": "",
-          "edad": "",
-          "peso": "",
-          "medidaMuñeca": "", 
-          "diasEntreno": [],
-          "altura": "",
-          "correo": "",
-          "contraseña": "",
-          "fotoPerfil": ""
-        },
-        "botonAgregarFoto": {
-          "texto": "Agregar Foto",
-          "accion": "abrirSelectorArchivos"
-        },
-        "botonRegistro": {
-          "texto": "Registro",
-          "accion": "submit"
-        }
+  "usuarios": [
+    {
+      "tipoUsuario": "cliente",
+      "datosPersonales": {
+        "correo": "",
+        "contraseña": ""
       },
-      {
-        "tipoUsuario": "entrenador",
-        "datosPersonales": {
-          "nombre": "",
-          "edad": "",
-          "identificacion": "",
-          "correo": "",
-          "contraseña": "",
-          "fotoPerfil": ""
+      "rutina": {
+        "diasEntreno": [],
+        "medidaMuñeca": ""
+      },
+      "botonInicioSesion": {
+        "accion": "submit"
+      }
+    },
+    {
+      "tipoUsuario": "entrenador",
+      "datosPersonales": {
+        "correo": "",
+        "contraseña": ""
+      },
+      "botonInicioSesion": {
+        "accion": "submit"
+      },
+      "editarEntrenador": {
+        "tiempoRutina": {
+          "seleccionTiempo": ""
         },
-        "botonAgregarFoto": {
-          "texto": "Agregar Foto",
-          "accion": "abrirSelectorArchivos"
-        },
-        "editarEntrenador": {
-          "diasEntreno": {
-            "seleccionDias": []
-          },
-          "tiempoRutina": {
-            "opciones": [
-              "30 minutos",
-              "45 minutos",
-              "60 minutos",
-              "90 minutos"
+        "musculo": {
+          "opciones": [
+            "Pecho",
+            "Espalda",
+            "Piernas",
+            "Brazos",
+            "Hombros",
+            "Abdomen"
+          ],
+          "seleccion": "",
+          "ejercicios": {
+            "Pecho": [
+              {
+                "nombre": "Press de Banca",
+                "instrucciones": [
+                  "Coloca las manos en la barra a la altura de los hombros.",
+                  "Mantén los pies firmes en el suelo y la espalda ligeramente arqueada.",
+                  "Baja la barra hasta que toque suavemente tu pecho y luego empújala hacia arriba de forma controlada."
+                ],
+                "video": "Video/PressBanca.MOV"
+              },
+              {
+                "nombre": "Aperturas con Mancuernas",
+                "instrucciones": [
+                  "Acuéstate en un banco con una mancuerna en cada mano.",
+                  "Mantén los brazos ligeramente flexionados y abre los brazos hacia los lados, sintiendo el estiramiento en el pecho.",
+                  "Junta las mancuernas nuevamente de forma controlada en la parte superior."
+                ],
+                "video": "Video/ExtensionesCuadri.MOV"
+              },
+              {
+                "nombre": "Press Inclinado",
+                "instrucciones": [
+                  "Ajusta el banco a una inclinación de aproximadamente 45 grados.",
+                  "Sujeta la barra o las mancuernas con las manos a la altura de los hombros.",
+                  "Baja de forma controlada hasta el pecho y empuja de regreso hacia arriba, manteniendo el enfoque en la parte superior del pecho."
+                ],
+                "video": "Video/PressInclinado.MOV"
+              }
             ],
-            "seleccion": ""
-          },
-          "musculo": {
-            "opciones": [
-              "Pecho",
-              "Espalda",
-              "Piernas",
-              "Brazos",
-              "Hombros",
-              "Abdomen"
+            "Espalda": [
+              {
+                "nombre": "Remo con Barra",
+                "instrucciones": [
+                  "Coloca la barra en el suelo frente a ti, con una posición de agarre a la anchura de los hombros.",
+                  "Inclina tu torso hacia adelante mientras mantienes la espalda recta.",
+                  "Levanta la barra hacia tu abdomen, apretando los músculos de la espalda, y baja de forma controlada."
+                ],
+                "video": "Video/PesoMuerto.MOV"
+              },
+              {
+                "nombre": "Dominadas",
+                "instrucciones": [
+                  "Sujeta la barra de dominadas con un agarre ligeramente más ancho que los hombros.",
+                  "Mantén el cuerpo recto y sube hasta que la barbilla esté por encima de la barra.",
+                  "Baja lentamente hasta la posición inicial."
+                ],
+                "video": "Video/Dominadass.MOV"
+              },
+              {
+                "nombre": "Peso Muerto",
+                "instrucciones": [
+                  "Coloca la barra en el suelo frente a ti y agarra con ambas manos a la anchura de los hombros.",
+                  "Mantén la espalda recta y levanta la barra extendiendo las caderas y las rodillas.",
+                  "Baja la barra de forma controlada hasta el suelo."
+                ],
+                "video": "Video/PesoMuerto.MOV"
+              }
             ],
-            "seleccion": "",
-            "ejercicios": {
-              "Pecho": [
-                "Press de Banca",
-                "Aperturas con Mancuernas",
-                "Press Inclinado"
-              ],
-              "Espalda": [
-                "Remo con Barra",
-                "Dominadas",
-                "Peso Muerto"
-              ],
-              "Piernas": [
-                "Sentadilla Libre",
-                "Prensa",
-                "Extensiones De Cuádriceps",
-                "Sentadilla Hack",
-                "Sentadilla Smith"
-              ],
-              "Brazos": [
-                "Curl de Bíceps",
-                "Tríceps en Polea",
-                "Curl Martillo"
-              ],
-              "Hombros": [
-                "Press Militar",
-                "Elevaciones Laterales",
-                "Face Pull"
-              ],
-              "Abdomen": [
-                "Crunch",
-                "Plancha",
-                "Elevaciones de Piernas"
-              ]
-            }
-          },
-          "tipologiaCorporal": {
-            "clasificacion": "", 
-            "condiciones": {
-              "ectomorfo": "Si la medida de la muñeca es menor de 16 cm",
-              "mesomorfo": "Si la medida de la muñeca está entre 16 cm y 18 cm",
-              "endomorfo": "Si la medida de la muñeca es mayor de 18 cm"
-            }
+            "Piernas": [
+              {
+                "nombre": "Sentadilla Libre",
+                "instrucciones": [
+                  "Toma un peso que puedas cargar sin mucho problema.",
+                  "Mantén la barra estable en tu espalda.",
+                  "Mantén la espalda recta.",
+                  "Baja de forma controlada hasta los 90 grados."
+                ],
+                "video": "Video/SentadillaLibre.MOV"
+              },
+              {
+                "nombre": "Prensa",
+                "instrucciones": [
+                  "Coloca los pies en la plataforma a la anchura de los hombros.",
+                  "Desbloquea la máquina y baja la plataforma controladamente hasta que las rodillas estén en un ángulo de 90 grados.",
+                  "Empuja la plataforma hacia arriba sin bloquear las rodillas."
+                ],
+                "video": "Video/Prensa.MOV"
+              },
+              {
+                "nombre": "Extensiones de Cuádriceps",
+                "instrucciones": [
+                  "Siéntate en la máquina con las piernas debajo del cojín.",
+                  "Extiende las piernas hasta que estén completamente rectas, sintiendo la contracción en los cuádriceps.",
+                  "Baja lentamente las piernas a la posición inicial."
+                ],
+                "video": "Video/ExtensionesCuadri.MOV"
+              },
+              {
+                "nombre": "Sentadilla Hack",
+                "instrucciones": [
+                  "Colócate en la máquina de sentadillas Hack con los hombros apoyados.",
+                  "Desbloquea el equipo y baja controladamente hasta los 90 grados.",
+                  "Empuja hacia arriba, concentrándote en trabajar los cuádriceps y glúteos."
+                ],
+                "video": "Video/SentadillaHack.MOVk"
+              },
+              {
+                "nombre": "Sentadilla Smith",
+                "instrucciones": [
+                  "Colócate bajo la barra Smith con los pies alineados con los hombros.",
+                  "Baja lentamente en una posición de sentadilla hasta que las rodillas estén a 90 grados.",
+                  "Empuja hacia arriba de forma controlada manteniendo la espalda recta."
+                ],
+                "video": "Video/Sentadilla Smith.MOV"
+              }
+            ],
+            "Brazos": [
+              {
+                "nombre": "Curl de Bíceps",
+                "instrucciones": [
+                  "Sujeta una barra o mancuernas con las manos a la anchura de los hombros.",
+                  "Flexiona los codos y lleva el peso hacia los hombros, manteniendo los codos pegados al cuerpo.",
+                  "Baja lentamente el peso a la posición inicial."
+                ],
+                "video": "Video/CurlBicepsChico.MOV"
+              },
+
+              {
+                "nombre": "Tríceps en Polea",
+                "instrucciones": [
+                  "Sujeta la cuerda o barra de la polea con las manos en pronación.",
+                  "Empuja la cuerda hacia abajo hasta que los brazos estén completamente extendidos.",
+                  "Regresa de forma controlada a la posición inicial."
+                ],
+                "video": "Video/TricepsPolea.MOV"
+              },
+
+              {
+                "nombre": "Curl Martillo",
+                "instrucciones": [
+                  "Sujeta una mancuerna en cada mano con las palmas hacia el cuerpo.",
+                  "Flexiona los codos, levantando las mancuernas hacia los hombros.",
+                  "Baja lentamente hasta la posición inicial."
+                ],
+                "video": "Video/CurlMartillo.MOV"
+              }
+            ],
+            "Hombros": [
+              {
+                "nombre": "Press Militar",
+                "instrucciones": [
+                  "Sujeta la barra con las manos un poco más anchas que los hombros.",
+                  "Empuja la barra hacia arriba hasta que los brazos estén completamente extendidos.",
+                  "Baja de forma controlada hasta la altura del pecho."
+                ],
+                "video": "Video/PressMaquina.MOV"
+              },
+
+              {
+                "nombre": "Elevaciones Laterales",
+                "instrucciones": [
+                  "Toma una mancuerna en cada mano con los brazos a los lados.",
+                  "Eleva los brazos lateralmente hasta que estén a la altura de los hombros.",
+                  "Baja lentamente los brazos a la posición inicial."
+                ],
+                "video": "Video/CurlBicepsChico.MOV"
+              },
+
+              {
+                "nombre": "Face Pull",
+                "instrucciones": [
+                  "Sujeta la cuerda de una polea alta con las manos en pronación.",
+                  "Jala la cuerda hacia tu cara, manteniendo los codos altos.",
+                  "Vuelve a la posición inicial de forma controlada."
+                ],
+                "video": "Video/Face Pull.MOV"
+              }
+            ],
+
+            "Abdomen": [
+              {
+                "nombre": "Crunch",
+                "instrucciones": [
+                  "Acuéstate boca arriba con las rodillas dobladas.",
+                  "Cruza las manos sobre el pecho y levanta los hombros del suelo, apretando los músculos abdominales.",
+                  "Baja de forma controlada a la posición inicial."
+                ],
+                "video": "Video/Crunch.MOV"
+              },
+
+              {
+                "nombre": "Plancha",
+                "instrucciones": [
+                  "Coloca los antebrazos en el suelo con el cuerpo estirado.",
+                  "Mantén el cuerpo recto y los abdominales contraídos.",
+                  "Mantén la posición el mayor tiempo posible."
+                ],
+                "video": "Video/Plancha.MOV"
+              },
+              {
+                "nombre": "Elevaciones de Piernas",
+                "instrucciones": [
+                  "Acuéstate boca arriba con las piernas extendidas.",
+                  "Levanta las piernas hasta formar un ángulo de 90 grados.",
+                  "Baja lentamente las piernas sin tocar el suelo."
+                ],
+                "video": "Video/Plancha.MOV"
+              }
+            ]
           }
         },
-        "botonRegistro": {
-          "texto": "Registro",
-          "accion": "submit"
+        "tipologiaCorporal": {
+          "clasificacion": "",
+          "condiciones": {
+            "ectomorfo": "Si la medida de la muñeca es menor de 16 cm",
+            "mesomorfo": "Si la medida de la muñeca está entre 16 cm y 18 cm",
+            "endomorfo": "Si la medida de la muñeca es mayor de 18 cm"
+          }
         }
+      },
+      "botonRegistro": {
+        "texto": "Registro",
+        "accion": "submit"
       }
-    ]
-  }
-  
+    }
+  ]
+}

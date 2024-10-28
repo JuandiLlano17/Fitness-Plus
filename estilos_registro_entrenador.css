@@ -15,6 +15,7 @@
     align-content: center;
     gap: 39px;
     flex-wrap: wrap;
+    flex-direction: row;
 }
 .columnas-editar {
     display: flex;

@@ -1,94 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio de Sesión</title>
-    <!-- Archivos CSS -->
-    <link rel="stylesheet" href="estilos_generales.css" />
-    <link rel="stylesheet" href="estilos_iniciar_sesion.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Fitness Plus</title>
+    <link rel="stylesheet" href="estilos_iniciar_sesion.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
       $(document).ready(function () {
-        // Cargar el header desde header.html
-        $("header").load("header.html");
-        // Cargar el footer desde footer.html
-        $("footer").load("footer.html");
+        // Cargar el header y el footer
+        $('header').load('header.html');
+        $('footer').load('footer.html');
       });
+
+      function iniciarSesion() {
+        // Obtener los valores de los campos de entrada
+        var correo = $('#email').val();
+        var contraseña = $('#Contraseña').val();  // Cambiado a 'contraseña'
+
+         // Verificar si los campos están vacíos
+         if (correo === "" || contraseña === "") {
+          $('#mensajeError').text("Por favor completa todos los campos.");
+          return; // Detener la ejecución si algún campo está vacío
+        }
+
+        $.getJSON('pagina.json', function(data) {
+          // Recorrer los usuarios en el JSON
+          let usuarioEncontrado = null;
+
+          data.usuarios.forEach(function(usuario) {  // Usamos "usuario" como nombre del parámetro
+            if (usuario && usuario.datosPersonales) {  // Verificar si 'usuario' y 'datosPersonales' existen
+              console.log("Revisando usuario:", usuario); // Debug para verificar qué usuarios se están cargando
+              console.log("Correo en JSON:", usuario.datosPersonales.correo);
+              console.log("Contraseña en JSON:", usuario.datosPersonales.contraseña);
+              console.log("Correo ingresado:", correo);
+              console.log("Contraseña ingresada:", contraseña);  // Cambiado a 'contraseña'
+
+              // Verificar si el correo y la contraseña coinciden con algún usuario del JSON
+              if (usuario.datosPersonales.correo === correo && usuario.datosPersonales.contraseña === contraseña) {
+                usuarioEncontrado = usuario;
+              }
+            }
+          });
+
+          if (usuarioEncontrado) {
+            // Si el usuario fue encontrado, redirigir según el tipo de usuario
+            if (usuarioEncontrado.tipoUsuario === 'entrenador') {
+              window.location.href = "Cliente-Entrenado.html";
+            } else if (usuarioEncontrado.tipoUsuario === 'cliente') {
+              window.location.href = "opcion_cliente.html";
+            }
+          } else {
+            // Mostrar mensaje de error si el usuario no fue encontrado
+            $('#mensajeError').text("Correo o contraseña incorrectos.");
+          }
+        }).fail(function() {
+          // En caso de que no se pueda cargar el archivo JSON
+          $('#mensajeError').text("Error al cargar el archivo de usuarios.");
+        });
+      }
     </script>
-  </head>
-  <body>
+</head>
+<body>
     <header></header>
     <div class="ini-sesion">
-      <!-- Imagen a la izquierda -->
       <div class="inicio-img">
-        <img src="img/inicio_img.png" alt="Imagen de entrenamiento" />
+        <img src="img/inicio_img.png" alt="Imagen de entrenamiento">
       </div>
-
       <div class="inscribete">
         <h1>Iniciar Sesión</h1>
-
-        <!-- Campo de email con icono de cerrar -->
         <div class="inicio-de-sesion">
-          <input
-            type="email"
-            id="email"
-            placeholder="Ingresar email"
-            required
-          />
+          <input type="email" id="email" placeholder="Ingresar email" required />
         </div>
-
-        <!-- Campo de contraseña con icono de mostrar/ocultar -->
         <div class="inicio-de-sesion">
-          <input
-            type="password"
-            id="Contraseña"
-            placeholder="••••••••"
-            required
-          />
+          <input type="password" id="Contraseña" placeholder="••••••••" required />
         </div>
-
-        <a href="Cli-ente.html">
-          <button class="button">Inicia sesión Entrenador</button>
-        </a>
-
-        <a href="opcion_cliente.html">
-          <button class="button">Inicia sesión Cliente</button>
-        </a>
+        <button class="button" onclick="iniciarSesion()">Inicia sesión</button>
+        <div id="mensajeError" style="color: red; margin-top: 10px;"></div>
       </div>
     </div>
-
-    <script>
-     // Función para capturar los datos de correo y contraseña
-     function iniciarSesion(tipoUsuario) {
-      const correo = document.getElementById("email").value;
-      const contrasena = document.getElementById("Contraseña").value;
-
-      // Verificación básica
-      if (correo === "" || contrasena === "") {
-        alert("Por favor, ingrese ambos el correo y la contraseña.");
-        return;
-      }
-
-      // Simulación de registro de los datos (podría ser enviado al servidor o almacenado)
-      const usuario = {
-        tipoUsuario: tipoUsuario,
-        correo: correo,
-        contraseña: contrasena,
-      };
-
-      console.log("Datos del usuario:", usuario);
-
-      // Redirigir a la página correspondiente según el tipo de usuario
-      if (tipoUsuario === "entrenador") {
-        window.location.href = "Cli-ente.html"; // Cambia esto según la página del entrenador
-      } else {
-        window.location.href = "opcion_cliente.html"; // Cambia esto según la página del cliente
-      }
-    }
-    </script>
     <footer></footer>
-  </body>
+</body>
 </html>

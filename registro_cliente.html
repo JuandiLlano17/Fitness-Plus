@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Cliente</title>
-    <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilos_registro_cliente.css">
   
@@ -25,118 +24,111 @@
     </div>
 
     <div class="formulario">
-      <form action="registroCliente" method="POST">
-        <div class="columnas-editar">
-          <div class="columna">
-            <label>Nombre</label>
-            <input type="text" name="nombre" placeholder="Nombre" required />
-          </div>
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Identificación</label>
-                    <input type="number" name="identificacion" placeholder="Identificación" class="identificacion" required />
-                </div>
-                <div class="columna">
-                    <label>Edad</label>
-                    <input type="number" name="edad" placeholder="Edad" required />
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Peso</label>
-                    <input type="number" name="peso" placeholder="Peso" min="20" step="1" required />
-                </div>
-                <div class="columna">
-                  <label>Medida de Muñeca</label>
-                  <details class="custom-dropdown">
-                    <summary class="dropdown-header"id="medidaMuñecaSeleccionada">Medida de Muñeca</summary>
-                    <div class="radio-options">
-                      <input type="radio" id="menos-17" name="muñeca" value="menos-17" />
-                      <label for="menos-17" class="custom-radio">Menos de 17cm</label><br>
-                      
-                      <input type="radio" id="17-20" name="muñeca" value="17-20" />
-                      <label for="17-20" class="custom-radio">Entre 17-20cm</label><br>
-                      
-                      <input type="radio" id="mas-20" name="muñeca" value="mas-20" />
-                      <label for="mas-20" class="custom-radio">Más de 20cm</label>
-                    </div>
-                  </details>
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                  <label>Días de entreno</label>
-                  <details class="custom-dropdown">
-                    <summary class="dropdown-header" id="diasSeleccionados">Días de entreno</summary>
-                    <div class="dropdown-options">
-                        <input type="checkbox" name="diasEntreno" id="lunes" value="lunes" />
-                        <label for="lunes">Lunes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="martes" value="martes" />
-                        <label for="martes">Martes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="miercoles" value="miercoles" />
-                        <label for="miercoles">Miércoles</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="jueves" value="jueves" />
-                        <label for="jueves">Jueves</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="viernes" value="viernes" />
-                        <label for="viernes">Viernes</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="sabado" value="sabado" />
-                        <label for="sabado">Sábado</label>
-                        
-                        <input type="checkbox" name="diasEntreno" id="domingo" value="domingo" />
-                        <label for="domingo">Domingo</label>
-                    </div>
-                  </details>
-                </div>
-                <div class="columna">
-                    <label>Altura</label>
-                    <input type="number" name="altura" placeholder="Altura" min="13" step="1" required />
-                </div>
-            </div>
-
-            <div class="columnas-datos">
-                <div class="columna">
-                    <label>Correo</label>
-                    <input type="email" name="correo" placeholder="Correo" required />
-                </div>
-                <div class="columna">
-                    <label>Contraseña</label>
-                    <input type="password" name="contraseña" placeholder="Contraseña" required />
-                </div>
-            </div>
-            <a href="iniciar_sesion.html">
-              <button class="button_flecha">
+      <form id="formularioCliente">
+          <div class="columnas-editar">
+              <div class="columna">
+                  <label for="nombre">Nombre</label>
+                  <input id="nombre" name="nombre" type="text" placeholder="Nombre" required />
+              </div>
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="identificacion">Identificación</label>
+                      <input id="identificacion" name="identificacion" type="number" placeholder="Identificación" required />
+                  </div>
+                  <div class="columna">
+                      <label for="edad">Edad</label>
+                      <input id="edad" name="edad" type="number" placeholder="Edad" required />
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="peso">Peso</label>
+                      <input id="peso" name="peso" type="number" placeholder="Peso" min="20" step="1" required />
+                  </div>
+                  <div class="columna">
+                      <label for="medidaMuñeca">Medida de Muñeca</label>
+                      <details class="custom-dropdown">
+                          <summary class="dropdown-header" id="medidaMuñecaSeleccionada">Medida de Muñeca</summary>
+                          <div class="radio-options">
+                              <input type="radio" id="menos-17" name="muñeca" value="menos-17" />
+                              <label for="menos-17" class="custom-radio">Menos de 17cm</label><br>
+  
+                              <input type="radio" id="17-20" name="muñeca" value="17-20" />
+                              <label for="17-20" class="custom-radio">Entre 17-20cm</label><br>
+  
+                              <input type="radio" id="mas-20" name="muñeca" value="mas-20" />
+                              <label for="mas-20" class="custom-radio">Más de 20cm</label>
+                          </div>
+                      </details>
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="diasEntreno">Días de entreno</label>
+                      <details class="custom-dropdown">
+                          <summary class="dropdown-header" id="diasSeleccionados">Días de entreno</summary>
+                          <div class="dropdown-options">
+                              <input type="checkbox" name="diasEntreno" id="lunes" value="lunes" />
+                              <label for="lunes">Lunes</label>
+                              <input type="checkbox" name="diasEntreno" id="martes" value="martes" />
+                              <label for="martes">Martes</label>
+                              <input type="checkbox" name="diasEntreno" id="miercoles" value="miercoles" />
+                              <label for="miercoles">Miércoles</label>
+                              <input type="checkbox" name="diasEntreno" id="jueves" value="jueves" />
+                              <label for="jueves">Jueves</label>
+                              <input type="checkbox" name="diasEntreno" id="viernes" value="viernes" />
+                              <label for="viernes">Viernes</label>
+                              <input type="checkbox" name="diasEntreno" id="sabado" value="sabado" />
+                              <label for="sabado">Sábado</label>
+                              <input type="checkbox" name="diasEntreno" id="domingo" value="domingo" />
+                              <label for="domingo">Domingo</label>
+                          </div>
+                      </details>
+                  </div>
+                  <div class="columna">
+                      <label for="altura">Altura</label>
+                      <input id="altura" name="altura" type="number" placeholder="Altura" min="13" step="1" required />
+                  </div>
+              </div>
+  
+              <div class="columnas-datos">
+                  <div class="columna">
+                      <label for="correo">Correo</label>
+                      <input id="correo" name="correo" type="email" placeholder="Correo" required />
+                  </div>
+                  <div class="columna">
+                      <label for="contraseña">Contraseña</label>
+                      <input id="contraseña" name="contraseña" type="password" placeholder="Contraseña" required />
+                  </div>
+              </div>
+  
+              <!-- Botón de Registro -->
+              <button type="button" id="registroClienteBtn" class="button_flecha">
                   Registro
-                  <img src="img\flecha.svg" alt="Flecha" width="16" height="16">
-                </a>
+                  <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
               </button>
-        </div>
+          </div>
       </form>
   
       <div class="imagen-perfil">
-          <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-          <!-- Botones -->
-          <button class="button button-sobre-imagen">Agregar Foto</button>
-      </div>
-    </div>  
+        <img id="previewImagen" class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
+        <button type="button" class="button button-sobre-imagen" onclick="document.getElementById('fotoPerfil').click()">Agregar Foto</button>
+    </div>
+    
+    </div>
     <footer></footer>
 
     <script>
+
       document.addEventListener('DOMContentLoaded', function () {
-          // Obtén todos los checkboxes de los días de entreno
           const checkboxes = document.querySelectorAll('input[name="diasEntreno"]');
           const summary = document.getElementById('diasSeleccionados');
-          // Para la medida de la muñeca
           const radios = document.querySelectorAll('input[name="muñeca"]');
           const summaryMuñeca = document.getElementById('medidaMuñecaSeleccionada');
           
-          // Diccionario de abreviaturas para los días
           const abreviaturas = {
               'lunes': 'Lun',
               'martes': 'Mar',
@@ -147,71 +139,136 @@
               'domingo': 'Dom'
           };
     
-          // Función para actualizar el texto del summary de días seleccionados
           function actualizarDiasSeleccionados() {
               const diasSeleccionados = Array.from(checkboxes)
-                  .filter(checkbox => checkbox.checked) // Filtrar solo los que están seleccionados
-                  .map(checkbox => abreviaturas[checkbox.value]); // Obtener la abreviatura correspondiente
-    
-              // Si no hay días seleccionados, mostrar texto predeterminado
+                  .filter(checkbox => checkbox.checked)
+                  .map(checkbox => abreviaturas[checkbox.value]);
+
               if (diasSeleccionados.length > 0) {
-                  summary.textContent = diasSeleccionados.join(', '); // Mostrar los días abreviados
-                  summary.style.color = 'black'; // Cambiar el color a negro
-                  guardarDias(diasSeleccionados); // Guardar los días seleccionados en localStorage
+                  summary.textContent = diasSeleccionados.join(', ');
+                  summary.style.color = 'black';
+                  guardarDias(diasSeleccionados);
               } else {
-                  summary.textContent = 'Días de entreno'; // Texto predeterminado
-                  summary.style.color = ''; // Volver al color predeterminado
-                  guardarDias([]); // Si no hay días, guardar un arreglo vacío
+                  summary.textContent = 'Días de entreno';
+                  summary.style.color = '';
+                  guardarDias([]);
               }
           }
     
-          // Función del summary de la medida de la muñeca
           function actualizarMedidaMuñeca() {
               const muñecaSeleccionada = Array.from(radios)
-                  .filter(radio => radio.checked) // Filtrar el que está seleccionado
-                  .map(radio => radio.labels[0].innerText); // Obtener el texto de la etiqueta
+                  .filter(radio => radio.checked)
+                  .map(radio => radio.labels[0].innerText);
     
-              // Si hay una medida seleccionada, mostrarla
               if (muñecaSeleccionada.length > 0) {
-                  summaryMuñeca.textContent = muñecaSeleccionada[0]; // Mostrar la medida seleccionada
-                  summaryMuñeca.style.color = 'black'; // Cambiar el color a negro
+                  summaryMuñeca.textContent = muñecaSeleccionada[0];
+                  summaryMuñeca.style.color = 'black';
               } else {
-                  summaryMuñeca.textContent = 'Medida de Muñeca'; // Texto predeterminado
-                  summaryMuñeca.style.color = ''; // Volver al color predeterminado
+                  summaryMuñeca.textContent = 'Medida de Muñeca';
+                  summaryMuñeca.style.color = '';
               }
           }
     
-          // Añadir evento a cada checkbox para detectar los cambios en los días de entreno
           checkboxes.forEach(checkbox => {
               checkbox.addEventListener('change', actualizarDiasSeleccionados);
           });
     
-          // Añadir evento a cada input de radio para detectar los cambios en la medida de la muñeca
           radios.forEach(radio => {
             radio.addEventListener('change', function () {
-              const medida = this.value; // Obtenemos el valor de la medida seleccionada
-              guardarMedidaMuñeca(medida); // Guardamos la medida en localStorage
-              actualizarMedidaMuñeca(); // Actualizamos el summary de la muñeca
+              const medida = this.value;
+              guardarMedidaMuñeca(medida);
+              actualizarMedidaMuñeca();
             });
           });
     
-          // Función para almacenar la medida de muñeca seleccionada en localStorage
           function guardarMedidaMuñeca(medida) {
-            localStorage.setItem('medidaMuñeca', medida); // Guardar en localStorage
+            localStorage.setItem('medidaMuñeca', medida);
           }
     
-          // Función para almacenar los días seleccionados en localStorage
           function guardarDias(dias) {
-            localStorage.setItem('diasEntreno', JSON.stringify(dias)); // Guardar en localStorage como string
+            localStorage.setItem('diasEntreno', JSON.stringify(dias));
           }
-    
-          // Actualizar los días seleccionados inicialmente (por si hay selección previa)
+
           actualizarDiasSeleccionados();
-          // Actualizar la medida de la muñeca seleccionada inicialmente
           actualizarMedidaMuñeca();
       });
+
+      document.getElementById('fotoPerfil').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  document.getElementById('previewImagen').src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+
+      
+
+      // Manejo del registro de cliente para PHP
+      document.getElementById('registroClienteBtn').addEventListener('click', function () {
+    const formData = new FormData();
+    const nombre = document.getElementById('nombre').value.trim();
+    const identificacion = document.getElementById('identificacion').value.trim();
+    const edad = document.getElementById('edad').value.trim();
+    const peso = document.getElementById('peso').value.trim();
+    const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked') ? document.querySelector('input[name="muñeca"]:checked').value : null;
+    const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
+    const altura = document.getElementById('altura').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+    const contraseña = document.getElementById('contraseña').value.trim();
+    
+    const fotoPerfil = document.getElementById('fotoPerfil').files[0];
+        if (fotoPerfil) {
+            formData.append('fotoPerfil', fotoPerfil); // Añadir archivo al FormData
+        }
+
+    // Validación para asegurarse de que todos los campos estén completos
+    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const cliente = {
+        tipoUsuario: "cliente",
+        datosPersonales: {
+            nombre: nombre,
+            identificacion: identificacion,
+            edad: edad,
+            peso: peso,
+            altura: altura,
+            correo: correo,
+            contraseña: contraseña
+        },
+        rutina: {
+            medidaMuñeca: medidaMuñeca,
+            diasEntreno: diasEntreno,
+        }
+    };
+
+    const clienteJSON = JSON.stringify(cliente);
+
+    // Para revisar qué datos se están enviando
+    console.log(clienteJSON);
+
+    fetch('index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: clienteJSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        window.location.href = "iniciar_sesion.html"; // Redirigir si tiene éxito
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
     </script>
-    
-    
 </body>
 </html>

@@ -10,28 +10,71 @@
 
     <script>
       $(document).ready(function () {
-        // Cargar el header desde header.html
+        // Cargar el header y el footer
         $('header').load('header.html');
-        // Cargar el footer desde footer.html
         $('footer').load('footer.html');
+
+        // Función para manejar la selección del tipo de usuario desde pagina.json
+        function seleccionarTipoUsuario(tipo) {
+          // Cargar el archivo pagina.json
+          $.getJSON('pagina.json', function(data) {
+            // Buscar el tipo de usuario en el JSON
+            let usuarioSeleccionado = null;
+            data.usuarios.forEach(function(usuario) {
+              if (usuario.tipoUsuario === tipo) {
+                usuarioSeleccionado = usuario;
+              }
+            });
+
+            if (usuarioSeleccionado) {
+              // Guardar el tipo de usuario y enviarlo al servidor PHP
+              sessionStorage.setItem('usuario', JSON.stringify(usuarioSeleccionado));
+              enviarAlServidor(usuarioSeleccionado, tipo);
+            } else {
+              alert('Tipo de usuario no encontrado en el archivo JSON');
+            }
+          }).fail(function() {
+            alert("Error al cargar el archivo de usuarios (pagina.json).");
+          });
+        }
+
+        // Función para enviar los datos al servidor PHP
+        function enviarAlServidor(usuario, tipo) {
+          $.ajax({
+            url: 'index.php', 
+            method: 'POST',
+            data: {
+              usuario: JSON.stringify(usuario), // Enviar el objeto usuario como JSON
+              tipoUsuario: tipo
+            },
+            success: function(response) {
+              console.log("Respuesta del servidor: " + response);
+              if (tipo === 'cliente') {
+                window.location.href = 'registro_cliente.html';
+              } else if (tipo === 'entrenador') {
+                window.location.href = 'registro_entrenador.html';
+              }
+            },
+            error: function() {
+              alert("Error al enviar los datos al servidor.");
+            }
+          });
+        }
 
         // Manejo de clic en las cartas de usuario
         $('#cliente-card').click(function() {
-            window.location.href = 'registro_cliente.html';
+            seleccionarTipoUsuario("cliente");
         });
 
         $('#entrenador-card').click(function() {
-            window.location.href = 'registro_entrenador.html';
+            seleccionarTipoUsuario("entrenador");
         });
       });
     </script>
-
 </head>
 <body>
     <header></header>
     <div class="container">
-        
-        <!-- Sección de elección de tipo de usuario -->
         <section class="user-selection">
             <h1>Elige el tipo de usuario</h1>
             <div class="user-options">
@@ -49,9 +92,7 @@
                 </div>
             </div>
         </section>
-
     </div>
     <footer></footer>
-
 </body>
 </html>

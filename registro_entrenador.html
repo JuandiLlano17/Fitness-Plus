@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <!-- Archivos CSS -->
+    <title>Registro Entrenador</title>
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilos_registro_cliente.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
      $(document).ready(function () {
-        // Cargar el header desde header.html
         $('header').load('header.html');
-        // Cargar el footer desde footer.html
         $('footer').load('footer.html');
       });
     </script>
@@ -26,49 +21,109 @@
         <h1>Registro</h1>
         <h2>Por favor diligenciar tus datos</h2>
     </div>
-
+  
     <div class="formulario">
-        <div class="columnas-editar">
-            <div class="columna">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" placeholder="Nombre" />
-            </div>
-            <div class="columnas-datos">
-              <div class="columna">
-                <label for="edad">Edad</label>
-                <input id="edad" type="number" placeholder="Edad" />
-              </div>
-              <div class="columna">
-                <label for="identificacion">Identificación</label>
-                <input id="identificacion" type="text" placeholder="Identificación"class="identificacion" />
-              </div>
-            </div>
-            <div class="columnas-datos">
-              <div class="columna">
-                <label for="correo">Correo</label>
-                <input id="correo" type="email" placeholder="Correo" />
-              </div>
-              <div class="columna">
-                <label for="contrasena">Contraseña</label>
-                <input id="contrasena" type="password" placeholder="Contraseña" />
-              </div>
+        <form id="formularioEntrenador">
+            <div class="columnas-editar">
+                <div class="columna">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" placeholder="Nombre" required />
+                </div>
+                <div class="columnas-datos">
+                    <div class="columna">
+                        <label for="identificacion">Identificación</label>
+                        <input id="identificacion" name="identificacion" type="text" placeholder="Identificación" required />
+                    </div>
+                    <div class="columna">
+                        <label for="edad">Edad</label>
+                        <input id="edad" name="edad" type="number" placeholder="Edad" required />
+                    </div>
+                </div>
+
+                <div class="columnas-datos">
+                    <div class="columna">
+                        <label for="correo">Correo</label>
+                        <input id="correo" name="correo" type="email" placeholder="Correo" required />
+                    </div>
+                    <div class="columna">
+                        <label for="contrasena">Contraseña</label>
+                        <input id="contrasena" name="contrasena" type="password" placeholder="Contraseña" required />
+                    </div>
+                </div>
+
+                <button type="button" id="registroEntrenadorBtn" class="button_flecha">
+                    Registro
+                    <img src="img/flecha.svg" alt="Flecha" width="16" height="16">
+                </button>
             </div>
 
-            <!-- Botón de Registro con Flecha -->
-            <a href="iniciar_sesion.html">
-            <button class="button_flecha">
-                Registro
-                <img src="img\flecha.svg" alt="Flecha" width="16" height="16">
-              </a>
-            </button>
-        </div>
-        <div class="imagen-perfil">
-            <img class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
-            <!-- Botón de Agregar Foto -->
-            <button class="button button-sobre-imagen">Agregar Foto</button>
-        </div>
+            <!-- Imagen de perfil con botón de agregar foto -->
+            <div class="imagen-perfil">
+                <img id="previewImagen" class="img-grande" src="img/img_grande.png" alt="Imagen de perfil" />
+                <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" style="display: none;" />
+                <button type="button" class="button button-sobre-imagen" onclick="document.getElementById('fotoPerfil').click()">Agregar Foto</button>
+            </div>
+        </form>
     </div>
 
     <footer></footer>
+    <script>
+      document.getElementById('fotoPerfil').addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  document.getElementById('previewImagen').src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+
+      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
+        const formData = new FormData();
+        const nombre = document.getElementById('nombre').value.trim();
+        const identificacion = document.getElementById('identificacion').value.trim();
+        const edad = document.getElementById('edad').value.trim();
+        const correo = document.getElementById('correo').value.trim();
+        const contrasena = document.getElementById('contrasena').value.trim();
+        const fotoPerfil = document.getElementById('fotoPerfil').files[0];
+
+        if (!nombre || !identificacion || !edad || !correo || !contrasena) {
+            alert('Por favor completa todos los campos.');
+            return;
+        }
+
+        const entrenador = {
+            tipoUsuario: "entrenador",
+            datosPersonales: {
+                nombre: nombre,
+                identificacion: identificacion,
+                edad: edad,
+                correo: correo,
+                contrasena: contrasena
+            }
+        };
+
+        const entrenadorJSON = JSON.stringify(entrenador);
+        console.log(entrenadorJSON);
+
+        fetch('index.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: entrenadorJSON
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            window.location.href = "iniciar_sesion.html";
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+      });
+    </script>
+
 </body>
 </html>
