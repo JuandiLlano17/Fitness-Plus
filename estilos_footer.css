@@ -157,3 +157,65 @@
     font-size: 18px; /* Tamaño de fuente ajustado */
   }
 }
+
+/* Media Query para pantallas entre 1201px y 2000px */
+@media (min-width: 1201px) and (max-width: 1679px) {
+  .footer {
+    padding: 48px 0; /* Mantiene el padding original */
+  }
+
+  .footer-container {
+    padding: 40px; /* Aumenta el padding para un mejor espaciado */
+    gap: 40px; /* Aumenta el espacio entre los elementos */
+  }
+
+  .logoydesc {
+    margin-right: 40px; /* Aumenta el margen derecho */
+    width: 70%; /* Ajusta el ancho para un mejor balance */
+  }
+
+  .footer-menu, .footer-social {
+    width: auto; /* Permite que el ancho se ajuste automáticamente */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+
+  .footer-menu h3, .footer-social h3 {
+    font-size: 26px; /* Aumenta el tamaño de fuente */
+  }
+
+  .footer-menu li, .footer-social li {
+    font-size: 20px; /* Aumenta el tamaño de fuente */
+  }
+}
+
+/* Media Query para pantallas entre 1680px y 2000px */
+@media (min-width: 1680px) and (max-width: 2000px) {
+  .footer {
+    padding: 50px 0; /* Aumenta el padding superior e inferior */
+    border-top: 5px solid white; /* Asegura que la línea se mantenga */
+  }
+
+  .footer-container {
+    padding: 50px; /* Espaciado adicional alrededor del contenedor */
+    gap: 50px; /* Aumenta el espacio entre los elementos */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  }
+
+  .logoydesc {
+    margin-right: 50px; /* Aumenta el margen derecho */
+    width: 60%; /* Ajusta el ancho para un mejor balance visual */
+  }
+
+  .footer-menu, .footer-social {
+    width: auto; /* Permite que el ancho se ajuste automáticamente */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+
+  .footer-menu h3, .footer-social h3 {
+    font-size: 28px; /* Aumenta el tamaño de fuente para encabezados */
+  }
+
+  .footer-menu li, .footer-social li {
+    font-size: 22px; /* Aumenta el tamaño de fuente de los elementos de lista */
+  }
+}

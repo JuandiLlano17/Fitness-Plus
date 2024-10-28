@@ -39,7 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 54px;
+    gap: 34px;
 }
 .dia{
     display:none;
