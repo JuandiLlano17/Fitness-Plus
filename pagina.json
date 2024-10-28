@@ -46,6 +46,7 @@
                   "Mantén los pies firmes en el suelo y la espalda ligeramente arqueada.",
                   "Baja la barra hasta que toque suavemente tu pecho y luego empújala hacia arriba de forma controlada."
                 ],
+                "imagen": "img/ejercicios/PressBanca.png",
                 "video": "Video/PressBanca.MOV"
               },
               {
@@ -55,6 +56,7 @@
                   "Mantén los brazos ligeramente flexionados y abre los brazos hacia los lados, sintiendo el estiramiento en el pecho.",
                   "Junta las mancuernas nuevamente de forma controlada en la parte superior."
                 ],
+                "imagen": "img/ejercicios/AperturasMancuernas.png",
                 "video": "Video/ExtensionesCuadri.MOV"
               },
               {
@@ -64,6 +66,7 @@
                   "Sujeta la barra o las mancuernas con las manos a la altura de los hombros.",
                   "Baja de forma controlada hasta el pecho y empuja de regreso hacia arriba, manteniendo el enfoque en la parte superior del pecho."
                 ],
+                "imagen": "img/ejercicios/PressInclinado.png",
                 "video": "Video/PressInclinado.MOV"
               }
             ],
@@ -75,6 +78,7 @@
                   "Inclina tu torso hacia adelante mientras mantienes la espalda recta.",
                   "Levanta la barra hacia tu abdomen, apretando los músculos de la espalda, y baja de forma controlada."
                 ],
+                "imagen": "img/ejercicios/RemoBarra.png",
                 "video": "Video/PesoMuerto.MOV"
               },
               {
@@ -84,6 +88,7 @@
                   "Mantén el cuerpo recto y sube hasta que la barbilla esté por encima de la barra.",
                   "Baja lentamente hasta la posición inicial."
                 ],
+                "imagen": "img/ejercicios/Dominadas.png",
                 "video": "Video/Dominadass.MOV"
               },
               {
@@ -93,6 +98,7 @@
                   "Mantén la espalda recta y levanta la barra extendiendo las caderas y las rodillas.",
                   "Baja la barra de forma controlada hasta el suelo."
                 ],
+                "imagen": "img/ejercicios/Peso muerto.png",
                 "video": "Video/PesoMuerto.MOV"
               }
             ],
@@ -105,6 +111,7 @@
                   "Mantén la espalda recta.",
                   "Baja de forma controlada hasta los 90 grados."
                 ],
+                "imagen": "img/ejercicios/Peso muerto.png",
                 "video": "Video/SentadillaLibre.MOV"
               },
               {
@@ -114,6 +121,7 @@
                   "Desbloquea la máquina y baja la plataforma controladamente hasta que las rodillas estén en un ángulo de 90 grados.",
                   "Empuja la plataforma hacia arriba sin bloquear las rodillas."
                 ],
+                "imagen": "img/ejercicios/Prensa.png",
                 "video": "Video/Prensa.MOV"
               },
               {
@@ -123,6 +131,7 @@
                   "Extiende las piernas hasta que estén completamente rectas, sintiendo la contracción en los cuádriceps.",
                   "Baja lentamente las piernas a la posición inicial."
                 ],
+                "imagen": "img/ejercicios/Extensiones.png",
                 "video": "Video/ExtensionesCuadri.MOV"
               },
               {
@@ -141,6 +150,7 @@
                   "Baja lentamente en una posición de sentadilla hasta que las rodillas estén a 90 grados.",
                   "Empuja hacia arriba de forma controlada manteniendo la espalda recta."
                 ],
+                "imagen": "img/ejercicios/SentadillaSmith.png",
                 "video": "Video/Sentadilla Smith.MOV"
               }
             ],
@@ -152,6 +162,7 @@
                   "Flexiona los codos y lleva el peso hacia los hombros, manteniendo los codos pegados al cuerpo.",
                   "Baja lentamente el peso a la posición inicial."
                 ],
+                "imagen": "img/ejercicios/CurlBiceps.png",
                 "video": "Video/CurlBicepsChico.MOV"
               },
 
@@ -162,6 +173,7 @@
                   "Empuja la cuerda hacia abajo hasta que los brazos estén completamente extendidos.",
                   "Regresa de forma controlada a la posición inicial."
                 ],
+                "imagen": "img/ejercicios/TricepPolea.png",
                 "video": "Video/TricepsPolea.MOV"
               },
 
@@ -172,6 +184,7 @@
                   "Flexiona los codos, levantando las mancuernas hacia los hombros.",
                   "Baja lentamente hasta la posición inicial."
                 ],
+                "imagen": "img/ejercicios/CurlMartillo.png",
                 "video": "Video/CurlMartillo.MOV"
               }
             ],
@@ -183,6 +196,7 @@
                   "Empuja la barra hacia arriba hasta que los brazos estén completamente extendidos.",
                   "Baja de forma controlada hasta la altura del pecho."
                 ],
+                "imagen": "img/ejercicios/PressMilitar.png",
                 "video": "Video/PressMaquina.MOV"
               },
 
@@ -193,6 +207,7 @@
                   "Eleva los brazos lateralmente hasta que estén a la altura de los hombros.",
                   "Baja lentamente los brazos a la posición inicial."
                 ],
+                "imagen": "img/ejercicios/ElevacionesLaterales.png",
                 "video": "Video/CurlBicepsChico.MOV"
               },
 
@@ -203,6 +218,7 @@
                   "Jala la cuerda hacia tu cara, manteniendo los codos altos.",
                   "Vuelve a la posición inicial de forma controlada."
                 ],
+                "imagen": "img/ejercicios/FacePull.png",
                 "video": "Video/Face Pull.MOV"
               }
             ],
@@ -215,6 +231,7 @@
                   "Cruza las manos sobre el pecho y levanta los hombros del suelo, apretando los músculos abdominales.",
                   "Baja de forma controlada a la posición inicial."
                 ],
+                "imagen": "img/ejercicios/Crunch.png",
                 "video": "Video/Crunch.MOV"
               },
 
@@ -225,6 +242,7 @@
                   "Mantén el cuerpo recto y los abdominales contraídos.",
                   "Mantén la posición el mayor tiempo posible."
                 ],
+                "imagen": "img/ejercicios/Plancha.png",
                 "video": "Video/Plancha.MOV"
               },
               {
@@ -234,6 +252,7 @@
                   "Levanta las piernas hasta formar un ángulo de 90 grados.",
                   "Baja lentamente las piernas sin tocar el suelo."
                 ],
+                "imagen": "img/ejercicios/ElevacionPiernas.png",
                 "video": "Video/Plancha.MOV"
               }
             ]
