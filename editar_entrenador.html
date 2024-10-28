@@ -18,6 +18,39 @@
                 
         </script>
             
+            <script>
+            $(document).ready(function () {
+                // Cargar el JSON y manejar las selecciones
+                $.getJSON('pagina.json', function(data) {
+                    const musculos = data.usuarios[0].editarEntrenador.musculo.opciones;
+
+                    // Evento de cambio en los radios de músculo
+                    $('input[name="musculo"]').change(function() {
+                        const musculoSeleccionado = $(this).val();
+                        console.log("Músculo seleccionado:", musculoSeleccionado); // Añadir esta línea para depurar
+                        const ejercicios = data.usuarios[0].editarEntrenador.musculo.ejercicios[musculoSeleccionado];
+
+                        // Limpiar ejercicios previos
+                        $('.exercise-container').empty();
+
+                        if (ejercicios) {
+                            // Mostrar ejercicios
+                            ejercicios.forEach(function(ejercicio) {
+                                $('.exercise-container').append(`
+                                    <div class="ejercicio-item">
+                                        <input type="radio" id="${ejercicio.nombre}" name="ejercicio" value="${ejercicio.nombre}" />
+                                        <label for="${ejercicio.nombre}" class="custom-radio">${ejercicio.nombre}</label><br>
+                                    </div>
+                                `);
+                            });
+                        }
+                    });
+                }).fail(function() {
+                    console.error("No se pudo cargar el archivo JSON.");
+                });
+            });
+
+            </script>
 
         <script>
     // El código JavaScript que sigue a continuación está comentado
@@ -170,35 +203,38 @@
                 </div>
             
                 <!-- Opciones para el Músculo -->
+                
                 <div class="radio-options">
                     <details class="custom-dropdown">
-                        <summary class="dropdown-header d-header"id="musculoSeleccionado">Músculo</summary>
-                        <input type="radio" id="pecho" name="musculo" value="pecho" />
+                        <summary class="dropdown-header d-header" id="musculoSeleccionado">Músculo</summary>
+                        <input type="radio" id="pecho" name="musculo" value="Pecho" />
                         <label for="pecho" class="custom-radio">Pecho</label><br>
-            
-                        <input type="radio" id="espalda" name="musculo" value="espalda" />
+                
+                        <input type="radio" id="espalda" name="musculo" value="Espalda" />
                         <label for="espalda" class="custom-radio">Espalda</label><br>
-            
-                        <input type="radio" id="piernas" name="musculo" value="piernas" />
+                
+                        <input type="radio" id="piernas" name="musculo" value="Piernas" />
                         <label for="piernas" class="custom-radio">Piernas</label><br>
-            
-                        <input type="radio" id="hombros" name="musculo" value="hombros" />
+                
+                        <input type="radio" id="hombros" name="musculo" value="Hombros" />
                         <label for="hombros" class="custom-radio">Hombros</label><br>
-            
-                        <input type="radio" id="brazos" name="musculo" value="brazos" />
+                
+                        <input type="radio" id="brazos" name="musculo" value="Brazos" />
                         <label for="brazos" class="custom-radio">Brazos</label><br>
-            
-                        <input type="radio" id="abdominales" name="musculo" value="abdominales" />
+                
+                        <input type="radio" id="abdominales" name="musculo" value="Abdomen" />
                         <label for="abdominales" class="custom-radio">Abdominales</label>
                     </details>
                 </div>
+                
         
                 <div class="exercise-container">
                     <!-- Opciones para agregar ejercicio -->
                     <div class="radio-options">
                         <details class="custom-dropdown">
                             <summary class="d-mas">+</summary>
-                            <input type="radio" id="sentadilla-libre" name="agregar" value="sentadilla-libre" />
+                           
+                           <!-- <input type="radio" id="sentadilla-libre" name="agregar" value="sentadilla-libre" />
                             <label for="sentadilla-libre" class="custom-radio">Sentadilla Libre</label><br>
                 
                             <input type="radio" id="prensa" name="agregar" value="prensa" />
@@ -211,7 +247,7 @@
                             <label for="sentadilla-hack" class="custom-radio">Sentadilla Hack</label><br>
                 
                             <input type="radio" id="sentadilla-smith" name="agregar" value="sentadilla-smith" />
-                            <label for="sentadilla-smith" class="custom-radio">Sentadilla Smith</label>
+                            <label for="sentadilla-smith" class="custom-radio">Sentadilla Smith</label>-->
                         </details>
                     </div>
                 
@@ -469,6 +505,58 @@
         });
     </script>    
 
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const musculoOptions = document.querySelectorAll('input[name="musculo"]');
+        const ejercicioContainer = document.querySelector('.exercise-container .radio-options');
+    
+        // Cargar el JSON desde el archivo externo
+        fetch('pagina.json')
+            .then(response => response.json())
+            .then(data => {
+                musculoOptions.forEach(option => {
+                    option.addEventListener('change', function () {
+                        const seleccionado = this.value;
+                        actualizarEjercicios(seleccionado);
+                    });
+                });
+    
+                function actualizarEjercicios(musculo) {
+                    // Limpiar ejercicios anteriores
+                    ejercicioContainer.innerHTML = '';
+    
+                    // Obtener ejercicios para el músculo seleccionado
+                    const ejercicios = data.usuarios[1].editarEntrenador.musculo.ejercicios[musculo];
+    
+                    if (ejercicios) {
+                        ejercicios.forEach(ejercicio => {
+                            const radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.id = ejercicio.nombre.replace(/\s+/g, '-').toLowerCase();
+                            radio.name = 'agregar';
+                            radio.value = ejercicio.nombre;
+    
+                            const label = document.createElement('label');
+                            label.htmlFor = radio.id;
+                            label.className = 'custom-radio';
+                            label.textContent = ejercicio.nombre;
+    
+                            ejercicioContainer.appendChild(radio);
+                            ejercicioContainer.appendChild(label);
+                            ejercicioContainer.appendChild(document.createElement('br'));
+                        });
+                    } else {
+                        // Mensaje si no hay ejercicios disponibles
+                        const noEjercicios = document.createElement('p');
+                        noEjercicios.textContent = 'No hay ejercicios disponibles para este músculo.';
+                        ejercicioContainer.appendChild(noEjercicios);
+                    }
+                }
+            })
+            .catch(error => console.error('Error al cargar el JSON:', error));
+    });
+    </script>
     
 </body>
 </html>
