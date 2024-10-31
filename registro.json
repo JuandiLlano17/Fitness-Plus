@@ -24,10 +24,6 @@
         "identificacion_clien": "",
         "nombre": "",
         "edad":"" ,
-        "peso": "",
-        "medida_muneca": "",
-        "dias_entreno": "",
-        "altura": "",
         "correo": "",
         "contraseña": "",
         "foto_perfil": ""

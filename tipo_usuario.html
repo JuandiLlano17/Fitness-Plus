@@ -17,7 +17,7 @@
         // Función para manejar la selección del tipo de usuario desde pagina.json
         function seleccionarTipoUsuario(tipo) {
           // Cargar el archivo pagina.json
-          $.getJSON('pagina.json', function(data) {
+          $.getJSON('registro.json', function(data) {
             // Buscar el tipo de usuario en el JSON
             let usuarioSeleccionado = null;
             data.usuarios.forEach(function(usuario) {
@@ -41,7 +41,7 @@
         // Función para enviar los datos al servidor PHP
         function enviarAlServidor(usuario, tipo) {
           $.ajax({
-            url: 'index.php', 
+            url: 'api/GET/Registro.php', 
             method: 'POST',
             data: {
               usuario: JSON.stringify(usuario), // Enviar el objeto usuario como JSON
