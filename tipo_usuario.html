@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elige tu tipo de usuario - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_tipo_usuario.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
       $(document).ready(function () {
         // Cargar el header y el footer
@@ -16,45 +14,13 @@
 
         // Manejo de clic en las cartas de usuario
         $('#cliente-card').click(function() {
-            seleccionarTipoUsuario("cliente");
+            window.location.href = "registro_cliente.html";
         });
 
         $('#entrenador-card').click(function() {
-            seleccionarTipoUsuario("entrenador");
+            window.location.href = "registro_entrenador.html";
         });
       });
-
-      function seleccionarTipoUsuario(tipoUsuario) {
-        // Crea un objeto con el tipo de usuario
-        const data = { tipoUsuario: tipoUsuario };
-
-        // Enviar el tipo de usuario mediante una solicitud POST
-        fetch('api/GET/Registro.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Redirigir según el tipo de usuario o la respuesta del servidor
-            if (data.success) {
-                if (tipoUsuario === "cliente") {
-                    window.location.href = "registro_cliente.html";
-                } else if (tipoUsuario === "entrenador") {
-                    window.location.href = "registro_entrenador.html";
-                }
-            } else {
-                console.error("Error:", data.message);
-                alert("Error: " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Error al enviar el tipo de usuario.");
-        });
-      }
     </script>
 </head>
 <body>
