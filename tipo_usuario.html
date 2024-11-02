@@ -14,53 +14,6 @@
         $('header').load('header.html');
         $('footer').load('footer.html');
 
-        // Función para manejar la selección del tipo de usuario desde pagina.json
-        function seleccionarTipoUsuario(tipo) {
-          // Cargar el archivo pagina.json
-          $.getJSON('Tegistro.json', function(data) {
-            // Buscar el tipo de usuario en el JSON
-            let usuarioSeleccionado = null;
-            data.usuarios.forEach(function(usuario) {
-              if (usuario.tipoUsuario === tipo) {
-                usuarioSeleccionado = usuario;
-              }
-            });
-
-            if (usuarioSeleccionado) {
-              // Guardar el tipo de usuario y enviarlo al servidor PHP
-              sessionStorage.setItem('usuario', JSON.stringify(usuarioSeleccionado));
-              enviarAlServidor(usuarioSeleccionado, tipo);
-            } else {
-              alert('Tipo de usuario no encontrado en el archivo JSON');
-            }
-          }).fail(function() {
-            alert("Error al cargar el archivo de usuarios (pagina.json).");
-          });
-        }
-
-        // Función para enviar los datos al servidor PHP
-        function enviarAlServidor(usuario, tipo) {
-          $.ajax({
-            url: 'api/GET/Registro.php', 
-            method: 'POST',
-            data: {
-              usuario: JSON.stringify(usuario), // Enviar el objeto usuario como JSON
-              tipoUsuario: tipo
-            },
-            success: function(response) {
-              console.log("Respuesta del servidor: " + response);
-              if (tipo === 'cliente') {
-                window.location.href = 'registro_cliente.html';
-              } else if (tipo === 'entrenador') {
-                window.location.href = 'registro_entrenador.html';
-              }
-            },
-            error: function() {
-              alert("Error al enviar los datos al servidor.");
-            }
-          });
-        }
-
         // Manejo de clic en las cartas de usuario
         $('#cliente-card').click(function() {
             seleccionarTipoUsuario("cliente");
@@ -70,6 +23,38 @@
             seleccionarTipoUsuario("entrenador");
         });
       });
+
+      function seleccionarTipoUsuario(tipoUsuario) {
+        // Crea un objeto con el tipo de usuario
+        const data = { tipoUsuario: tipoUsuario };
+
+        // Enviar el tipo de usuario mediante una solicitud POST
+        fetch('api/GET/Registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Redirigir según el tipo de usuario o la respuesta del servidor
+            if (data.success) {
+                if (tipoUsuario === "cliente") {
+                    window.location.href = "registro_cliente.html";
+                } else if (tipoUsuario === "entrenador") {
+                    window.location.href = "registro_entrenador.html";
+                }
+            } else {
+                console.error("Error:", data.message);
+                alert("Error: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error al enviar el tipo de usuario.");
+        });
+      }
     </script>
 </head>
 <body>
