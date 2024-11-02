@@ -225,7 +225,7 @@
         }
 
     // Validación para asegurarse de que todos los campos estén completos
-    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña) {
+    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña|| !fotoPerfil) {
         alert('Por favor completa todos los campos.');
         return;
     }
@@ -242,6 +242,7 @@
             contraseña: contraseña,
             medidaMuñeca: medidaMuñeca,
             diasEntreno: diasEntreno,
+            fotoPerfil:fotoPerfil
         }
     };
 
@@ -250,21 +251,18 @@
     // Para revisar qué datos se están enviando
     console.log(clienteJSON);
 
-    fetch('api/GET/Registro.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: clienteJSON
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        window.location.href = "iniciar_sesion.html"; // Redirigir si tiene éxito
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+fetch('api/GET/Registro.php', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: clienteJSON
+})
+.catch(error => {
+    console.error('Error en la solicitud:', error);
+    alert('Error al registrar: ' + error.message);
+});
+
 });
 
     </script>
