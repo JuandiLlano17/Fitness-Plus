@@ -107,7 +107,7 @@
         const entrenadorJSON = JSON.stringify(entrenador);
         console.log(entrenadorJSON);
 
-        fetch('api/GET/Registro.php', {
+        fetch('api/POST/Registro.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +117,7 @@
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            window.location.href = "iniciar_sesion.html";
+            //window.location.href = "iniciar_sesion.html";
         })
         .catch((error) => {
             console.error('Error:', error);

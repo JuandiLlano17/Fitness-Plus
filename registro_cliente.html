@@ -206,65 +206,66 @@
 
       
 
-      // Manejo del registro de cliente para PHP
-      document.getElementById('registroClienteBtn').addEventListener('click', function () {
-    const formData = new FormData();
-    const nombre = document.getElementById('nombre').value.trim();
-    const identificacion = document.getElementById('identificacion').value.trim();
-    const edad = document.getElementById('edad').value.trim();
-    const peso = document.getElementById('peso').value.trim();
-    const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked') ? document.querySelector('input[name="muñeca"]:checked').value : null;
-    const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
-    const altura = document.getElementById('altura').value.trim();
-    const correo = document.getElementById('correo').value.trim();
-    const contraseña = document.getElementById('contraseña').value.trim();
-    
-    const fotoPerfil = document.getElementById('fotoPerfil').files[0];
-        if (fotoPerfil) {
-            formData.append('fotoPerfil', fotoPerfil); // Añadir archivo al FormData
+      document.getElementById('registroClienteBtn').addEventListener('click', async function () {
+    try {
+        const identificacion = document.getElementById('identificacion').value.trim();
+        const nombre = document.getElementById('nombre').value.trim();
+        const edad = document.getElementById('edad').value.trim();
+        const peso = document.getElementById('peso').value.trim();
+        const medidaMuñeca = document.querySelector('input[name="muñeca"]:checked')?.value;
+        const diasEntreno = Array.from(document.querySelectorAll('input[name="diasEntreno"]:checked')).map(el => el.value);
+        const altura = document.getElementById('altura').value.trim();
+        const correo = document.getElementById('correo').value.trim();
+        const contraseña = document.getElementById('contraseña').value.trim();
+
+        // Validaciones de campos
+        if (!identificacion || !nombre || !edad || !peso || !medidaMuñeca || !diasEntreno.length || !altura || !correo || !contraseña) {
+            alert('Por favor completa todos los campos obligatorios.');
+            return;
         }
 
-    // Validación para asegurarse de que todos los campos estén completos
-    if (!nombre || !identificacion || !edad || !peso || !medidaMuñeca || !altura || !correo || !contraseña|| !fotoPerfil) {
-        alert('Por favor completa todos los campos.');
-        return;
+        const cliente = {
+           "tipoUsuario": "cliente",
+            "datosPersonales": {
+                "identificacion": identificacion,
+                "nombre": nombre,
+                "edad": edad,
+                "peso": peso,
+                "medidaMuñeca": medidaMuñeca,
+                "diasEntreno": diasEntreno,
+                "altura": altura,
+                "correo": correo,
+                "contraseña": contraseña
+            }
+        };
+
+        console.log(JSON.stringify(cliente));
+
+        const response = await fetch('api/POST/Registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cliente)
+        });
+
+        if (!response.ok) {
+            throw new Error("Error en la solicitud al servidor.");
+        }
+
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('Registro exitoso');
+            window.location.href = "iniciar_sesion.html";
+        } else {
+            alert('Error en el registro: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error en el registro. Por favor, intenta nuevamente.');
     }
-
-    const cliente = {
-        tipoUsuario: "cliente",
-        datosPersonales: {
-            nombre: nombre,
-            identificacion: identificacion,
-            edad: edad,
-            peso: peso,
-            altura: altura,
-            correo: correo,
-            contraseña: contraseña,
-            medidaMuñeca: medidaMuñeca,
-            diasEntreno: diasEntreno,
-            fotoPerfil:fotoPerfil
-        }
-    };
-
-    const clienteJSON = JSON.stringify(cliente);
-
-    // Para revisar qué datos se están enviando
-    console.log(clienteJSON);
-
-fetch('api/GET/Registro.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: clienteJSON
-})
-.catch(error => {
-    console.error('Error en la solicitud:', error);
-    alert('Error al registrar: ' + error.message);
 });
-
-});
-
     </script>
 </body>
 </html>
