@@ -79,50 +79,58 @@
           }
       });
 
-      document.getElementById('registroEntrenadorBtn').addEventListener('click', function () {
-        const formData = new FormData();
-        const nombre = document.getElementById('nombre').value.trim();
+      document.getElementById('registroEntrenadorBtn').addEventListener('click', async function () {
+    try {
         const identificacion = document.getElementById('identificacion').value.trim();
+        const nombre = document.getElementById('nombre').value.trim();
         const edad = document.getElementById('edad').value.trim();
         const correo = document.getElementById('correo').value.trim();
-        const contrasena = document.getElementById('contrasena').value.trim();
-        const fotoPerfil = document.getElementById('fotoPerfil').files[0];
+        const contraseña = document.getElementById('contraseña').value.trim();
 
-        if (!nombre || !identificacion || !edad || !correo || !contrasena) {
-            alert('Por favor completa todos los campos.');
+        // Validaciones de campos
+        if (!identificacion || !nombre || !edad || !peso || !medidaMuñeca || !diasEntreno.length || !altura || !correo || !contraseña) {
+            alert('Por favor completa todos los campos obligatorios.');
             return;
         }
 
         const entrenador = {
-            tipoUsuario: "entrenador",
-            datosPersonales: {
-                nombre: nombre,
-                identificacion: identificacion,
-                edad: edad,
-                correo: correo,
-                contrasena: contrasena
+           "tipoUsuario": "cliente",
+            "datosPersonales": {
+                "identificacion": identificacion,
+                "nombre": nombre,
+                "edad": edad,
+                "correo": correo,
+                "contraseña": contraseña
             }
         };
 
-        const entrenadorJSON = JSON.stringify(entrenador);
-        console.log(entrenadorJSON);
+        console.log(JSON.stringify(entrenador));
 
-        fetch('api/POST/Registro.php', {
+        const response = await fetch('api/POST/RegistroE.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: entrenadorJSON
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            //window.location.href = "iniciar_sesion.html";
-        })
-        .catch((error) => {
-            console.error('Error:', error);
+            body: JSON.stringify(entrenador)
         });
-      });
+
+        if (!response.ok) {
+            throw new Error("Error en la solicitud al servidor.");
+        }
+
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('Registro exitoso');
+            window.location.href = "iniciar_sesion.html";
+        } else {
+            alert('Error en el registro: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error en el registro. Por favor, intenta nuevamente.');
+    }
+});
     </script>
 
 </body>
