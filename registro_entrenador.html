@@ -85,16 +85,16 @@
         const nombre = document.getElementById('nombre').value.trim();
         const edad = document.getElementById('edad').value.trim();
         const correo = document.getElementById('correo').value.trim();
-        const contraseña = document.getElementById('contraseña').value.trim();
+        const contraseña = document.getElementById('contrasena').value.trim();
 
         // Validaciones de campos
-        if (!identificacion || !nombre || !edad || !peso || !medidaMuñeca || !diasEntreno.length || !altura || !correo || !contraseña) {
+        if (!identificacion || !nombre || !edad || !correo || !contraseña) {
             alert('Por favor completa todos los campos obligatorios.');
             return;
         }
 
         const entrenador = {
-           "tipoUsuario": "cliente",
+           "tipoUsuario": "entrenador",
             "datosPersonales": {
                 "identificacion": identificacion,
                 "nombre": nombre,
