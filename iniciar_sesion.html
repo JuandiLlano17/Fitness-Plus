@@ -5,75 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_iniciar_sesion.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
-      $(document).ready(function () {
+    $(document).ready(function () {
+        // Cargar el header y el footer
         $('header').load('header.html');
         $('footer').load('footer.html');
+    });
 
-        $('#iniciarSesionBtn').on('click', async function () {
-            try {
-                const correo = $('#email').val().trim();
-                const contrasena = $('#password').val().trim();
+    // Agregar evento de clic al botón de iniciar sesión
+    $('#iniciarSesionBtn').on('click', async function () {
+        try {
+            const correo = $('#email').val().trim();
+            const contrasena = $('#password').val().trim();
 
-                if (correo === "" || contrasena === "") {
-                    $('#mensajeError').text("Por favor completa todos los campos.");
-                    return;
-                }
-
-                const iniciar = {
-                    "Inicio_sesion": {
-                        "correo": correo,
-                        "contrasena": contrasena
-                    }
-                };
-
-                const responseCliente = await fetch('api/POST/verificar_cliente.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(iniciar)
-                });
-
-                if (!responseCliente.ok) {
-                    throw new Error("Error en la solicitud al servidor.");
-                }
-
-                const dataCliente = await responseCliente.json();
-
-                if (dataCliente.status === 'cliente') {
-                    window.location.href = 'opcion_cliente.html';
-                    return;
-                }
-
-                const responseEntrenador = await fetch('api/POST/verificar_entrenador.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(iniciar)
-                });
-
-                if (!responseEntrenador.ok) {
-                    throw new Error("Error en la solicitud al servidor.");
-                }
-
-                const dataEntrenador = await responseEntrenador.json();
-
-                if (dataEntrenador.status === 'entrenador') {
-                    window.location.href = 'Cliente-Entrenado.html';
-                } else {
-                    $('#mensajeError').text("Credenciales incorrectas. Inténtalo de nuevo.");
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                $('#mensajeError').text('Error en el inicio de sesión. Por favor, intenta nuevamente.');
+            // Validaciones de campos
+            if (correo === "" || contrasena === "") {
+                $('#mensajeError').text("Por favor completa todos los campos.");
+                return;
             }
-        });
-      });
+
+            const iniciar = {
+                "Inicio_sesion": {
+                    "correo": correo,
+                    "contrasena": contrasena  // Corregido de "contrasea" a "contrasena"
+                }
+            };
+
+            const response = await fetch('api/POST/verificar_usuario.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(iniciar)
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en la solicitud al servidor.");
+            }
+
+            const data = await response.json();
+
+            // Redirección según el rol del usuario
+            if (data.status === 'cliente') {
+                window.location.href = 'opcion_cliente.html';
+            } else if (data.status === 'entrenador') {
+                window.location.href = 'Cliente-Entrenado.html';
+            } else {
+                $('#mensajeError').text("Credenciales incorrectas. Inténtalo de nuevo.");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            $('#mensajeError').text('Error en el inicio de sesión. Por favor, intenta nuevamente.');
+        }
+    });
     </script>
 </head>
 <body>
