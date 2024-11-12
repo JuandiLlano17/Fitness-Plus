@@ -14,62 +14,43 @@
       $('header').load('header.html');
       $('footer').load('footer.html');
     });
-
-    // Función para cargar datos del archivo JSON
-    async function cargarDatosJSON() {
-        try {
-            const response = await fetch('pagina.json'); // Asegúrate de que la ruta sea correcta
-            const data = await response.json();
-
-            // Supongamos que quieres tomar los datos del primer usuario "entrenador"
-            const cliente = data.usuarios.find(usuario => usuario.tipoUsuario === 'cliente');
-
-            // Verificar si existe el entrenador y contiene los datos necesarios
-            if (cliente && cliente.rutina) {
-                // Recuperar la medida de muñeca y asignarla
-                const medidaMuñeca = cliente.rutina.medidaMuñeca;
-                const tipoCuerpo = determinarTipologia(parseFloat(medidaMuñeca));
-                document.getElementById('tipoCuerpoCliente').textContent = tipoCuerpo;
-
-                // Recuperar y mostrar los días de entrenamiento
-                const diasSeleccionados = cliente.rutina.diasEntreno;
-                if (diasSeleccionados && diasSeleccionados.length > 0) {
-                    document.getElementById('dias-entreno').textContent = diasSeleccionados.join(', ');
-                } else {
-                    document.getElementById('dias-entreno').textContent = "No disponible";
-                }
-            } else {
-                document.getElementById('tipoCuerpoCliente').textContent = "No disponible";
-                document.getElementById('dias-entreno').textContent = "No disponible";
-            }
-        } catch (error) {
-            console.error('Error al cargar el archivo JSON:', error);
-        }
-    }
-
-    // Llamada a la función para cargar los datos del JSON
-    cargarDatosJSON();
-
-    // Función para determinar la tipología corporal
-    function determinarTipologia(medidaMuñeca) {
-      if (medidaMuñeca < 17) {
-        return "Ectomorfo";
-      } else if (medidaMuñeca >= 17 && medidaMuñeca <= 20) {
-        return "Mesomorfo";
-      } else {
-        return "Endomorfo";
-      }
-    }
-
     $(document).ready(function () {
-        // Al cargar la página, recuperar la imagen seleccionada desde localStorage
-        const selectedEmoji = localStorage.getItem('emojiSeleccionado');
-        
-        if (selectedEmoji) {
-          // Actualizar la imagen de la carita en la sección del cliente
-          $('.cara figure img').attr('src', selectedEmoji);
+    // Realizar la llamada AJAX para obtener los datos de los clientes desde el servidor
+    $.ajax({
+        url: 'api/GET/obtener_cliente.php',  // La URL de tu servidor
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data); // Mostrar los datos en la consola
+
+            // Llenar los datos de los clientes en los contenedores
+            data.forEach(function(cliente, index) {
+                const tipoCuerpo = determinarTipologia(cliente.Medida_Muñeca); // Usamos la función para determinar la tipología corporal
+                $('#cliente-' + (index + 1) + ' #nombre-cliente').text(cliente.Nombre + ', ' + cliente.Edad);
+                $('#cliente-' + (index + 1) + ' #imagen-perfil').attr('src', cliente.Imagen_Perfil);
+                $('#cliente-' + (index + 1) + ' #tipoCuerpoCliente').text(tipoCuerpo);
+                $('#cliente-' + (index + 1) + ' #dias-entreno').text(cliente.Dias_Entreno);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error('Error al cargar los datos: ', error);
         }
     });
+});
+
+// Función para determinar la tipología corporal
+function determinarTipologia(medidaMuñeca) {
+    if (medidaMuñeca < 17) {
+        return "Ectomorfo";
+    } else if (medidaMuñeca >= 17 && medidaMuñeca <= 20) {
+        return "Mesomorfo";
+    } else {
+        return "Endomorfo";
+    }
+}
+
+
 </script>
 
 </head><!-- Encabezado -->
