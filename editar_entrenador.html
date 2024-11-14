@@ -67,68 +67,36 @@
                         <input type="radio" id="espalda" name="musculo" value="espalda" />
                         <label for="espalda" class="custom-radio">Espalda</label><br>
 
-                        <input type="radio" id="piernas" name="musculo" value="piernas" />
-                        <label for="piernas" class="custom-radio">Piernas</label><br>
+                        <input type="radio" id="Piernas" name="musculo" value="piernas" />
+                        <label for="Piernas" class="custom-radio">Piernas</label><br>
 
                         <input type="radio" id="hombros" name="musculo" value="hombros" />
                         <label for="hombros" class="custom-radio">Hombros</label><br>
 
-                        <input type="radio" id="brazos" name="musculo" value="brazos" />
-                        <label for="brazos" class="custom-radio">Brazos</label><br>
+                        <input type="radio" id="Brazos" name="musculo" value="brazos" />
+                        <label for="Brazos" class="custom-radio">Brazos</label><br>
 
-                        <input type="radio" id="abdominales" name="musculo" value="abdominales" />
-                        <label for="abdominales" class="custom-radio">Abdominales</label>
+                        <input type="radio" id="abdomen" name="musculo" value="abdomen" />
+                        <label for="abdomen" class="custom-radio">Abdomen</label>
                     </details>
                 </div>
                 
+                <!-- Contenedor para las previsualizaciones de los ejercicios -->
+                <div id="previsualizacion-ejercicio-container"></div>
+
+
                 <div class="exercise-container">
                     <!-- Opciones para agregar ejercicio -->
                     <div class="radio-options">
                         <details class="custom-dropdown">
                             <summary class="d-mas">+</summary>
-                            <input type="radio" id="sentadilla-libre" name="agregar" value="sentadilla-libre" />
-                            <label for="sentadilla-libre" class="custom-radio">Sentadilla Libre</label><br>
-                
-                            <input type="radio" id="prensa" name="agregar" value="prensa" />
-                            <label for="prensa" class="custom-radio">Prensa</label><br>
-                
-                            <input type="radio" id="extensiones-cuadricep" name="agregar" value="extensiones-cuadricep" />
-                            <label for="extensiones-cuadricep" class="custom-radio">Extensiones De Cuadricep</label><br>
-                
-                            <input type="radio" id="sentadilla-hack" name="agregar" value="sentadilla-hack" />
-                            <label for="sentadilla-hack" class="custom-radio">Sentadilla Hack</label><br>
-                
-                            <input type="radio" id="sentadilla-smith" name="agregar" value="sentadilla-smith" />
-                            <label for="sentadilla-smith" class="custom-radio">Sentadilla Smith</label>
+                            <!-- Aquí se llenará dinámicamente con los ejercicios desde JavaScript -->
+                            <div class="exercise-list" style="display:none;"></div>  <!-- Contenedor oculto -->
                         </details>
                     </div>
-                
-                    <!-- Crear Ejercicio -->
-                    <div id="crearEjercicioModal" class="crear">
-                        <div class="frame">
-                            <b id="ejercicio-nombre">Sentadilla Libre</b>
-                            <div class="reps">
-                                <b id="ejercicio-reps">
-                                    <input type="text" id="ejercicio-reps-numero" placeholder="3-12" class="input-reps" />
-                                    reps
-                                </b>
-                                <button class="button">Borrar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="crearEjercicioModal" class="crear">
-                        <div class="frame2">
-                            <b id="ejercicio-nombre">Press Banca</b>
-                            <div class="reps">
-                                <b id="ejercicio-reps">
-                                    <input type="text" id="ejercicio-reps-numero" placeholder="3-12" class="input-reps" />
-                                    reps
-                                </b>
-                                <button class="button">Borrar</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                
+                
 
             </div>
             <button class="button button-centrado">
@@ -263,5 +231,154 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
     </script>
+
+
+<script>
+    // Función para actualizar los ejercicios basados en el músculo seleccionado
+function actualizarEjercicios() {
+    // Obtener el valor del músculo seleccionado
+    let musculo = document.querySelector('input[name="musculo"]:checked').value;
+
+    // Mostrar el valor del músculo seleccionado en la consola para depuración
+    console.log("Músculo seleccionado:", musculo);
+
+    fetch('api/POST/editar_entrenador.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'musculo=' + musculo
+    })
+    .then(response => {
+        console.log("Respuesta cruda del servidor:", response);  // Verifica la respuesta cruda antes de convertirla
+        return response.text();  // Cambiar a text() para depuración
+    })
+    .then(text => {
+        console.log("Respuesta del servidor (raw):", text);  // Verifica la respuesta cruda recibida
+
+        try {
+            // Intentamos convertir la respuesta en JSON
+            let data = JSON.parse(text);
+            console.log("Respuesta procesada en JSON:", data); // Mostrar los datos procesados
+
+            // Verificar si la respuesta tiene la propiedad "status" y si es éxito
+            if (data.status === "success") {
+                let ejercicios = data.data;
+
+                // Verificamos que "ejercicios" es un array
+                if (Array.isArray(ejercicios)) {
+                    // Seleccionar el contenedor donde se agregarán los ejercicios
+                    let container = document.querySelector('.exercise-container .radio-options .exercise-list');
+                    container.innerHTML = '';  // Limpiar los ejercicios previos
+
+                    // Iterar sobre cada ejercicio recibido del servidor
+                    ejercicios.forEach(ejercicio => {
+                        let radioInput = document.createElement('input');
+                        radioInput.type = 'radio';
+                        radioInput.name = 'agregar';
+                        radioInput.value = ejercicio;
+                        radioInput.id = ejercicio.toLowerCase().replace(/ /g, '-');
+
+                        let label = document.createElement('label');
+                        label.htmlFor = radioInput.id;
+                        label.classList.add('custom-radio');
+                        label.textContent = ejercicio;
+
+                        // Agregar el input y el label al contenedor
+                        container.appendChild(radioInput);
+                        container.appendChild(label);
+                        container.appendChild(document.createElement('br'));
+                    });
+
+                    // Hacer visible el contenedor de ejercicios cuando se haga clic en el "+" (summary)
+                    let details = container.closest('details');
+                    details.addEventListener('toggle', function() {
+                        if (details.open) {
+                            container.style.display = 'block';
+                        } else {
+                            container.style.display = 'none';
+                        }
+                    });
+                } else {
+                    console.error("Los ejercicios no son un array válido.");
+                }
+            } else {
+                console.error("Error en los ejercicios:", data.error || "Error desconocido");
+            }
+        } catch (error) {
+            console.error('Error al procesar la respuesta JSON:', error);
+            console.log('Respuesta del servidor (raw) para depuración:', text);  // Mostrar la respuesta cruda del servidor para depuración
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+    });
+}
+
+// Asignar el evento a los inputs de músculo
+document.querySelectorAll('input[name="musculo"]').forEach(input => {
+    input.addEventListener('change', actualizarEjercicios);
+});
+
+</script>
+
+<script>
+    // Función para crear la previsualización del ejercicio
+function mostrarPrevisualizacion(ejercicio) {
+    // Buscar el contenedor de previsualización
+    let container = document.getElementById('previsualizacion-ejercicio-container');
+
+    // Limpiar el contenedor antes de agregar un nuevo ejercicio
+    container.innerHTML = '';
+
+    // Crear un div para la previsualización
+    let previsualizacionDiv = document.createElement('div');
+    previsualizacionDiv.classList.add('previsualizacion');
+
+    // Agregar el nombre del ejercicio
+    let nombreEjercicio = document.createElement('h3');
+    nombreEjercicio.textContent = ejercicio;
+    previsualizacionDiv.appendChild(nombreEjercicio);
+
+    // Agregar la imagen de fondo
+    let imagenEjercicio = document.createElement('div');
+    imagenEjercicio.classList.add('imagen-fondo');
+    imagenEjercicio.style.backgroundImage = `url('img/${ejercicio}.jpg')`;
+    imagenEjercicio.style.backgroundSize = 'cover'; // Asegura que la imagen cubra todo el contenedor
+    imagenEjercicio.style.height = '100px';  // Ajusta el tamaño de la imagen de fondo
+    previsualizacionDiv.appendChild(imagenEjercicio);
+
+    // Agregar el input para las repeticiones
+    let inputRepeticiones = document.createElement('input');
+    inputRepeticiones.type = 'text';
+    inputRepeticiones.value = '8-10'; // Valor por defecto
+    inputRepeticiones.classList.add('repeticiones');
+    previsualizacionDiv.appendChild(inputRepeticiones);
+
+    // Agregar la previsualización al contenedor
+    container.appendChild(previsualizacionDiv);
+}
+
+// Función que se ejecuta cuando se selecciona un ejercicio
+function asignarEventosEjercicios() {
+    // Obtener todos los labels de los ejercicios
+    let labels = document.querySelectorAll('.exercise-list label');
+
+    labels.forEach(label => {
+        // Asignar un evento de click a cada label
+        label.addEventListener('click', function() {
+            // Obtener el nombre del ejercicio desde el textContent del label
+            let ejercicioSeleccionado = label.textContent.trim();
+            mostrarPrevisualizacion(ejercicioSeleccionado);
+        });
+    });
+}
+
+// Llamar la función para asignar eventos después de cargar los ejercicios
+asignarEventosEjercicios();
+
+</script>
+
+    
 </body>
 </html>

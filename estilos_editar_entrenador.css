@@ -199,6 +199,31 @@ b{
     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
     z-index: 1000; /* Justo debajo del modal */
 }
+
+/* Estilos para la previsualización */
+.previsualizacion {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.imagen-fondo {
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.repeticiones {
+    margin-top: 10px;
+    padding: 5px;
+    width: 80px;
+    font-size: 14px;
+    text-align: center;
+}
+
 @media (min-width: 481px) and (max-width: 768px) {
     .editar-ejercicios {
         width: 100%;
