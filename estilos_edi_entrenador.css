@@ -1,3 +1,25 @@
+/* ejercicio.css */
+.previsualizacion {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .previsualizacion h3 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+  }
+  
+
+ .d-mas{
+    order: 2;
+ }
+
 .editar-ejercicios {
     display: flex;
     padding: 100px 106px;
@@ -179,15 +201,16 @@ b{
     border-radius: 248px;
     color: #000;
     border: 1px solid transparent;
+    font-size: 40px;
     box-sizing: border-box;
     border: 1px solid #ccc;
 }
 .exercise-container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-wrap: wrap;
     align-items: center; /* Alinear los elementos en la parte superior */
     justify-content: space-between; /* Espaciado entre el botón + y el modal */
-    gap: 20px; /* Espacio entre el botón + y el modal */
+    gap: 22px; /* Espacio entre el botón + y el modal */
 }
 .overlay {
     display: none; /* Oculto por defecto */
@@ -199,31 +222,6 @@ b{
     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
     z-index: 1000; /* Justo debajo del modal */
 }
-
-/* Estilos para la previsualización */
-.previsualizacion {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-}
-
-.imagen-fondo {
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.repeticiones {
-    margin-top: 10px;
-    padding: 5px;
-    width: 80px;
-    font-size: 14px;
-    text-align: center;
-}
-
 @media (min-width: 481px) and (max-width: 768px) {
     .editar-ejercicios {
         width: 100%;

@@ -6,7 +6,7 @@
     <title>Editar ejercicios</title>
     <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css">
-    <link rel="stylesheet" href="estilos_editar_entrenador.css">
+    <link rel="stylesheet" href="estilos_edi_entrenador.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -81,15 +81,16 @@
                     </details>
                 </div>
                 
-                <!-- Contenedor para las previsualizaciones de los ejercicios -->
-                <div id="previsualizacion-ejercicio-container"></div>
-
-
+                
                 <div class="exercise-container">
                     <!-- Opciones para agregar ejercicio -->
-                    <div class="radio-options">
+                    <div class="radio-options" style="order: 2;">
                         <details class="custom-dropdown">
                             <summary class="d-mas">+</summary>
+                             <style>
+
+                             </style>
+
                             <!-- Aquí se llenará dinámicamente con los ejercicios desde JavaScript -->
                             <div class="exercise-list" style="display:none;"></div>  <!-- Contenedor oculto -->
                         </details>
@@ -239,9 +240,6 @@ function actualizarEjercicios() {
     // Obtener el valor del músculo seleccionado
     let musculo = document.querySelector('input[name="musculo"]:checked').value;
 
-    // Mostrar el valor del músculo seleccionado en la consola para depuración
-    console.log("Músculo seleccionado:", musculo);
-
     fetch('api/POST/editar_entrenador.php', {
         method: 'POST',
         headers: {
@@ -249,133 +247,92 @@ function actualizarEjercicios() {
         },
         body: 'musculo=' + musculo
     })
-    .then(response => {
-        console.log("Respuesta cruda del servidor:", response);  // Verifica la respuesta cruda antes de convertirla
-        return response.text();  // Cambiar a text() para depuración
-    })
-    .then(text => {
-        console.log("Respuesta del servidor (raw):", text);  // Verifica la respuesta cruda recibida
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            let ejercicios = data.data;
 
-        try {
-            // Intentamos convertir la respuesta en JSON
-            let data = JSON.parse(text);
-            console.log("Respuesta procesada en JSON:", data); // Mostrar los datos procesados
+            let container = document.querySelector('.exercise-container .radio-options .exercise-list');
+            container.innerHTML = '';  // Limpiar los ejercicios previos
 
-            // Verificar si la respuesta tiene la propiedad "status" y si es éxito
-            if (data.status === "success") {
-                let ejercicios = data.data;
+            // Iterar sobre cada ejercicio y agregar el evento `click` solo una vez
+            ejercicios.forEach(ejercicio => {
+                let radioInput = document.createElement('input');
+                radioInput.type = 'radio';
+                radioInput.name = 'agregar';
+                radioInput.value = ejercicio;
+                radioInput.id = ejercicio.toLowerCase().replace(/ /g, '-');
 
-                // Verificamos que "ejercicios" es un array
-                if (Array.isArray(ejercicios)) {
-                    // Seleccionar el contenedor donde se agregarán los ejercicios
-                    let container = document.querySelector('.exercise-container .radio-options .exercise-list');
-                    container.innerHTML = '';  // Limpiar los ejercicios previos
+                let label = document.createElement('label');
+                label.htmlFor = radioInput.id;
+                label.classList.add('custom-radio');
+                label.textContent = ejercicio;
 
-                    // Iterar sobre cada ejercicio recibido del servidor
-                    ejercicios.forEach(ejercicio => {
-                        let radioInput = document.createElement('input');
-                        radioInput.type = 'radio';
-                        radioInput.name = 'agregar';
-                        radioInput.value = ejercicio;
-                        radioInput.id = ejercicio.toLowerCase().replace(/ /g, '-');
+                // Agregar el input y el label al contenedor
+                container.appendChild(radioInput);
+                container.appendChild(label);
+                container.appendChild(document.createElement('br'));
 
-                        let label = document.createElement('label');
-                        label.htmlFor = radioInput.id;
-                        label.classList.add('custom-radio');
-                        label.textContent = ejercicio;
-
-                        // Agregar el input y el label al contenedor
-                        container.appendChild(radioInput);
-                        container.appendChild(label);
-                        container.appendChild(document.createElement('br'));
-                    });
-
-                    // Hacer visible el contenedor de ejercicios cuando se haga clic en el "+" (summary)
-                    let details = container.closest('details');
-                    details.addEventListener('toggle', function() {
-                        if (details.open) {
-                            container.style.display = 'block';
-                        } else {
-                            container.style.display = 'none';
-                        }
-                    });
-                } else {
-                    console.error("Los ejercicios no son un array válido.");
-                }
-            } else {
-                console.error("Error en los ejercicios:", data.error || "Error desconocido");
-            }
-        } catch (error) {
-            console.error('Error al procesar la respuesta JSON:', error);
-            console.log('Respuesta del servidor (raw) para depuración:', text);  // Mostrar la respuesta cruda del servidor para depuración
+                // Agregar el evento `click` para cada ejercicio de forma controlada
+                label.addEventListener('click', function() {
+                    agregarEjercicioAlContenedor(ejercicio);
+                });
+            });
+            
+            // Hacer visible el contenedor de ejercicios cuando se haga clic en el "+" (summary)
+            let details = container.closest('details');
+            details.addEventListener('toggle', function() {
+                container.style.display = details.open ? 'block' : 'none';
+            });
         }
     })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
+    .catch(error => console.error('Error en la solicitud:', error));
 }
 
-// Asignar el evento a los inputs de músculo
+// Función para agregar el div rojo con la imagen de fondo al lado izquierdo del botón "+"
+function agregarEjercicioAlContenedor(ejercicio) {
+    // Crear el div que representará el ejercicio seleccionado
+    const ejercicioDiv = document.createElement('div');
+    ejercicioDiv.classList.add('previsualizacion');  // Se agregará la clase para estilos generales desde el CSS
+
+    // Crear un contenedor para la imagen de fondo
+    const imagenDiv = document.createElement('div');
+    imagenDiv.classList.add('imagen-fondo');  // Usaremos esta clase para los estilos de la imagen
+
+    // Establecer el fondo del ejercicio con la imagen correspondiente
+    const imagenFondo = `img/ejercicios/${ejercicio.replace(/ /g, '%20')}.png`;
+    imagenDiv.style.backgroundImage = `url(${imagenFondo})`;
+    imagenDiv.style.width = '100%';  // Ocupa el 100% del ancho del contenedor principal
+    imagenDiv.style.height = '100%'; // Ocupa el 100% del alto del contenedor principal
+    imagenDiv.style.backgroundSize = 'cover';
+    imagenDiv.style.backgroundPosition = 'center';
+    imagenDiv.style.filter = 'blur(3px)'; // Aplica el desenfoque
+    imagenDiv.style.position = 'absolute'; // Para que la imagen esté por debajo de otros elementos
+
+    // Añadir el contenedor de la imagen de fondo dentro del div principal
+    ejercicioDiv.appendChild(imagenDiv);
+
+    // Crear el título (h3) con el nombre del ejercicio
+    const h3 = document.createElement('h3');
+    h3.textContent = ejercicio;  // Asigna el nombre del ejercicio
+    // Los estilos del h3 ya están en el archivo CSS bajo .previsualizacion h3
+
+    // Agregar el h3 dentro del div de previsualización
+    ejercicioDiv.appendChild(h3);
+
+    // Obtener el contenedor donde agregar el div
+    const exerciseContainer = document.querySelector('.exercise-container');
+    const radioOptions = exerciseContainer.querySelector('.radio-options');
+    
+    // Insertar el nuevo div de previsualización a la izquierda del contenedor de opciones de radio
+    exerciseContainer.insertBefore(ejercicioDiv, radioOptions);
+    console.log("Div insertado en el contenedor:", ejercicioDiv);
+}
+
+// Asignar el evento a los inputs de músculo para que actualice los ejercicios disponibles
 document.querySelectorAll('input[name="musculo"]').forEach(input => {
     input.addEventListener('change', actualizarEjercicios);
 });
-
-</script>
-
-<script>
-    // Función para crear la previsualización del ejercicio
-function mostrarPrevisualizacion(ejercicio) {
-    // Buscar el contenedor de previsualización
-    let container = document.getElementById('previsualizacion-ejercicio-container');
-
-    // Limpiar el contenedor antes de agregar un nuevo ejercicio
-    container.innerHTML = '';
-
-    // Crear un div para la previsualización
-    let previsualizacionDiv = document.createElement('div');
-    previsualizacionDiv.classList.add('previsualizacion');
-
-    // Agregar el nombre del ejercicio
-    let nombreEjercicio = document.createElement('h3');
-    nombreEjercicio.textContent = ejercicio;
-    previsualizacionDiv.appendChild(nombreEjercicio);
-
-    // Agregar la imagen de fondo
-    let imagenEjercicio = document.createElement('div');
-    imagenEjercicio.classList.add('imagen-fondo');
-    imagenEjercicio.style.backgroundImage = `url('img/${ejercicio}.jpg')`;
-    imagenEjercicio.style.backgroundSize = 'cover'; // Asegura que la imagen cubra todo el contenedor
-    imagenEjercicio.style.height = '100px';  // Ajusta el tamaño de la imagen de fondo
-    previsualizacionDiv.appendChild(imagenEjercicio);
-
-    // Agregar el input para las repeticiones
-    let inputRepeticiones = document.createElement('input');
-    inputRepeticiones.type = 'text';
-    inputRepeticiones.value = '8-10'; // Valor por defecto
-    inputRepeticiones.classList.add('repeticiones');
-    previsualizacionDiv.appendChild(inputRepeticiones);
-
-    // Agregar la previsualización al contenedor
-    container.appendChild(previsualizacionDiv);
-}
-
-// Función que se ejecuta cuando se selecciona un ejercicio
-function asignarEventosEjercicios() {
-    // Obtener todos los labels de los ejercicios
-    let labels = document.querySelectorAll('.exercise-list label');
-
-    labels.forEach(label => {
-        // Asignar un evento de click a cada label
-        label.addEventListener('click', function() {
-            // Obtener el nombre del ejercicio desde el textContent del label
-            let ejercicioSeleccionado = label.textContent.trim();
-            mostrarPrevisualizacion(ejercicioSeleccionado);
-        });
-    });
-}
-
-// Llamar la función para asignar eventos después de cargar los ejercicios
-asignarEventosEjercicios();
 
 </script>
 
