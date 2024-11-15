@@ -93,6 +93,14 @@ $(document).ready(function () {
       window.location.href = "index.html";  // Redirige a la página iden.html
     });
   });
-  
+});
 
+ // Evento para abrir el modal del cronómetro
+ $(".button-cronometro").on("click", function () {
+  $("#modalCronometro").fadeIn();
+});
+
+// Evento para cerrar el modal del cronómetro
+$(".close").on("click", function () {
+  $("#modalCronometro").fadeOut();
 });
