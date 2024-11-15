@@ -15,8 +15,24 @@ if ($conn->connect_error) {
 
 header('Content-Type: application/json');
 
-// Consulta para obtener los datos de la tabla detalles_cliente
-$sql = "SELECT Identificacion_clien, Peso, Medida_Muneca, Dias_entreno, Altura FROM detalles_cliente";
+// Consulta SQL para unir las tablas detalles_cliente y usuarios
+$sql = "
+    SELECT 
+        usuarios.Nombre, 
+        usuarios.Edad, 
+        usuarios.Foto_perfil, 
+        usuarios.rol,
+        detalles_cliente.Medida_Muneca, 
+        detalles_cliente.Dias_entreno, 
+        detalles_cliente.Peso, 
+        detalles_cliente.Altura 
+    FROM 
+        detalles_cliente
+    JOIN 
+        usuarios 
+    ON 
+        detalles_cliente.Identificacion_clien = usuarios.Identificacion_entre
+";
 $result = $conn->query($sql);
 
 $clientes = [];
@@ -25,17 +41,21 @@ if ($result->num_rows > 0) {
     // Llenar los datos de los clientes en el array
     while($row = $result->fetch_assoc()) {
         $clientes[] = [
-            "Identificacion" => $row["Identificacion_clien"],
+            "Nombre" => $row["Nombre"],
+            "Edad" => $row["Edad"],
+            "Foto_perfil" => base64_encode($row["Foto_perfil"]), // Convertir imagen en base64
+            "Rol" => $row["rol"],
+            "Medida_Muneca" => $row["Medida_Muneca"],
+            "Dias_entreno" => $row["Dias_entreno"],
             "Peso" => $row["Peso"],
-            "Medida_Muñeca" => $row["Medida_Muneca"],
-            "Dias_Entreno" => $row["Dias_entreno"],
             "Altura" => $row["Altura"]
         ];
     }
 } else {
-    echo json_encode(["message" => "No se encontraron detalles de clientes"]);
+    echo json_encode(["message" => "No se encontraron datos de clientes y usuarios"]);
 }
 
+// Enviar respuesta en JSON
 echo json_encode($clientes);
 
 $conn->close();

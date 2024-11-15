@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cliente-Entrenador</title>
@@ -10,220 +10,33 @@
     <link rel="stylesheet" href="estilo_cliente_entre.css" />
 
     <script>
-      $(document).ready(function () {
-        $("header").load("header.html");
-        $("footer").load("footer.html");
-      });
+        $(document).ready(function () {
+            $("header").load("header.html");
+            $("footer").load("footer.html");
+        });
     </script>
-  </head>
+</head>
 
-  <body>
+<body>
     <header></header>
 
     <div class="cliente">
-      <a href="iniciar_sesion.html">
-        <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg" />
-      </a>
-      <a href="pagina_principal.html">
-        <div class="button-text">
-          <button class="button">Salir</button>
-        </div>
-      </a>
+        <a href="iniciar_sesion.html">
+            <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg" />
+        </a>
+        <a href="pagina_principal.html">
+            <div class="button-text">
+                <button class="button">Salir</button>
+            </div>
+        </a>
     </div>
 
     <h1>Clientes</h1>
 
-    <div class="parte1">
-      <div class="tablita">
-        <!-- Primero -->
-        <div class="img-cliente">
-          <img
-            class="img-cel"
-            src="img/Juan Diego.png"
-            alt="Imagen del Cliente"
-          />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>JUAN DIEGO, 22</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: <span class="dias-entreno"></span></p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Contento1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Segundo -->
-      <div class="tablita">
-        <div class="img-cliente">
-          <img class="img-cel" src="img/Natalia.png" alt="Imagen del Cliente" />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>MARÍA FERNANDA, 29</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: Lu, Ma, Vi</p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Serio1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="parte1">
-      <!-- Tercero -->
-      <div class="tablita">
-        <div class="img-cliente">
-          <img class="img-cel" src="img/Carlos.png" alt="Imagen del Cliente" />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>CARLOS ANDRÉS, 35</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: Lu, Mi, Vi</p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Feliz1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cuarto -->
-      <div class="tablita">
-        <div class="img-cliente">
-          <img class="img-cel" src="img/Lau.png" alt="Imagen del Cliente" />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>LAURA SOFIA, 27</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: Lu, Mi, Vi, Sa</p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Feliz1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="parte1">
-      <!-- Quinto -->
-      <div class="tablita">
-        <div class="img-cliente">
-          <img class="img-cel" src="img/Andres.png" alt="Imagen del Cliente" />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>ANDRÉS FELIPE, 40</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: Lu, Mi, Vi</p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Contento1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sexto -->
-      <div class="tablita">
-        <div class="img-cliente">
-          <img class="img-cel" src="img/Natalia.png" alt="Imagen del Cliente" />
-        </div>
-        <div class="cliente-info">
-          <div class="nombre-cliente">
-            <h2>NATALIA, 31</h2>
-          </div>
-          <div class="info-item">
-            <p>Tipo: <span class="tipo-cuerpo-cliente"></span></p>
-          </div>
-          <div class="info-item">
-            <p>Días: Lu, Mi, Vi</p>
-          </div>
-          <div class="button-group1">
-            <div class="button-text">
-              <a href="editar_entrenador.html">
-                <button class="button">Editar</button>
-              </a>
-            </div>
-            <div class="cara">
-              <figure>
-                <img src="img/Contento1.svg" alt="Cara del Entrenador" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Contenedor donde se cargarán dinámicamente los clientes -->
+    <div id="clientes-container"></div>
 
     <script src="Clien_entrenado.js"></script>
     <footer></footer>
-  </body>
+</body>
 </html>
