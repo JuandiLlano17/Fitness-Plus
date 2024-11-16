@@ -8,12 +8,8 @@
     <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css" />
     <link rel="stylesheet" href="estilo_rutina.css" />
+    <script src= "js/Carga_header_footer.js"></script>
     <script>
-      $(document).ready(function () {
-        // Cargar el header desde header.html
-        $("header").load("header.html");
-        // Cargar el footer desde footer.html
-        $("footer").load("footer.html");
 
         function cargarEjercicios() {
           const xhr = new XMLHttpRequest();
@@ -27,8 +23,7 @@
           };
 
           xhr.send();
-      }
-      });
+      };
     </script></head
   ><!-- Encabezado -->
 
