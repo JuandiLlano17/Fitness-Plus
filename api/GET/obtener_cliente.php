@@ -4,7 +4,6 @@ $servername = "sql309.infinityfree.com";
 $username = "if0_37560263";
 $password = "Feliceslos321";
 $dbname = "if0_37560263_Gimnasio1";
-
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,24 +14,8 @@ if ($conn->connect_error) {
 
 header('Content-Type: application/json');
 
-// Consulta SQL para unir las tablas detalles_cliente y usuarios
-$sql = "
-    SELECT 
-        usuarios.Nombre, 
-        usuarios.Edad, 
-        usuarios.Foto_perfil, 
-        usuarios.rol,
-        detalles_cliente.Medida_Muneca, 
-        detalles_cliente.Dias_entreno, 
-        detalles_cliente.Peso, 
-        detalles_cliente.Altura 
-    FROM 
-        detalles_cliente
-    JOIN 
-        usuarios 
-    ON 
-        detalles_cliente.Identificacion_clien = usuarios.Identificacion_entre
-";
+// Consulta para obtener los datos de los clientes
+$sql = "SELECT Nombre, Edad, Foto_Perfil, Medida_Muñeca, Dias_Entreno FROM cliente";
 $result = $conn->query($sql);
 
 $clientes = [];
@@ -43,20 +26,16 @@ if ($result->num_rows > 0) {
         $clientes[] = [
             "Nombre" => $row["Nombre"],
             "Edad" => $row["Edad"],
-            "Foto_perfil" => base64_encode($row["Foto_perfil"]), // Convertir imagen en base64
-            "Rol" => $row["rol"],
-            "Medida_Muneca" => $row["Medida_Muneca"],
-            "Dias_entreno" => $row["Dias_entreno"],
-            "Peso" => $row["Peso"],
-            "Altura" => $row["Altura"]
+            "Foto_Perfil" => $row["Foto_Perfil"], // Corregido aquí
+            "Medida_Muñeca" => $row["Medida_Muñeca"],
+            "Dias_Entreno" => $row["Dias_Entreno"]
         ];
     }
 } else {
-    echo json_encode(["message" => "No se encontraron datos de clientes y usuarios"]);
+    echo json_encode(["message" => "No se encontraron clientes"]);
 }
 
-// Enviar respuesta en JSON
 echo json_encode($clientes);
 
 $conn->close();
-?>
+?> 
