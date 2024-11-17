@@ -225,7 +225,6 @@
         }
 
         const cliente = {
-           "tipoUsuario": "cliente",
             "datosPersonales": {
                 "identificacion": identificacion,
                 "nombre": nombre,
@@ -235,9 +234,11 @@
                 "diasEntreno": diasEntreno,
                 "altura": altura,
                 "correo": correo,
-                "contraseña": contraseña
+                "contraseña": contraseña,
+                "rol": "cliente"
             }
         };
+
 
         console.log(JSON.stringify(cliente));
 
