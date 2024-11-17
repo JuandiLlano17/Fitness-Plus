@@ -5,34 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_iniciar_sesion.css">
-
-    
-    <script src= "js/Carga_header_footer.js"></script>
-    <script src= "js/inicio_sesion.js"></script>
-</head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        // Cargar el header y el footer
+        $('header').load('header.html');
+        $('footer').load('footer.html');
+    });
+    </script>
 </head>
 <body>
     <header></header>
-    <main>
-        <div class="ini-sesion">
-            <div class="inicio-img">
-                <img src="img/inicio_img.png" alt="Imagen de entrenamiento">
-            </div>
-            <div class="inscribete">
-                <h1>Iniciar Sesión</h1>
-                <form id="formInicioSesion" onsubmit="return false;">
-                    <div class="inicio-de-sesion">
-                        <input type="email" id="email" placeholder="Ingresar email" required />
-                    </div>
-                    <div class="inicio-de-sesion">
-                        <input type="password" id="password" placeholder="••••••••" required />
-                    </div>
-                    <button type="submit" class="button" id="iniciarSesionBtn">Inicia sesión</button>
-                    <div id="mensajeError" style="color: red; margin-top: 10px;"></div>
-                </form>
-            </div>
+    <div class="ini-sesion">
+        <div class="inicio-img">
+            <img src="img/inicio_img.png" alt="Imagen de entrenamiento">
         </div>
-    </main>
+        <div class="inscribete">
+            <h1>Iniciar Sesión</h1>
+            <div class="inicio-de-sesion">
+                <input type="email" id="email" placeholder="Ingresar email" required />
+            </div>
+            <div class="inicio-de-sesion">
+                <input type="password" id="password" placeholder="••••••••" required />
+            </div>
+            <button class="button" id="iniciarSesionBtn">Inicia sesión</button>
+            <div id="mensajeError" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
     <footer></footer>
+    <script src="js/inicio_sesion.js"></script>
 </body>
 </html>
