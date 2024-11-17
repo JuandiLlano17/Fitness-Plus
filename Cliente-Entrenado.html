@@ -8,34 +8,8 @@
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilo_cliente_entre.css">
 
-    <script>
-        // Cargar contenido de header y footer al cargar la página
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('header.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Error al cargar el header: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.querySelector('header').innerHTML = data;
-                })
-                .catch(error => console.error(error));
-
-            fetch('footer.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Error al cargar el footer: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.querySelector('footer').innerHTML = data;
-                })
-                .catch(error => console.error(error));
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src= "js/Carga_header_footer.js"></script>
 </head>
 
 <body>
