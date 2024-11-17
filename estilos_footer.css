@@ -2,7 +2,7 @@
 .footer {
   width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
   background-color: #0D1F60; 
-  padding: 48px 0px; 
+  padding: 60px 48px; 
   border-top: 5px solid white;
   color: white;
   box-sizing: border-box; 
@@ -125,6 +125,7 @@
 @media (min-width: 769px) and (max-width: 1200px) {
   .footer {
     width: 100%;
+    padding: 48px 24px;
   }
   
   .footer-container {
