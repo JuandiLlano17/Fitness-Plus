@@ -1,44 +1,30 @@
 /* Contenedor de las tarjetas */
 .parte1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid; /* Cambiamos a Grid Layout */
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+  gap: 20px; /* Espaciado entre tarjetas */
+  justify-content: center; /* Alinear las tarjetas al centro */
   padding: 20px;
 }
 
 /* Tarjetas de clientes */
 .tablita {
-  width: 280px;
+  width: 300px; /* Se ajusta automáticamente dentro de la columna */
+  height: 570px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tablita:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagen de perfil */
 .foto-perfil img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
   border-bottom: 1px solid #ddd;
-}
-
-/* Nombre y edad */
-.nombre-cliente h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
-  text-transform: uppercase;
-  color: #333;
 }
 
 /* Información adicional */
@@ -53,23 +39,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
   gap: 10px;
-}
-
-.button-group1 .button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-group1 .button:hover {
-  background-color: #45a049;
 }
 
 /* Emojis de estado */
@@ -90,17 +60,18 @@
   color: #F44336;
 }
 
-/* Responsividad */
+/* Responsividad para pantallas pequeñas */
 @media (max-width: 768px) {
+  .parte1 {
+      grid-template-columns: 1fr; /* Solo una tarjeta por fila en pantallas pequeñas */
+  }
+
   .tablita {
-      width: 100%;
+      width: 300px; /* Ocupa el ancho total de la columna */
+      height: 570px;
   }
 
   .foto-perfil img {
-      height: 180px;
-  }
-
-  .nombre-cliente h2 {
-      font-size: 16px;
+      height: 300px;
   }
 }
