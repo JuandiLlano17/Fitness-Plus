@@ -35,7 +35,8 @@ try {
 
     // Lista de campos obligatorios
     $requiredFields = [
-        'identificacion', 'nombre', 'edad', 'correo', 'contrasena', 'rol', 'fotoPerfil'
+        'identificacion', 'nombre', 'edad', 'correo', 'contrasena', 'rol',
+         'fotoPerfil'
     ];
 
     // Validar que todos los campos estén presentes
@@ -56,7 +57,7 @@ try {
 
     // Primera consulta: Insertar en tabla `usuarios`
     $sqlUsuarios = "INSERT INTO usuarios (Identificacion, Nombre, Edad, Correo, Contrasena, Foto_perfil, rol) 
-                    VALUES (?, ?, ?, ?, ?, ?, entrenador)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sqlUsuarios);
     if (!$stmt) {
         throw new Exception("Error preparando la consulta para usuarios: " . $conn->error);
@@ -67,7 +68,7 @@ try {
 
     // Vincular parámetros para la tabla `usuarios`
     $stmt->bind_param(
-        "ssisssb",
+        "ssissss",
         $datosPersonales['identificacion'],
         $datosPersonales['nombre'],
         $datosPersonales['edad'],
@@ -81,6 +82,7 @@ try {
         throw new Exception("Error ejecutando la consulta para usuarios: " . $stmt->error);
     }
     $stmt->close();
+
     // Respuesta exitosa
     echo json_encode(["success" => true, "message" => "Usuario registrado exitosamente"]);
 

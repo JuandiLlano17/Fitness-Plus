@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Enviar el objeto cliente al servidor
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "api/POST/RegistroE.php", true);
+        xhr.open("POST", "api/POST/Registro.php", true);
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onreadystatechange = function () {

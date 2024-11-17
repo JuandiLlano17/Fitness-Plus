@@ -34,13 +34,13 @@ try {
     }
 
     // Lista de campos obligatorios
-    $requiredFields = [
-        'identificacion', 'nombre', 'edad', 'correo', 'contrasena', 'rol',
-        'peso', 'medidaMuneca', 'diasEntreno', 'altura', 'fotoPerfil'
+    $requiredFieldsUsuarios = [
+         'identificacion', 'nombre', 'edad', 'correo', 'contrasena', 'rol',
+         'fotoPerfil'
     ];
 
     // Validar que todos los campos estén presentes
-    foreach ($requiredFields as $field) {
+    foreach ($requiredFieldsUsuarios as $field) {
         if (empty($datosPersonales[$field])) {
             throw new Exception("Falta el campo obligatorio: $field");
         }
@@ -81,9 +81,27 @@ try {
     if (!$stmt->execute()) {
         throw new Exception("Error ejecutando la consulta para usuarios: " . $stmt->error);
     }
+    
+    if ($datosPersonales['rol'] === 'entrenador') {
+        echo json_encode(["success" => true, "message" => "Entrenador registrado exitosamente"]);
+        exit; // Termina aquí si es un entrenador
+    }
+    
     $stmt->close();
 
     // Segunda consulta: Insertar en tabla `detalles_cliente`
+
+    $requiredFieldsDetalles = [
+        'identificacion', 'peso', 'medidaMuneca', 'diasEntreno', 'altura' 
+    ];
+
+    // Validar que todos los campos estén presentes
+    foreach ($requiredFieldsDetalles as $field) {
+        if (empty($datosPersonales[$field])) {
+            throw new Exception("Falta el campo obligatorio: $field");
+        }
+    }
+
     $sqlDetalles = "INSERT INTO detalles_cliente (Identificacion_clien, Peso, Medida_Muneca, Dias_entreno, Altura) 
                     VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sqlDetalles);
