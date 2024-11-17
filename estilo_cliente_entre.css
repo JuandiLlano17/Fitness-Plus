@@ -1,3 +1,6 @@
+.cliente{
+  padding: 24px;
+}
 /* Contenedor de las tarjetas */
 .parte1 {
   display: grid; /* Cambiamos a Grid Layout */
