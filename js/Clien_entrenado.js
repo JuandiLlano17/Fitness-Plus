@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <!-- Información del cliente -->
                             <div class="nombre-cliente">
-                                <h2>${cliente.nombre}</h2>
+                                <h2>${cliente.nombre},${cliente.edad || 'N/A'} </h2>
                             </div>
                             <div class="info-item">
                                 <p><strong>Peso:</strong> ${cliente.peso} kg</p>
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <div class="button-group1">
                                 <button class="button">Editar</button>
+                                <span class="emoji">${cliente.emoji || '😊'}</span>
                             </div>
                         </div>
                     </div>
