@@ -31,7 +31,7 @@ try {
     $datosPersonales = $data['datosPersonales'];
     
     // Preparar la consulta SQL
-    $sql = "INSERT INTO entrenador (Indentificacion_entre, Nombre, Edad, Correo, Contrasena) 
+    $sql = "INSERT INTO usuarios (Indentificacion, Nombre, Edad, Correo, Contrasena,rol) 
             VALUES (?, ?, ?, ?, ?)";
     
     $stmt = $conn->prepare($sql);
@@ -49,6 +49,7 @@ try {
         $datosPersonales['edad'],
         $datosPersonales['correo'],
         $hashContraseña
+        $datosPersonales['rol']
     );
     
     if (!$stmt->execute()) {
