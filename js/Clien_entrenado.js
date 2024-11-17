@@ -26,13 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 const clienteHTML = `
                     <div class="tablita">
                         <div class="cliente-info">
+                            <!-- Foto de perfil -->
+                            <div class="foto-perfil">
+                                <img src="${cliente.fotoPerfil ? `data:image/jpeg;base64,${cliente.fotoPerfil}` : 'default-avatar.png'}" 
+                                    alt="Foto de ${cliente.nombre}" class="perfil-img">
+                            </div>
+                            <!-- Información del cliente -->
                             <div class="nombre-cliente">
-                                <h2>${cliente.identificacion}</h2>
-                                <p><strong>Nombre:</strong> ${cliente.nombre}</p>
+                                <h2>${cliente.nombre}</h2>
                             </div>
                             <div class="info-item">
                                 <p><strong>Peso:</strong> ${cliente.peso} kg</p>
-                                <p><strong>Medida de Muñeca:</strong> ${cliente.medidaMuneca}</p>
+                                <p><strong>Tipo de cuerpo:</strong> ${cliente.medidaMuneca}</p>
                                 <p><strong>Días de Entreno:</strong> ${cliente.diasEntreno}</p>
                                 <p><strong>Altura:</strong> ${cliente.altura} cm</p>
                             </div>
