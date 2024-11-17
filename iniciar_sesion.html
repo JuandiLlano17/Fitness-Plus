@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_iniciar_sesion.css">
+<<<<<<< HEAD
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Cargar el header y el footer usando XMLHttpRequest
@@ -17,6 +18,31 @@
                     }
                 };
                 xhr.send();
+=======
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src= "js/Carga_header_footer.js"></script>
+    
+    <script>
+
+    // Agregar evento de clic al botón de iniciar sesión
+    $('#iniciarSesionBtn').on('click', async function () {
+        try {
+            const correo = $('#email').val().trim();
+            const contrasena = $('#password').val().trim();
+
+            // Validaciones de campos
+            if (correo === "" || contrasena === "") {
+                $('#mensajeError').text("Por favor completa todos los campos.");
+                return;
+            }
+
+            const iniciar = {
+                "Inicio_sesion": {
+                    "correo": correo,
+                    "contrasena": contrasena  // Corregido de "contrasea" a "contrasena"
+                }
+>>>>>>> da1be0c7698e59f82241ac26d662d5cc722a4992
             };
 
             cargarContenido('header.html', 'header');

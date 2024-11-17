@@ -8,13 +8,8 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+  <script src= "js/Carga_header_footer.js"></script>
   <script>
-    $(document).ready(function () {
-      // Cargar el header desde header.html
-      $('header').load('header.html');
-      // Cargar el footer desde footer.html
-      $('footer').load('footer.html');
-
       let firstClick = true; // Variable para controlar el primer clic
 
       $('.card').on('click', function (event) {
@@ -32,7 +27,6 @@
         $('#modal').hide();
         firstClick = false; // Cambiar a false después de cerrar el modal
       });
-    });
   </script>
 
   <style>

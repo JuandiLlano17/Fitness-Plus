@@ -6,12 +6,9 @@
     <title>Elige tu tipo de usuario - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_tipo_usuario.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src= "js/Carga_header_footer.js"></script>
+    
     <script>
-      $(document).ready(function () {
-        // Cargar el header y el footer
-        $('header').load('header.html');
-        $('footer').load('footer.html');
-
         // Manejo de clic en las cartas de usuario
         $('#cliente-card').click(function() {
             window.location.href = "registro_cliente.html";
@@ -20,7 +17,6 @@
         $('#entrenador-card').click(function() {
             window.location.href = "registro_entrenador.html";
         });
-      });
     </script>
 </head>
 <body>
