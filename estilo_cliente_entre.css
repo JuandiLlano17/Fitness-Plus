@@ -1,145 +1,77 @@
-/* General Styles */
-.logos-icon {
-  width: 43px; /* Ajusta el tamaño según lo que necesites */
-  height: 50px; /* Mantiene la proporción del icono */
-  object-fit: contain; /* Asegura que el icono no se deforme */
-  position: relative;
-  top:10px;
-  bottom: 45px;
-}
-
+/* Contenedor de las tarjetas */
 .parte1 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.tablita {
-  max-width: 300px;
-
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.cliente-info {
+  display: grid; /* Cambiamos a Grid Layout */
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+  gap: 20px; /* Espaciado entre tarjetas */
+  justify-content: center; /* Alinear las tarjetas al centro */
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-  margin-top: 20px;
+}
+
+/* Tarjetas de clientes */
+.tablita {
+  width: 300px; /* Se ajusta automáticamente dentro de la columna */
+  height: 570px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Imagen de perfil */
+.foto-perfil img {
   width: 100%;
   height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
 }
 
+/* Información adicional */
 .info-item p {
-  margin: 10px 0;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
 }
 
-.cara {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
+/* Botón Editar */
 .button-group1 {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-.nombre-cliente h2 {
-  font-weight: bold;
-  text-align: center;
-  font-size: 18px;
+/* Emojis de estado */
+.emoji {
+  font-size: 24px;
+  line-height: 24px;
 }
 
-.cara figure img {
-  width: 70px;
-  height: 70px;
+.emoji.verde {
+  color: #4CAF50;
 }
 
+.emoji.naranja {
+  color: #FF9800;
+}
 
+.emoji.rojo {
+  color: #F44336;
+}
 
-/* Responsive for 1025px */
-@media (max-width: 1025px) {
-  .cliente {
-    flex-direction: row;
-    gap: 250px;
-  }
-
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
   .parte1 {
-    flex-direction: column;
-    gap: 30px;
+      grid-template-columns: 1fr; /* Solo una tarjeta por fila en pantallas pequeñas */
   }
 
   .tablita {
-    max-width: 280px;
+      width: 300px; /* Ocupa el ancho total de la columna */
+      height: 570px;
   }
 
-  .cliente-info {
-    height: 280px;
-  }
-
-  .button-group1 {
-    justify-content: center;
-  }
-
-  .cara figure img {
-    width: 50px;
+  .foto-perfil img {
+      height: 300px;
   }
 }
-
-/* Responsive for 431px */
-@media (max-width: 431px) {
-  .cliente {
-    flex-direction: row;
-    gap: 200px;
-  }
-
-  
-  .parte1 {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .tablita {
-    max-width: 240px;
-  }
-
-  .cliente-info {
-    height: 260px;
-  }
-
-  .button-group1 {
-
-    justify-content: center;
-    flex-direction: row;
-  }
-
-  .cara figure img {
-    width: 40px;
-    height: 50px;
-  }
-
-  h1 {
-    font-size: 50px;
-  }
-
-  .button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-}
-

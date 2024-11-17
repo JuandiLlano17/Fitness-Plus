@@ -1,11 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Función para determinar la tipología corporal
+    function determinarTipologia(medidaMuneca) {
+        if (medidaMuneca === "menos-17") {
+            return "Ectomorfo";
+        } else if (medidaMuneca === "17-20") {
+            return "Mesomorfo";
+        } else if (medidaMuneca === "mas-20") {
+            return "Endomorfo";
+        } else {
+            return "Desconocido";
+        }
+    }
+
     // Ruta del archivo PHP
     const url = 'api/GET/obtener_cliente.php'; // Cambia esto si el archivo PHP está en una subcarpeta
 
     // Realizar la solicitud a obtener_cliente.php
     fetch(url)
         .then(response => {
-            // Verificar si la respuesta es exitosa
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -21,23 +33,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Recorrer los datos y mostrarlos en el contenedor
-            data.data.forEach(cliente => {
+            // Filtrar los clientes por rol
+            const clientes = data.data.filter(cliente => cliente.rol && cliente.rol.toLowerCase() === "cliente");
+
+            // Verificar si hay clientes después del filtro
+            if (clientes.length === 0) {
+                clientesContainer.innerHTML = `<p>No hay clientes para mostrar.</p>`;
+                return;
+            }
+
+            // Recorrer los clientes filtrados y mostrarlos en el contenedor
+            clientes.forEach(cliente => {
+                // Determinar la tipología corporal según la medida de la muñeca
+                const tipologia = determinarTipologia(cliente.medidaMuneca);
+
                 const clienteHTML = `
                     <div class="tablita">
                         <div class="cliente-info">
+                            <!-- Foto de perfil -->
+                            <div class="foto-perfil">
+                                <img src="${cliente.fotoPerfil ? `data:image/jpeg;base64,${cliente.fotoPerfil}` : 'default-avatar.png'}" 
+                                    alt="Foto de ${cliente.nombre}" class="perfil-img">
+                            </div>
+                            <!-- Información del cliente -->
                             <div class="nombre-cliente">
-                                <h2>${cliente.identificacion}</h2>
-                                <p><strong>Nombre:</strong> ${cliente.nombre}</p>
+                                <h2>${cliente.nombre}, ${cliente.edad || 'N/A'}</h2>
                             </div>
                             <div class="info-item">
                                 <p><strong>Peso:</strong> ${cliente.peso} kg</p>
-                                <p><strong>Medida de Muñeca:</strong> ${cliente.medidaMuneca}</p>
+                                <p><strong>Tipo de cuerpo:</strong> ${tipologia}</p>
                                 <p><strong>Días de Entreno:</strong> ${cliente.diasEntreno}</p>
                                 <p><strong>Altura:</strong> ${cliente.altura} cm</p>
                             </div>
                             <div class="button-group1">
                                 <button class="button">Editar</button>
+                                <span class="emoji">${cliente.emoji || '😊'}</span>
                             </div>
                         </div>
                     </div>
