@@ -20,7 +20,8 @@ try {
     $sql = "SELECT 
                 u.Nombre AS nombre, 
                 u.Foto_perfil AS fotoPerfil,
-                u.edad AS edad,
+                u.Edad AS edad,
+                u.Rol AS rol, -- Incluimos el campo Rol
                 d.Identificacion_clien AS identificacion, 
                 d.Peso AS peso, 
                 d.Medida_Muneca AS medidaMuneca, 
@@ -36,8 +37,9 @@ try {
         while ($row = $result->fetch_assoc()) {
             $usuariosDetalles[] = [
                 "nombre" => $row["nombre"],
-                "edad" => $row["edad"],
                 "fotoPerfil" => !empty($row["fotoPerfil"]) ? base64_encode($row["fotoPerfil"]) : null,
+                "edad" => $row["edad"],
+                "rol" => $row["rol"], // Incluimos el rol en el JSON
                 "identificacion" => $row["identificacion"],
                 "peso" => $row["peso"],
                 "medidaMuneca" => $row["medidaMuneca"],
