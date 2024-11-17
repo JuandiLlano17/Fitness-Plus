@@ -68,7 +68,7 @@ try {
 
     // Vincular parámetros para la tabla `usuarios`
     $stmt->bind_param(
-        "ssisssb",
+        "ssissss",
         $datosPersonales['identificacion'],
         $datosPersonales['nombre'],
         $datosPersonales['edad'],
@@ -98,7 +98,7 @@ try {
 
     // Vincular parámetros para la tabla `detalles_cliente`
     $stmt->bind_param(
-        "sddss",
+        "sdsss",
         $datosPersonales['identificacion'],
         $datosPersonales['peso'],
         $datosPersonales['medidaMuneca'],
