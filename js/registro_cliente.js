@@ -98,11 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "nombre": nombre,
             "edad": edad,
             "peso": peso,
-            "medidaMuñeca": medidaMuñeca,
+            "medidaMuneca": medidaMuñeca,
             "diasEntreno": diasEntreno,
             "altura": altura,
             "correo": correo,
-            "contraseña": contraseña,
+            "contrasena": contraseña,
             "fotoPerfil": fotoBase64, // La imagen como Base64
             "rol": "cliente"
             }
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Enviar el objeto cliente al servidor
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "api/POST/Registro.php", true);
+        xhr.open("POST", "api/POST/RegistroE.php", true);
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onreadystatechange = function () {

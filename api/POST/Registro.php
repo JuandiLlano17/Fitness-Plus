@@ -13,37 +13,43 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar la conexión a la base de datos
 if ($conn->connect_error) {
-    die(json_encode(["success" => false, "message" => "Error de conexión a la base de datos"]));
+    die(json_encode(["success" => false, "message" => "Error de conexión a la base de datos: " . $conn->connect_error]));
 }
 
 // Obtener los datos JSON del body de la petición
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
-file_put_contents("log_datos_recibidos.txt", file_get_contents('php://input'));
-
+file_put_contents("log_datos_recibidos.txt", $jsonData);
 
 if (!$data) {
-    die(json_encode(["success" => false, "message" => "Datos no válidos"]));
+    die(json_encode(["success" => false, "message" => "Datos no válidos o JSON mal formado"]));
 }
 
 try {
     // Extraer los datos personales
-    $datosPersonales = $data['datosPersonales'];
+    $datosPersonales = $data['datosPersonales'] ?? null;
 
-    // Validar que todos los campos necesarios estén presentes
-    if (!isset($datosPersonales['identificacion'], $datosPersonales['nombre'], $datosPersonales['edad'], 
-              $datosPersonales['correo'], $datosPersonales['contrasena'], $datosPersonales['rol'], 
-              $datosPersonales['peso'], $datosPersonales['medidaMuñeca'], $datosPersonales['diasEntreno'], 
-              $datosPersonales['altura'], $datosPersonales['fotoPerfil'])) {
-        throw new Exception("Faltan datos necesarios");
+    if (!$datosPersonales) {
+        throw new Exception("No se encontraron datos personales en el JSON");
+    }
+
+    // Lista de campos obligatorios
+    $requiredFields = [
+        'identificacion', 'nombre', 'edad', 'correo', 'contrasena', 'rol',
+        'peso', 'medidaMuneca', 'diasEntreno', 'altura', 'fotoPerfil'
+    ];
+
+    // Validar que todos los campos estén presentes
+    foreach ($requiredFields as $field) {
+        if (empty($datosPersonales[$field])) {
+            throw new Exception("Falta el campo obligatorio: $field");
+        }
     }
 
     // Procesar la foto de perfil
     $fotoPerfilBlob = null;
     if (!empty($datosPersonales['fotoPerfil'])) {
         $fotoPerfilBase64 = $datosPersonales['fotoPerfil'];
-        
-        // Decodificar Base64 a binario para guardarlo como BLOB
         list($tipo, $fotoPerfilBase64) = explode(';', $fotoPerfilBase64); // Separar tipo
         list(, $fotoPerfilBase64) = explode(',', $fotoPerfilBase64); // Obtener datos reales
         $fotoPerfilBlob = base64_decode($fotoPerfilBase64);
@@ -58,15 +64,16 @@ try {
     }
 
     // Hash de la contraseña
-    $hashContraseña = password_hash($datosPersonales['contrasena'], PASSWORD_DEFAULT);
+    $hashContrasena = password_hash($datosPersonales['contrasena'], PASSWORD_DEFAULT);
 
     // Vincular parámetros para la tabla `usuarios`
-    $stmt->bind_param("ssisssb", 
-        $datosPersonales['identificacion'], 
-        $datosPersonales['nombre'], 
-        $datosPersonales['edad'], 
-        $datosPersonales['correo'], 
-        $hashContraseña, 
+    $stmt->bind_param(
+        "ssisssb",
+        $datosPersonales['identificacion'],
+        $datosPersonales['nombre'],
+        $datosPersonales['edad'],
+        $datosPersonales['correo'],
+        $hashContrasena,
         $fotoPerfilBlob, // Foto como binario
         $datosPersonales['rol']
     );
@@ -77,21 +84,24 @@ try {
     $stmt->close();
 
     // Segunda consulta: Insertar en tabla `detalles_cliente`
-    $sqlDetalles = "INSERT INTO detalles_cliente (Identificacion, Peso, Medida_Muneca, Dias_entreno, Altura) 
+    $sqlDetalles = "INSERT INTO detalles_cliente (Identificacion_clien, Peso, Medida_Muneca, Dias_entreno, Altura) 
                     VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sqlDetalles);
     if (!$stmt) {
         throw new Exception("Error preparando la consulta para detalles_cliente: " . $conn->error);
     }
 
-    // Convertir el array de días a string
-    $diasEntrenoStr = implode(',', $datosPersonales['diasEntreno']);
+    // Procesar `diasEntreno` como string si es un array
+    $diasEntrenoStr = is_array($datosPersonales['diasEntreno'])
+        ? implode(',', $datosPersonales['diasEntreno'])
+        : $datosPersonales['diasEntreno'];
 
     // Vincular parámetros para la tabla `detalles_cliente`
-    $stmt->bind_param("sddss",
+    $stmt->bind_param(
+        "sddss",
         $datosPersonales['identificacion'],
         $datosPersonales['peso'],
-        $datosPersonales['medidaMuñeca'],
+        $datosPersonales['medidaMuneca'],
         $diasEntrenoStr,
         $datosPersonales['altura']
     );
