@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Ruta del archivo PHP
     const url = 'api/GET/obtener_cliente.php'; // Cambia esto si el archivo PHP está en una subcarpeta
-
+//actua
     // Realizar la solicitud a obtener_cliente.php
     fetch(url)
         .then(response => {
