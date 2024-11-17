@@ -1,42 +1,55 @@
 <?php
-header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
 
-// Configuración de la conexión
+// Configuración de conexión a la base de datos
 $servername = "sql309.infinityfree.com";
 $username = "if0_37560263";
 $password = "Feliceslos321";
 $dbname = "if0_37560263_Gimnasio1";
 
-// Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
+// Verificar la conexión a la base de datos
 if ($conn->connect_error) {
-    die(json_encode(['error' => 'Conexión fallida: ' . $conn->connect_error]));
+    die(json_encode(["success" => false, "message" => "Error de conexión a la base de datos: " . $conn->connect_error]));
 }
 
-// Consulta SQL para obtener los datos del cliente
-$sql = "SELECT Identificacion_clien, Peso, Medida_Muneca, Dias_entreno, Altura FROM detalles_cliente";
-$result = $conn->query($sql);
+try {
+    // Consulta SQL para unir las tablas y obtener los datos requeridos
+    $sql = "SELECT 
+                u.Nombre AS nombre, 
+                u.Foto_perfil AS fotoPerfil,
+                d.Identificacion_clien AS identificacion, 
+                d.Peso AS peso, 
+                d.Medida_Muneca AS medidaMuneca, 
+                d.Dias_entreno AS diasEntreno, 
+                d.Altura AS altura
+            FROM detalles_cliente d
+            INNER JOIN usuarios u ON d.Identificacion_clien = u.Identificacion";
 
-$clientes = [];
+    $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // Recorrer los resultados y almacenarlos en un array
-    while ($row = $result->fetch_assoc()) {
-        $clientes[] = [
-            'Identificacion' => $row['Identificacion_clien'],
-            'Peso' => $row['Peso'],
-            'Medida_Muneca' => $row['Medida_Muneca'],
-            'Dias_entreno' => $row['Dias_entreno'],
-            'Altura' => $row['Altura']
-        ];
+    if ($result->num_rows > 0) {
+        $usuariosDetalles = [];
+        while ($row = $result->fetch_assoc()) {
+            $usuariosDetalles[] = [
+                "nombre" => $row["nombre"],
+                "fotoPerfil" => !empty($row["fotoPerfil"]) ? base64_encode($row["fotoPerfil"]) : null,
+                "identificacion" => $row["identificacion"],
+                "peso" => $row["peso"],
+                "medidaMuneca" => $row["medidaMuneca"],
+                "diasEntreno" => $row["diasEntreno"],
+                "altura" => $row["altura"]
+            ];
+        }
+        echo json_encode(["success" => true, "data" => $usuariosDetalles]);
+    } else {
+        echo json_encode(["success" => false, "message" => "No se encontraron registros"]);
     }
-} else {
-    echo json_encode(['message' => 'No se encontraron clientes']);
-    exit;
+} catch (Exception $e) {
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
+} finally {
+    $conn->close();
 }
-
-// Enviar los datos como JSON
-echo json_encode($clientes);
-$conn->close();
+?>
