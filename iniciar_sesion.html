@@ -5,102 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Fitness Plus</title>
     <link rel="stylesheet" href="estilos_iniciar_sesion.css">
-<<<<<<< HEAD
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Cargar el header y el footer usando XMLHttpRequest
-            const cargarContenido = (url, selector) => {
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', url, true);
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        document.querySelector(selector).innerHTML = xhr.responseText;
-                    }
-                };
-                xhr.send();
-=======
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     
     <script src= "js/Carga_header_footer.js"></script>
-    
-    <script>
-
-    // Agregar evento de clic al botón de iniciar sesión
-    $('#iniciarSesionBtn').on('click', async function () {
-        try {
-            const correo = $('#email').val().trim();
-            const contrasena = $('#password').val().trim();
-
-            // Validaciones de campos
-            if (correo === "" || contrasena === "") {
-                $('#mensajeError').text("Por favor completa todos los campos.");
-                return;
-            }
-
-            const iniciar = {
-                "Inicio_sesion": {
-                    "correo": correo,
-                    "contrasena": contrasena  // Corregido de "contrasea" a "contrasena"
-                }
->>>>>>> da1be0c7698e59f82241ac26d662d5cc722a4992
-            };
-
-            cargarContenido('header.html', 'header');
-            cargarContenido('footer.html', 'footer');
-
-            // Agregar evento de clic al botón de iniciar sesión
-            const iniciarSesionBtn = document.getElementById('iniciarSesionBtn');
-            iniciarSesionBtn.addEventListener('click', function (e) {
-                e.preventDefault(); // Evitar recarga de la página
-
-                const correo = document.getElementById('email').value.trim();
-                const contrasena = document.getElementById('password').value.trim();
-                const mensajeError = document.getElementById('mensajeError');
-
-                // Validaciones de campos
-                if (correo === "" || contrasena === "") {
-                    mensajeError.textContent = "Por favor completa todos los campos.";
-                    return;
-                }
-
-                const iniciar = {
-                    "Inicio_sesion": {
-                        "correo": correo,
-                        "contrasena": contrasena
-                    }
-                };
-
-                // Enviar los datos al servidor usando XMLHttpRequest
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'api/POST/verificar_usuario.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4) { // Completado
-                        if (xhr.status === 200) {
-                            try {
-                                const response = JSON.parse(xhr.responseText);
-                                if (response.success) {
-                                    // Redirigir al usuario si el inicio de sesión es exitoso
-                                    window.location.href = 'dashboard.html';
-                                } else {
-                                    // Mostrar mensaje de error si el servidor indica fallo
-                                    mensajeError.textContent = response.message || "Error al iniciar sesión.";
-                                }
-                            } catch (error) {
-                                console.error("Error al procesar la respuesta:", error);
-                                mensajeError.textContent = "Respuesta no válida del servidor.";
-                            }
-                        } else {
-                            mensajeError.textContent = "Error en la solicitud. Intenta nuevamente.";
-                        }
-                    }
-                };
-
-                xhr.send(JSON.stringify(iniciar));
-            });
-        });
-    </script>
+    <script src= "js/inicio_sesion.js"></script>
+</head>
 </head>
 <body>
     <header></header>
