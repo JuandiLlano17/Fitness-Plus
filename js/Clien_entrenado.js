@@ -1,11 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Función para determinar la tipología corporal
+    function determinarTipologia(medidaMuñeca) {
+        if (medidaMuñeca === "menos-17") {
+            return "Ectomorfo";
+        } else if (medidaMuñeca === "17-20") {
+            return "Mesomorfo";
+        } else if (medidaMuñeca === "mas-20") {
+            return "Endomorfo";
+        } else {
+            return "Desconocido";
+        }
+    }
+
     // Ruta del archivo PHP
     const url = 'api/GET/obtener_cliente.php'; // Cambia esto si el archivo PHP está en una subcarpeta
 
     // Realizar la solicitud a obtener_cliente.php
     fetch(url)
         .then(response => {
-            // Verificar si la respuesta es exitosa
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -23,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Recorrer los datos y mostrarlos en el contenedor
             data.data.forEach(cliente => {
+                // Determinar la tipología corporal según la medida de la muñeca
+                const tipologia = determinarTipologia(cliente.medidaMuneca);
+
                 const clienteHTML = `
                     <div class="tablita">
                         <div class="cliente-info">
@@ -33,11 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <!-- Información del cliente -->
                             <div class="nombre-cliente">
-                                <h2>${cliente.nombre},${cliente.edad || 'N/A'} </h2>
+                                <h2>${cliente.nombre}, ${cliente.edad || 'N/A'}</h2>
                             </div>
                             <div class="info-item">
                                 <p><strong>Peso:</strong> ${cliente.peso} kg</p>
-                                <p><strong>Tipo de cuerpo:</strong> ${cliente.medidaMuneca}</p>
+                                <p><strong>Tipo de cuerpo:</strong> ${tipologia}</p>
                                 <p><strong>Días de Entreno:</strong> ${cliente.diasEntreno}</p>
                                 <p><strong>Altura:</strong> ${cliente.altura} cm</p>
                             </div>
