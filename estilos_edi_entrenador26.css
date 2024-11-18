@@ -1,3 +1,21 @@
+.dia {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.gris {
+    background-color: #e0e0e0;  /* Gris claro */
+    color: #aaa;
+}
+
+.activo {
+    background-color: #4caf50;  /* Verde claro */
+    color: white;
+}
+
+  
   /* Estilo para la previsualización del ejercicio */
   .previsualizacion {
     display: flex;

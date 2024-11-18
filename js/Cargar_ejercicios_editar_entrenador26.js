@@ -10,6 +10,7 @@ function actualizarEjercicios() {
         },
         body: 'musculo=' + musculo
     })
+    
     .then(response => response.json())
     .then(data => {
         if (data.status === "success") {

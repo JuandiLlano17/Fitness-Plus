@@ -93,5 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     cerrarGuardarButton.addEventListener('click', function () {
         guardarModal.style.display = 'none'; // Cerrar el modal
     });
+    
 });
     

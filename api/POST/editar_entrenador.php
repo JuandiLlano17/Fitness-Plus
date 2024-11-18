@@ -11,6 +11,7 @@ $dbname = "if0_37560263_Gimnasio1";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
 // Verificar conexión
 if ($conn->connect_error) {
     // Si hay un error en la conexión, enviamos un mensaje de error
