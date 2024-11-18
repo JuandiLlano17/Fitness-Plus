@@ -1,49 +1,65 @@
 <?php
+// Configuración de encabezados para permitir CORS y solicitudes POST
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
-header("Content-Type: application/json");
+header("Content-Type: application/json; charset=UTF-8");
+
 // Configuración de conexión a la base de datos
 $servername = "sql309.infinityfree.com";
 $username = "if0_37560263";
 $password = "Feliceslos321";
 $dbname = "if0_37560263_Gimnasio1";
+
+// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
 if ($conn->connect_error) {
-    echo json_encode(['status' => 'error', 'message' => 'Conexión fallida: ' . $conn->connect_error]);
+    echo json_encode(['success' => false, 'message' => 'Error al conectar a la base de datos.']);
     exit();
 }
+
 // Obtener los datos JSON del body de la petición
 $jsonData = file_get_contents('php://input');
 $data = json_decode($jsonData, true);
-if (!$data) {
-    echo json_encode(["success" => false, "message" => "Datos no válidos"]);
-    exit;
-}
-// Extraer correo y contraseña del JSON recibido
-$email = $data['Inicio_sesion']['correo'] ?? '';
-$password = $data['Inicio_sesion']['contrasena'] ?? '';
-if (empty($email) || empty($password)) {
-    echo json_encode(['status' => 'error', 'message' => 'Campos de correo o contraseña vacíos']);
+
+// Validar datos recibidos
+if (!isset($data['Inicio_sesion']['correo']) || !isset($data['Inicio_sesion']['contrasena'])) {
+    echo json_encode(['success' => false, 'message' => 'Faltan datos obligatorios.']);
     exit();
 }
-// Si no es cliente, consulta en la tabla entrenador
-$sql_entrenador = "SELECT * FROM usuarios WHERE Correo = ? AND Contrasena = ?";
-$stmt_entrenador = $conn->prepare($sql_entrenador);
-if (!$stmt_entrenador) {
-    echo json_encode(['status' => 'error', 'message' => 'Error al preparar la consulta de entrenador: ' . $conn->error]);
-    exit();
-}
-/*$stmt_entrenador->bind_param("ss", $email, $password);
-if (!$stmt_entrenador->execute()) {
-    echo json_encode(['status' => 'error', 'message' => 'Error en la consulta de entrenador: ' . $stmt_entrenador->error]);
-    exit();
-}*/
-$result_entrenador = $stmt_entrenador->get_result();
-if ($result_entrenador->num_rows > 0) {
-    echo json_encode(['status' => $result_entrenador["rol"], 'message' => 'Entrenador encontrado']);
+
+// Limpiar datos ingresados
+$correo = trim($data['Inicio_sesion']['correo']);
+$contrasena = trim($data['Inicio_sesion']['contrasena']);
+
+// Consultar el correo en la base de datos
+$sql = "SELECT Contrasena, rol FROM usuarios WHERE Correo = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $correo);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // El usuario existe
+    $row = $result->fetch_assoc();
+    $hashedPassword = $row['Contrasena'];
+    $rol = $row['rol'];
+
+    // Verificar contraseña
+    if (password_verify($contrasena, $hashedPassword)) {
+        // Contraseña correcta
+        echo json_encode(['success' => $rol]); // Devuelve el rol directamente
+    } else {
+        // Contraseña incorrecta
+        echo json_encode(['success' => false, 'message' => 'Usuario o contraseña incorrectos.']);
+    }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'No se encontró el usuario']);
+    // Correo no encontrado
+    echo json_encode(['success' => false, 'message' => 'Usuario o contraseña incorrectos.']);
 }
-// Cerrar las conexiones
+
+// Cerrar conexión
+$stmt->close();
 $conn->close();
 ?>
