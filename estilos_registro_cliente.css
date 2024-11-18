@@ -167,6 +167,21 @@ select:not(:placeholder-shown) {
 .dropdown-options input[type="checkbox"] {
     visibility: hidden; /* Oculta el checkbox pero mantiene el espacio que ocupa */
 }
+
+#previewImagen {
+    max-width: 500px; /* Límite máximo del ancho */
+    max-height: 500px;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border: 2px solid #ccc; /* Agrega un borde sutil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    transition: transform 0.3s ease; /* Efecto suave en el hover */
+}
+
+#previewImagen:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa al hacer hover */
+}
 @media (max-width: 1440px) {
 
     .imagen-perfil img {
@@ -221,6 +236,10 @@ select:not(:placeholder-shown) {
     select:focus,
     select:not(:placeholder-shown) {
     color: #000; /* Cambiar el texto a negro */
+}
+#previewImagen {
+    max-width: 450px;
+    max-height: 450px; /* Reduce el tamaño máximo para pantallas medianas */
 }
 }
 
@@ -278,6 +297,10 @@ select:not(:placeholder-shown) {
     select:not(:placeholder-shown) {
     color: #000; /* Cambiar el texto a negro */
 }
+#previewImagen {
+    max-width: 300px; /* Reduce el tamaño máximo para pantallas medianas */
+    max-height: 300px;
+}
 }
   
 @media (max-width: 480px) { 
@@ -330,6 +353,10 @@ select:not(:placeholder-shown) {
     button:focus,
     input:focus {
     outline: 2px solid #000; /* Cambia el borde de enfoque por uno más sutil */
+    }
+    #previewImagen {
+        max-width: 200px;
+        max-height: 200px; /* Reduce el tamaño máximo para pantallas pequeñas */
     }
 
 }
