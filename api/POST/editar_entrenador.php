@@ -11,40 +11,57 @@ $dbname = "if0_37560263_Gimnasio1";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
 // Verificar conexión
 if ($conn->connect_error) {
+    // Si hay un error en la conexión, enviamos un mensaje de error
     echo json_encode(["status" => "error", "message" => "Conexión fallida: " . $conn->connect_error]);
     exit;
 }
 
-// Leer los datos enviados en el cuerpo de la solicitud
-$data = json_decode(file_get_contents("php://input"), true);
-
-// Validar que se enviaron los datos requeridos
-if (!isset($data['musculo'], $data['nombre'], $data['instrucciones'])) {
-    echo json_encode(["status" => "error", "message" => "Faltan parámetros requeridos"]);
+// Verificar si el valor de 'musculo' está presente
+if (!isset($_POST['musculo'])) {
+    // Si el parámetro 'musculo' no está presente, enviamos un error
+    echo json_encode(["status" => "error", "message" => "El parámetro 'musculo' no fue enviado"]);
     exit;
 }
 
-// Asignar los valores
-$musculo = $data['musculo'];
-$nombre = $data['nombre'];
-$instrucciones = $data['instrucciones'];
+$musculo = $_POST['musculo'];
+error_log("Músculo recibido: " . $musculo); // Para depuración
 
-// Consulta para insertar datos en la tabla
-$sql = "INSERT INTO rutina (musculo, nombre, instrucciones) VALUES (?, ?, ?)";
+// Consulta para obtener ejercicios del músculo seleccionado
+$sql = "SELECT Nombre FROM ejercicio WHERE musculo = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $musculo, $nombre, $instrucciones);
+$stmt->bind_param("s", $musculo);
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Ejecutar la consulta
-if ($stmt->execute()) {
-    echo json_encode(["status" => "success", "message" => "Ejercicio guardado exitosamente"]);
-} else {
-    echo json_encode(["status" => "error", "message" => "Error al guardar el ejercicio: " . $stmt->error]);
+// Crear un array para almacenar los ejercicios
+$ejercicios = [];
+while ($row = $result->fetch_assoc()) {
+    $ejercicios[] = $row['Nombre'];
 }
 
-// Cerrar la conexión
+// Cerrar la conexión y la declaración preparada
 $stmt->close();
 $conn->close();
+
+// Verificar si se encontraron ejercicios y devolverlos en formato JSON
+if (empty($ejercicios)) {
+    // Si no se encontraron ejercicios, devolver error
+    error_log("No se encontraron ejercicios para el músculo: $musculo");  // Agregar depuración
+    echo json_encode([
+        "status" => "error",
+        "message" => "No se encontraron ejercicios para el músculo: $musculo"
+    ]);
+} else {
+    // Si se encontraron ejercicios, devolver éxito con los ejercicios
+    error_log("Ejercicios encontrados: " . implode(", ", $ejercicios));  // Agregar depuración
+    echo json_encode([
+        "status" => "success",
+        "data" => $ejercicios
+    ]);
+}
+
+// Asegurar que los datos se envíen inmediatamente
+flush();
 ?>

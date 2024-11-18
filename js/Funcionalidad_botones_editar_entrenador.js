@@ -84,11 +84,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Actualizar los valores iniciales por si hay selección previa
     actualizarTiempo();
     actualizarMusculo();
+    // Mostrar el modal de guardar cuando se hace clic en el botón "Guardar"
+    guardarButton.addEventListener('click', function () {
+        guardarModal.style.display = 'block'; // Mostrar el modal de guardado
+    });
     // Cerrar el modal de guardar al hacer clic en el botón dentro del modal
     const cerrarGuardarButton = guardarModal.querySelector('button');
     cerrarGuardarButton.addEventListener('click', function () {
         guardarModal.style.display = 'none'; // Cerrar el modal
     });
-    
 });
     
