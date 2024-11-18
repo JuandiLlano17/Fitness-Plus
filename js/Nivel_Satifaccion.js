@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Crear una solicitud AJAX
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "api/POST/Nivel_Satisfaccion.php", true);
+            xhr.open("POST", "api/POST/Nivel_Satifaccion.php", true);
             xhr.setRequestHeader("Content-Type", "application/json"); // Enviar como JSON
 
             // Manejar la respuesta del servidor
