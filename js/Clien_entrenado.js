@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p><strong>Altura:</strong> ${cliente.altura} cm</p>
                             </div>
                             <div class="button-group1">
-                                <button class="button editar-btn">Editar</button>
+                                <button class="button editar-btn" data-id="${cliente.id}">Editar</button>
                                 <span class="emoji">${cliente.emoji || '😊'}</span>
                             </div>
                         </div>
@@ -76,4 +76,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Error al cargar los datos:', error);
             document.getElementById('clientes-container').innerHTML = '<p>Error al cargar los datos de los clientes.</p>';
         });
+        
+        //mandarle el id del cliente a "editar entrenador"
+        document.querySelectorAll('.editar-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const clienteId = button.getAttribute('data-id');
+                window.location.href = `editar_entrenador.html?id=${clienteId}`;
+            });
+        });
+        
 });
