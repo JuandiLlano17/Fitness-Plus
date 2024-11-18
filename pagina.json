@@ -1,32 +1,4 @@
 {
-  "usuarios": [
-    {
-      "tipoUsuario": "cliente",
-      "datosPersonales": {
-        "correo": "",
-        "contraseña": ""
-      },
-      "rutina": {
-        "diasEntreno": [],
-        "medidaMuñeca": ""
-      },
-      "botonInicioSesion": {
-        "accion": "submit"
-      }
-    },
-    {
-      "tipoUsuario": "entrenador",
-      "datosPersonales": {
-        "correo": "",
-        "contraseña": ""
-      },
-      "botonInicioSesion": {
-        "accion": "submit"
-      },
-      "editarEntrenador": {
-        "tiempoRutina": {
-          "seleccionTiempo": ""
-        },
         "musculo": {
           "opciones": [
             "Pecho",
@@ -258,20 +230,6 @@
               }
             ]
           }
-        },
-        "tipologiaCorporal": {
-          "clasificacion": "",
-          "condiciones": {
-            "ectomorfo": "Si la medida de la muñeca es menor de 16 cm",
-            "mesomorfo": "Si la medida de la muñeca está entre 16 cm y 18 cm",
-            "endomorfo": "Si la medida de la muñeca es mayor de 18 cm"
-          }
         }
-      },
-      "botonRegistro": {
-        "texto": "Registro",
-        "accion": "submit"
       }
-    }
-  ]
-}
+  

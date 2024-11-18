@@ -21,12 +21,13 @@ try {
                 u.Nombre AS nombre, 
                 u.Foto_perfil AS fotoPerfil,
                 u.Edad AS edad,
-                u.Rol AS rol, -- Incluimos el campo Rol
+                u.Rol AS rol, 
                 d.Identificacion_clien AS identificacion, 
                 d.Peso AS peso, 
                 d.Medida_Muneca AS medidaMuneca, 
                 d.Dias_entreno AS diasEntreno, 
-                d.Altura AS altura
+                d.Altura AS altura,
+                d.Nivel AS nivel
             FROM detalles_cliente d
             INNER JOIN usuarios u ON d.Identificacion_clien = u.Identificacion";
 
@@ -39,12 +40,13 @@ try {
                 "nombre" => $row["nombre"],
                 "fotoPerfil" => !empty($row["fotoPerfil"]) ? base64_encode($row["fotoPerfil"]) : null,
                 "edad" => $row["edad"],
-                "rol" => $row["rol"], // Incluimos el rol en el JSON
+                "rol" => $row["rol"],
                 "identificacion" => $row["identificacion"],
                 "peso" => $row["peso"],
                 "medidaMuneca" => $row["medidaMuneca"],
                 "diasEntreno" => $row["diasEntreno"],
-                "altura" => $row["altura"]
+                "altura" => $row["altura"],
+                "nivel" => $row["nivel"]
             ];
         }
         echo json_encode(["success" => true, "data" => $usuariosDetalles]);
