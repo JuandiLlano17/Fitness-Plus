@@ -1,22 +1,46 @@
- // Capturar el emoji seleccionado al hacer clic
- $('.emoji-satisfaction').click(function () {
-    selectedEmoji = $(this).attr('src'); // Almacenar la ruta de la imagen seleccionada
-    $('.emoji-satisfaction').removeClass('selected'); // Eliminar la clase seleccionada de todos
-    $(this).addClass('selected'); // Agregar la clase seleccionada a la imagen clickeada
-  });
+document.addEventListener("DOMContentLoaded", () => {
+    let selectedEmojiId = null;
 
-  // Al presionar "Guardar", mostrar el modal
-  $('#GuardarBtn').click(function (e) {
-    e.preventDefault();
-    if (selectedEmoji) {
-      localStorage.setItem('emojiSeleccionado', selectedEmoji); // Guardar en localStorage
-      $('#Satisfaccion').css('display', 'block'); // Mostrar el modal
-    } else {
-      alert('Por favor, seleccione un emoji');
-    }
-  });
+    // Obtener todos los emojis y añadirles un event listener para detectar el clic
+    const emojis = document.querySelectorAll(".emoji-satisfaction");
+    emojis.forEach((emoji) => {
+        emoji.addEventListener("click", () => {
+            // Guardar el ID del emoji seleccionado
+            selectedEmojiId = emoji.getAttribute("data-id");
 
-  // Al hacer clic en "Salir", redirigir a la página de Rutina.html
-  $('#Cerrar').click(function () {
-    window.location.href = 'Rutina.html'; // Redirigir a la página de Rutina
-  });
+            // Resaltar el emoji seleccionado
+            emojis.forEach((e) => e.classList.remove("selected")); // Quitar selección de otros emojis
+            emoji.classList.add("selected");
+        });
+    });
+
+    // Manejar el clic en el botón "Guardar"
+    const guardarBtn = document.getElementById("GuardarBtn");
+    guardarBtn.addEventListener("click", () => {
+        if (selectedEmojiId) {
+            // Crear un objeto con la satisfacción
+            const satisfaccionData = {
+                satisfaccion: selectedEmojiId,
+            };
+
+            // Crear una solicitud AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "guardar_seleccion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json"); // Enviar como JSON
+
+            // Manejar la respuesta del servidor
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert("Respuesta del servidor: " + xhr.responseText);
+                } else {
+                    alert("Error al guardar: " + xhr.status);
+                }
+            };
+
+            // Enviar el objeto como JSON
+            xhr.send(JSON.stringify(satisfaccionData));
+        } else {
+            alert("Por favor, selecciona un emoji antes de guardar.");
+        }
+    });
+});
