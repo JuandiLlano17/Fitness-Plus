@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (selectedEmojiId) {
             // Crear un objeto con la satisfacción
             const satisfaccionData = {
-                satisfaccion: selectedEmojiId,
+                "satisfaccion": selectedEmojiId,
             };
 
             // Crear una solicitud AJAX
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "guardar_seleccion.php", true);
+            xhr.open("POST", "api/POST/Nivel_Satisfaccion.php", true);
             xhr.setRequestHeader("Content-Type", "application/json"); // Enviar como JSON
 
             // Manejar la respuesta del servidor
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("Error al guardar: " + xhr.status);
                 }
             };
+            console.log(satisfaccionData);
 
             // Enviar el objeto como JSON
             xhr.send(JSON.stringify(satisfaccionData));
