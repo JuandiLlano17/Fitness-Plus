@@ -191,6 +191,10 @@ body {
   line-height: normal;
 }
 
+footer{
+  width: 100%;
+}
+
 /* Encabezado con fondo blanco */
 .dropdown-header {
   display: flex;
