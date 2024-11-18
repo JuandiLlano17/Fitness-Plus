@@ -30,12 +30,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Manejar la respuesta del servidor
             xhr.onload = function () {
-                if (xhr.status === 200) {
-                    alert("Respuesta del servidor: " + xhr.responseText);
-                } else {
-                    alert("Error al guardar: " + xhr.status);
+                try {
+                    if (xhr.status === 200) {
+                        // Intentar parsear la respuesta como JSON
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert("Nivel guardado exitosamente: " + response.success);
+                        } else {
+                            alert("Error del servidor: " + response.message);
+                        }
+                    } else {
+                        alert("Error en la solicitud: " + xhr.status);
+                    }
+                } catch (e) {
+                    alert("Error procesando la respuesta del servidor: " + e.message);
                 }
             };
+
+            // Manejar errores de conexión
+            xhr.onerror = function () {
+                alert("Error de conexión con el servidor.");
+            };
+
             console.log(satisfaccionData);
 
             // Enviar el objeto como JSON
