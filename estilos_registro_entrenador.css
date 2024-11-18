@@ -105,9 +105,8 @@ select:not(:placeholder-shown) {
 }
 
 #previewImagen {
-    width: 100%; /* Por defecto, ocupa todo el ancho disponible */
     max-width: 500px; /* Límite máximo del ancho */
-    height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+    max-height: 500px; /* Ajusta automáticamente la altura para mantener la proporción */
     border-radius: 50%; /* Hace que la imagen sea redonda */
     object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
     border: 2px solid #ccc; /* Agrega un borde sutil */
@@ -178,7 +177,8 @@ select:not(:placeholder-shown) {
     
 }
 #previewImagen {
-    max-width: 450px; /* Reduce el tamaño máximo para pantallas medianas */
+    max-width: 450px;
+    max-height: 450px; /* Reduce el tamaño máximo para pantallas medianas */
 }
 
 }
@@ -238,7 +238,8 @@ select:not(:placeholder-shown) {
     color: #000; /* Cambiar el texto a negro */
 }
 #previewImagen {
-    max-width: 300px; /* Reduce el tamaño máximo para pantallas medianas */
+    max-width: 300px;
+    max-height: 300px; /* Reduce el tamaño máximo para pantallas medianas */
 }
 }
   
@@ -294,7 +295,8 @@ select:not(:placeholder-shown) {
     outline: 2px solid #000; /* Cambia el borde de enfoque por uno más sutil */
     }
      #previewImagen {
-        max-width: 200px; /* Reduce el tamaño máximo para pantallas pequeñas */
+        max-width: 200px;
+        max-height: 200px; /* Reduce el tamaño máximo para pantallas pequeñas */
     }
 
 }
