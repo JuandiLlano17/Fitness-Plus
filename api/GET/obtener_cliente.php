@@ -27,6 +27,7 @@ try {
                 d.Medida_Muneca AS medidaMuneca, 
                 d.Dias_entreno AS diasEntreno, 
                 d.Altura AS altura
+                d.Nivel AS nivel
             FROM detalles_cliente d
             INNER JOIN usuarios u ON d.Identificacion_clien = u.Identificacion";
 
@@ -45,6 +46,8 @@ try {
                 "medidaMuneca" => $row["medidaMuneca"],
                 "diasEntreno" => $row["diasEntreno"],
                 "altura" => $row["altura"]
+                "nivel" => $row["nivel"]
+
             ];
         }
         echo json_encode(["success" => true, "data" => $usuariosDetalles]);

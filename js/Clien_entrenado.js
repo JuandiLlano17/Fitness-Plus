@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    switch(satisfaccion){
+
+    case 1://imagen enojo 
+
+
+    }
+
     const url = 'api/GET/obtener_cliente.php';
 
     fetch(url)
@@ -38,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             clientes.forEach(cliente => {
                 const tipologia = determinarTipologia(cliente.medidaMuneca);
+                /*const satisfaccion=nombre de la funcion */
 
                 const clienteHTML = `
                     <div class="tablita">
@@ -57,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <div class="button-group1">
                                 <button class="button editar-btn" data-id="${cliente.id}">Editar</button>
-                                <span class="emoji">${cliente.emoji || '😊'}</span>
+                                <span class="emoji">${cliente.emoji || '😊'}</span> 
                             </div>
                         </div>
                     </div>
