@@ -19,7 +19,7 @@
                   "Baja la barra hasta que toque suavemente tu pecho y luego empújala hacia arriba de forma controlada."
                 ],
                 "imagen": "img/ejercicios/Press de Banca.png",
-                "video": "Video/PressBanca.MOV"
+                "video": "Video/Press de Banca.mov"
               },
               {
                 "nombre": "Aperturas con Mancuernas",
@@ -29,7 +29,7 @@
                   "Junta las mancuernas nuevamente de forma controlada en la parte superior."
                 ],
                 "imagen": "img/ejercicios/Aperturas con Mancuernas.png",
-                "video": "Video/ExtensionesCuadri.MOV"
+                "video": "Video/Aperturas con Mancuernas.mov"
               },
               {
                 "nombre": "Press Inclinado",
@@ -39,7 +39,7 @@
                   "Baja de forma controlada hasta el pecho y empuja de regreso hacia arriba, manteniendo el enfoque en la parte superior del pecho."
                 ],
                 "imagen": "img/ejercicios/Press Inclinado.png",
-                "video": "Video/PressInclinado.MOV"
+                "video": "Video/Press Inclinado.mov"
               }
             ],
             "Espalda": [
@@ -51,7 +51,7 @@
                   "Levanta la barra hacia tu abdomen, apretando los músculos de la espalda, y baja de forma controlada."
                 ],
                 "imagen": "img/ejercicios/Remo con Barra.png",
-                "video": "Video/PesoMuerto.MOV"
+                "video": "Video/Remo con Barras.mov"
               },
               {
                 "nombre": "Dominadas",
@@ -61,7 +61,7 @@
                   "Baja lentamente hasta la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Dominadas.png",
-                "video": "Video/Dominadass.MOV"
+                "video": "Video/Dominadas.mov"
               },
               {
                 "nombre": "Peso Muerto",
@@ -71,7 +71,7 @@
                   "Baja la barra de forma controlada hasta el suelo."
                 ],
                 "imagen": "img/ejercicios/Peso Muerto.png",
-                "video": "Video/PesoMuerto.MOV"
+                "video": "Video/Peso Muerto.mov"
               }
             ],
             "Piernas": [
@@ -84,7 +84,7 @@
                   "Baja de forma controlada hasta los 90 grados."
                 ],
                 "imagen": "img/ejercicios/Sentadilla Libre.png",
-                "video": "Video/SentadillaLibre.MOV"
+                "video": "Video/Sentadilla Libre.mov"
               },
               {
                 "nombre": "Prensa",
@@ -94,7 +94,7 @@
                   "Empuja la plataforma hacia arriba sin bloquear las rodillas."
                 ],
                 "imagen": "img/ejercicios/Prensa.png",
-                "video": "Video/Prensa.MOV"
+                "video": "Video/Prensa.mov"
               },
               {
                 "nombre": "Extensiones de Cuadriceps",
@@ -104,7 +104,7 @@
                   "Baja lentamente las piernas a la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Extensiones de Cuadriceps.png",
-                "video": "Video/ExtensionesCuadri.MOV"
+                "video": "Video/Extensiones de Cuadriceps.mov"
               },
               {
                 "nombre": "Sentadilla Hack",
@@ -114,7 +114,7 @@
                   "Empuja hacia arriba, concentrándote en trabajar los cuádriceps y glúteos."
                 ],
                 "imagen": "img/ejercicios/Sentadilla Hack.png",
-                "video": "Video/SentadillaHack.MOVk"
+                "video": "Video/Sentadilla Hack.mov"
               },
               {
                 "nombre": "Sentadilla Smith",
@@ -124,7 +124,7 @@
                   "Empuja hacia arriba de forma controlada manteniendo la espalda recta."
                 ],
                 "imagen": "img/ejercicios/Sentadilla Smith.png",
-                "video": "Video/Sentadilla Smith.MOV"
+                "video": "Video/Sentadilla Smith.mov"
               }
             ],
             "Brazos": [
@@ -136,7 +136,7 @@
                   "Baja lentamente el peso a la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Curl de Biceps.png",
-                "video": "Video/CurlBicepsChico.MOV"
+                "video": "Video/Curl de Biceps.mov"
               },
 
               {
@@ -147,7 +147,7 @@
                   "Regresa de forma controlada a la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Triceps en Polea.png",
-                "video": "Video/TricepsPolea.MOV"
+                "video": "Video/Triceps en Polea.mp4"
               },
 
               {
@@ -158,7 +158,7 @@
                   "Baja lentamente hasta la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Curl Martillo.png",
-                "video": "Video/CurlMartillo.MOV"
+                "video": "Video/Curl Martillo.mov"
               }
             ],
             "Hombros": [
@@ -170,7 +170,7 @@
                   "Baja de forma controlada hasta la altura del pecho."
                 ],
                 "imagen": "img/ejercicios/Press Militar.png",
-                "video": "Video/PressMaquina.MOV"
+                "video": "Video/Press Militar.mov"
               },
 
               {
@@ -181,7 +181,7 @@
                   "Baja lentamente los brazos a la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Elevaciones Laterales.png",
-                "video": "Video/CurlBicepsChico.MOV"
+                "video": "Video/Elevacion Laterales.mov"
               },
 
               {
@@ -192,7 +192,7 @@
                   "Vuelve a la posición inicial de forma controlada."
                 ],
                 "imagen": "img/ejercicios/Face Pull.png",
-                "video": "Video/Face Pull.MOV"
+                "video": "Video/Face Pull.mov"
               }
             ],
 
@@ -205,7 +205,7 @@
                   "Baja de forma controlada a la posición inicial."
                 ],
                 "imagen": "img/ejercicios/Crunch.png",
-                "video": "Video/Crunch.MOV"
+                "video": "Video/Crunch.mov"
               },
 
               {
@@ -216,7 +216,7 @@
                   "Mantén la posición el mayor tiempo posible."
                 ],
                 "imagen": "img/ejercicios/Plancha.png",
-                "video": "Video/Plancha.MOV"
+                "video": "Video/Plancha.mov"
               },
               {
                 "nombre": "Elevaciones de Piernas",
@@ -226,7 +226,7 @@
                   "Baja lentamente las piernas sin tocar el suelo."
                 ],
                 "imagen": "img/ejercicios/Elevaciones de Piernas.png",
-                "video": "Video/Plancha.MOV"
+                "video": "Video/Elevacion de Piernas.mov"
               }
             ]
           }

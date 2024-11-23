@@ -135,8 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
         exerciseElement.innerHTML = `
           <div class="video-container">
             <video controls>
-              <source src="Video/PressMaquina.MOV" type="video/mp4">
-              Tu navegador no soporta el elemento de video.
+                <source src="Video\PressMaquina.MOV" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
             </video>
           </div>
           <article class="exercise-details">
