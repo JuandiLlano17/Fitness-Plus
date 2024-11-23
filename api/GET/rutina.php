@@ -1,6 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
+
 function writeLog($message) {
     $logFile = 'log.txt'; // Archivo donde guardarás los logs
     $current = file_get_contents($logFile);
@@ -22,16 +23,35 @@ if ($conn->connect_error) {
     exit;
 }
 
+// Validación del cliente
 $id_cliente = isset($_GET['id_cliente']) ? intval($_GET['id_cliente']) : 0;
 writeLog("ID Cliente recibido: $id_cliente");
-
-$id_cliente = isset($_GET['id_cliente']) ? intval($_GET['id_cliente']) : 0;
 
 if ($id_cliente <= 0) {
     echo json_encode(["success" => false, "message" => "ID de cliente no válido"]);
     $conn->close();
     exit;
 }
+
+// Validación del día
+$dia_actual = isset($_GET['dia']) ? strtolower($_GET['dia']) : null;
+
+if (!$dia_actual) {
+    writeLog("Día no especificado en la solicitud.");
+    echo json_encode(["success" => false, "message" => "No se especificó el día actual"]);
+    $conn->close();
+    exit;
+}
+
+// Validar que el día sea válido
+$valid_days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+if (!in_array($dia_actual, $valid_days)) {
+    writeLog("Día inválido recibido: $dia_actual");
+    echo json_encode(["success" => false, "message" => "Día no válido"]);
+    $conn->close();
+    exit;
+}
+
 try {
     // Consulta SQL para unir las tablas y obtener los datos requeridos
     $sql = "SELECT 
@@ -46,7 +66,8 @@ try {
             e.Detalle3 AS detalle3
         FROM rutina r
         INNER JOIN ejercicio e ON FIND_IN_SET(e.id_ejercicios, r.id_ejercicio)
-        WHERE r.cliente_id = $id_cliente";
+        WHERE r.cliente_id = $id_cliente AND LOWER(r.dia) = '$dia_actual'";
+    writeLog("Consulta SQL ejecutada: $sql");
 
     $result = $conn->query($sql);
 
@@ -69,19 +90,22 @@ try {
             $rutinas[$rutina_id]["ejercicios"][] = [
                 "id_ejercicio" => $row["id_ejercicios"],
                 "nombre_ejercicio" => $row["nombre_ejercicio"],
-                "musculo" => $row["musculo"],
-                "detalle1" => $row["Detalle1"],
-                "detalle2" => $row["Detalle2"],
-                "detalle3" => $row["Detalle3"]
+                "musculo" => htmlspecialchars($row["musculo"]),
+                "musculo" => utf8_encode($row["musculo"]),
+                "detalle1" => utf8_encode($row["detalle1"]),
+                "detalle2" => utf8_encode($row["detalle2"]),
+                "detalle3" => utf8_encode($row["detalle3"])
             ];
         }
 
-        writeLog("Rutinas obtenidas: " . json_encode($rutinas));
+        writeLog("Rutinas obtenidas para el día $dia_actual: " . json_encode($rutinas));
         echo json_encode(["success" => true, "rutinas" => array_values($rutinas)]);
     } else {
-        echo json_encode(["success" => false, "message" => "No se encontraron rutinas para el cliente."]);
+        writeLog("No se encontraron rutinas para el día: $dia_actual y cliente ID: $id_cliente");
+        echo json_encode(["success" => false, "message" => "No se encontraron rutinas para el cliente en el día '$dia_actual'."]);
     }
 } catch (Exception $e) {
+    writeLog("Error: " . $e->getMessage());
     echo json_encode(["success" => false, "message" => $e->getMessage()]);
 } finally {
     $conn->close();
