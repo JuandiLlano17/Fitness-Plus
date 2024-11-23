@@ -1,106 +1,168 @@
-let segundos = 60;
-let intervalo;
-let ejercicioAnterior = ""; // Variable global para almacenar el ejercicio anterior
-
-$(document).ready(function () {
-  // Mostrar el modal del cronómetro cuando se hace clic en el botón de apertura
-  $(document).on("click", ".button-cronometro", function () {
-    $("#modalCronometro").css("display", "block");
-    iniciarCuentaRegresiva(); // Iniciar la cuenta regresiva cuando se abre el cronómetro
-  });
-
-  // Botón de regresar (cierra el cronómetro)
-  $("#boton-regresar").on("click", function () {
-    $("#modalCronometro").css("display", "none");
-    clearInterval(intervalo); // Detener la cuenta regresiva cuando se cierra la ventana
-  });
-
-  // Botón de reiniciar la cuenta regresiva
-  $("#boton-reiniciar").on("click", function () {
-    reiniciarCuentaRegresiva();
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  let segundos = 60;
+  let intervalo;
+  let ejercicioAnterior = ""; // Variable global para almacenar el ejercicio anterior
 
   // Función para iniciar la cuenta regresiva
   function iniciarCuentaRegresiva() {
-    segundos = 60; // Restablecer a 60 segundos
-    clearInterval(intervalo); // Asegurarse de no tener múltiples intervalos
-    intervalo = setInterval(actualizarCuentaRegresiva, 1000);
-  }
-
-  // Función para actualizar los segundos
-  function actualizarCuentaRegresiva() {
-    if (segundos > 0) {
-      segundos--;
-      $("#segundos").text(segundos.toString().padStart(2, "0"));
-    } else {
-      clearInterval(intervalo); // Detener la cuenta regresiva cuando llega a 0
-    }
+    segundos = 60;
+    clearInterval(intervalo);
+    intervalo = setInterval(() => {
+      if (segundos > 0) {
+        segundos--;
+        document.getElementById("segundos").textContent = segundos.toString().padStart(2, "0");
+      } else {
+        clearInterval(intervalo);
+      }
+    }, 1000);
   }
 
   // Función para reiniciar la cuenta regresiva
   function reiniciarCuentaRegresiva() {
     clearInterval(intervalo);
     segundos = 60;
-    $("#segundos").text("60");
-    iniciarCuentaRegresiva(); // Reiniciar la cuenta regresiva desde 60
+    document.getElementById("segundos").textContent = "60";
+    iniciarCuentaRegresiva();
   }
 
-  // Evento para cambiar ejercicio
-  $(document).on("click", ".button-change-exercise", function () {
-    // Si hay un ejercicio anterior guardado, se restaura
-    if (ejercicioAnterior !== "") {
-      $(".exercise1").html(ejercicioAnterior);
-      ejercicioAnterior = ""; // Reseteamos el valor una vez restaurado
-    } else {
-      // Guardar el contenido actual del ejercicio antes de cambiar
-      ejercicioAnterior = $(".exercise1").html();
-
-      // Cambiar el contenido del ejercicio
-      $(".exercise1").html(`
-        <div class="video-container">
-            <video controls>
-                <source src="Video\PressMaquina.MOV" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </div>
-
-        <article class="exercise-details">
-            <h2>Pectoral</h2>
-            <h1>Press en máquina</h1>
-            <ul class="exercise-tips">
-                <li>Toma un peso que puedas cargar sin mucho problema</li>
-                <li>Mantén la barra estable en tu espalda</li>
-                <li>Mantén la espalda recta</li>
-                <li>Baja de forma controlada hasta los 90 grados</li>
-            </ul>
-            <div class="exercise-actions">
-                <button class="button button-cronometro">Cronómetro</button>
-                <button class="button button-change-exercise">Cambiar Ejercicio</button>
-            </div>
-        </article>
-      `);
+  // Evento para abrir el cronómetro
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("button-cronometro")) {
+      document.getElementById("modalCronometro").style.display = "block";
+      iniciarCuentaRegresiva();
     }
   });
 
-  $(document).ready(function () {
-    // Mostrar modal al hacer clic en el botón de finalizado
-    $("#boton-finalizado").on("click", function () {
-      $("#modalSatisfaccion").fadeIn();
-    });
-  
-    // Redirigir a la página principal al hacer clic en el botón de salir
-    $("#boton-salir").on("click", function () {
-      window.location.href = "index.html";  // Redirige a la página iden.html
-    });
+  // Botón de regresar (cierra el cronómetro)
+  document.getElementById("boton-regresar").addEventListener("click", function () {
+    document.getElementById("modalCronometro").style.display = "none";
+    clearInterval(intervalo);
   });
-});
 
- // Evento para abrir el modal del cronómetro
- $(".button-cronometro").on("click", function () {
-  $("#modalCronometro").fadeIn();
-});
+  // Botón de reiniciar la cuenta regresiva
+  document.getElementById("boton-reiniciar").addEventListener("click", reiniciarCuentaRegresiva);
 
-// Evento para cerrar el modal del cronómetro
-$(".close").on("click", function () {
-  $("#modalCronometro").fadeOut();
+  // Cargar rutina y ejercicios asociados
+  function loadRoutine() {
+    const routineHeader = document.querySelector("#exercise-container");
+    const tituloContainer = document.querySelector(".Titulo");
+    const tituloDia = tituloContainer.querySelector("h1");
+    const tituloDuracion = tituloContainer.querySelector("h2");
+
+    // ID del cliente
+    const idCliente =1234;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `api/GET/rutina.php?id_cliente=${idCliente}`, true);
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        try {
+          const data = JSON.parse(xhr.responseText);
+
+          console.log("Datos recibidos:", data);
+
+          if (!data.success) {
+            throw new Error(data.message || "No se encontraron rutinas disponibles");
+          }
+
+          const diaRutina = data.rutinas[0]?.dia || "Sin día";
+          const duracionRutina = data.rutinas[0]?.tiempo_rutina || "Sin duración";
+
+          tituloDia.textContent = diaRutina;
+          tituloDuracion.textContent = `Duración de la rutina ${duracionRutina}`;
+
+          routineHeader.innerHTML = ""; // Limpia el contenedor
+
+          data.rutinas.forEach((rutina) => {
+            const videoPath = `Video/${rutina.nombre_ejercicio.replace(/ /g, "_")}.mp4`;
+
+            const section = `
+              <section class="exercise">
+                <div class="video-container">
+                  <video controls>
+                    <source src="${videoPath}" type="video/mp4" />
+                    Tu navegador no soporta el elemento de video.
+                  </video>
+                </div>
+                <article class="exercise-details">
+                  <h2>${rutina.musculo}</h2>
+                  <h1>${rutina.nombre_ejercicio}</h1>
+                  <ul class="exercise-tips">
+                    <li>${rutina.detalle1}</li>
+                    <li>${rutina.detalle2}</li>
+                    <li>${rutina.detalle3}</li>
+                  </ul>
+                  <div class="exercise-actions">
+                    <button class="button button-cronometro">Cronómetro</button>
+                    <button class="button button-change-exercise">Cambiar Ejercicio</button>
+                  </div>
+                </article>
+              </section>
+            `;
+            routineHeader.innerHTML += section;
+          });
+        } catch (error) {
+          console.error("Error al procesar los datos:", error);
+          routineHeader.innerHTML = `<p>Error al cargar las rutinas: ${error.message}</p>`;
+        }
+      } else {
+        console.error("Error al obtener los datos:", xhr.statusText);
+        routineHeader.innerHTML = `<p>Error al cargar las rutinas: ${xhr.statusText}</p>`;
+      }
+    };
+
+    xhr.onerror = function () {
+      console.error("Error de red al intentar obtener las rutinas.");
+      routineHeader.innerHTML = `<p>Error de red al cargar las rutinas.</p>`;
+    };
+
+    xhr.send();
+  }
+
+  loadRoutine();
+
+  // Evento para cambiar ejercicio
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("button-change-exercise")) {
+      const exerciseElement = document.querySelector(".exercise1");
+      if (ejercicioAnterior !== "") {
+        exerciseElement.innerHTML = ejercicioAnterior;
+        ejercicioAnterior = "";
+      } else {
+        ejercicioAnterior = exerciseElement.innerHTML;
+
+        exerciseElement.innerHTML = `
+          <div class="video-container">
+            <video controls>
+              <source src="Video/PressMaquina.MOV" type="video/mp4">
+              Tu navegador no soporta el elemento de video.
+            </video>
+          </div>
+          <article class="exercise-details">
+            <h2>Pectoral</h2>
+            <h1>Press en máquina</h1>
+            <ul class="exercise-tips">
+              <li>Toma un peso que puedas cargar sin mucho problema</li>
+              <li>Mantén la barra estable en tu espalda</li>
+              <li>Mantén la espalda recta</li>
+              <li>Baja de forma controlada hasta los 90 grados</li>
+            </ul>
+            <div class="exercise-actions">
+              <button class="button button-cronometro">Cronómetro</button>
+              <button class="button button-change-exercise">Cambiar Ejercicio</button>
+            </div>
+          </article>
+        `;
+      }
+    }
+  });
+
+  document.getElementById("boton-finalizado").addEventListener("click", function () {
+    document.getElementById("modalSatisfaccion").style.display = "block";
+  });
+
+  document.getElementById("boton-salir").addEventListener("click", function () {
+    window.location.href = "index.html";
+  });
 });

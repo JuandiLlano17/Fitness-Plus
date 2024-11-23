@@ -8,25 +8,9 @@
     <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css" />
     <link rel="stylesheet" href="estilo_rutina.css" />
-    <script src= "js/Carga_header_footer.js"></script>
-    <script>
-
-        function cargarEjercicios() {
-          const xhr = new XMLHttpRequest();
-          xhr.open("GET", "pagina.json", true); // Cambia el archivo JSON a 'pagina.json'
-
-          xhr.onload = function () {
-              if (this.status === 200) {
-                  const data = JSON.parse(this.responseText);
-                  mostrarEjercicios(data);
-              }
-          };
-
-          xhr.send();
-      };
-    </script></head
-  ><!-- Encabezado -->
-
+    <script src="js/Carga_header_footer.js"></script>
+    <script src="js/Rutina.js"></script>
+  </head>
   <body>
     <header></header>
 
@@ -38,60 +22,9 @@
         <h1>Lunes</h1>
         <h2>Duración de la rutina 2 horas</h2>
       </div>
-
-      <section class="exercise">
-        <div class="video-container">
-          <video controls>
-            <source src="Video\SentadillaLibre.MOV" type="video/mp4" />
-            Tu navegador no soporta el elemento de video.
-          </video>
-        </div>
-<!-- Ejerccio uno -->
-        <article class="exercise-details">
-          <h2>Músculo</h2>
-          <h1>Sentadilla Libre</h1>
-          <ul class="exercise-tips">
-            <li>Toma un peso que puedas cargar sin mucho problema</li>
-            <li>Mantén la barra estable en tu espalda</li>
-            <li>Mantén la espalda recta</li>
-            <li>Baja de forma controlada hasta los 90 grados</li>
-          </ul>
-          <div class="exercise-actions">
-            <button class="button button-cronometro">Cronómetro</button>
-            <button class="button button-change-exercise1">
-              Cambiar Ejercicio
-            </button>
-          </div>
-        </article>
-      </section>
-<!-- Ejerccio dos -->
-      <section class="exercise1">
-        <div class="video-container1">
-          <video controls>
-            <source src="Video\PressInclinado.MOV" type="video/mp4" />
-            Tu navegador no soporta el elemento de video.
-          </video>
-        </div>
-        <div class="exercise-details1">
-          <div class="exercise-category">
-            <h2>Pectoral</h2>
-            <h1>Press Inclinado</h1>
-          </div>
-          <ul class="exercise-tips">
-            <li>Toma un peso que puedas cargar sin mucho problema</li>
-            <li>Mantén la barra estable en tu espalda</li>
-            <li>Mantén la espalda recta</li>
-            <li>Baja de forma controlada hasta los 90 grados</li>
-          </ul>
-          <div class="exercise-actions1">
-            <button class="button button-cronometro">Cronómetro</button>
-            <button class="button button-change-exercise">
-              Cambiar Ejercicio
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
+
+    <div id="exercise-container"></div>
 
     <div class="ejercicios">
       <div class="buton">
@@ -108,7 +41,7 @@
     <div id="modalCronometro" class="modal">
       <div class="modal-content">
         <div class="tiempo">
-          <span id="minutos">00</span>:<span id="segundos">00</span>
+          <span id="minutos">00</span>:<span id="segundos">60</span>
         </div>
         <div class="controles">
           <button id="boton-regresar" class="boton-control"><</button>
@@ -117,15 +50,7 @@
       </div>
     </div>
 
-    <!-- Modal Ejercicio Borrado -->
-    <div id="Satisfaccion" class="modal">
-      <div class="modal-content">
-        Haz acabado tu rutina Regresa Mañana
-        <button class="button">Salir</button>
-      </div>
-    </div>
-
-    <!-- Modal Ejercicio Finalizado -->
+    <!-- Modal Satisfacción -->
     <div id="modalSatisfaccion" class="modal1">
       <div class="modal-content1">
         <h3>Haz acabado tu rutina</h3>
@@ -133,8 +58,6 @@
         <button class="button" id="boton-salir">Salir</button>
       </div>
     </div>
-
-    <script src="Rutina.js"></script>
     <footer></footer>
   </body>
 </html>
