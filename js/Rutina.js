@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const tituloDia = tituloContainer.querySelector("h1");
       const tituloDuracion = tituloContainer.querySelector("h2");
 
-      const idCliente = 1234567;
 
       getDayFromAPI((error, diaActual) => {
           if (error) {
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("Día actual obtenido:", diaActual);
 
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", `api/GET/rutina.php?id_cliente=${idCliente}&dia=${encodeURIComponent(diaActual)}`, true);
+          xhr.open("GET", `api/GET/rutina.php?dia=${encodeURIComponent(diaActual)}`, true);
 
           xhr.onload = function () {
               if (xhr.status === 200) {
