@@ -19,6 +19,8 @@
         <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg" />
       </a>
       <div class="Titulo">
+        <h1>Lunes</h1>
+        <h2>Duración de la rutina 2 horas</h2>
       </div>
     </div>
 
@@ -53,7 +55,15 @@
       <div class="modal-content1">
         <h3>Haz acabado tu rutina</h3>
         <h3>Regresa Mañana</h3>
-        <button class="button" id="boton-salir">Salir</button>
+    <div class="button-text">
+    <!-- Formulario con estilo combinado -->
+        <form id="form-salir" action="api/POST/logout.php" method="post">
+            <button type="submit" class="button" id="boton-salir">Salir</button>
+        </form>
+    </div>
+
+</div>
+
       </div>
     </div>
     <footer></footer>
