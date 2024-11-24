@@ -7,9 +7,9 @@
     <!-- Archivos CSS -->
     <link rel="stylesheet" href="estilos_generales.css">
     <link rel="stylesheet" href="estilo_cliente_entre.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src= "js/Carga_header_footer.js"></script>
+    <script src="js\Clien_entrenado.js"></script>
 </head>
 
 <body>
@@ -19,11 +19,17 @@
         <a href="iniciar_sesion.html"> 
             <img class="logos-icon" alt="Logos" src="img/Logos_flecha.svg">
         </a>
-        <a href="index.html"> 
-            <div class="button-text">
-                <button class="button">Salir</button>
-            </div>
-        </a> 
+        <div class="button-text">
+        <!-- Formulario con estilo combinado -->
+            <form action="api/POST/logout.php" method="post">
+                <button type="submit" class="button">Salir</button>
+            </form>
+        </div>
+</div>
+
+
+</form>
+
     </div>
 
     <h1>Clientes</h1>
@@ -32,8 +38,6 @@
      <!-- Aquí se cargarán las tarjetas de cliente dinámicamente -->
     </div>
 
-
-    <script src="js\Clien_entrenado.js"></script>
     <footer></footer>
 </body>
 </html>
