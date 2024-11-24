@@ -36,6 +36,9 @@ try {
     if ($result->num_rows > 0) {
         $usuariosDetalles = [];
         while ($row = $result->fetch_assoc()) {
+            // Validar y convertir el campo 'nivel'
+            $nivel = is_numeric($row["nivel"]) ? (int)$row["nivel"] : $row["nivel"]; // Convierte a número si es posible
+
             $usuariosDetalles[] = [
                 "nombre" => $row["nombre"],
                 "fotoPerfil" => !empty($row["fotoPerfil"]) ? base64_encode($row["fotoPerfil"]) : null,
@@ -46,7 +49,7 @@ try {
                 "medidaMuneca" => $row["medidaMuneca"],
                 "diasEntreno" => $row["diasEntreno"],
                 "altura" => $row["altura"],
-                "nivel" => $row["nivel"]
+                "nivel" => $nivel // Aquí pasamos el nivel validado o convertido
             ];
         }
         echo json_encode(["success" => true, "data" => $usuariosDetalles]);

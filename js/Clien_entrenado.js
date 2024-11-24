@@ -10,7 +10,29 @@ document.addEventListener("DOMContentLoaded", function () {
             return "Desconocido";
         }
     }
-
+    function obtenerImagenPorNivel(nivel) {
+        const nivelInt = parseInt(nivel, 10); // Intenta convertir nivel a un número
+        if (isNaN(nivelInt)) {
+            // Si no es un número, usa una imagen predeterminada
+            return "img/X Icon (1).svg";
+        }
+    
+        // Devuelve la imagen correspondiente al nivel numérico
+        switch (nivelInt) {
+            case 1:
+                return "img/Enojo1.svg";
+            case 2:
+                return "img/Tristeza1.svg";
+            case 3:
+                return "img/Serio1.svg";
+            case 4:
+                return "img/Feliz1.svg";
+            case 5:
+                return "img/Contento1.svg";
+            default:
+                return "img/X Icon (1).svg"; // Imagen predeterminada si el nivel no es válido
+        }
+    }
     // Ruta del archivo PHP
     const url = 'api/GET/obtener_cliente.php';
 
@@ -44,33 +66,35 @@ document.addEventListener("DOMContentLoaded", function () {
             clientes.forEach((cliente, index) => {
                 console.log(`Cliente ${index}:`, cliente); // Depuración: revisar datos del cliente
                 const tipologia = determinarTipologia(cliente.medidaMuneca);
-
+                const imagenNivel = obtenerImagenPorNivel(cliente.nivel);
                 const clienteHTML = `
-                    <div class="tablita">
-                        <div class="cliente-info">
-                            <div class="foto-perfil">
-                                <img src="${cliente.fotoPerfil ? `data:image/jpeg;base64,${cliente.fotoPerfil}` : 'default-avatar.png'}" 
-                                    alt="Foto de ${cliente.nombre}" class="perfil-img">
-                            </div>
-                            <div class="nombre-cliente">
-                                <h2>${cliente.nombre}, ${cliente.edad || 'N/A'}</h2>
-                            </div>
-                            <div class="info-item">
-                                <p><strong>Peso:</strong> ${cliente.peso} kg</p>
-                                <p><strong>Tipo de cuerpo:</strong> ${tipologia}</p>
-                                <p><strong>Días de Entreno:</strong> ${cliente.diasEntreno}</p>
-                                <p><strong>Altura:</strong> ${cliente.altura} cm</p>
-                            </div>
-                            <div class="button-group1">
-                                <button class="button editar-btn" data-identificacion="${cliente.identificacion}">Editar</button>
-                                <span class="emoji">${cliente.emoji || '😊'}</span>
-                            </div>
+                <div class="tablita">
+                    <div class="cliente-info">
+                        <div class="foto-perfil">
+                            <img src="${cliente.fotoPerfil ? `data:image/jpeg;base64,${cliente.fotoPerfil}` : 'default-avatar.png'}" 
+                                alt="Foto de ${cliente.nombre}" class="perfil-img">
+                        </div>
+                        <div class="nombre-cliente">
+                            <h2>${cliente.nombre}, ${cliente.edad || 'N/A'}</h2>
+                        </div>
+                        <div class="info-item">
+                            <p><strong>Peso:</strong> ${cliente.peso} kg</p>
+                            <p><strong>Tipo de cuerpo:</strong> ${tipologia}</p>
+                            <p><strong>Días de Entreno:</strong> ${cliente.diasEntreno}</p>
+                            <p><strong>Altura:</strong> ${cliente.altura} cm</p>
+                        </div>
+                        <div class="button-group1">
+                            <button class="button editar-btn" data-identificacion="${cliente.identificacion}">Editar</button>
+                             <div class="imagen-nivel">
+                            <img src="${imagenNivel}" alt="Nivel ${cliente.nivel}" class="nivel-img">
+                        </div>
+                            
                         </div>
                     </div>
-                `;
-                clientesContainer.innerHTML += clienteHTML;
-            });
-
+                </div>
+            `;
+            clientesContainer.innerHTML += clienteHTML;
+        });
             // Añadir eventos a los botones de editar
             document.querySelectorAll('.editar-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
