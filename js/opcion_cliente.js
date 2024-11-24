@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const modalContent = modal.querySelector(".modal-content");
 
         if (modal && modalContent) {
-            modalContent.innerText = mensaje; // Cambia el contenido del mensaje
+            modalContent.style.display = "flex"; // Cambia el contenido del mensaje
             modal.style.display = "flex"; // Cambiar de "none" a "flex"
         } else {
             console.error("No se pudo encontrar el modal o su contenido.");
