@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (xhr.status === 200) {
                     const respuesta = JSON.parse(xhr.responseText);
                     if (respuesta.success) {
-                        alert(respuesta.message);
+                        alert(respuesta.message); // Mostrar el mensaje
+                        window.location.href = "Rutina.html"; // Redirigir a rutina.html
                     } else {
                         alert("Error: " + respuesta.message);
                     }
@@ -47,18 +48,4 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.send(JSON.stringify(datos));
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

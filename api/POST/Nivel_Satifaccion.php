@@ -71,6 +71,7 @@ if (isset($data['satisfaccion']) && !empty($data['satisfaccion'])) {
             echo json_encode([
                 "success" => true,
                 "message" => "Nivel de satisfacción actualizado correctamente."
+                
             ]);
         } else {
             echo json_encode([
