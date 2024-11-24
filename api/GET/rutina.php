@@ -63,7 +63,8 @@ try {
             e.musculo, 
             e.Detalle1 AS detalle1, 
             e.Detalle2 AS detalle2, 
-            e.Detalle3 AS detalle3
+            e.Detalle3 AS detalle3,
+            e.reemplazo As reemplazo 
         FROM rutina r
         INNER JOIN ejercicio e ON FIND_IN_SET(e.id_ejercicios, r.id_ejercicio)
         WHERE r.cliente_id = $id_cliente AND LOWER(r.dia) = '$dia_actual'";
@@ -94,7 +95,9 @@ try {
                 "musculo" => utf8_encode($row["musculo"]),
                 "detalle1" => utf8_encode($row["detalle1"]),
                 "detalle2" => utf8_encode($row["detalle2"]),
-                "detalle3" => utf8_encode($row["detalle3"])
+                "detalle3" => utf8_encode($row["detalle3"]),
+                "reemplazo" => $row["reemplazo"],
+
             ];
         }
 
