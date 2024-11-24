@@ -189,11 +189,15 @@
     display:none;
     color: #ADA8A8;
     text-align: center;
+    cursor: pointer;
 }
-.dia:hover {
-    color: #000;
-    text-decoration: underline;
+.dia-item.selected {
+    background-color: #FCD23B;
+    color: #333; /* Asegurar que el texto sea legible */
+    font-weight: bold; /* Opcional: hacer el texto más destacado */
+    font-size: 24px;
 }
+
 
 .d-header {
     font-family: "Montserrat", Helvetica;

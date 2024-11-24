@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return "Desconocido";
         }
     }
+
     function obtenerImagenPorNivel(nivel) {
         const nivelInt = parseInt(nivel, 10); // Intenta convertir nivel a un número
         if (isNaN(nivelInt)) {
-            // Si no es un número, usa una imagen predeterminada
-            return "img/X Icon (1).svg";
+            return "img/X Icon (1).svg"; // Imagen predeterminada si el nivel no es válido
         }
-    
+
         // Devuelve la imagen correspondiente al nivel numérico
         switch (nivelInt) {
             case 1:
@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
             case 5:
                 return "img/Contento1.svg";
             default:
-                return "img/X Icon (1).svg"; // Imagen predeterminada si el nivel no es válido
+                return "img/X Icon (1).svg";
         }
     }
+
     // Ruta del archivo PHP
     const url = 'api/GET/obtener_cliente.php';
 
@@ -67,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(`Cliente ${index}:`, cliente); // Depuración: revisar datos del cliente
                 const tipologia = determinarTipologia(cliente.medidaMuneca);
                 const imagenNivel = obtenerImagenPorNivel(cliente.nivel);
+
                 const clienteHTML = `
                 <div class="tablita">
                     <div class="cliente-info">
@@ -84,26 +86,33 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p><strong>Altura:</strong> ${cliente.altura} cm</p>
                         </div>
                         <div class="button-group1">
-                            <button class="button editar-btn" data-identificacion="${cliente.identificacion}">Editar</button>
-                             <div class="imagen-nivel">
-                            <img src="${imagenNivel}" alt="Nivel ${cliente.nivel}" class="nivel-img">
-                        </div>
-                            
+                            <button class="button editar-btn" 
+                                data-identificacion="${cliente.identificacion}" 
+                                data-dias-entreno="${cliente.diasEntreno}">
+                                Editar
+                            </button>
+                            <div class="imagen-nivel">
+                                <img src="${imagenNivel}" alt="Nivel ${cliente.nivel}" class="nivel-img">
+                            </div>
                         </div>
                     </div>
                 </div>
-            `;
-            clientesContainer.innerHTML += clienteHTML;
-        });
+                `;
+                clientesContainer.innerHTML += clienteHTML;
+            });
+
             // Añadir eventos a los botones de editar
             document.querySelectorAll('.editar-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const clienteId = e.target.getAttribute('data-identificacion'); // Obtener el ID del cliente
-                    if (clienteId) {
+                    const diasEntreno = e.target.getAttribute('data-dias-entreno'); // Obtener días de entreno directamente del atributo
+                    if (clienteId && diasEntreno) {
                         console.log("ID Cliente:", clienteId);
-                        window.location.href = `editar_entrenador.html?id=${clienteId}`;
+                        console.log("Días de Entreno:", diasEntreno);
+                        const diasEncoded = encodeURIComponent(diasEntreno); // Codificar los días para incluirlos en la URL
+                        window.location.href = `editar_entrenador.html?id=${clienteId}&dias=${diasEncoded}`;
                     } else {
-                        console.error('ID del cliente no encontrado para este botón.');
+                        console.error('ID del cliente o días de entreno no encontrados');
                     }
                 });
             });

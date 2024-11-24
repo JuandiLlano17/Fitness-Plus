@@ -69,7 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     guardarButton.addEventListener('click', function () {
         const clienteId = obtenerClienteId(); // Ahora la función obtiene el clienteId correctamente
-        const dia = "lunes"; // Día estático según el requerimiento
+        
+         // Obtener el día seleccionado desde el localStorage o el DOM
+         const diaSeleccionado = localStorage.getItem('diaSeleccionado'); // O, si no usas localStorage, busca el día en el DOM
+         if (!diaSeleccionado) {
+             console.log("Error: No se ha seleccionado un día.");
+             alert("Por favor selecciona un día.");
+             return; // Detener la ejecución si no se selecciona un día
+         }
+         
+         const dia = diaSeleccionado; // Aquí usamos el día seleccionado dinámicamente
 
         // Verificar selección de tiempo de rutina
         const tiempoRutinaInput = document.querySelector('input[name="tiempo-rutina"]:checked');

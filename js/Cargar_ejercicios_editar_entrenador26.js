@@ -90,21 +90,6 @@ function actualizarEjercicios() {
     const repsContainer = document.createElement('div');
     repsContainer.classList.add('reps-container');
     repsContainer.style.display = 'none';
-    /*
-        // Crear el campo input para las repeticiones
-        const repsInput = document.createElement('input');
-        repsInput.type = 'text';
-        repsInput.placeholder = '3-12'; // Valor predeterminado
-        repsInput.classList.add('input-reps');
-        
-        // Crear el texto "reps"
-        const repsText = document.createElement('span');
-        repsText.textContent = 'reps';
-    
-        // Agregar el input y el texto "reps" dentro del contenedor de repeticiones
-        repsContainer.appendChild(repsInput);
-        repsContainer.appendChild(repsText);
-        */
     
     // Contenedor para el botón "Borrar"
     const borrarContainer = document.createElement('div');
