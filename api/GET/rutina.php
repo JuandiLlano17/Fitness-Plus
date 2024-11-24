@@ -23,8 +23,20 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Validación del cliente
-$id_cliente = isset($_GET['id_cliente']) ? intval($_GET['id_cliente']) : 0;
+session_start();
+
+// Verificar que la sesión tiene un ID de usuario
+if (!isset($_SESSION["usuario_id"])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "No se encontró un ID de usuario en la sesión. Por favor, inicie sesión."
+    ]);
+    exit;
+}
+
+// Obtener el ID del usuario de la sesión
+$id_cliente = $_SESSION["usuario_id"];
+
 writeLog("ID Cliente recibido: $id_cliente");
 
 if ($id_cliente <= 0) {
