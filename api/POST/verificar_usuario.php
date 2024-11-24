@@ -34,7 +34,7 @@ $correo = trim($data['Inicio_sesion']['correo']);
 $contrasena = trim($data['Inicio_sesion']['contrasena']);
 
 // Consultar el correo en la base de datos
-$sql = "SELECT Contrasena, rol FROM usuarios WHERE Correo = ?";
+$sql = "SELECT Identificacion, Contrasena, rol FROM usuarios WHERE Correo = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -45,15 +45,20 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $hashedPassword = $row['Contrasena'];
     $rol = $row['rol'];
+    $identificacion = $row['Identificacion'];
 
     // Verificar contraseña
     if (password_verify($contrasena, $hashedPassword)) {
+        session_start(); // Iniciar la sesión
+        $_SESSION["usuario_id"] = $Identificacion; // Guardar el ID del usuario
+        $_SESSION["usuario_rol"] = $rol; // Guardar el rol del usuario
         // Contraseña correcta
         echo json_encode(['success' => $rol]); // Devuelve el rol directamente
     } else {
         // Contraseña incorrecta
         echo json_encode(['success' => false, 'message' => 'Usuario o contraseña incorrectos.']);
     }
+
 } else {
     // Correo no encontrado
     echo json_encode(['success' => false, 'message' => 'Usuario o contraseña incorrectos.']);

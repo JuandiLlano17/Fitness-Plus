@@ -23,8 +23,20 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Validación del cliente
-$id_cliente = isset($_GET['id_cliente']) ? intval($_GET['id_cliente']) : 0;
+session_start();
+
+// Verificar que la sesión tiene un ID de usuario
+if (!isset($_SESSION["usuario_id"])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "No se encontró un ID de usuario en la sesión. Por favor, inicie sesión."
+    ]);
+    exit;
+}
+
+// Obtener el ID del usuario de la sesión
+$id_cliente = $_SESSION["usuario_id"];
+
 writeLog("ID Cliente recibido: $id_cliente");
 
 if ($id_cliente <= 0) {
@@ -63,7 +75,8 @@ try {
             e.musculo, 
             e.Detalle1 AS detalle1, 
             e.Detalle2 AS detalle2, 
-            e.Detalle3 AS detalle3
+            e.Detalle3 AS detalle3,
+            e.reemplazo As reemplazo 
         FROM rutina r
         INNER JOIN ejercicio e ON FIND_IN_SET(e.id_ejercicios, r.id_ejercicio)
         WHERE r.cliente_id = $id_cliente AND LOWER(r.dia) = '$dia_actual'";
@@ -94,7 +107,9 @@ try {
                 "musculo" => utf8_encode($row["musculo"]),
                 "detalle1" => utf8_encode($row["detalle1"]),
                 "detalle2" => utf8_encode($row["detalle2"]),
-                "detalle3" => utf8_encode($row["detalle3"])
+                "detalle3" => utf8_encode($row["detalle3"]),
+                "reemplazo" => $row["reemplazo"],
+
             ];
         }
 

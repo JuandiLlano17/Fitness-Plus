@@ -2,6 +2,17 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
+session_start();
+
+// Verificar que la sesión tiene un ID de usuario
+if (!isset($_SESSION["usuario_id"])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "No se encontró un ID de usuario en la sesión. Por favor, inicie sesión."
+    ]);
+    exit;
+}
+
 // Configuración de conexión a la base de datos
 $servername = "sql309.infinityfree.com";
 $username = "if0_37560263";
@@ -13,10 +24,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar conexión
 if ($conn->connect_error) {
-    die(json_encode([
+    echo json_encode([
         "success" => false,
         "message" => "Error en la conexión a la base de datos: " . $conn->connect_error
-    ]));
+    ]);
+    exit;
 }
 
 // Leer los datos JSON enviados
@@ -26,29 +38,53 @@ $data = json_decode($jsonData, true);
 // Validar que se recibe el campo 'satisfaccion'
 if (isset($data['satisfaccion']) && !empty($data['satisfaccion'])) {
     $nivel = $data['satisfaccion'];
+    $usuario_id = $_SESSION["usuario_id"]; // Obtener el ID del usuario desde la sesión
 
-    // Insertar el nivel en la base de datos
-    $stmt = $conn->prepare("INSERT INTO detalles_cliente (Nivel) VALUES (?)");
+    // Verificar si el usuario ya existe en la base de datos
+    $stmt = $conn->prepare("SELECT Identificacion_clien FROM detalles_cliente WHERE Identificacion_clien = ?");
     if (!$stmt) {
         echo json_encode([
             "success" => false,
-            "message" => "Error al preparar la consulta: " . $conn->error
+            "message" => "Error al preparar la consulta SELECT: " . $conn->error
         ]);
         exit;
     }
 
-    $stmt->bind_param("s", $nivel);
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Ejecutar consulta
-    if ($stmt->execute()) {
-        echo json_encode([
-            "success" => true,
-            "message" => "Nivel de satisfacción guardado correctamente."
-        ]);
+    if ($result->num_rows > 0) {
+        // Insertar el nivel de satisfacción si el usuario existe
+        $stmt_insert = $conn->prepare("UPDATE detalles_cliente SET Nivel = ? WHERE Identificacion_clien = ?");
+        if (!$stmt_insert) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Error al preparar la consulta de inserción: " . $conn->error
+            ]);
+            exit;
+        }
+
+        $stmt_insert->bind_param("si", $nivel, $usuario_id);
+
+        if ($stmt_insert->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Nivel de satisfacción actualizado correctamente."
+                
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Error al actualizar el nivel: " . $stmt_insert->error
+            ]);
+        }
+
+        $stmt_insert->close();
     } else {
         echo json_encode([
             "success" => false,
-            "message" => "Error al guardar el nivel: " . $stmt->error
+            "message" => "El usuario no existe en la base de datos."
         ]);
     }
 

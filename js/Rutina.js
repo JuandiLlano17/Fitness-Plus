@@ -44,35 +44,32 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para obtener el día actual desde WorldTimeAPI usando un proxy PHP
   function getDayFromAPI(callback) {
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", "api/GET/proxy.php", true); // Cambia "proxy.php" a la URL de tu proxy PHP
+      xhr.open("GET", "api/GET/proxy.php", true);
 
       xhr.onload = function () {
           if (xhr.status === 200) {
               try {
                   const data = JSON.parse(xhr.responseText);
-
-                  // Obtener el número del día de la semana (0 = Domingo, 1 = Lunes, ...)
                   const dayOfWeek = data.day_of_week;
 
-                  // Mapear el número al día en español
                   const daysInSpanish = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
                   const dayName = daysInSpanish[dayOfWeek];
 
                   console.log(`Día obtenido desde WorldTimeAPI: ${dayName}`);
-                  callback(null, dayName); // Llama al callback con el día
+                  callback(null, dayName);
               } catch (error) {
                   console.error("Error al procesar la respuesta de WorldTimeAPI:", error);
-                  callback(error, null); // Error al procesar
+                  callback(error, null);
               }
           } else {
               console.error("Error al obtener datos de WorldTimeAPI:", xhr.statusText);
-              callback(xhr.statusText, null); // Error de red
+              callback(xhr.statusText, null);
           }
       };
 
       xhr.onerror = function () {
           console.error("Error de red al intentar conectarse al servidor intermedio");
-          callback("Error de red", null); // Error de red
+          callback("Error de red", null);
       };
 
       xhr.send();
@@ -85,10 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const tituloDia = tituloContainer.querySelector("h1");
       const tituloDuracion = tituloContainer.querySelector("h2");
 
-      // ID del cliente
-      const idCliente = 1234567;
 
-      // Obtener el día actual desde WorldTimeAPI usando AJAX
       getDayFromAPI((error, diaActual) => {
           if (error) {
               console.error("Error al obtener el día actual:", error);
@@ -99,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log("Día actual obtenido:", diaActual);
 
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", `api/GET/rutina.php?id_cliente=${idCliente}&dia=${encodeURIComponent(diaActual)}`, true);
+          xhr.open("GET", `api/GET/rutina.php?dia=${encodeURIComponent(diaActual)}`, true);
 
           xhr.onload = function () {
               if (xhr.status === 200) {
@@ -110,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
                           throw new Error(data.message || "No se encontraron rutinas disponibles para hoy");
                       }
 
-                      const rutina = data.rutinas[0]; // Supongamos una rutina por día
+                      const rutina = data.rutinas[0];
                       tituloDia.textContent = rutina.dia || "Sin día";
                       tituloDuracion.textContent = `Duración de la rutina: ${rutina.tiempo_rutina || "Sin duración"}`;
 
                       const exerciseContainer = document.getElementById("exercise");
-                      exerciseContainer.innerHTML = ""; // Limpia ejercicios anteriores
+                      exerciseContainer.innerHTML = "";
 
                       rutina.ejercicios.forEach(ejercicio => {
                           const videoPath = `Video/${ejercicio.nombre_ejercicio.replace(/ /g, '%20')}.mov`;
@@ -137,13 +131,34 @@ document.addEventListener("DOMContentLoaded", function () {
                                           <li>${ejercicio.detalle3 || ''}</li>
                                       </ul>
                                       <div class="exercise-actions">
-                                          <button class="button button-cronometro">Cronómetro</button>
-                                          <button class="button button-change-exercise">Cambiar Ejercicio</button>
+                                       <button class="button button-cronometro">Cronómetro</button>
+                                           <button 
+                                              class="button button-change-exercise" 
+                                              data-id_rutina="${rutina.id_rutina}" 
+                                              data-id_ejercicio="${ejercicio.id_ejercicio}" 
+                                              data-reemplazo="${ejercicio.reemplazo}">
+                                            Cambiar Ejercicio
+                                            </button>
                                       </div>
                                   </article>
                               </div>
                           `;
                           exerciseContainer.innerHTML += exerciseHTML;
+                      });
+
+                      // Añadir eventos a los botones de cambiar ejercicio
+                      document.querySelectorAll(".button-change-exercise").forEach(button => {
+                          button.addEventListener("click", function () {
+                              const reemplazoId = this.getAttribute("data-reemplazo");
+                              const rutinaId = this.getAttribute("data-id_rutina");
+                              const ejercicioActualId = this.getAttribute("data-id_ejercicio");
+                                if (reemplazoId) {
+                                  alert(`Ejercicio de reemplazo: ${reemplazoId},${rutinaId},${ejercicioActualId} `);
+                                    loadReplacementExercise(reemplazoId, rutinaId, ejercicioActualId);
+                                } else {
+                                    alert("No hay ejercicio de reemplazo disponible.");
+                                }
+                          });
                       });
                   } catch (error) {
                       routineContainer.innerHTML = `<p>Error al cargar las rutinas: ${error.message}</p>`;
@@ -160,6 +175,27 @@ document.addEventListener("DOMContentLoaded", function () {
           xhr.send();
       });
   }
+  function loadReplacementExercise(reemplazoId, rutinaId, ejercicioActualId) {
+    fetch('api/POST/reemplazar_ejercicio.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id_rutina: rutinaId,
+            id_ejercicio_actual: ejercicioActualId,
+            id_ejercicio_reemplazo: reemplazoId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("Ejercicio reemplazado correctamente.");
+            loadRoutine(); // Recargar rutinas para reflejar el cambio
+        } else {
+            alert("Error al reemplazar el ejercicio: " + data.message);
+        }
+    })
+    .catch(error => console.error("Error al reemplazar el ejercicio:", error));
+}
 
   // Inicia la carga de las rutinas al cargar el DOM
   loadRoutine();
