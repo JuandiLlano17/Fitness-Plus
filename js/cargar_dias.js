@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Marcar el día como seleccionado
                     diaElement.classList.add('selected');
-                    diaElement.style.backgroundColor = '#FCD23B'; // Cambiar el color del fondo (gris claro)
+                    diaElement.style.backgroundColor = '#FCD23B';
 
                     // Almacenar el día seleccionado en el localStorage o variable
                     localStorage.setItem('diaSeleccionado', dia); // Usando localStorage para persistir la selección
