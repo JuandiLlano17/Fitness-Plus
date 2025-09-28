@@ -11,10 +11,10 @@ function writeLog($message) {
 }
 
 // Conexión a la base de datos
-$servername = "sql309.infinityfree.com";
-$username = "if0_37560263";
-$password = "Feliceslos321";
-$dbname = "if0_37560263_Gimnasio1";
+$servername = "sql300.infinityfree.com"; 
+$username   = "if0_40041136";
+$password   = "7auL2wynwt5";
+$database   = "if0_40041136_Base_Datos";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

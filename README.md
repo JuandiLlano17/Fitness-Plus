@@ -1,6 +1,6 @@
-# 🏋️‍♂️ Fitness Plus  
+#  Fitness Plus  
 
-## 📖 Descripción  
+## Descripción  
 **Fitness Plus** es una página web desarrollada como proyecto académico en la asignatura **Tecnologías de Internet**.  
 El objetivo era poner en práctica el uso de **HTML, CSS, JavaScript, PHP y MySQL** en la creación de un sitio web funcional y dinámico.  
 
@@ -17,7 +17,7 @@ La plataforma está pensada para un gimnasio ficticio, mostrando su información
 
 ---
 
-## ⚡ Funcionalidades principales  
+## Funcionalidades principales  
 - [x] Página principal con carrusel de imágenes llamativas  
 - [x] Información sobre el gimnasio, entrenadores y redes sociales  
 - [x] Registro de usuarios (clientes y entrenadores)  
@@ -31,18 +31,18 @@ La plataforma está pensada para un gimnasio ficticio, mostrando su información
 
 ---
 
-## 🔧 Instalación y uso local  
+## Instalación y uso local  
  Clonar este repositorio:  
    git clone https://github.com/tuusuario/fitness-plus.git
 
-   🌐 Despliegue
-
----
-## 📌 Pendiente — próximamente en hosting.
 
 ---
 
-## 👥 Autores
+## Pendiente — próximamente en hosting.
+
+---
+
+## Autores
 
 Juan David Llano – [GitHub](https://github.com/JuandiLlano17)
 Daniela Cascavita
@@ -50,7 +50,7 @@ Camila López
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la licencia MIT.
 Puedes usarlo, modificarlo y distribuirlo libremente, dando el crédito correspondiente a los autores.
